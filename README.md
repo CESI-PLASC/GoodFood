@@ -2,5 +2,6 @@
 
     .
     ├── app       # Applicatif de GoodF(angular)
-    ├── auth      # Api de gestion de l'authentification (C#)
-    └── data      # Api de gestion des données de l'applicatif de GoodFood (java)
+    └── api       # Les apis
+        ├── auth  # Api d'authentification (C#)
+        └── data  # Api de gestion des données de l'applicatif de GoodFood (java)
