@@ -1,0 +1,16 @@
+Personne: 
+    -> Représente une personne/entreprise
+
+Utilisateur: 
+    -> Représente un Utilisateur
+    -> Possède une connexion pour l'application
+
+Franchise: 
+    -> Représente le franchisé de GoodFood
+    -> Ne possède pas de connexion à l'application
+
+Employe: 
+    -> Employé du franchisé
+
+Privilege: 
+    -> Permet d'indiquer le type de privilége que possède l'employé
