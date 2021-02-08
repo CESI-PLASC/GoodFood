@@ -1,0 +1,295 @@
+{
+	"info": {
+		"_postman_id": "70399b5d-7aef-4674-898e-f0755e09ada1",
+		"name": "Goodfood",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Les franchisés",
+					"item": [
+						{
+							"name": "Tous les franchisés",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gf_host_api_auth}}/api/v1/franchises",
+									"host": [
+										"{{gf_host_api_auth}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"franchises"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Un franchisé",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gf_host_api_auth}}/api/v1/franchises/:idFranchise",
+									"host": [
+										"{{gf_host_api_auth}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"franchises",
+										":idFranchise"
+									],
+									"variable": [
+										{
+											"key": "idFranchise",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Créer un franchisé",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"designation\": \"Mon franchisé\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gf_host_api_auth}}/api/v1/franchises",
+									"host": [
+										"{{gf_host_api_auth}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"franchises"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modifier un franchisé",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"designation\": \"Mon franchisé modifié\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gf_host_api_auth}}/api/v1/franchises",
+									"host": [
+										"{{gf_host_api_auth}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"franchises"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Supprimer un franchisé",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{gf_host_api_auth}}/api/v1/franchises/:idFranchise",
+									"host": [
+										"{{gf_host_api_auth}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"franchises",
+										":idFranchise"
+									],
+									"variable": [
+										{
+											"key": "idFranchise",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "data",
+			"item": [
+				{
+					"name": "Les commandes",
+					"item": [
+						{
+							"name": "Toutes les commandes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host_goodfood}}/commandes",
+									"host": [
+										"{{host_goodfood}}"
+									],
+									"path": [
+										"commandes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Une commande",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gf_host_api_data}}/commandes/:id",
+									"host": [
+										"{{gf_host_api_data}}"
+									],
+									"path": [
+										"commandes",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Créer une commande",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"dateCreation\": \"2022-02-02\",\r\n    \"dateDonnee\": \"2022-02-02\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_goodfood}}/commandes",
+									"host": [
+										"{{host_goodfood}}"
+									],
+									"path": [
+										"commandes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modifier une commande",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"dateCreation\": \"2022-02-01\",\r\n    \"dateDonnee\": \"2022-02-01\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_goodfood}}/commandes",
+									"host": [
+										"{{host_goodfood}}"
+									],
+									"path": [
+										"commandes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Supprimer une commande",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host_goodfood}}/commandes/:id",
+									"host": [
+										"{{host_goodfood}}"
+									],
+									"path": [
+										"commandes",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Les statuts",
+					"item": [
+						{
+							"name": "Tous les statuts",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host_goodfood}}/statuts",
+									"host": [
+										"{{host_goodfood}}"
+									],
+									"path": [
+										"statuts"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
