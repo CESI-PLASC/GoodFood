@@ -26,6 +26,8 @@ namespace auth
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,6 +39,13 @@ namespace auth
             }
 
             app.UseHttpsRedirection();
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Goodfood api - Utilisateurs");
+                c.RoutePrefix = String.Empty;
+            });
 
             app.UseRouting();
 
