@@ -1,7 +1,8 @@
-package fr.mycompany.goodfood.entity;
+package fr.goodfood.entity;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,10 +11,19 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Commande {
 
-    private @Id @GeneratedValue Long id;
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "date_creation")
     private Date dateCreation;
+
+    @Column(name = "date_donnee")
     private Date dateDonnee;
-    private @ManyToOne Statut statut;
+
+    @ManyToOne(targetEntity = Statut.class)
+    private Statut statut;
 
     public Long getId(){
         return this.id;

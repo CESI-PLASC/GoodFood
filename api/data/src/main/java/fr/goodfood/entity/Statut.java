@@ -1,7 +1,8 @@
-package fr.mycompany.goodfood.entity;
+package fr.goodfood.entity;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -9,10 +10,17 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Statut {
-    
-    private @Id @GeneratedValue Long id;
+
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "designation")
     private String designation;
-    private @OneToMany(mappedBy = "statut") List<Commande> commandes;
+
+    @OneToMany(mappedBy = "statut", targetEntity = Commande.class)
+    private List<Commande> commandes;
 
     public Long getId(){
         return this.id;

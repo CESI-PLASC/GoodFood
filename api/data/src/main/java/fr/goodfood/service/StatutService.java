@@ -1,12 +1,12 @@
-package fr.mycompany.goodfood.service;
+package fr.goodfood.service;
 
 import java.util.List;
 
+import fr.goodfood.repository.StatutRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import fr.mycompany.goodfood.entity.Statut;
-import fr.mycompany.goodfood.repository.StatutRepository;
+import fr.goodfood.entity.Statut;
 
 @Service
 public class StatutService {

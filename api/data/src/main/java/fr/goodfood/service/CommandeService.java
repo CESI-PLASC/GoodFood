@@ -1,13 +1,13 @@
-package fr.mycompany.goodfood.service;
+package fr.goodfood.service;
 
 import java.util.List;
 
+import fr.goodfood.repository.CommandeRepository;
+import fr.goodfood.ressource.error.CommandeNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import fr.mycompany.goodfood.entity.Commande;
-import fr.mycompany.goodfood.ressource.error.CommandeNotFoundException;
-import fr.mycompany.goodfood.repository.CommandeRepository;
+import fr.goodfood.entity.Commande;
 
 @Service
 public class CommandeService {

@@ -1,4 +1,4 @@
-package fr.mycompany.goodfood.ressource.error;
+package fr.goodfood.ressource.error;
 
 public class CommandeNotFoundException extends RuntimeException {
     
