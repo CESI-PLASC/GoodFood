@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
@@ -20,11 +21,12 @@ import fr.goodfood.entity.Formule;
 import fr.goodfood.service.FormuleService;
 
 @RestController
+@RequestMapping("api/formules")
 public class FormuleRessource {
     @Autowired
     private FormuleService formuleService;
 
-    @GetMapping("/formules")
+    @GetMapping
     public CollectionModel<Formule> all(){
         List<Formule> formules = this.formuleService.all();
 
@@ -33,7 +35,7 @@ public class FormuleRessource {
         );
     }
 
-    @GetMapping("/formules/{id}")
+    @GetMapping("/{id}")
     public EntityModel<Formule> one(@PathVariable Long id){
         Formule formule = this.formuleService.one(id);
 
@@ -43,7 +45,7 @@ public class FormuleRessource {
         );
     }
 
-    @PostMapping("/formules")
+    @PostMapping
     public EntityModel<Formule> create(@RequestBody Formule formule){
         Formule nouvelleFormule = this.formuleService.create(formule);
 
@@ -52,7 +54,7 @@ public class FormuleRessource {
         );
     }
 
-    @PutMapping("/formules")
+    @PutMapping
     public EntityModel<Formule> update(@RequestBody Formule formule){
         Formule formuleModifiee = this.formuleService.update(formule);
 
@@ -61,7 +63,7 @@ public class FormuleRessource {
         );
     }
 
-    @DeleteMapping("/formules/{id}")
+    @DeleteMapping("{id}")
     public void delete(@PathVariable Long id){
         this.formuleService.delete(id);
     }

@@ -10,9 +10,15 @@ import fr.goodfood.entity.keys.CompositionKey;
 @Entity
 public class Composition{
 
-    private @EmbeddedId CompositionKey id;
-    private @ManyToOne @MapsId("commandeId") Commande commande;
-    private @ManyToOne @MapsId("formuleId") Formule formule;
+    @EmbeddedId
+    private CompositionKey id;
+
+    @ManyToOne @MapsId("commandeId")
+    private Commande commande;
+
+    @ManyToOne @MapsId("formuleId")
+    private Formule formule;
+
     private Double quantite;
 
     public CompositionKey getId(){

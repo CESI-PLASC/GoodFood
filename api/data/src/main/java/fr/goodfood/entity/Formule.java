@@ -1,6 +1,6 @@
 package fr.goodfood.entity;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,10 +10,12 @@ import javax.persistence.OneToMany;
 @Entity
 public class Formule{
 
-    private @Id @GeneratedValue Long id;
+    @Id @GeneratedValue 
+    private Long id;
     private String designation;
     private Double prix;
-    private @OneToMany(mappedBy = "formule") Set<Composition> compositions;
+    @OneToMany(mappedBy = "formule")
+    private List<Composition> compositions;
 
     public Long getId(){
         return this.id;
@@ -27,7 +29,7 @@ public class Formule{
         return this.prix;
     }
 
-    public Set<Composition> getCompositions(){
+    public List<Composition> getCompositions(){
         return this.compositions;
     }
 
