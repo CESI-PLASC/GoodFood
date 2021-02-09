@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.mycompany.goodfood.entity.Commande;
-import fr.mycompany.goodfood.ressource.error.CommandeNotFoundException;
+import fr.mycompany.goodfood.ressource.error.NotFoundException;
 import fr.mycompany.goodfood.repository.CommandeRepository;
 
 @Service
@@ -30,7 +30,7 @@ public class CommandeService {
     }
 
     public Commande one(Long id){
-        return this.commandeRepository.findById(id).orElseThrow(() -> new CommandeNotFoundException(id));
+        return this.commandeRepository.findById(id).orElseThrow(() -> new NotFoundException());
     }
 
     public List<Commande> all(){

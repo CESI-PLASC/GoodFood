@@ -1,11 +1,13 @@
 package fr.mycompany.goodfood.entity;
 
 import java.sql.Date;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Commande {
@@ -14,6 +16,7 @@ public class Commande {
     private Date dateCreation;
     private Date dateDonnee;
     private @ManyToOne Statut statut;
+    private @OneToMany(mappedBy = "formule") Set<Composition> compositions; 
 
     public Long getId(){
         return this.id;
@@ -29,6 +32,10 @@ public class Commande {
 
     public Statut getStatut(){
         return this.statut;
+    }
+
+    public Set<Composition> getCompositions(){
+        return this.compositions;
     }
 
     public void setId(Long id){
