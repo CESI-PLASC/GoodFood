@@ -1,0 +1,22 @@
+<div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Filtres</span>
+        </div>
+        <p-multiSelect styleClass="border-0" [options]="filters" [(ngModel)]="selectedFilters" defaultLabel="Choisir les filtres..." class="multiselect-custom">
+            <ng-template let-value pTemplate="selectedItems">
+                <div *ngFor="let option of selectedFilters">
+                    <div>{{ option.designation }}</div>
+                </div>
+                <div *ngIf="!selectedFilters || selectedFilters.length === 0">
+                    Choisir les filtres...
+                </div>
+            </ng-template>
+            <ng-template let-item pTemplate="item">
+                <div>
+                    <div>{{ item.designation }}</div>
+                </div>
+            </ng-template>
+        </p-multiSelect>
+    </div>
+</div>
