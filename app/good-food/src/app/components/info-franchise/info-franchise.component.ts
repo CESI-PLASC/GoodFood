@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./info-franchise.component.scss']
 })
 export class InfoFranchiseComponent implements OnInit {
-
+ 
+  franchise : Franchise;
+  
   constructor() { }
 
   ngOnInit(): void {

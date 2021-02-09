@@ -16,9 +16,8 @@ namespace auth.entities
         [Column("estSupprime")]
         public bool EstSupprime { get; set; } = false;
 
-        // [ForeignKey("adresse")]
-        // public int IdAdresse {get; set;}
-
-        // public Adresse Adresse {get; set;}
+     //   [ForeignKey("adresse")]
+    //    public int IdAdresse {get; set;}
+     //   public Adresse Adresse {get; set;}
     }
 }
