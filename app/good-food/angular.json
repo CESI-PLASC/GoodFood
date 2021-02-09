@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "good-food"
+    }
+  },
+  "defaultProject": "good-food",
+  "cli": {
+    "analytics": "5ef73a87-619a-4f29-be38-355379025488"
+  }
 }
