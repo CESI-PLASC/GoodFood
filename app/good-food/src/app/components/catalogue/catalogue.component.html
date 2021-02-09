@@ -3,12 +3,21 @@
         <h1>{{ franchise.name }}</h1>
     </div>
 
-    <div>
-        <gf-catalogue-filtre [filters]="categories" (filterChange)="onFilterChange($event)"></gf-catalogue-filtre>
-    </div>
+    <gf-catalogue-filtre [filters]="categories" (filterChange)="onFilterChange($event)"></gf-catalogue-filtre>
 
-    <div *ngFor="let categorie of categories">
-        <h5>{{ categorie.designation }}</h5>
-        <gf-produit-list [produits]="categorie.produits"></gf-produit-list>
+    <div *ngFor="let categorie of categories; let i = index">
+        <div class="card">
+            <div class="p-3 mb-0" (click)="collapse.toggle()" [attr.aria-expanded]="!collapsedList[i]">
+                <h5 class="mb-0">
+                    <fa-icon class="mr-2" [icon]="collapsedList[i] ? icons.collapsed : icons.uncollapsed"></fa-icon>
+                    {{ categorie.designation }}
+                </h5>
+            </div>
+            <div #collapse="ngbCollapse" [(ngbCollapse)]="collapsedList[i]">
+                <div *ngIf="categorie.produits && categorie.produits.length != 0" class="card-body">
+                    <gf-produit-list [produits]="categorie.produits"></gf-produit-list>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

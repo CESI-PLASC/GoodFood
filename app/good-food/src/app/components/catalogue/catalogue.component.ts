@@ -2,6 +2,12 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Franchise } from '../../shared/models/franchise';
 import { Categorie, ICategorie } from '../../shared/models/categorie';
 import { SimpleProduit } from '../../shared/models/produit';
+import { Icons } from '../../shared/constants/icons.constant';
+
+interface ICollapsedItem {
+  id: number;
+  isCollapsed: boolean;
+}
 
 @Component({
   selector: 'gf-catalogue',
@@ -13,6 +19,8 @@ export class CatalogueComponent implements OnInit {
   @Input() public franchise: Franchise;
 
   public categories: ICategorie[] = [];
+  public collapsedList: boolean[] = [];
+  public icons = Icons.catalogue;
 
   constructor() { }
 
@@ -51,6 +59,8 @@ export class CatalogueComponent implements OnInit {
         ]
       })
     ];
+
+    this.categories.forEach(() => this.collapsedList.push(true));
   }
 
   public onFilterChange(filters: any): void {

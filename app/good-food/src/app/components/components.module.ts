@@ -7,13 +7,15 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CatalogueFiltreComponent } from './catalogue-filtre/catalogue-filtre.component';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { FormsModule } from '@angular/forms';
+import { SelectBoxComponent } from './select-box/select-box.component';
+import { NgbCollapseModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
 @NgModule({
-  declarations: [CatalogueComponent, ProduitItemComponent, ProduitListComponent, CatalogueFiltreComponent],
+  declarations: [CatalogueComponent, ProduitItemComponent, ProduitListComponent, CatalogueFiltreComponent, SelectBoxComponent],
     imports: [
-        CommonModule, FontAwesomeModule, MultiSelectModule, FormsModule
+        CommonModule, FontAwesomeModule, MultiSelectModule, FormsModule, NgbDropdownModule, NgbCollapseModule
     ],
   exports: [
       CatalogueComponent
