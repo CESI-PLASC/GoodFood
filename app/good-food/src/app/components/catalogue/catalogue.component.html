@@ -1,0 +1,14 @@
+<div *ngIf="franchise">
+    <div>
+        <h1>{{ franchise.name }}</h1>
+    </div>
+
+    <div>
+        <gf-catalogue-filtre [filters]="categories" (filterChange)="onFilterChange($event)"></gf-catalogue-filtre>
+    </div>
+
+    <div *ngFor="let categorie of categories">
+        <h5>{{ categorie.designation }}</h5>
+        <gf-produit-list [produits]="categorie.produits"></gf-produit-list>
+    </div>
+</div>
