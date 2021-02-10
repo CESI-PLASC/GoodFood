@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UneFormuleComponent } from './une-formule.component';
+import { ValiderPanierPageComponent } from './valider-panier-page.component';
 
-describe('UneFormuleComponent', () => {
-  let component: UneFormuleComponent;
-  let fixture: ComponentFixture<UneFormuleComponent>;
+describe('ValiderPanierPageComponent', () => {
+  let component: ValiderPanierPageComponent;
+  let fixture: ComponentFixture<ValiderPanierPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UneFormuleComponent ]
+      declarations: [ ValiderPanierPageComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UneFormuleComponent);
+    fixture = TestBed.createComponent(ValiderPanierPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

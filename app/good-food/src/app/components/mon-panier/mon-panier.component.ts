@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Formule } from '../une-formule/une-formule.component';
+import { Panier } from 'src/app/pages/valider-panier-page/services/commande.service';
 
 @Component({
   selector: 'app-mon-panier',
@@ -8,16 +8,7 @@ import { Formule } from '../une-formule/une-formule.component';
 })
 export class MonPanierComponent implements OnInit {
 
-  @Input() idCommande: number;
-  formules: Formule[] = [{
-    designation: "Ma formule de test",
-    prix: 14.99,
-    produits: ["test", "test2"]
-  }, {
-    designation: "Ma formule de test 2",
-    prix: 14.99,
-    produits: ["test", "test2"]
-  }];
+  @Input() panier: Panier;
 
   constructor() { }
 

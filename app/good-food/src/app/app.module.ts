@@ -5,13 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MonPanierComponent } from './components/mon-panier/mon-panier.component';
-import { UneFormuleComponent } from './components/une-formule/une-formule.component';
+import { ValiderPanierPageComponent } from './pages/valider-panier-page/valider-panier-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MonPanierComponent,
-    UneFormuleComponent
+    ValiderPanierPageComponent,
   ],
   imports: [
     BrowserModule,
