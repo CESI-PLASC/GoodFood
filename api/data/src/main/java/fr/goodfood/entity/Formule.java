@@ -7,6 +7,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+@JsonIdentityInfo(
+    generator = ObjectIdGenerators.PropertyGenerator.class,
+    property = "id"
+)
 @Entity
 public class Formule{
 
@@ -14,6 +21,7 @@ public class Formule{
     private Long id;
     private String designation;
     private Double prix;
+
     @OneToMany(mappedBy = "formule")
     private List<Composition> compositions;
 

@@ -1,5 +1,4 @@
 package fr.goodfood.dto.composition;
 
-public class CompositionDto extends CompositionBase{
-    
+public class CompositionDto extends CompositionBase {
 }

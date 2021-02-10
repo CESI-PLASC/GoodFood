@@ -1,7 +1,9 @@
 package fr.goodfood.web.rest;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
@@ -17,6 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
+import fr.goodfood.dto.formule.FormuleCreateDto;
+import fr.goodfood.dto.formule.FormuleDto;
+import fr.goodfood.dto.formule.FormuleUpdateDto;
 import fr.goodfood.entity.Formule;
 import fr.goodfood.service.FormuleService;
 
@@ -26,40 +31,49 @@ public class FormuleRessource {
     @Autowired
     private FormuleService formuleService;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
     @GetMapping
-    public CollectionModel<Formule> all(){
+    public CollectionModel<FormuleDto> all(){
         List<Formule> formules = this.formuleService.all();
 
-        return CollectionModel.of(formules,
+        return CollectionModel.of(
+            formules.stream().map((Formule composition) -> this.modelMapper.map(composition, FormuleDto.class)).collect(Collectors.toList()),
             linkTo(methodOn(FormuleRessource.class).all()).withSelfRel()
         );
     }
 
     @GetMapping("/{id}")
-    public EntityModel<Formule> one(@PathVariable Long id){
+    public EntityModel<FormuleDto> one(@PathVariable Long id){
         Formule formule = this.formuleService.one(id);
 
-        return EntityModel.of(formule,
+        return EntityModel.of(this.modelMapper.map(formule, FormuleDto.class),
             linkTo(methodOn(FormuleRessource.class).one(id)).withSelfRel(),
             linkTo(methodOn(FormuleRessource.class).all()).withRel("formules")
         );
     }
 
     @PostMapping
-    public EntityModel<Formule> create(@RequestBody Formule formule){
-        Formule nouvelleFormule = this.formuleService.create(formule);
+    public EntityModel<FormuleDto> create(@RequestBody FormuleCreateDto formuleCreateDto){
+        Formule formule = this.formuleService.create(
+            this.modelMapper.map(formuleCreateDto, Formule.class)
+        );
 
-        return EntityModel.of(nouvelleFormule, 
-            linkTo(methodOn(FormuleRessource.class).create(formule)).withSelfRel()
+        return EntityModel.of(this.modelMapper.map(formule, FormuleDto.class), 
+            linkTo(methodOn(FormuleRessource.class).create(formuleCreateDto)).withSelfRel()
         );
     }
 
     @PutMapping
-    public EntityModel<Formule> update(@RequestBody Formule formule){
-        Formule formuleModifiee = this.formuleService.update(formule);
+    public EntityModel<FormuleDto> update(@RequestBody FormuleUpdateDto formuleUpdateDto){
+        Formule formule = this.formuleService.update(
+            this.modelMapper.map(formuleUpdateDto, Formule.class)
+        );
 
-        return EntityModel.of(formuleModifiee,
-            linkTo(methodOn(FormuleRessource.class).update(formule)).withSelfRel()
+        return EntityModel.of(
+            this.modelMapper.map(formule, FormuleDto.class),
+            linkTo(methodOn(FormuleRessource.class).update(formuleUpdateDto)).withSelfRel()
         );
     }
 

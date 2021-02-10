@@ -1,7 +1,7 @@
 package fr.goodfood.entity;
 
 import java.sql.Date;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+@JsonIdentityInfo(
+    generator = ObjectIdGenerators.PropertyGenerator.class,
+    property = "id"
+)
 @Entity
 public class Commande {
 
@@ -26,7 +33,9 @@ public class Commande {
 
     @ManyToOne(targetEntity = Statut.class)
     private Statut statut;
-    private @OneToMany(mappedBy = "formule") Set<Composition> compositions;
+    
+    @OneToMany(mappedBy = "commande")
+    private List<Composition> compositions;
 
     public Long getId(){
         return this.id;
@@ -44,7 +53,7 @@ public class Commande {
         return this.statut;
     }
 
-    public Set<Composition> getCompositions(){
+    public List<Composition> getCompositions(){
         return this.compositions;
     }
 
@@ -62,5 +71,9 @@ public class Commande {
 
     public void setStatut(Statut statut){
         this.statut = statut;
+    }
+
+    public void setCompositions(List<Composition> compositions){
+        this.compositions = compositions;
     }
 }
