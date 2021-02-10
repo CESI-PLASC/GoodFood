@@ -1,32 +1,14 @@
-package fr.goodfood.entity;
+package fr.goodfood.dto.categorie;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import fr.goodfood.dto.produit.SimpleProduitDTO;
+
 import java.util.List;
 import java.util.Objects;
 
-@Entity
-public class Categorie {
-
-    @Id
-    @GeneratedValue
-    @Column(name = "id")
+public class CategorieDTO {
     private Long id;
-
-    @Column(name = "designation")
     private String designation;
-
-    @ManyToMany(targetEntity = Produit.class)
-    @JoinTable(
-            name = "categorise",
-            joinColumns = @JoinColumn(name = "categorie_id"),
-            inverseJoinColumns = @JoinColumn(name = "produit_id"))
-    private List<Produit> produits;
+    private List<SimpleProduitDTO> produits;
 
     /**
      * Récupère : id.
@@ -43,7 +25,7 @@ public class Categorie {
      * @param id La nouvelle valeur.
      * @return L'instance (Pattern fluent)
      */
-    public Categorie setId(Long id) {
+    public CategorieDTO setId(Long id) {
         this.id = id;
         return this;
     }
@@ -63,7 +45,7 @@ public class Categorie {
      * @param designation La nouvelle valeur.
      * @return L'instance (Pattern fluent)
      */
-    public Categorie setDesignation(String designation) {
+    public CategorieDTO setDesignation(String designation) {
         this.designation = designation;
         return this;
     }
@@ -73,7 +55,7 @@ public class Categorie {
      *
      * @return produits.
      */
-    public List<Produit> getProduits() {
+    public List<SimpleProduitDTO> getProduits() {
         return produits;
     }
 
@@ -83,7 +65,7 @@ public class Categorie {
      * @param produits La nouvelle valeur.
      * @return L'instance (Pattern fluent)
      */
-    public Categorie setProduits(List<Produit> produits) {
+    public CategorieDTO setProduits(List<SimpleProduitDTO> produits) {
         this.produits = produits;
         return this;
     }
@@ -92,8 +74,8 @@ public class Categorie {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Categorie categorie = (Categorie) o;
-        return Objects.equals(id, categorie.id) && Objects.equals(designation, categorie.designation) && Objects.equals(produits, categorie.produits);
+        CategorieDTO that = (CategorieDTO) o;
+        return Objects.equals(id, that.id) && Objects.equals(designation, that.designation) && Objects.equals(produits, that.produits);
     }
 
     @Override

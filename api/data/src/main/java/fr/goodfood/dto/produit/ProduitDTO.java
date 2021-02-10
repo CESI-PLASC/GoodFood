@@ -1,35 +1,16 @@
-package fr.goodfood.entity;
+package fr.goodfood.dto.produit;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import fr.goodfood.dto.categorie.SimpleCategorieDTO;
+
 import java.util.List;
 import java.util.Objects;
 
-@Entity
-public class Produit {
+public class ProduitDTO {
 
-    @Id
-    @GeneratedValue
-    @Column(name = "id")
     private Long id;
-
-    @Column(name = "designation")
     private String designation;
-
-    @Column(name = "prix")
     private float prix;
-
-    @ManyToMany(targetEntity = Categorie.class)
-    @JoinTable(
-            name = "categorise",
-            joinColumns = @JoinColumn(name = "produit_id"),
-            inverseJoinColumns = @JoinColumn(name = "categorie_id"))
-    private List<Categorie> categories;
+    private List<SimpleCategorieDTO> categories;
 
     /**
      * Récupère : id.
@@ -46,7 +27,7 @@ public class Produit {
      * @param id La nouvelle valeur.
      * @return L'instance (Pattern fluent)
      */
-    public Produit setId(Long id) {
+    public ProduitDTO setId(Long id) {
         this.id = id;
         return this;
     }
@@ -66,7 +47,7 @@ public class Produit {
      * @param designation La nouvelle valeur.
      * @return L'instance (Pattern fluent)
      */
-    public Produit setDesignation(String designation) {
+    public ProduitDTO setDesignation(String designation) {
         this.designation = designation;
         return this;
     }
@@ -86,7 +67,7 @@ public class Produit {
      * @param prix La nouvelle valeur.
      * @return L'instance (Pattern fluent)
      */
-    public Produit setPrix(float prix) {
+    public ProduitDTO setPrix(float prix) {
         this.prix = prix;
         return this;
     }
@@ -96,7 +77,7 @@ public class Produit {
      *
      * @return categories.
      */
-    public List<Categorie> getCategories() {
+    public List<SimpleCategorieDTO> getCategories() {
         return categories;
     }
 
@@ -106,7 +87,7 @@ public class Produit {
      * @param categories La nouvelle valeur.
      * @return L'instance (Pattern fluent)
      */
-    public Produit setCategories(List<Categorie> categories) {
+    public ProduitDTO setCategories(List<SimpleCategorieDTO> categories) {
         this.categories = categories;
         return this;
     }
@@ -115,8 +96,8 @@ public class Produit {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Produit produit = (Produit) o;
-        return Float.compare(produit.prix, prix) == 0 && Objects.equals(id, produit.id) && Objects.equals(designation, produit.designation) && Objects.equals(categories, produit.categories);
+        ProduitDTO that = (ProduitDTO) o;
+        return Float.compare(that.prix, prix) == 0 && Objects.equals(id, that.id) && Objects.equals(designation, that.designation) && Objects.equals(categories, that.categories);
     }
 
     @Override
