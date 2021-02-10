@@ -26,7 +26,10 @@ public class Composition{
     @ManyToOne @MapsId("formuleId")
     private Formule formule;
 
-    private Double quantite;
+    @ManyToOne @MapsId("produitId")
+    private Produit produit;
+
+    private Integer quantite;
 
     public CompositionKey getId(){
         return this.id;
@@ -40,7 +43,11 @@ public class Composition{
         return this.formule;
     }
 
-    public Double getQuantite(){
+    public Produit getProduit(){
+        return this.produit;
+    }
+
+    public Integer getQuantite(){
         return this.quantite;
     }
 
@@ -56,7 +63,11 @@ public class Composition{
         this.formule = formule;
     }
 
-    public void setQuantite(Double quantite){
+    public void setProduit(Produit produit){
+        this.produit = produit;
+    }
+
+    public void setQuantite(Integer quantite){
         this.quantite = quantite;
     }
 }

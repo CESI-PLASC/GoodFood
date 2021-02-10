@@ -7,6 +7,7 @@ public class CompositionKey implements Serializable{
 
     private Long commandeId;
     private Long formuleId;
+    private Long produitId;
 
     public Long getCommandeId(){
         return this.commandeId;
@@ -16,11 +17,19 @@ public class CompositionKey implements Serializable{
         return this.formuleId;
     }
 
+    public Long getProduitId(){
+        return this.produitId;
+    }
+
     public void setCommandeId(Long commandeId){
         this.commandeId = commandeId;
     }
 
     public void setFormuleId(Long formuleId){
         this.formuleId = formuleId;
+    }
+
+    public void setProduitId(Long produitId){
+        this.produitId = produitId;
     }
 }

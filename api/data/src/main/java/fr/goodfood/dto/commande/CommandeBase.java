@@ -3,8 +3,8 @@ package fr.goodfood.dto.commande;
 import java.sql.Date;
 
 public class CommandeBase {
-    public Date dateCreation;
-    public Date dateDonnee;
+    private Date dateCreation;
+    private Date dateDonnee;
 
     public Date getDateCreation(){
         return this.dateCreation;

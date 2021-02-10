@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -27,6 +29,9 @@ public class Produit {
             joinColumns = @JoinColumn(name = "produit_id"),
             inverseJoinColumns = @JoinColumn(name = "categorie_id"))
     private List<Categorie> categories;
+
+    @OneToMany(mappedBy = "produit")
+    private List<Composition> compositions;
 
     /**
      * Récupère : id.
@@ -85,6 +90,15 @@ public class Produit {
      */
     public Produit setCategorieList(List<Categorie> categories) {
         this.categories = categories;
+        return this;
+    }
+
+    public List<Composition> getCompositions(){
+        return this.compositions;
+    }
+
+    public Produit setCompositions(List<Composition> compositions){
+        this.compositions = compositions;
         return this;
     }
 

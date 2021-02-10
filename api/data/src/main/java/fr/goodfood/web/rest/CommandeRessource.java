@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.goodfood.dto.commande.CommandeCreateDto;
 import fr.goodfood.dto.commande.CommandeDto;
+import fr.goodfood.dto.commande.CommandePanierDto;
 import fr.goodfood.dto.commande.CommandeUpdateDto;
 import fr.goodfood.entity.Commande;
 import fr.goodfood.service.CommandeService;
@@ -76,5 +77,16 @@ public class CommandeRessource {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id){
         this.commandeService.delete(id);
+    }
+
+    @GetMapping("/{id}/panier")
+    public EntityModel<CommandePanierDto> panier(@PathVariable Long id){
+        CommandePanierDto commande = this.commandeService.panier(id);
+
+        return EntityModel.of(commande,
+            linkTo(methodOn(CommandeRessource.class).panier(id)).withSelfRel(),
+            linkTo(methodOn(CommandeRessource.class).one(id)).withRel("commande"),
+            linkTo(methodOn(CommandeRessource.class).all()).withRel("commandes")
+        ); 
     }
 }
