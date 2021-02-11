@@ -1,15 +1,13 @@
-package fr.goodfood.dto.produit;
+package fr.goodfood.dto.franchise;
 
 import fr.goodfood.dto.categorie.SimpleCategorieDTO;
 
 import java.util.List;
 import java.util.Objects;
 
-public class ProduitDTO {
-
+public class FranchiseDTO {
     private Long id;
     private String designation;
-    private float prix;
     private List<SimpleCategorieDTO> categories;
 
     /**
@@ -27,7 +25,7 @@ public class ProduitDTO {
      * @param id La nouvelle valeur.
      * @return L'instance (Pattern fluent)
      */
-    public ProduitDTO setId(Long id) {
+    public FranchiseDTO setId(Long id) {
         this.id = id;
         return this;
     }
@@ -47,28 +45,8 @@ public class ProduitDTO {
      * @param designation La nouvelle valeur.
      * @return L'instance (Pattern fluent)
      */
-    public ProduitDTO setDesignation(String designation) {
+    public FranchiseDTO setDesignation(String designation) {
         this.designation = designation;
-        return this;
-    }
-
-    /**
-     * Récupère : prix.
-     *
-     * @return prix.
-     */
-    public float getPrix() {
-        return prix;
-    }
-
-    /**
-     * Défini la nouvelle valeur de : prix.
-     *
-     * @param prix La nouvelle valeur.
-     * @return L'instance (Pattern fluent)
-     */
-    public ProduitDTO setPrix(float prix) {
-        this.prix = prix;
         return this;
     }
 
@@ -87,7 +65,7 @@ public class ProduitDTO {
      * @param categories La nouvelle valeur.
      * @return L'instance (Pattern fluent)
      */
-    public ProduitDTO setCategories(List<SimpleCategorieDTO> categories) {
+    public FranchiseDTO setCategories(List<SimpleCategorieDTO> categories) {
         this.categories = categories;
         return this;
     }
@@ -96,21 +74,20 @@ public class ProduitDTO {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ProduitDTO that = (ProduitDTO) o;
-        return Float.compare(that.prix, prix) == 0 && Objects.equals(id, that.id) && Objects.equals(designation, that.designation) && Objects.equals(categories, that.categories);
+        FranchiseDTO that = (FranchiseDTO) o;
+        return Objects.equals(id, that.id) && Objects.equals(designation, that.designation) && Objects.equals(categories, that.categories);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, designation, prix, categories);
+        return Objects.hash(id, designation, categories);
     }
 
     @Override
     public String toString() {
-        return "ProduitDTO{" +
+        return "FranchiseDTO{" +
                 "id=" + id +
                 ", designation='" + designation + '\'' +
-                ", prix=" + prix +
                 ", categories=" + categories +
                 '}';
     }

@@ -15,6 +15,7 @@
 	<description>Api java pour l&apos;application goodfood</description>
 	<properties>
 		<java.version>11</java.version>
+		<spring.profiles.active>local,no-liquibase</spring.profiles.active>
 	</properties>
 	<dependencies>
 
@@ -83,7 +84,7 @@
 		<dependency>
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-core</artifactId>
-			<version>3.8.9</version>
+			<version>3.10.3</version>
 		</dependency>
 
 		<!-- MySql -->

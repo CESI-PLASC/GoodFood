@@ -59,4 +59,12 @@ public class SimpleCategorieDTO {
     public int hashCode() {
         return Objects.hash(id, designation);
     }
+
+    @Override
+    public String toString() {
+        return "SimpleCategorieDTO{" +
+                "id=" + id +
+                ", designation='" + designation + '\'' +
+                '}';
+    }
 }

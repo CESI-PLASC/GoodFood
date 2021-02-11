@@ -1,5 +1,6 @@
 package fr.goodfood.dto.categorie;
 
+import fr.goodfood.dto.franchise.SimpleFranchiseDTO;
 import fr.goodfood.dto.produit.SimpleProduitDTO;
 
 import java.util.List;
@@ -9,6 +10,7 @@ public class CategorieDTO {
     private Long id;
     private String designation;
     private List<SimpleProduitDTO> produits;
+    private List<SimpleFranchiseDTO> franchises;
 
     /**
      * Récupère : id.
@@ -70,16 +72,46 @@ public class CategorieDTO {
         return this;
     }
 
+    /**
+     * Récupère : franchises.
+     *
+     * @return franchises.
+     */
+    public List<SimpleFranchiseDTO> getFranchises() {
+        return franchises;
+    }
+
+    /**
+     * Défini la nouvelle valeur de : franchises.
+     *
+     * @param franchises La nouvelle valeur.
+     * @return L'instance (Pattern fluent)
+     */
+    public CategorieDTO setFranchises(List<SimpleFranchiseDTO> franchises) {
+        this.franchises = franchises;
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CategorieDTO that = (CategorieDTO) o;
-        return Objects.equals(id, that.id) && Objects.equals(designation, that.designation) && Objects.equals(produits, that.produits);
+        return Objects.equals(id, that.id) && Objects.equals(designation, that.designation) && Objects.equals(produits, that.produits) && Objects.equals(franchises, that.franchises);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, designation, produits);
+        return Objects.hash(id, designation, produits, franchises);
+    }
+
+    @Override
+    public String toString() {
+        return "CategorieDTO{" +
+                "id=" + id +
+                ", designation='" + designation + '\'' +
+                ", produits=" + produits +
+                ", franchises=" + franchises +
+                '}';
     }
 }
