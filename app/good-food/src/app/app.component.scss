@@ -1,0 +1,13 @@
+@import "../assets/theme/media.scss";
+
+#gf-app{
+  @media(min-width: $extra-large-media){
+    padding: 1rem 3rem 0 3rem;
+  }
+  @media(min-width: $large-media){
+    padding: 1rem 2rem 0 2rem;
+  }
+  @media(max-width: $large-media){
+    padding: 1rem 1rem 0 1rem;
+  }
+}
