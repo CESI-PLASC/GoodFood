@@ -4,9 +4,9 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
-import org.modelmapper.ModelMapper;
+import com.google.inject.Inject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.goodfood.dto.composition.CompositionCreateDto;
-import fr.goodfood.dto.composition.CompositionDto;
+import fr.goodfood.dto.composition.SimpleCompositionDTO;
 import fr.goodfood.entity.Composition;
 import fr.goodfood.service.CompositionService;
+import fr.goodfood.service.mapper.CompositionMapper;
 
 @RestController
 @RequestMapping("api/compositions")
@@ -28,28 +28,28 @@ public class CompositionRessource {
     @Autowired
     private CompositionService compositionService;
 
-    @Autowired
-    private ModelMapper modelMapper;
+    @Inject
+    CompositionMapper compositionMapper;
 
     @GetMapping
-    public CollectionModel<CompositionDto> all(){
+    public CollectionModel<Composition> all(){
         List<Composition> compositions = this.compositionService.all();
 
         return CollectionModel.of(
-            compositions.stream().map((Composition composition) -> this.modelMapper.map(composition, CompositionDto.class)).collect(Collectors.toList()),
+            compositions,
+            // this.compositionMapper.toSimpleDtos(compositions),
             linkTo(methodOn(CommandeRessource.class).all()).withSelfRel()
         );
     }
 
     @PostMapping
-    public EntityModel<CompositionDto> create(@RequestBody CompositionCreateDto compositionCreateDto){
-        Composition composition = this.compositionService.create(
-            this.modelMapper.map(compositionCreateDto, Composition.class)
-        );
+    public EntityModel<Composition> create(@RequestBody Composition nouvelleComposition){
+        Composition composition = this.compositionService.create(nouvelleComposition);
 
         return EntityModel.of(
-            this.modelMapper.map(composition, CompositionDto.class),
-            linkTo(methodOn(CompositionRessource.class).create(compositionCreateDto)).withSelfRel()
+            composition,
+            // this.compositionMapper.toSimpleDto(composition),
+            linkTo(methodOn(CompositionRessource.class).create(nouvelleComposition)).withSelfRel()
         );
     }
 }

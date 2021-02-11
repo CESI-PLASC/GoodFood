@@ -16,7 +16,21 @@ public class CompositionService {
     @Autowired
     private CompositionRepository compositionRepository;
 
+    @Autowired
+    private CommandeService commandeService;
+
+    @Autowired
+    private FormuleService formuleService;
+
+    @Autowired
+    private ProduitService produitService;
+
     public Composition create(Composition composition){
+        CompositionKey id = composition.getId();
+
+        composition.setCommande(this.commandeService.one(id.getCommandeId()));
+        composition.setFormule(this.formuleService.one(id.getFormuleId()));
+        composition.setProduit(this.produitService.one(id.getProduitId()));
         return this.compositionRepository.save(composition);
     }
 

@@ -11,9 +11,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import fr.goodfood.dto.commande.CommandePanierDto;
-import fr.goodfood.dto.formule.FormulePanierDto;
-import fr.goodfood.dto.produit.ProduitPanierDto;
+import fr.goodfood.dto.panier.CommandePanierDto;
+import fr.goodfood.dto.panier.FormulePanierDto;
+import fr.goodfood.dto.panier.ProduitPanierDto;
 import fr.goodfood.entity.Commande;
 import fr.goodfood.entity.Composition;
 import fr.goodfood.entity.Formule;

@@ -73,7 +73,7 @@ public class Categorie {
      *
      * @return produits.
      */
-    public List<Produit> getProduitList() {
+    public List<Produit> getProduits() {
         return produits;
     }
 
@@ -83,7 +83,7 @@ public class Categorie {
      * @param produits La nouvelle valeur.
      * @return L'instance (Pattern fluent)
      */
-    public Categorie setProduitList(List<Produit> produits) {
+    public Categorie setProduits(List<Produit> produits) {
         this.produits = produits;
         return this;
     }

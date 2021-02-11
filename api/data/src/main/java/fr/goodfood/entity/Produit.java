@@ -20,6 +20,9 @@ public class Produit {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "designation")
+    private String designation;
+
     @Column(name = "prix")
     private float prix;
 
@@ -54,6 +57,26 @@ public class Produit {
     }
 
     /**
+     * Récupère : designation.
+     *
+     * @return designation.
+     */
+    public String getDesignation() {
+        return designation;
+    }
+
+    /**
+     * Défini la nouvelle valeur de : designation.
+     *
+     * @param designation La nouvelle valeur.
+     * @return L'instance (Pattern fluent)
+     */
+    public Produit setDesignation(String designation) {
+        this.designation = designation;
+        return this;
+    }
+
+    /**
      * Récupère : prix.
      *
      * @return prix.
@@ -78,7 +101,7 @@ public class Produit {
      *
      * @return categories.
      */
-    public List<Categorie> getCategorieList() {
+    public List<Categorie> getCategories() {
         return categories;
     }
 
@@ -88,7 +111,7 @@ public class Produit {
      * @param categories La nouvelle valeur.
      * @return L'instance (Pattern fluent)
      */
-    public Produit setCategorieList(List<Categorie> categories) {
+    public Produit setCategories(List<Categorie> categories) {
         this.categories = categories;
         return this;
     }
@@ -107,11 +130,11 @@ public class Produit {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Produit produit = (Produit) o;
-        return Float.compare(produit.prix, prix) == 0 && Objects.equals(id, produit.id) && Objects.equals(categories, produit.categories);
+        return Float.compare(produit.prix, prix) == 0 && Objects.equals(id, produit.id) && Objects.equals(designation, produit.designation) && Objects.equals(categories, produit.categories);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, prix, categories);
+        return Objects.hash(id, designation, prix, categories);
     }
 }

@@ -1,0 +1,21 @@
+<div class="gf-panier">
+  <ngb-accordion class="gf-une-formule">
+    <ngb-panel *ngFor="let formule of panier.formules">
+      <ng-template ngbPanelTitle>
+        <span><strong>{{formule.designation}}</strong></span>
+      </ng-template>
+      <ng-template ngbPanelContent>
+        <div>
+          <div *ngFor="let produit of formule.produits">
+            {{produit.quantite}}x Produit de test
+          </div>
+        </div>
+        <div style="border: 1px solid grey; margin: 10px 1% 10px 1%;"></div>
+        <div>
+          <span>{{formule.produits.length}} produits ajoutés</span>
+          <span style="float: right;">{{formule.prix}}€</span>
+        </div>
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
+</div>
