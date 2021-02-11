@@ -5,13 +5,14 @@ import { CataloguePageComponent } from './catalogue-page/catalogue-page.componen
 import { PagesRoutingModule } from './pages-routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FranchisePageComponent } from './franchise-page/franchise-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
 @NgModule({
   declarations: [CataloguePageComponent, FranchisePageComponent],
   imports: [
-    CommonModule, ComponentsModule, PagesRoutingModule, FontAwesomeModule
+    CommonModule, ComponentsModule, PagesRoutingModule, FontAwesomeModule,HttpClientModule
   ]
 })
 export class PagesModule { }

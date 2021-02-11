@@ -1,11 +1,11 @@
-<div class="row row-col-1 row-cols-sm-5">
-<div class="input-group mb-3">
+<div class="row">
+<div class="input-group mb-3 col-2">
     <div class="input-group-prepend">
-      <span class="input-group-text" id="basic-addon1">      <img src="GoodFood/app/good-food/src/app/image/loupe.png" style="width:15px;height:15px" alt=""></span>
+      <span class="input-group-text" id="basic-addon1">      <fa-icon [icon]="loupe">   </fa-icon></span>
     </div>
     <input  placeholder="Recherche"/>
 </div> 
-<div class="input-group mb-3">
+<div class="input-group mb-3 col-2">
     <select class="mdb-select md-form">
         <option value="" disabled selected>Département</option>
         <option value="1">16 - Charente</option>
@@ -14,12 +14,12 @@
       </select>
     </div> 
 
-    <div class="input-group mb-3">
+    <div class="input-group mb-3 col-2">
         <select class="mdb-select md-form">
             <option value="" disabled selected>Ville</option>
             <option value="1">Périgueux</option>
             <option value="2">Angouleme</option>
             <option value="3">Limoges</option>
-          </select>
-        </div> 
+        </select>
+    </div> 
 </div>
