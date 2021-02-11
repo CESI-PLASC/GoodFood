@@ -1,7 +1,7 @@
 <div id="valider-panier-page">
   <div class="row">
     <div class="col-6">
-      <gf-panier [idCommande]="1"></gf-panier>
+      <gf-panier *ngIf="commande" [commande]="commande"></gf-panier>
     </div>
     <div class="col-6"></div>
   </div>

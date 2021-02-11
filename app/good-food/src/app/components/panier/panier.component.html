@@ -1,21 +1,49 @@
 <div class="gf-panier">
-  <ngb-accordion class="gf-une-formule">
-    <ngb-panel *ngFor="let formule of panier.formules">
-      <ng-template ngbPanelTitle>
-        <span><strong>{{formule.designation}}</strong></span>
-      </ng-template>
-      <ng-template ngbPanelContent>
-        <div>
-          <div *ngFor="let produit of formule.produits">
-            {{produit.quantite}}x Produit de test
-          </div>
-        </div>
+  <h4>Mon panier</h4>
+
+  <div class="gf-panier-contenu">
+
+    <div *ngIf="!chargement; else enChargement">
+      <div *ngIf="panier; else panierVide">
+        <ngb-accordion class="gf-une-formule">
+          <ngb-panel *ngFor="let formule of panier.formules">
+            <ng-template ngbPanelTitle>
+              <span><strong>{{formule.designation}}</strong></span>
+            </ng-template>
+            <ng-template ngbPanelContent>
+              <div>
+                <div *ngFor="let produit of formule.produits">
+                  {{produit.quantite}}x {{produit.designation}}
+                </div>
+              </div>
+              <div style="border: 1px solid grey; margin: 10px 1% 10px 1%;"></div>
+              <div>
+                <span>{{formule.produits.length}} produit(s) ajouté(s)</span>
+                <span style="float: right;">{{formule.prix}}€</span>
+              </div>
+            </ng-template>
+          </ngb-panel>
+        </ngb-accordion>
+
         <div style="border: 1px solid grey; margin: 10px 1% 10px 1%;"></div>
         <div>
-          <span>{{formule.produits.length}} produits ajoutés</span>
-          <span style="float: right;">{{formule.prix}}€</span>
+          <span>{{panier.nombreProduits()}} produit(s) ajouté(s)</span>
+          <span style="float: right;">{{panier.prix()}}€</span>
         </div>
+      </div>
+
+      <ng-template #panierVide>
+        Le panier est vide
       </ng-template>
-    </ngb-panel>
-  </ngb-accordion>
+    </div>
+
+    <ng-template #enChargement>
+      <div>
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Chargement...</span>
+        </div>
+      </div>
+    </ng-template>
+
+  </div>
 </div>

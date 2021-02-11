@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ICommande } from 'src/app/shared/models/commande';
 import { IPanier } from 'src/app/shared/models/panier';
+import { CommandeService } from './services/commande.service';
 
 @Component({
   selector: 'app-valider-panier-page',
@@ -8,23 +11,17 @@ import { IPanier } from 'src/app/shared/models/panier';
 })
 export class ValiderPanierPageComponent implements OnInit {
 
-  public panier: IPanier;
+  public commande: ICommande;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private readonly commandeService: CommandeService) {}
 
   ngOnInit(): void {
-    this.panier = {
-      dateCreation: new Date(),
-      dateDonnee: new Date(),
-      formules: [...new Array(10).keys()].map(idx => ({
-        designation: `Ma formule de test n°${idx}`,
-        prix: Math.round(Math.random() * 10000) / 100,
-        produits: [...new Array(10).keys()].map(idx => ({
-          id: idx,
-          quantite: Math.floor(Math.random() * 10 + 1)
-        }))
-      }))
-    };
+    this.route.params.subscribe(params => {
+      console.log(params.idCommande);
+      this.commandeService.getOne(params.idCommande).subscribe(commande => {
+        this.commande = commande;
+      });
+    })
   }
 
 }

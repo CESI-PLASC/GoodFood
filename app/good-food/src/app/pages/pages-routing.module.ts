@@ -10,7 +10,7 @@ const routes: Routes = [
     component: CataloguePageComponent
   },
   {
-    path: 'commande/:id/validation',
+    path: 'commande/:idCommande/validation',
     component: ValiderPanierPageComponent
   }
 ];
