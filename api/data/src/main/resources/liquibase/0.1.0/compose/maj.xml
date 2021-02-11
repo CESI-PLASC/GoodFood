@@ -1,0 +1,36 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+                   http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="0.0.1-create-table-compose" author="cgiboulot">
+        <createTable tableName="compose">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="produit_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ingredient_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="quantite" type="int" />
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="compose"
+                                 baseColumnNames="produit_id"
+                                 constraintName="fk_compose_produit_id"
+                                 referencedTableName="produit"
+                                 referencedColumnNames="id" />
+
+        <addForeignKeyConstraint baseTableName="compose"
+                                 baseColumnNames="ingredient_id"
+                                 constraintName="fk_compose_ingredient_id"
+                                 referencedTableName="ingredient"
+                                 referencedColumnNames="id" />
+    </changeSet>
+
+</databaseChangeLog>

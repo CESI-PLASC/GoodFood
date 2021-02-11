@@ -1,0 +1,36 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+                   http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="0.0.1-create-table-requiert" author="cgiboulot">
+        <createTable tableName="requiert">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="categorie_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="formule_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="quantite" type="int" />
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="requiert"
+                                 baseColumnNames="categorie_id"
+                                 constraintName="fk_requiert_categorie_id"
+                                 referencedTableName="categorie"
+                                 referencedColumnNames="id" />
+
+        <addForeignKeyConstraint baseTableName="requiert"
+                                 baseColumnNames="formule_id"
+                                 constraintName="fk_requiert_formule_id"
+                                 referencedTableName="formule"
+                                 referencedColumnNames="id" />
+    </changeSet>
+
+</databaseChangeLog>

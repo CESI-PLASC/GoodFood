@@ -6,6 +6,13 @@
                    http://www.liquibase.org/xml/ns/dbchangelog
                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
-    <include file="0.1.0/maj.xml" relativeToChangelogFile="true" />
+    <changeSet id="0.0.1-create-table-categorie" author="cgiboulot">
+        <createTable tableName="categorie">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="designation" type="varchar(255)" />
+        </createTable>
+    </changeSet>
 
 </databaseChangeLog>
