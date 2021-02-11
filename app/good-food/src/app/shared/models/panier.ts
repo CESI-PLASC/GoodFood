@@ -1,11 +1,11 @@
-export interface IPanierProduit{
-  id?: number;
+import { IFormule } from "./formule";
+import { IProduit } from "./produit";
+
+export type IPanierProduit = Pick<IProduit, "id" | "designation"> & {
   quantite?: number;
 }
 
-export interface IPanierFormule{
-  designation?: string;
-  prix?: number;
+export type IPanierFormule = Pick<IFormule, "designation" | "prix" | "id"> & {
   produits?: IPanierProduit[]
 }
 
