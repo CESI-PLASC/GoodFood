@@ -9,11 +9,14 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { FormsModule } from '@angular/forms';
 import { SelectBoxComponent } from './select-box/select-box.component';
 import { NgbCollapseModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormuleListComponent } from './formule-list/formule-list.component';
+import { SelectItemComponent } from './select-item/select-item.component';
+import { PanierAjoutProduitComponent } from './panier-ajout-produit/panier-ajout-produit.component';
 
 
 
 @NgModule({
-  declarations: [CatalogueComponent, ProduitItemComponent, ProduitListComponent, CatalogueFiltreComponent, SelectBoxComponent],
+  declarations: [CatalogueComponent, ProduitItemComponent, ProduitListComponent, CatalogueFiltreComponent, SelectBoxComponent, FormuleListComponent, SelectItemComponent, PanierAjoutProduitComponent],
     imports: [
         CommonModule, FontAwesomeModule, MultiSelectModule, FormsModule, NgbDropdownModule, NgbCollapseModule
     ],
