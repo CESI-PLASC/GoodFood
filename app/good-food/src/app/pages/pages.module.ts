@@ -4,11 +4,12 @@ import { ComponentsModule } from '../components/components.module';
 import { CataloguePageComponent } from './catalogue-page/catalogue-page.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FranchisePageComponent } from './franchise-page/franchise-page.component';
 
 
 
 @NgModule({
-  declarations: [CataloguePageComponent],
+  declarations: [CataloguePageComponent, FranchisePageComponent],
   imports: [
     CommonModule, ComponentsModule, PagesRoutingModule, FontAwesomeModule
   ]

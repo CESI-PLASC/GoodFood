@@ -1,4 +1,6 @@
+import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { Franchise, IFranchise } from 'src/app/shared/models/franchise';
 
 @Component({
   selector: 'app-info-franchise',
@@ -7,11 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfoFranchiseComponent implements OnInit {
  
-  franchise : Franchise;
+  @Input() public franchise: IFranchise;
   
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }

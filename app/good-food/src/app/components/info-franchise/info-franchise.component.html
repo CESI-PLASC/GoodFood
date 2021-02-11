@@ -1,10 +1,18 @@
-<div *ngIf="franchise">
-    <h2>{{franchise.name | uppercase}}</h2>
-    <div><span>id: </span>{{franchise.id}}</div>
-    <div>
-      <label>name:
-        <input [(ngModel)]="franchise.name" placeholder="name"/>
-      </label>
+<div class="card mb-3 col">
+  <div class="row no-gutters">
+    <div class="col-sm-4">
+      <img src="https://image.freepik.com/vecteurs-libre/restaurant-logo-modele_1236-155.jpg" style="width:200px;height:200px" alt="...">
     </div>
-    <button (click)="goBack()">Retour</button>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{franchise.name}}</h5>
+        <p class="card-text">{{franchise.tel}}<br>
+          {{franchise.adresse}}<br>
+          {{franchise.mail}}</p>
+          <a href="#" class="btn btn-light">Livraison</a>
+          <a href="#" class="btn btn-light">Emporter</a>
+      </div>
+    </div>
+  </div>
 </div>
+

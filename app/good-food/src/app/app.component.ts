@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit{
   listefranchise: string[];
   ngOnInit(): void {
-    this.listefranchise = ['toto','tata','titi']
+    this.listefranchise = []
   }
   title = 'good-food';
 }

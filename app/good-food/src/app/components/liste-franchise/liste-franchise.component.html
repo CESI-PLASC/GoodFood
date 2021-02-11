@@ -1,5 +1,2 @@
-<ul class="franchise">
-    <li *ngFor = "let item of listefranchise">
-        {{item}}
-    </li>
-</ul>
+<gf-filtre-franchise></gf-filtre-franchise>
+<div class="row row-col-1 row-cols-sm-2" style="align-items: center;"><app-info-franchise *ngFor="let franchise of franchises" class="col-2" [franchise]="franchise"></app-info-franchise></div>
