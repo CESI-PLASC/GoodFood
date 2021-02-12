@@ -1,6 +1,8 @@
 package fr.goodfood.entity;
 
 import java.sql.Date;
+import java.util.Objects;
+import java.util.Set;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -33,7 +35,12 @@ public class Commande {
 
     @ManyToOne(targetEntity = Statut.class)
     private Statut statut;
-    
+
+    @ManyToOne(targetEntity = Franchise.class)
+    private Franchise franchise;
+
+    private @OneToMany(mappedBy = "formule") Set<Composition> compositions;
+
     @OneToMany(mappedBy = "commande")
     private List<Composition> compositions;
 
@@ -75,5 +82,30 @@ public class Commande {
 
     public void setCompositions(List<Composition> compositions){
         this.compositions = compositions;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Commande commande = (Commande) o;
+        return Objects.equals(id, commande.id) && Objects.equals(dateCreation, commande.dateCreation) && Objects.equals(dateDonnee, commande.dateDonnee) && Objects.equals(statut, commande.statut) && Objects.equals(franchise, commande.franchise) && Objects.equals(compositions, commande.compositions);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, dateCreation, dateDonnee, statut, franchise, compositions);
+    }
+
+    @Override
+    public String toString() {
+        return "Commande{" +
+                "id=" + id +
+                ", dateCreation=" + dateCreation +
+                ", dateDonnee=" + dateDonnee +
+                ", statut=" + statut +
+                ", franchise=" + franchise +
+                ", compositions=" + compositions +
+                '}';
     }
 }

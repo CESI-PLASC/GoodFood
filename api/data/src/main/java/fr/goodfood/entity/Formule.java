@@ -1,6 +1,7 @@
 package fr.goodfood.entity;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -51,5 +52,28 @@ public class Formule{
 
     public void setPrix(Double prix){
         this.prix = prix;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Formule formule = (Formule) o;
+        return Objects.equals(id, formule.id) && Objects.equals(designation, formule.designation) && Objects.equals(prix, formule.prix) && Objects.equals(compositions, formule.compositions);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, designation, prix, compositions);
+    }
+
+    @Override
+    public String toString() {
+        return "Formule{" +
+                "id=" + id +
+                ", designation='" + designation + '\'' +
+                ", prix=" + prix +
+                ", compositions=" + compositions +
+                '}';
     }
 }

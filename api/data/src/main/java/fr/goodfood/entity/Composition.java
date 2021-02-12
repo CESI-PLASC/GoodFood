@@ -10,6 +10,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import fr.goodfood.entity.keys.CompositionKey;
 
+import java.util.Objects;
+
 @JsonIdentityInfo(
     generator = ObjectIdGenerators.PropertyGenerator.class,
     property = "id"
@@ -69,5 +71,28 @@ public class Composition{
 
     public void setQuantite(Integer quantite){
         this.quantite = quantite;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Composition that = (Composition) o;
+        return Objects.equals(id, that.id) && Objects.equals(commande, that.commande) && Objects.equals(formule, that.formule) && Objects.equals(quantite, that.quantite);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, commande, formule, quantite);
+    }
+
+    @Override
+    public String toString() {
+        return "Composition{" +
+                "id=" + id +
+                ", commande=" + commande +
+                ", formule=" + formule +
+                ", quantite=" + quantite +
+                '}';
     }
 }

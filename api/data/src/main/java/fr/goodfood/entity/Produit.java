@@ -137,4 +137,14 @@ public class Produit {
     public int hashCode() {
         return Objects.hash(id, designation, prix, categories);
     }
+
+    @Override
+    public String toString() {
+        return "Produit{" +
+                "id=" + id +
+                ", designation='" + designation + '\'' +
+                ", prix=" + prix +
+                ", categories=" + categories +
+                '}';
+    }
 }

@@ -1,6 +1,7 @@
 package fr.goodfood.entity;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -48,5 +49,27 @@ public class Statut {
 
     public void addCommande(Commande commande){
         this.commandes.add(commande);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Statut statut = (Statut) o;
+        return Objects.equals(id, statut.id) && Objects.equals(designation, statut.designation) && Objects.equals(commandes, statut.commandes);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, designation, commandes);
+    }
+
+    @Override
+    public String toString() {
+        return "Statut{" +
+                "id=" + id +
+                ", designation='" + designation + '\'' +
+                ", commandes=" + commandes +
+                '}';
     }
 }

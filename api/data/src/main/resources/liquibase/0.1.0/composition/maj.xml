@@ -1,0 +1,42 @@
+<databaseChangeLog  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+	                http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="0.0.1-create-table-composition" author="cgiboulot">
+        <createTable tableName="composition">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="commande_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="formule_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="produit_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="quantite" type="int" />
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="composition"
+                                 baseColumnNames="commande_id"
+                                 constraintName="fk_composition_commande_id"
+                                 referencedTableName="commande"
+                                 referencedColumnNames="id" />
+
+        <addForeignKeyConstraint baseTableName="composition"
+                                 baseColumnNames="formule_id"
+                                 constraintName="fk_composition_formule_id"
+                                 referencedTableName="formule"
+                                 referencedColumnNames="id" />
+
+        <addForeignKeyConstraint baseTableName="composition"
+                                 baseColumnNames="produit_id"
+                                 constraintName="fk_composition_produit_id"
+                                 referencedTableName="produit"
+                                 referencedColumnNames="id" />
+    </changeSet>
+
+</databaseChangeLog>

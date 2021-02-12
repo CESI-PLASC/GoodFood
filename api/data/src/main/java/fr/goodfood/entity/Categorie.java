@@ -1,5 +1,7 @@
 package fr.goodfood.entity;
 
+import fr.goodfood.dto.franchise.SimpleFranchiseDTO;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,6 +29,14 @@ public class Categorie {
             joinColumns = @JoinColumn(name = "categorie_id"),
             inverseJoinColumns = @JoinColumn(name = "produit_id"))
     private List<Produit> produits;
+
+    @ManyToMany(targetEntity = Franchise.class)
+    @JoinTable(
+            name = "fcategorie",
+            joinColumns = @JoinColumn(name = "categorie_id"),
+            inverseJoinColumns = @JoinColumn(name = "franchise_id")
+    )
+    private List<Franchise> franchises;
 
     /**
      * Récupère : id.
@@ -99,5 +109,15 @@ public class Categorie {
     @Override
     public int hashCode() {
         return Objects.hash(id, designation, produits);
+    }
+
+    @Override
+    public String toString() {
+        return "Categorie{" +
+                "id=" + id +
+                ", designation='" + designation + '\'' +
+                ", produits=" + produits +
+                ", franchises=" + franchises +
+                '}';
     }
 }
