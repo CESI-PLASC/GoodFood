@@ -4,18 +4,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Install Checkout
-        uses: actions/checkout@v2
-      - name: Install Node
-        uses: actions/setup-node@v1
-      - name: Install Docker
-        uses: docker://alpine:3.8
-      - name: Install Java
-        uses: actions/setup-java@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - run: node -v
+      - run: npm -v
+      - uses: docker://alpine:3.8
+      - run: docker -v
+      - uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      run: node -v
-      run: npm -v
-      run: docker -v
-      run: mvn clean package
-      run: mvn clean verify -DskipTests
+      - run: mvn clean package
+      - run: mvn clean verify -DskipTests
