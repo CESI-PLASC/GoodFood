@@ -25,6 +25,10 @@ namespace auth
 {
     public class Startup
     {
+
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -57,6 +61,12 @@ namespace auth
                 options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 22)))
             );
 
+            services.AddCors(options => {
+                            options.AddPolicy(MyAllowSpecificOrigins, builder => {
+                                builder.WithOrigins(MyAllowSpecificOrigins).AllowAnyHeader();
+                            });
+                        });
+
             services.AddAutoMapper(typeof(Startup).Assembly);
 
             // Repositories
@@ -86,6 +96,8 @@ namespace auth
             });
 
             app.UseRouting();
+
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseAuthorization();
 

@@ -53,6 +53,11 @@
 			<version>2.8.0</version>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
 
 		<!-- H2 -->
 		<dependency>
@@ -84,14 +89,14 @@
 		<dependency>
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-core</artifactId>
-			<version>3.10.3</version>
+			<version>3.9.0</version>
 		</dependency>
 
 		<!-- MySql -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.23</version>
+			<version>8.0.22</version>
 		</dependency>
 
 		<!-- HttpClient -->

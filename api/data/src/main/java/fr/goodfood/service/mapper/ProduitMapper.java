@@ -9,5 +9,4 @@ import org.mapstruct.Mapper;
         CategorieMapper.class
 })
 public interface ProduitMapper extends EntityMapper<ProduitDTO, SimpleProduitDTO, Produit> {
-
 }
