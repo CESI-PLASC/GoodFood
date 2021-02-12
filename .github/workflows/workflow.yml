@@ -6,12 +6,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-      - run: node -v
-      - run: npm -v
       - uses: docker://alpine:3.8
-      - run: docker -v
-      - run: docker-compose -f ./Dockerfile
+      - run: docker-compose -f Dockerfile
       - uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - run: cd ./api/data && ./mvnw clean spring-boot:run
+      #- run: cd ./api/data && ./mvnw clean spring-boot:run
