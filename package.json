@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "update": "concurrently \"npm run update:auth\" \"npm run update:data\" \"npm run update:app\"",
-    "update:auth": "cd ./api/auth && dotnet restore",
+    "update:auth": "cd ./api/auth && dotnet restore && dotnet tool run dotnet-ef database update",
     "update:data": "cd ./api/data && .\\mvnw clean",
     "update:app": "cd ./app/good-food && npm i",
     "start": "concurrently \"npm run start:auth\" \"npm run start:data\" \"npm run start:app\"",
