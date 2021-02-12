@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
+      - uses: docker://alpine:3.8
       - run: node -v
       - run: npm -v
-      - run: npm install -g docker
       - run: docker -v
