@@ -5,12 +5,12 @@ import { CataloguePageComponent } from './catalogue-page/catalogue-page.componen
 import { PagesRoutingModule } from './pages-routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
-import { ValiderPanierPageComponent } from './valider-panier-page/valider-panier-page.component';
+import { FranchisePageComponent } from './franchise-page/franchise-page.component';
 
 @NgModule({
-  declarations: [CataloguePageComponent, ValiderPanierPageComponent],
+  declarations: [CataloguePageComponent, FranchisePageComponent],
   imports: [
-    CommonModule, ComponentsModule, PagesRoutingModule, FontAwesomeModule, HttpClientModule
+    CommonModule, ComponentsModule, PagesRoutingModule, FontAwesomeModule,HttpClientModule
   ]
 })
 export class PagesModule { }

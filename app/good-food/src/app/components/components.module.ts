@@ -10,15 +10,20 @@ import { FormsModule } from '@angular/forms';
 import { SelectBoxComponent } from './select-box/select-box.component';
 import { NgbAccordionModule, NgbCollapseModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { PanierComponent } from './panier/panier.component';
+import { ListeFranchiseComponent } from './liste-franchise/liste-franchise.component';
+import { InfoFranchiseComponent } from './info-franchise/info-franchise.component';
+import { FiltreFranchiseComponent } from './filtre-franchise/filtre-franchise.component';
+
 
 @NgModule({
-  declarations: [CatalogueComponent, ProduitItemComponent, ProduitListComponent, CatalogueFiltreComponent, SelectBoxComponent, PanierComponent],
+  declarations: [CatalogueComponent, ProduitItemComponent, ProduitListComponent, CatalogueFiltreComponent,ListeFranchiseComponent,InfoFranchiseComponent, FiltreFranchiseComponent],
     imports: [
         CommonModule, FontAwesomeModule, MultiSelectModule, FormsModule, NgbDropdownModule, NgbCollapseModule, NgbAccordionModule
     ],
   exports: [
       CatalogueComponent,
-      PanierComponent
+      PanierComponent,
+      ListeFranchiseComponent
   ]
 })
 export class ComponentsModule { }

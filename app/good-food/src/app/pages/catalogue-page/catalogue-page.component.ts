@@ -15,7 +15,7 @@ export class CataloguePageComponent implements OnInit {
   ngOnInit(): void {
     this.franchise = new Franchise({
       id: 777,
-      name: 'Spicy miam noodles'
+      designation: 'Spicy miam noodles'
     });
   }
 
