@@ -1,6 +1,6 @@
 export interface IFranchise {
     id?: number;
-    name?: string;
+    designation?: string;
     tel?:string;
     mail?: string;
     adresse?: string;
@@ -9,7 +9,7 @@ export interface IFranchise {
 
 export class Franchise implements IFranchise{
     id?: number;
-    name?: string;
+    designation?: string;
     tel?: string;
     mail?: string;
     adresse?: string;

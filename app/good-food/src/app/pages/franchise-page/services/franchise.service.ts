@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/internal/Observable';
   providedIn: 'root'
 })
 export class FranchiseService {
-  private readonly ressourceUrl = `https://localhost:5001/api/v1`
+  private readonly ressourceUrl = `http://localhost:5000/api/v1`
   constructor(private readonly http:HttpClient) {}
 
   getFranchises():Observable<IFranchise[]>{

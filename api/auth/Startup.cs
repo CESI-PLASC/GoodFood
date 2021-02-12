@@ -85,7 +85,7 @@ namespace auth
 
             autoMapper.AssertConfigurationIsValid();
 
-            app.UseHttpsRedirection();
+           // app.UseHttpsRedirection();
 
             app.UseSwagger();
 
