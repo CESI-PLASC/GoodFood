@@ -6,5 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
+      - uses: actions/docker@v1
       - run: node -v
       - run: npm -v
+      - run: docker -v
