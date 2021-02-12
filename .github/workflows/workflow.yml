@@ -2,17 +2,9 @@ name: Workflow GoodFood
 on: [push]
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ ubuntu-18.04 ]
+    runs-on: ubuntu-latest
     steps:
-      - name: Install docker
-        uses: docker
-      - name: Install Node
-        uses: node
-        with:
-          node-version: 12.x
-      - name: Verify install
-        run: node -v && docker -v
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - run: node -v
+      - run: npm -v
