@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { Franchise } from '../../shared/models/franchise';
 import { Categorie, ICategorie } from '../../shared/models/categorie';
-import { SimpleProduit } from '../../shared/models/produit';
+import { IProduit, ISimpleProduit, SimpleProduit } from '../../shared/models/produit';
 import { Icons } from '../../shared/constants/icons.constant';
+import { Formule } from 'src/app/shared/models/formule';
 
 interface ICollapsedItem {
   id: number;
@@ -17,6 +18,8 @@ interface ICollapsedItem {
 export class CatalogueComponent implements OnInit {
 
   @Input() public franchise: Franchise;
+  produitsChoisis : IProduit[];
+  formulesChoisies : Formule[];
 
   public categories: ICategorie[] = [];
   public collapsedList: boolean[] = [];
