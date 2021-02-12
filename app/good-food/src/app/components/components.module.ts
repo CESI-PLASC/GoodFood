@@ -16,14 +16,15 @@ import { FiltreFranchiseComponent } from './filtre-franchise/filtre-franchise.co
 
 
 @NgModule({
-  declarations: [CatalogueComponent, ProduitItemComponent, ProduitListComponent, CatalogueFiltreComponent,ListeFranchiseComponent,InfoFranchiseComponent, FiltreFranchiseComponent],
+  declarations: [CatalogueComponent, ProduitItemComponent, ProduitListComponent, CatalogueFiltreComponent,ListeFranchiseComponent,InfoFranchiseComponent, FiltreFranchiseComponent, PanierComponent,SelectBoxComponent],
     imports: [
         CommonModule, FontAwesomeModule, MultiSelectModule, FormsModule, NgbDropdownModule, NgbCollapseModule, NgbAccordionModule
     ],
   exports: [
       CatalogueComponent,
       PanierComponent,
-      ListeFranchiseComponent
+      ListeFranchiseComponent,
+      SelectBoxComponent
   ]
 })
 export class ComponentsModule { }

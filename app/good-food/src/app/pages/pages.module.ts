@@ -6,9 +6,10 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { FranchisePageComponent } from './franchise-page/franchise-page.component';
+import { ValiderPanierPageComponent } from './valider-panier-page/valider-panier-page.component';
 
 @NgModule({
-  declarations: [CataloguePageComponent, FranchisePageComponent],
+  declarations: [CataloguePageComponent, FranchisePageComponent, ValiderPanierPageComponent],
   imports: [
     CommonModule, ComponentsModule, PagesRoutingModule, FontAwesomeModule,HttpClientModule
   ]
