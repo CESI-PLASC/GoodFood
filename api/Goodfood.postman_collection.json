@@ -17,13 +17,11 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{gf_host_api_auth}}/api/v1/franchises",
+									"raw": "{{gf_host_api_auth}}/franchises",
 									"host": [
 										"{{gf_host_api_auth}}"
 									],
 									"path": [
-										"api",
-										"v1",
 										"franchises"
 									]
 								}
@@ -36,13 +34,11 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{gf_host_api_auth}}/api/v1/franchises/:idFranchise",
+									"raw": "{{gf_host_api_auth}}/franchises/:idFranchise",
 									"host": [
 										"{{gf_host_api_auth}}"
 									],
 									"path": [
-										"api",
-										"v1",
 										"franchises",
 										":idFranchise"
 									],
@@ -71,13 +67,11 @@
 									}
 								},
 								"url": {
-									"raw": "{{gf_host_api_auth}}/api/v1/franchises",
+									"raw": "{{gf_host_api_auth}}/franchises",
 									"host": [
 										"{{gf_host_api_auth}}"
 									],
 									"path": [
-										"api",
-										"v1",
 										"franchises"
 									]
 								}
@@ -99,13 +93,11 @@
 									}
 								},
 								"url": {
-									"raw": "{{gf_host_api_auth}}/api/v1/franchises",
+									"raw": "{{gf_host_api_auth}}/franchises",
 									"host": [
 										"{{gf_host_api_auth}}"
 									],
 									"path": [
-										"api",
-										"v1",
 										"franchises"
 									]
 								}
@@ -118,13 +110,11 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{gf_host_api_auth}}/api/v1/franchises/:idFranchise",
+									"raw": "{{gf_host_api_auth}}/franchises/:idFranchise",
 									"host": [
 										"{{gf_host_api_auth}}"
 									],
 									"path": [
-										"api",
-										"v1",
 										"franchises",
 										":idFranchise"
 									],
@@ -154,9 +144,9 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host_goodfood}}/commandes",
+									"raw": "{{gf_host_api_data}}/commandes",
 									"host": [
-										"{{host_goodfood}}"
+										"{{gf_host_api_data}}"
 									],
 									"path": [
 										"commandes"
@@ -190,6 +180,31 @@
 							"response": []
 						},
 						{
+							"name": "Le panier d'une commande",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gf_host_api_data}}/commandes/:id/panier",
+									"host": [
+										"{{gf_host_api_data}}"
+									],
+									"path": [
+										"commandes",
+										":id",
+										"panier"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Créer une commande",
 							"request": {
 								"method": "POST",
@@ -204,9 +219,9 @@
 									}
 								},
 								"url": {
-									"raw": "{{host_goodfood}}/commandes",
+									"raw": "{{gf_host_api_data}}/commandes",
 									"host": [
-										"{{host_goodfood}}"
+										"{{gf_host_api_data}}"
 									],
 									"path": [
 										"commandes"
@@ -230,9 +245,9 @@
 									}
 								},
 								"url": {
-									"raw": "{{host_goodfood}}/commandes",
+									"raw": "{{gf_host_api_data}}/commandes",
 									"host": [
-										"{{host_goodfood}}"
+										"{{gf_host_api_data}}"
 									],
 									"path": [
 										"commandes"
@@ -247,9 +262,9 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{host_goodfood}}/commandes/:id",
+									"raw": "{{gf_host_api_data}}/commandes/:id",
 									"host": [
-										"{{host_goodfood}}"
+										"{{gf_host_api_data}}"
 									],
 									"path": [
 										"commandes",
@@ -276,12 +291,356 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host_goodfood}}/statuts",
+									"raw": "{{gf_host_api_data}}/statuts",
 									"host": [
-										"{{host_goodfood}}"
+										"{{gf_host_api_data}}"
 									],
 									"path": [
 										"statuts"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Les formules",
+					"item": [
+						{
+							"name": "Toutes les formules",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gf_host_api_data}}/formules",
+									"host": [
+										"{{gf_host_api_data}}"
+									],
+									"path": [
+										"formules"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Une formule",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gf_host_api_data}}/formules/:idFormule",
+									"host": [
+										"{{gf_host_api_data}}"
+									],
+									"path": [
+										"formules",
+										":idFormule"
+									],
+									"variable": [
+										{
+											"key": "idFormule",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Créer une formule",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"designation\": \"Ma formule de test\",\r\n    \"prix\": 19.99\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gf_host_api_data}}/formules",
+									"host": [
+										"{{gf_host_api_data}}"
+									],
+									"path": [
+										"formules"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modifier une formule",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"designation\": \"Ma formule de test\",\r\n    \"prix\": 19.99\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gf_host_api_data}}/formules",
+									"host": [
+										"{{gf_host_api_data}}"
+									],
+									"path": [
+										"formules"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Supprimer une formule",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{gf_host_api_data}}/formules/:idFormule",
+									"host": [
+										"{{gf_host_api_data}}"
+									],
+									"path": [
+										"formules",
+										":idFormule"
+									],
+									"variable": [
+										{
+											"key": "idFormule",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Les produits",
+					"item": [
+						{
+							"name": "Tous les produits",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gf_host_api_data}}/produits",
+									"host": [
+										"{{gf_host_api_data}}"
+									],
+									"path": [
+										"produits"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Un produit",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gf_host_api_data}}/produits/:idProduit",
+									"host": [
+										"{{gf_host_api_data}}"
+									],
+									"path": [
+										"produits",
+										":idProduit"
+									],
+									"variable": [
+										{
+											"key": "idProduit",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Créer un produit",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"prix\": 53.99,\r\n    \"designation\": \"Mon produit de test\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gf_host_api_data}}/produits",
+									"host": [
+										"{{gf_host_api_data}}"
+									],
+									"path": [
+										"produits"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modifier un produit",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"designation\": \"Mon produit de test modifié\",\r\n    \"prix\": 19.99\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gf_host_api_data}}/produits",
+									"host": [
+										"{{gf_host_api_data}}"
+									],
+									"path": [
+										"produits"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Supprimer un produit",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{gf_host_api_data}}/produits/:idProduit",
+									"host": [
+										"{{gf_host_api_data}}"
+									],
+									"path": [
+										"produits",
+										":idProduit"
+									],
+									"variable": [
+										{
+											"key": "idProduit",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Les compositions",
+					"item": [
+						{
+							"name": "Toutes les compositions",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gf_host_api_data}}/compositions",
+									"host": [
+										"{{gf_host_api_data}}"
+									],
+									"path": [
+										"compositions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Créer une composition",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": {\r\n        \"commandeId\": 1,\r\n        \"formuleId\": 4,\r\n        \"produitId\": 3\r\n    },\r\n    \"quantite\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gf_host_api_data}}/compositions",
+									"host": [
+										"{{gf_host_api_data}}"
+									],
+									"path": [
+										"compositions"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Les catalogues",
+					"item": [
+						{
+							"name": "Le catalogue d'un franchisé",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gf_host_api_data}}/franchises/:idFranchise/catalogue",
+									"host": [
+										"{{gf_host_api_data}}"
+									],
+									"path": [
+										"franchises",
+										":idFranchise",
+										"catalogue"
+									],
+									"variable": [
+										{
+											"key": "idFranchise",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Les catégories",
+					"item": [
+						{
+							"name": "Toutes les catégories",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gf_host_api_data}}/categories",
+									"host": [
+										"{{gf_host_api_data}}"
+									],
+									"path": [
+										"categories"
 									]
 								}
 							},
