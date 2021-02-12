@@ -3,7 +3,6 @@ package fr.goodfood.entity;
 import java.sql.Date;
 import java.util.Objects;
 import java.util.Set;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -41,9 +40,6 @@ public class Commande {
 
     private @OneToMany(mappedBy = "formule") Set<Composition> compositions;
 
-    @OneToMany(mappedBy = "commande")
-    private List<Composition> compositions;
-
     public Long getId(){
         return this.id;
     }
@@ -60,7 +56,7 @@ public class Commande {
         return this.statut;
     }
 
-    public List<Composition> getCompositions(){
+    public Set<Composition> getCompositions(){
         return this.compositions;
     }
 
@@ -80,7 +76,7 @@ public class Commande {
         this.statut = statut;
     }
 
-    public void setCompositions(List<Composition> compositions){
+    public void setCompositions(Set<Composition> compositions){
         this.compositions = compositions;
     }
 

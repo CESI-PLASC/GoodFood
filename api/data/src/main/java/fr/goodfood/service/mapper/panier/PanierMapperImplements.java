@@ -3,6 +3,7 @@ package fr.goodfood.service.mapper.panier;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class PanierMapperImplements implements PanierMapper{
     public CommandePanierDto toDto(Commande commande){
         
         CommandePanierDto panier = this.modelMapper.map(commande, CommandePanierDto.class);
-        List<Composition> compositions = commande.getCompositions();
+        Set<Composition> compositions = commande.getCompositions();
         HashMap<Long, FormulePanierDto> formulesMap = new HashMap<Long, FormulePanierDto>();
 
         for(Composition composition: compositions){
