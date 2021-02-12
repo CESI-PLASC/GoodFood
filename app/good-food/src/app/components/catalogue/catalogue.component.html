@@ -1,6 +1,6 @@
 <div *ngIf="franchise">
     <div>
-        <h1>{{ franchise.name }}</h1>
+        <h1>{{ franchise.designation }}</h1>
     </div>
 
     <gf-catalogue-filtre [filters]="categories" (filterChange)="onFilterChange($event)"></gf-catalogue-filtre>

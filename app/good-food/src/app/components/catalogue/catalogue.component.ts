@@ -10,7 +10,6 @@ import { CatalogueService } from '../../pages/catalogue-page/services/catalogue.
   styleUrls: ['./catalogue.component.scss']
 })
 export class CatalogueComponent implements OnInit {
-
   @Input() public franchise: Franchise;
 
   public categories: ICategorie[] = [];
@@ -30,5 +29,4 @@ export class CatalogueComponent implements OnInit {
     console.log('filtre change');
     console.log(filters);
   }
-
 }

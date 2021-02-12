@@ -9,9 +9,17 @@ import { FranchisePageComponent } from './franchise-page/franchise-page.componen
 import { ValiderPanierPageComponent } from './valider-panier-page/valider-panier-page.component';
 
 @NgModule({
-  declarations: [CataloguePageComponent, FranchisePageComponent, ValiderPanierPageComponent],
+  declarations: [
+    CataloguePageComponent,
+    FranchisePageComponent,
+    ValiderPanierPageComponent
+  ],
   imports: [
-    CommonModule, ComponentsModule, PagesRoutingModule, FontAwesomeModule,HttpClientModule
+    CommonModule,
+    ComponentsModule,
+    PagesRoutingModule,
+    FontAwesomeModule,
+    HttpClientModule
   ]
 })
 export class PagesModule { }

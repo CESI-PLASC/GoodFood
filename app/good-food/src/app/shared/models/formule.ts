@@ -5,9 +5,9 @@ export interface IFormule{
 }
 
 export class Formule implements IFormule{
-  id?: IFormule["id"];
-  prix?: IFormule["prix"]
-  designation?: IFormule["designation"]
+  id?: number;
+  prix?: number;
+  designation?: string;
   constructor(opt?: Partial<IFormule>){
     Object.assign(this, opt);
   }

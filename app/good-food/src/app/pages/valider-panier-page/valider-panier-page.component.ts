@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ICommande } from 'src/app/shared/models/commande';
-import { IPanier } from 'src/app/shared/models/panier';
 import { CommandeService } from './services/commande.service';
 
 @Component({
-  selector: 'app-valider-panier-page',
+  selector: 'gf-valider-panier-page',
   templateUrl: './valider-panier-page.component.html',
   styleUrls: ['./valider-panier-page.component.scss']
 })

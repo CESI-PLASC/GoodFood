@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { observable } from 'rxjs';
 import { IFranchise } from 'src/app/shared/models/franchise';
 import { Observable } from 'rxjs/internal/Observable';
+import { CS_URL } from '../../../shared/constants/url.constant';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FranchiseService {
-  private readonly ressourceUrl = `http://localhost:5000/api/v1`
-  constructor(private readonly http:HttpClient) {}
+  private readonly ressourceUrl = `${CS_URL}/api/v1`;
 
-  getFranchises():Observable<IFranchise[]>{
+  constructor(private readonly http: HttpClient) {}
+
+  public getFranchises(): Observable<IFranchise[]>{
     return this.http.get<IFranchise[]>(`${this.ressourceUrl}/franchises`);
   }
 

@@ -1,22 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { Franchise, IFranchise } from '../../shared/models/franchise';
+import { Component } from '@angular/core';
+import { IFranchise } from '../../shared/models/franchise';
 
 @Component({
   selector: 'gf-catalogue-page',
   templateUrl: './catalogue-page.component.html',
   styleUrls: ['./catalogue-page.component.scss']
 })
-export class CataloguePageComponent implements OnInit {
-
+export class CataloguePageComponent {
   public franchise: IFranchise;
-
-  constructor() { }
-
-  ngOnInit(): void {
-    this.franchise = new Franchise({
-      id: 777,
-      designation: 'Spicy miam noodles'
-    });
-  }
-
 }

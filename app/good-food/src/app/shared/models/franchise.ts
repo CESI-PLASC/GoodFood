@@ -1,7 +1,7 @@
 export interface IFranchise {
     id?: number;
     designation?: string;
-    tel?:string;
+    tel?: string;
     mail?: string;
     adresse?: string;
     img?: string;

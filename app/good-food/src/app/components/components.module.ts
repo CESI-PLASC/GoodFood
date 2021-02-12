@@ -14,16 +14,36 @@ import { ListeFranchiseComponent } from './liste-franchise/liste-franchise.compo
 import { InfoFranchiseComponent } from './info-franchise/info-franchise.component';
 import { FiltreFranchiseComponent } from './filtre-franchise/filtre-franchise.component';
 
-
 @NgModule({
-  declarations: [CatalogueComponent, ProduitItemComponent, ProduitListComponent, CatalogueFiltreComponent,ListeFranchiseComponent,InfoFranchiseComponent, FiltreFranchiseComponent, PanierComponent,SelectBoxComponent],
+  declarations: [
+      CatalogueComponent,
+      ProduitItemComponent,
+      ProduitListComponent,
+      CatalogueFiltreComponent,
+      ListeFranchiseComponent,
+      InfoFranchiseComponent,
+      FiltreFranchiseComponent,
+      PanierComponent,
+      SelectBoxComponent
+  ],
     imports: [
-        CommonModule, FontAwesomeModule, MultiSelectModule, FormsModule, NgbDropdownModule, NgbCollapseModule, NgbAccordionModule
+        CommonModule,
+        FontAwesomeModule,
+        MultiSelectModule,
+        FormsModule,
+        NgbDropdownModule,
+        NgbCollapseModule,
+        NgbAccordionModule
     ],
   exports: [
       CatalogueComponent,
-      PanierComponent,
+      ProduitItemComponent,
+      ProduitListComponent,
+      CatalogueFiltreComponent,
       ListeFranchiseComponent,
+      InfoFranchiseComponent,
+      FiltreFranchiseComponent,
+      PanierComponent,
       SelectBoxComponent
   ]
 })

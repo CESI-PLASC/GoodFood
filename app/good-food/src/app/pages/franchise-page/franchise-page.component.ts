@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { IFranchise } from 'src/app/shared/models/franchise';
 
 @Component({
@@ -6,13 +6,6 @@ import { IFranchise } from 'src/app/shared/models/franchise';
   templateUrl: './franchise-page.component.html',
   styleUrls: ['./franchise-page.component.scss']
 })
-export class FranchisePageComponent implements OnInit {
-
+export class FranchisePageComponent {
   public franchise: IFranchise;
-  
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }
