@@ -57,7 +57,7 @@ jobs:
         run: cd ./api/data && mvn clean verify -DskipTests
 
       - name: Update Dotnet DB
-        run: cd ./api/auth && dotnet ef databases update
+        run: cd ./api/auth && dotnet ef database update
 
       - name: Build
         run: npm run start
