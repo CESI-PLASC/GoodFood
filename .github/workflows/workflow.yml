@@ -16,7 +16,7 @@ jobs:
       - name: Setup Mysql
         uses: mirromutth/mysql-action@v1.1
         with:
-          args: '--name="goodfood-db"'
+          name: 'goodfood-db'
           host port: 3306
           container port: 3306
           character set server: 'utf8'
