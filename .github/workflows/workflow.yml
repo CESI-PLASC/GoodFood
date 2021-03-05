@@ -43,7 +43,7 @@ jobs:
           dotnet-version: '3.1.x'
 
       - name: Restore dependencies
-        run: cd ./api/auth && dotnet tool install --global dotnet-ef
+        run: cd ./api/auth && dotnet tool install --global dotnet-ef && dotnet tool restore && dotnet restore
 
       - name: Setup Java
         uses: actions/setup-java@v1
@@ -57,7 +57,7 @@ jobs:
         run: cd ./api/data && mvn clean verify -DskipTests
 
       - name: Update Dotnet DB
-        run: cd ./api/auth && dotnet restore && dotnet ef database update
+        run: cd ./api/auth && dotnet ef database update
 
       - name: Build
         run: npm run start
