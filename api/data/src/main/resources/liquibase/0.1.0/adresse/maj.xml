@@ -1,0 +1,45 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet
+        id="create-table-adresse"
+        author="agillereau">
+        <createTable tableName="adresse">
+            <column
+                name="id"
+                type="int"
+                autoIncrement="true">
+                <constraints
+                    primaryKey="true"
+                    nullable="false" />
+            </column>
+            <column
+                name="pays"
+                type="varchar(50)">
+                <constraints nullable="false" />
+            </column>
+            <column
+                name="code_postal"
+                type="varchar(6)">
+                <constraints nullable="false" />
+            </column>
+            <column
+                name="rue"
+                type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column
+                name="ville"
+                type="varchar(50)">
+                <constraints nullable="false" />
+            </column>
+            <column
+                name="complement"
+                type="varchar(255)"
+                defaultValue="null" />
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
