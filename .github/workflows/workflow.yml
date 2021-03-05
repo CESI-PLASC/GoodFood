@@ -26,24 +26,26 @@ jobs:
           mysql user: 'goodfood'
           mysql password: 'goodfood'
 
-      - name: Setup node
+      - name: Setup Node
         uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 12
 
-      - name: Setup dotnet
+      - name: Setup Dotnet
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '3.1.x'
 
-      - name: Set up JDK
+      - name: Setup Java
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
 
-      - run: ls ./
-      #- name: Maven Package
-      #  run: mvn clean package
+      - name: Maven Package
+        run: cd ./api/data && mvn clean package
 
       - name: Maven Verify
-        run: mvn clean verify -DskipTests
+        run: cd ./api/data && mvn clean verify -DskipTests
+
+      - name: Check version
+        run: node --version && java --version && dotnet --version && mvn --version
