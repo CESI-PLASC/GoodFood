@@ -21,4 +21,4 @@ jobs:
           mysql root password: 'root'
           mysql user: 'goodfood'
           mysql password: 'goodfood'
-        run: docker container ls
+      - run: docker container ls
