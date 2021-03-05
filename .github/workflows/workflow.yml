@@ -57,10 +57,10 @@ jobs:
         run: cd ./api/data && mvn clean verify -DskipTests
 
       - name: Build C# API
-        run: npm run build:auth
+        run: cd ./api/auth && dotnet build
 
       - name: Build Java API
-        run: npm run build:data
+        run: cd ./api/data && ./mvnw spring-boot:build-image
 
       - name: Build Angular app
-        run: npm run build:app
+        run: cd ./app-good-food && npm run build
