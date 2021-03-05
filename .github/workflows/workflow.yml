@@ -27,9 +27,6 @@ jobs:
           mysql user: 'goodfood'
           mysql password: 'goodfood'
 
-      - name: Setup DB
-        run: docker container ls
-
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
@@ -46,8 +43,8 @@ jobs:
         with:
           dotnet-version: '3.1.x'
 
-      - name: Restore dependencies
-        run: cd ./api/auth && dotnet tool install --global dotnet-ef && dotnet tool restore && dotnet restore
+      - name: Restore project
+        run: cd ./api/auth && dotnet restore
 
       - name: Setup Java
         uses: actions/setup-java@v1
@@ -59,9 +56,6 @@ jobs:
 
       - name: Maven Verify
         run: cd ./api/data && mvn clean verify -DskipTests
-
-      - name: Update Dotnet DB
-        run: cd ./api/auth && dotnet ef database update
 
       - name: Build
         run: npm run start
