@@ -22,7 +22,6 @@ jobs:
           collation server: 'utf8_general_ci'
           mysql version: '8.0'
           mysql database: 'goodfood'
-          mysql root password: 'goodfood'
           mysql user: 'goodfood'
           mysql password: 'goodfood'
 
