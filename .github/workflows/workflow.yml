@@ -31,10 +31,19 @@ jobs:
         with:
           node-version: 12
 
+      - name: Install node dependencies
+        run: npm i
+
+      - name: Install app dependencies
+        run: cd ./app/good-food && npm i
+
       - name: Setup Dotnet
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '3.1.x'
+
+      - name: Restore dependencies
+        run: cd ./api/auth && dotnet retore
 
       - name: Setup Java
         uses: actions/setup-java@v1
@@ -47,5 +56,5 @@ jobs:
       - name: Maven Verify
         run: cd ./api/data && mvn clean verify -DskipTests
 
-      - name: Check version
-        run: node --version && java --version && dotnet --version && mvn --version
+      - name: Build
+        run: npm run start
