@@ -26,6 +26,9 @@ jobs:
           mysql user: 'goodfood'
           mysql password: 'goodfood'
 
+      - name: Setup DB
+        run: docker stats
+
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
