@@ -5,21 +5,26 @@ import fr.goodfood.entity.keys.CompositionKey;
 public class SimpleCompositionDTO {
     private CompositionKey id;
 
-    public CompositionKey getId(){
+    public CompositionKey getId() {
         return this.id;
     }
 
-    public void setId(CompositionKey id){
+    public void setId(CompositionKey id) {
         this.id = id;
     }
 
     private Double quantite;
 
-    public Double getQuantite(){
+    public Double getQuantite() {
         return this.quantite;
     }
 
-    public void setQuantite(Double quantite){
+    public void setQuantite(Double quantite) {
         this.quantite = quantite;
+    }
+
+    @Override
+    public String toString() {
+        return "{" + " id='" + getId() + "'" + ", quantite='" + getQuantite() + "'" + "}";
     }
 }
