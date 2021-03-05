@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,5 +38,13 @@ public class FranchiseRessource {
 
         return EntityModel.of(nouveauFranchise,
                 linkTo(methodOn(FranchiseRessource.class).create(franchise)).withSelfRel());
+    }
+
+    @GetMapping("/{id}")
+    public EntityModel<Franchise> one(@PathVariable Long id) {
+        Franchise franchise = this.franchiseService.one(id);
+
+        return EntityModel.of(franchise, linkTo(methodOn(FranchiseRessource.class).one(id)).withSelfRel(),
+                linkTo(methodOn(FranchiseRessource.class).all()).withRel("franchises"));
     }
 }

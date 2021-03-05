@@ -1,6 +1,6 @@
 import { Input } from '@angular/core';
 import { Component } from '@angular/core';
-import { IFranchise } from 'src/app/shared/models/franchise';
+import { Franchise } from 'src/app/shared/models/franchise';
 
 @Component({
   selector: 'gf-info-franchise',
@@ -8,5 +8,5 @@ import { IFranchise } from 'src/app/shared/models/franchise';
   styleUrls: ['./info-franchise.component.scss']
 })
 export class InfoFranchiseComponent {
-  @Input() public franchise: IFranchise;
+  @Input() public franchise: Franchise;
 }
