@@ -59,7 +59,7 @@ jobs:
         run: cd ./api/auth && dotnet build
 
       - name: Build Java API
-        run: cd ./api/data && ./mvnw spring-boot:build-image
+        run: cd ./api/data && ./mvnw spring-boot:start
 
       - name: Build Angular app
         run: cd ./app-good-food && npm run build
