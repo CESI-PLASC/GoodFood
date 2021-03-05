@@ -16,6 +16,7 @@ jobs:
       - name: Setup Mysql
         uses: mirromutth/mysql-action@v1.1
         with:
+          args: '--name="goodfood-db"'
           host port: 3306
           container port: 3306
           character set server: 'utf8'
@@ -27,7 +28,7 @@ jobs:
           mysql password: 'goodfood'
 
       - name: Setup DB
-        run: docker stats
+        run: docker ls
 
       - name: Setup Node
         uses: actions/setup-node@v2
