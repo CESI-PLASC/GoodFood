@@ -1,7 +1,6 @@
 package fr.goodfood.web.rest;
 
 import fr.goodfood.dto.categorie.CategorieDTO;
-import fr.goodfood.dto.categorie.SimpleCategorieDTO;
 import fr.goodfood.entity.Categorie;
 import fr.goodfood.service.CategorieService;
 import fr.goodfood.service.mapper.CategorieMapper;
