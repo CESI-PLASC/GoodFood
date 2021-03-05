@@ -1,137 +1,10 @@
 {
 	"info": {
-		"_postman_id": "70399b5d-7aef-4674-898e-f0755e09ada1",
+		"_postman_id": "b9d6e8da-035d-4740-9c6d-c6522d350dcd",
 		"name": "Goodfood",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
-		{
-			"name": "auth",
-			"item": [
-				{
-					"name": "Les franchisés",
-					"item": [
-						{
-							"name": "Tous les franchisés",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{gf_host_api_auth}}/franchises",
-									"host": [
-										"{{gf_host_api_auth}}"
-									],
-									"path": [
-										"franchises"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Un franchisé",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{gf_host_api_auth}}/franchises/:idFranchise",
-									"host": [
-										"{{gf_host_api_auth}}"
-									],
-									"path": [
-										"franchises",
-										":idFranchise"
-									],
-									"variable": [
-										{
-											"key": "idFranchise",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Créer un franchisé",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"designation\": \"Mon franchisé\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{gf_host_api_auth}}/franchises",
-									"host": [
-										"{{gf_host_api_auth}}"
-									],
-									"path": [
-										"franchises"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Modifier un franchisé",
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"id\": 1,\r\n    \"designation\": \"Mon franchisé modifié\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{gf_host_api_auth}}/franchises",
-									"host": [
-										"{{gf_host_api_auth}}"
-									],
-									"path": [
-										"franchises"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Supprimer un franchisé",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{gf_host_api_auth}}/franchises/:idFranchise",
-									"host": [
-										"{{gf_host_api_auth}}"
-									],
-									"path": [
-										"franchises",
-										":idFranchise"
-									],
-									"variable": [
-										{
-											"key": "idFranchise",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				}
-			]
-		},
 		{
 			"name": "data",
 			"item": [
@@ -641,6 +514,54 @@
 									],
 									"path": [
 										"categories"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Les franchises",
+					"item": [
+						{
+							"name": "Tous les franchises",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gf_host_api_data}}/franchises",
+									"host": [
+										"{{gf_host_api_data}}"
+									],
+									"path": [
+										"franchises"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Créer un franchisé",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"designation\": \"Mon franchisé de test\",\r\n    \"email\": \"franchise@test.fr\",\r\n    \"telephoneFixe\": \"036363636\",\r\n    \"telephoneMobile\": \"0606060606\",\r\n    \"adresse\": {\r\n        \"codePostal\": \"16200\",\r\n        \"pays\": \"France\",\r\n        \"rue\": \"17 rue de Bellevue\",\r\n        \"ville\": \"Jarnac\",\r\n        \"complement\": null\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gf_host_api_data}}/franchises",
+									"host": [
+										"{{gf_host_api_data}}"
+									],
+									"path": [
+										"franchises"
 									]
 								}
 							},
