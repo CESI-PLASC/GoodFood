@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import fr.goodfood.entity.Composition;
 import fr.goodfood.entity.keys.CompositionKey;
 import fr.goodfood.repository.CompositionRepository;
-import fr.goodfood.ressource.error.CompositionNotFoundException;
+import fr.goodfood.ressource.error.NotFoundException;
 
 @Service
 public class CompositionService {
@@ -45,7 +45,7 @@ public class CompositionService {
     }
 
     public Composition one(CompositionKey id){
-        return this.compositionRepository.findById(id).orElseThrow(() -> new CompositionNotFoundException(id));
+        return this.compositionRepository.findById(id).orElseThrow(() -> new NotFoundException(id.toString()));
     }
 
     public List<Composition> all(){

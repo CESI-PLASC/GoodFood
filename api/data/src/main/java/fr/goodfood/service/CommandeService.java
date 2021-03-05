@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import fr.goodfood.repository.CommandeRepository;
-import fr.goodfood.ressource.error.CommandeNotFoundException;
+import fr.goodfood.ressource.error.NotFoundException;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,19 +22,19 @@ import fr.goodfood.entity.Produit;
 
 @Service
 public class CommandeService {
-    
+
     @Autowired
     private CommandeRepository commandeRepository;
 
     @Autowired
     private ModelMapper modelMapper;
 
-    public Commande create(Commande newCommande){
+    public Commande create(Commande newCommande) {
         return this.commandeRepository.save(newCommande);
     }
 
-    public Commande update(Commande commande){
-        if(commande != null && commande.getId() != null){
+    public Commande update(Commande commande) {
+        if (commande != null && commande.getId() != null) {
             commande = this.commandeRepository.save(commande);
         } else {
             commande = this.create(commande);
@@ -43,31 +43,31 @@ public class CommandeService {
         return commande;
     }
 
-    public Commande one(Long id){
-        return this.commandeRepository.findById(id).orElseThrow(() -> new CommandeNotFoundException(id));
+    public Commande one(Long id) {
+        return this.commandeRepository.findById(id).orElseThrow(() -> new NotFoundException(id.toString()));
     }
 
-    public List<Commande> all(){
+    public List<Commande> all() {
         return this.commandeRepository.findAll();
     }
 
-    public void delete(Long id){
+    public void delete(Long id) {
         this.commandeRepository.deleteById(id);
     }
 
-    public CommandePanierDto panier(Long id){
+    public CommandePanierDto panier(Long id) {
         Commande commande = this.one(id);
         CommandePanierDto panier = this.modelMapper.map(commande, CommandePanierDto.class);
 
         Set<Composition> compositions = commande.getCompositions();
         HashMap<Long, FormulePanierDto> formulesMap = new HashMap<Long, FormulePanierDto>();
 
-        for(Composition composition: compositions){
+        for (Composition composition : compositions) {
 
             // Ajoute la formule si elle n'est pas déjà ajoutée à la commande
             Formule formule = composition.getFormule();
             FormulePanierDto formulePanier;
-            if(!formulesMap.containsKey(formule.getId())){
+            if (!formulesMap.containsKey(formule.getId())) {
                 formulePanier = this.modelMapper.map(formule, FormulePanierDto.class);
                 formulePanier.setPoduits(new ArrayList<ProduitPanierDto>());
 
