@@ -56,5 +56,11 @@ jobs:
       - name: Maven Verify
         run: cd ./api/data && mvn clean verify -DskipTests
 
-      - name: Build
-        run: npm run start
+      - name: Build C# API
+        run: npm run build:auth
+
+      - name: Build Java API
+        run: npm run build:data
+
+      - name: Build Angular app
+        run: npm run build:app
