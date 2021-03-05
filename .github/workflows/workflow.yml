@@ -4,17 +4,18 @@ on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     name: Build
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Shutdown Ubuntu MySQL (SUDO)
+
+      - name: Shutdown Ubuntu MySQL
         run: sudo service mysql stop
+
       - name: Setup Mysql
         uses: mirromutth/mysql-action@v1.1
         with:
-          container name: 'goodfood-db'
           host port: 3306
           container port: 3306
           character set server: 'utf8'
@@ -24,4 +25,24 @@ jobs:
           mysql root password: 'root'
           mysql user: 'goodfood'
           mysql password: 'goodfood'
-      - run: docker container ls
+
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.x'
+
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Maven Package
+        run: mvn clean package
+
+      - name: Maven Verify
+        run: mvn clean verify -DskipTests
