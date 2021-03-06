@@ -1,33 +1,44 @@
-<databaseChangeLog  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-	                http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <changeSet id="0.0.1-create-table-commandee" author="cgiboulot">
+    <changeSet
+        id="0.0.1-create-table-commandee"
+        author="cgiboulot">
         <createTable tableName="commandee">
-            <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"/>
+            <column
+                name="commande_id"
+                type="bigint">
+                <constraints
+                    primaryKey="true"
+                    nullable="false" />
             </column>
-            <column name="commande_id" type="bigint">
-                <constraints nullable="false"/>
+            <column
+                name="produit_id"
+                type="bigint">
+                <constraints
+                    primaryKey="true"
+                    nullable="false" />
             </column>
-            <column name="produit_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="quantite" type="int" />
+            <column
+                name="quantite"
+                type="int" />
         </createTable>
 
-        <addForeignKeyConstraint baseTableName="commandee"
-                                 baseColumnNames="commande_id"
-                                 constraintName="fk_commandee_commande_id"
-                                 referencedTableName="commande"
-                                 referencedColumnNames="id" />
+        <addForeignKeyConstraint
+            baseTableName="commandee"
+            baseColumnNames="commande_id"
+            constraintName="fk_commandee_commande_id"
+            referencedTableName="commande"
+            referencedColumnNames="id" />
 
-        <addForeignKeyConstraint baseTableName="commandee"
-                                 baseColumnNames="produit_id"
-                                 constraintName="fk_commandee_produit_id"
-                                 referencedTableName="produit"
-                                 referencedColumnNames="id" />
+        <addForeignKeyConstraint
+            baseTableName="commandee"
+            baseColumnNames="produit_id"
+            constraintName="fk_commandee_produit_id"
+            referencedTableName="produit"
+            referencedColumnNames="id" />
     </changeSet>
 
 </databaseChangeLog>

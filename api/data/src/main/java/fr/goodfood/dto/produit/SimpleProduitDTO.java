@@ -8,72 +8,66 @@ public class SimpleProduitDTO {
     private String designation;
     private float prix;
 
-    /**
-     * Récupère : id.
-     *
-     * @return id.
-     */
-    public Long getId() {
-        return id;
+    // #region Générations
+
+    public SimpleProduitDTO() {
     }
 
-    /**
-     * Défini la nouvelle valeur de : id.
-     *
-     * @param id La nouvelle valeur.
-     * @return L'instance (Pattern fluent)
-     */
-    public SimpleProduitDTO setId(Long id) {
+    public SimpleProduitDTO(Long id, String designation, float prix) {
         this.id = id;
-        return this;
-    }
-
-    /**
-     * Récupère : designation.
-     *
-     * @return designation.
-     */
-    public String getDesignation() {
-        return designation;
-    }
-
-    /**
-     * Défini la nouvelle valeur de : designation.
-     *
-     * @param designation La nouvelle valeur.
-     * @return L'instance (Pattern fluent)
-     */
-    public SimpleProduitDTO setDesignation(String designation) {
         this.designation = designation;
+        this.prix = prix;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDesignation() {
+        return this.designation;
+    }
+
+    public void setDesignation(String designation) {
+        this.designation = designation;
+    }
+
+    public float getPrix() {
+        return this.prix;
+    }
+
+    public void setPrix(float prix) {
+        this.prix = prix;
+    }
+
+    public SimpleProduitDTO id(Long id) {
+        setId(id);
         return this;
     }
 
-    /**
-     * Récupère : prix.
-     *
-     * @return prix.
-     */
-    public float getPrix() {
-        return prix;
+    public SimpleProduitDTO designation(String designation) {
+        setDesignation(designation);
+        return this;
     }
 
-    /**
-     * Défini la nouvelle valeur de : prix.
-     *
-     * @param prix La nouvelle valeur.
-     * @return L'instance (Pattern fluent)
-     */
-    public SimpleProduitDTO setPrix(float prix) {
-        this.prix = prix;
+    public SimpleProduitDTO prix(float prix) {
+        setPrix(prix);
         return this;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        SimpleProduitDTO that = (SimpleProduitDTO) o;
-        return Float.compare(that.prix, prix) == 0 && Objects.equals(id, that.id) && Objects.equals(designation, that.designation);
+        if (o == this)
+            return true;
+        if (!(o instanceof SimpleProduitDTO)) {
+            return false;
+        }
+        SimpleProduitDTO simpleProduitDTO = (SimpleProduitDTO) o;
+        return Objects.equals(id, simpleProduitDTO.id) && Objects.equals(designation, simpleProduitDTO.designation)
+                && prix == simpleProduitDTO.prix;
     }
 
     @Override
@@ -83,10 +77,9 @@ public class SimpleProduitDTO {
 
     @Override
     public String toString() {
-        return "SimpleProduitDTO{" +
-                "id=" + id +
-                ", designation='" + designation + '\'' +
-                ", prix=" + prix +
-                '}';
+        return "{" + " id='" + getId() + "'" + ", designation='" + getDesignation() + "'" + ", prix='" + getPrix() + "'"
+                + "}";
     }
+
+    // #endregion
 }

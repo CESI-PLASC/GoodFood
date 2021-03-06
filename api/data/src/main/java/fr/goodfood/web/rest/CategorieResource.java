@@ -34,15 +34,17 @@ public class CategorieResource {
     @GetMapping
     public CollectionModel<CategorieDTO> all() {
         List<Categorie> categories = this.categorieService.all();
+        List<CategorieDTO> categoriesDto = this.categorieMapper.toDtos(categories);
 
-        return CollectionModel.of(this.categorieMapper.toDtos(categories), linkTo(methodOn(CategorieResource.class).all()).withSelfRel());
+        return CollectionModel.of(categoriesDto, linkTo(methodOn(CategorieResource.class).all()).withSelfRel());
     }
 
     @PostMapping
-    public EntityModel<CategorieDTO> create(@RequestBody Categorie categorie) {
-        Categorie nouvelleCategorie = this.categorieService.create(categorie);
+    public EntityModel<CategorieDTO> create(@RequestBody Categorie categorieJson) {
+        Categorie categorie = this.categorieService.create(categorieJson);
+        CategorieDTO categorieDto = this.categorieMapper.toDto(categorie);
 
-        return EntityModel.of(this.categorieMapper.toDto(nouvelleCategorie),
-                linkTo(methodOn(CategorieResource.class).create(categorie)).withSelfRel());
+        return EntityModel.of(categorieDto,
+                linkTo(methodOn(CategorieResource.class).create(categorieJson)).withSelfRel());
     }
 }

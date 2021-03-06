@@ -1,7 +1,9 @@
 package fr.goodfood.web.rest;
 
+import fr.goodfood.dto.produit.ProduitDTO;
 import fr.goodfood.entity.Produit;
 import fr.goodfood.service.ProduitService;
+import fr.goodfood.service.mapper.ProduitMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
@@ -17,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
@@ -27,38 +31,40 @@ public class ProduitResource {
     @Autowired
     private ProduitService produitService;
 
-    @PostMapping
-    public EntityModel<Produit> create(@RequestBody Produit produit) {
-        Produit newProduit = this.produitService.create(produit);
-        // Produit produitDto = this.produitMapper.toDto(newProduit);
+    @Inject
+    private ProduitMapper produitMapper;
 
-        return EntityModel.of(newProduit, linkTo(methodOn(ProduitResource.class).create(produit)).withSelfRel());
+    @PostMapping
+    public EntityModel<ProduitDTO> create(@RequestBody Produit produitJson) {
+        Produit produit = this.produitService.create(produitJson);
+        ProduitDTO produitDto = this.produitMapper.toDto(produit);
+
+        return EntityModel.of(produitDto, linkTo(methodOn(ProduitResource.class).create(produit)).withSelfRel());
     }
 
     @PutMapping
-    public EntityModel<Produit> update(@RequestBody Produit produit) {
-        Produit updatedProduit = this.produitService.update(produit);
-        // ProduitDTO produitDTO = this.produitMapper.toDto(updatedProduit);
+    public EntityModel<ProduitDTO> update(@RequestBody Produit produitJson) {
+        Produit produit = this.produitService.update(produitJson);
+        ProduitDTO produitDTO = this.produitMapper.toDto(produit);
 
-        return EntityModel.of(updatedProduit, linkTo(methodOn(ProduitResource.class).update(produit)).withSelfRel());
+        return EntityModel.of(produitDTO, linkTo(methodOn(ProduitResource.class).update(produit)).withSelfRel());
     }
 
     @GetMapping("/{id}")
-    public EntityModel<Produit> one(@PathVariable Long id) {
+    public EntityModel<ProduitDTO> one(@PathVariable Long id) {
         Produit produit = this.produitService.one(id);
-        // ProduitDTO produitDto = this.produitMapper.toDto(produit);
+        ProduitDTO produitDto = this.produitMapper.toDto(produit);
 
-        return EntityModel.of(produit, linkTo(methodOn(ProduitResource.class).one(id)).withSelfRel(),
+        return EntityModel.of(produitDto, linkTo(methodOn(ProduitResource.class).one(id)).withSelfRel(),
                 linkTo(methodOn(ProduitResource.class).all()).withRel("produits"));
     }
 
     @GetMapping
-    public CollectionModel<Produit> all() {
+    public CollectionModel<ProduitDTO> all() {
         List<Produit> produits = this.produitService.all();
-        // List<SimpleProduitDTO> produitsDto =
-        // this.produitMapper.toSimpleDtos(produits);
+        List<ProduitDTO> produitsDto = this.produitMapper.toDtos(produits);
 
-        return CollectionModel.of(produits, linkTo(methodOn(ProduitResource.class).all()).withSelfRel());
+        return CollectionModel.of(produitsDto, linkTo(methodOn(ProduitResource.class).all()).withSelfRel());
     }
 
     @DeleteMapping("/{id}")

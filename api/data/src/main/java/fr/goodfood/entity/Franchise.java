@@ -38,11 +38,7 @@ public class Franchise {
     private String telephoneMobile = null;
 
     @ManyToMany(targetEntity = Categorie.class)
-    @JoinTable(
-            name = "fcategorie",
-            joinColumns = @JoinColumn(name = "franchise_id"),
-            inverseJoinColumns = @JoinColumn(name = "categorie_id")
-    )
+    @JoinTable(name = "fcategorie", joinColumns = @JoinColumn(name = "franchise_id"), inverseJoinColumns = @JoinColumn(name = "categorie_id"))
     private List<Categorie> categories;
 
     @OneToMany(targetEntity = Commande.class, mappedBy = "franchise")
@@ -50,6 +46,24 @@ public class Franchise {
 
     @ManyToOne(targetEntity = Adresse.class, cascade = CascadeType.ALL)
     private Adresse adresse;
+
+    // #region Générations
+
+    public Franchise() {
+    }
+
+    public Franchise(Long id, String designation, Boolean estSupprime, String email, String telephoneFixe,
+            String telephoneMobile, List<Categorie> categories, List<Commande> commandes, Adresse adresse) {
+        this.id = id;
+        this.designation = designation;
+        this.estSupprime = estSupprime;
+        this.email = email;
+        this.telephoneFixe = telephoneFixe;
+        this.telephoneMobile = telephoneMobile;
+        this.categories = categories;
+        this.commandes = commandes;
+        this.adresse = adresse;
+    }
 
     public Long getId() {
         return this.id;
@@ -65,6 +79,10 @@ public class Franchise {
 
     public void setDesignation(String designation) {
         this.designation = designation;
+    }
+
+    public Boolean isEstSupprime() {
+        return this.estSupprime;
     }
 
     public Boolean getEstSupprime() {
@@ -123,27 +141,80 @@ public class Franchise {
         this.adresse = adresse;
     }
 
+    public Franchise id(Long id) {
+        setId(id);
+        return this;
+    }
+
+    public Franchise designation(String designation) {
+        setDesignation(designation);
+        return this;
+    }
+
+    public Franchise estSupprime(Boolean estSupprime) {
+        setEstSupprime(estSupprime);
+        return this;
+    }
+
+    public Franchise email(String email) {
+        setEmail(email);
+        return this;
+    }
+
+    public Franchise telephoneFixe(String telephoneFixe) {
+        setTelephoneFixe(telephoneFixe);
+        return this;
+    }
+
+    public Franchise telephoneMobile(String telephoneMobile) {
+        setTelephoneMobile(telephoneMobile);
+        return this;
+    }
+
+    public Franchise categories(List<Categorie> categories) {
+        setCategories(categories);
+        return this;
+    }
+
+    public Franchise commandes(List<Commande> commandes) {
+        setCommandes(commandes);
+        return this;
+    }
+
+    public Franchise adresse(Adresse adresse) {
+        setAdresse(adresse);
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == this)
+            return true;
+        if (!(o instanceof Franchise)) {
+            return false;
+        }
         Franchise franchise = (Franchise) o;
-        return estSupprime == franchise.estSupprime && Objects.equals(id, franchise.id) && Objects.equals(designation, franchise.designation) && Objects.equals(categories, franchise.categories) && Objects.equals(commandes, franchise.commandes);
+        return Objects.equals(id, franchise.id) && Objects.equals(designation, franchise.designation)
+                && Objects.equals(estSupprime, franchise.estSupprime) && Objects.equals(email, franchise.email)
+                && Objects.equals(telephoneFixe, franchise.telephoneFixe)
+                && Objects.equals(telephoneMobile, franchise.telephoneMobile)
+                && Objects.equals(categories, franchise.categories) && Objects.equals(commandes, franchise.commandes)
+                && Objects.equals(adresse, franchise.adresse);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, designation, estSupprime, categories, commandes);
+        return Objects.hash(id, designation, estSupprime, email, telephoneFixe, telephoneMobile, categories, commandes,
+                adresse);
     }
 
     @Override
     public String toString() {
-        return "Franchise{" +
-                "id=" + id +
-                ", designation='" + designation + '\'' +
-                ", estSupprime=" + estSupprime +
-                ", categories=" + categories +
-                ", commandes=" + commandes +
-                '}';
+        return "{" + " id='" + getId() + "'" + ", designation='" + getDesignation() + "'" + ", estSupprime='"
+                + isEstSupprime() + "'" + ", email='" + getEmail() + "'" + ", telephoneFixe='" + getTelephoneFixe()
+                + "'" + ", telephoneMobile='" + getTelephoneMobile() + "'" + ", categories='" + getCategories() + "'"
+                + ", commandes='" + getCommandes() + "'" + ", adresse='" + getAdresse() + "'" + "}";
     }
+
+    // #endregion
 }
