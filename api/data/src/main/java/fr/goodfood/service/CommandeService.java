@@ -3,7 +3,6 @@ package fr.goodfood.service;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 
 import fr.goodfood.repository.CommandeRepository;
 import fr.goodfood.ressource.error.NotFoundException;
@@ -59,7 +58,7 @@ public class CommandeService {
         Commande commande = this.one(id);
         CommandePanierDto panier = this.modelMapper.map(commande, CommandePanierDto.class);
 
-        Set<Composition> compositions = commande.getCompositions();
+        List<Composition> compositions = commande.getCompositions();
         HashMap<Long, FormulePanierDto> formulesMap = new HashMap<Long, FormulePanierDto>();
 
         for (Composition composition : compositions) {

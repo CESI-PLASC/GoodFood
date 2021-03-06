@@ -2,7 +2,7 @@ package fr.goodfood.dto.formule;
 
 import java.util.Objects;
 
-public class FormuleDTO {
+public class SimpleFormuleDTO {
 
     private Long id;
     private String designation;
@@ -10,10 +10,10 @@ public class FormuleDTO {
 
     // #region Générations
 
-    public FormuleDTO() {
+    public SimpleFormuleDTO() {
     }
 
-    public FormuleDTO(Long id, String designation, Float prix) {
+    public SimpleFormuleDTO(Long id, String designation, Float prix) {
         this.id = id;
         this.designation = designation;
         this.prix = prix;
@@ -43,17 +43,17 @@ public class FormuleDTO {
         this.prix = prix;
     }
 
-    public FormuleDTO id(Long id) {
+    public SimpleFormuleDTO id(Long id) {
         setId(id);
         return this;
     }
 
-    public FormuleDTO designation(String designation) {
+    public SimpleFormuleDTO designation(String designation) {
         setDesignation(designation);
         return this;
     }
 
-    public FormuleDTO prix(Float prix) {
+    public SimpleFormuleDTO prix(Float prix) {
         setPrix(prix);
         return this;
     }
@@ -62,12 +62,12 @@ public class FormuleDTO {
     public boolean equals(Object o) {
         if (o == this)
             return true;
-        if (!(o instanceof FormuleDTO)) {
+        if (!(o instanceof SimpleFormuleDTO)) {
             return false;
         }
-        FormuleDTO formuleDto = (FormuleDTO) o;
-        return Objects.equals(id, formuleDto.id) && Objects.equals(designation, formuleDto.designation)
-                && Objects.equals(prix, formuleDto.prix);
+        SimpleFormuleDTO simpleFormuleDTO = (SimpleFormuleDTO) o;
+        return Objects.equals(id, simpleFormuleDTO.id) && Objects.equals(designation, simpleFormuleDTO.designation)
+                && Objects.equals(prix, simpleFormuleDTO.prix);
     }
 
     @Override

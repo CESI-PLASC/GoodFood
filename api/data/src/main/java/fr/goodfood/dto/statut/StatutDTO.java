@@ -1,35 +1,22 @@
-package fr.goodfood.entity;
+package fr.goodfood.dto.statut;
 
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import fr.goodfood.dto.commande.SimpleCommandeDTO;
 
-@Entity
-public class Statut {
+public class StatutDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
     private Long id;
-
-    @Column
     private String designation;
-
-    @OneToMany(mappedBy = "statut", targetEntity = Commande.class)
-    private List<Commande> commandes;
+    private List<SimpleCommandeDTO> commandes;
 
     // #region Générations
 
-    public Statut() {
+    public StatutDTO() {
     }
 
-    public Statut(Long id, String designation, List<Commande> commandes) {
+    public StatutDTO(Long id, String designation, List<SimpleCommandeDTO> commandes) {
         this.id = id;
         this.designation = designation;
         this.commandes = commandes;
@@ -51,25 +38,25 @@ public class Statut {
         this.designation = designation;
     }
 
-    public List<Commande> getCommandes() {
+    public List<SimpleCommandeDTO> getCommandes() {
         return this.commandes;
     }
 
-    public void setCommandes(List<Commande> commandes) {
+    public void setCommandes(List<SimpleCommandeDTO> commandes) {
         this.commandes = commandes;
     }
 
-    public Statut id(Long id) {
+    public StatutDTO id(Long id) {
         setId(id);
         return this;
     }
 
-    public Statut designation(String designation) {
+    public StatutDTO designation(String designation) {
         setDesignation(designation);
         return this;
     }
 
-    public Statut commandes(List<Commande> commandes) {
+    public StatutDTO commandes(List<SimpleCommandeDTO> commandes) {
         setCommandes(commandes);
         return this;
     }
@@ -78,12 +65,12 @@ public class Statut {
     public boolean equals(Object o) {
         if (o == this)
             return true;
-        if (!(o instanceof Statut)) {
+        if (!(o instanceof StatutDTO)) {
             return false;
         }
-        Statut statut = (Statut) o;
-        return Objects.equals(id, statut.id) && Objects.equals(designation, statut.designation)
-                && Objects.equals(commandes, statut.commandes);
+        StatutDTO statutDTO = (StatutDTO) o;
+        return Objects.equals(id, statutDTO.id) && Objects.equals(designation, statutDTO.designation)
+                && Objects.equals(commandes, statutDTO.commandes);
     }
 
     @Override

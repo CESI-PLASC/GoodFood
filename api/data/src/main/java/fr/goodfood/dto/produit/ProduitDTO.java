@@ -12,92 +12,80 @@ public class ProduitDTO {
     private float prix;
     private List<SimpleCategorieDTO> categories;
 
-    /**
-     * Récupère : id.
-     *
-     * @return id.
-     */
-    public Long getId() {
-        return id;
+    // #region Générations
+
+    public ProduitDTO() {
     }
 
-    /**
-     * Défini la nouvelle valeur de : id.
-     *
-     * @param id La nouvelle valeur.
-     * @return L'instance (Pattern fluent)
-     */
-    public ProduitDTO setId(Long id) {
+    public ProduitDTO(Long id, String designation, float prix, List<SimpleCategorieDTO> categories) {
         this.id = id;
-        return this;
-    }
-
-    /**
-     * Récupère : designation.
-     *
-     * @return designation.
-     */
-    public String getDesignation() {
-        return designation;
-    }
-
-    /**
-     * Défini la nouvelle valeur de : designation.
-     *
-     * @param designation La nouvelle valeur.
-     * @return L'instance (Pattern fluent)
-     */
-    public ProduitDTO setDesignation(String designation) {
         this.designation = designation;
-        return this;
-    }
-
-    /**
-     * Récupère : prix.
-     *
-     * @return prix.
-     */
-    public float getPrix() {
-        return prix;
-    }
-
-    /**
-     * Défini la nouvelle valeur de : prix.
-     *
-     * @param prix La nouvelle valeur.
-     * @return L'instance (Pattern fluent)
-     */
-    public ProduitDTO setPrix(float prix) {
         this.prix = prix;
+        this.categories = categories;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDesignation() {
+        return this.designation;
+    }
+
+    public void setDesignation(String designation) {
+        this.designation = designation;
+    }
+
+    public float getPrix() {
+        return this.prix;
+    }
+
+    public void setPrix(float prix) {
+        this.prix = prix;
+    }
+
+    public List<SimpleCategorieDTO> getCategories() {
+        return this.categories;
+    }
+
+    public void setCategories(List<SimpleCategorieDTO> categories) {
+        this.categories = categories;
+    }
+
+    public ProduitDTO id(Long id) {
+        setId(id);
         return this;
     }
 
-    /**
-     * Récupère : categories.
-     *
-     * @return categories.
-     */
-    public List<SimpleCategorieDTO> getCategories() {
-        return categories;
+    public ProduitDTO designation(String designation) {
+        setDesignation(designation);
+        return this;
     }
 
-    /**
-     * Défini la nouvelle valeur de : categories.
-     *
-     * @param categories La nouvelle valeur.
-     * @return L'instance (Pattern fluent)
-     */
-    public ProduitDTO setCategories(List<SimpleCategorieDTO> categories) {
-        this.categories = categories;
+    public ProduitDTO prix(float prix) {
+        setPrix(prix);
+        return this;
+    }
+
+    public ProduitDTO categories(List<SimpleCategorieDTO> categories) {
+        setCategories(categories);
         return this;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ProduitDTO that = (ProduitDTO) o;
-        return Float.compare(that.prix, prix) == 0 && Objects.equals(id, that.id) && Objects.equals(designation, that.designation) && Objects.equals(categories, that.categories);
+        if (o == this)
+            return true;
+        if (!(o instanceof ProduitDTO)) {
+            return false;
+        }
+        ProduitDTO produitDTO = (ProduitDTO) o;
+        return Objects.equals(id, produitDTO.id) && Objects.equals(designation, produitDTO.designation)
+                && prix == produitDTO.prix && Objects.equals(categories, produitDTO.categories);
     }
 
     @Override
@@ -107,11 +95,9 @@ public class ProduitDTO {
 
     @Override
     public String toString() {
-        return "ProduitDTO{" +
-                "id=" + id +
-                ", designation='" + designation + '\'' +
-                ", prix=" + prix +
-                ", categories=" + categories +
-                '}';
+        return "{" + " id='" + getId() + "'" + ", designation='" + getDesignation() + "'" + ", prix='" + getPrix() + "'"
+                + ", categories='" + getCategories() + "'" + "}";
     }
+
+    // #endregion
 }
