@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.goodfood.dto.commande.CommandeDTO;
-import fr.goodfood.dto.panier.CommandePanierDto;
 import fr.goodfood.entity.Commande;
 import fr.goodfood.service.CommandeService;
 import fr.goodfood.service.mapper.CommandeMapper;
@@ -76,12 +75,12 @@ public class CommandeRessource {
         this.commandeService.delete(id);
     }
 
-    @GetMapping("/{id}/panier")
-    public EntityModel<CommandePanierDto> panier(@PathVariable Long id) {
-        CommandePanierDto commande = this.commandeService.panier(id);
+    // @GetMapping("/{id}/panier")
+    // public EntityModel<CommandePanierDto> panier(@PathVariable Long id) {
+    //     CommandePanierDto commande = this.commandeService.panier(id);
 
-        return EntityModel.of(commande, linkTo(methodOn(CommandeRessource.class).panier(id)).withSelfRel(),
-                linkTo(methodOn(CommandeRessource.class).one(id)).withRel("commande"),
-                linkTo(methodOn(CommandeRessource.class).all()).withRel("commandes"));
-    }
+    //     return EntityModel.of(commande, linkTo(methodOn(CommandeRessource.class).panier(id)).withSelfRel(),
+    //             linkTo(methodOn(CommandeRessource.class).one(id)).withRel("commande"),
+    //             linkTo(methodOn(CommandeRessource.class).all()).withRel("commandes"));
+    // }
 }
