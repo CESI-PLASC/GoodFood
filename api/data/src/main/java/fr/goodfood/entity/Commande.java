@@ -32,9 +32,6 @@ public class Commande {
     @ManyToOne(targetEntity = Franchise.class)
     private Franchise franchise;
 
-    @OneToMany(mappedBy = "formule")
-    private List<Composition> compositions;
-
     @OneToMany(mappedBy = "commande")
     private List<Contenu> formules;
 
@@ -44,13 +41,12 @@ public class Commande {
     }
 
     public Commande(Long id, Date dateCreation, Date dateDonnee, Statut statut, Franchise franchise,
-            List<Composition> compositions, List<Contenu> formules) {
+            List<Contenu> formules) {
         this.id = id;
         this.dateCreation = dateCreation;
         this.dateDonnee = dateDonnee;
         this.statut = statut;
         this.franchise = franchise;
-        this.compositions = compositions;
         this.formules = formules;
     }
 
@@ -94,14 +90,6 @@ public class Commande {
         this.franchise = franchise;
     }
 
-    public List<Composition> getCompositions() {
-        return this.compositions;
-    }
-
-    public void setCompositions(List<Composition> compositions) {
-        this.compositions = compositions;
-    }
-
     public List<Contenu> getFormules() {
         return this.formules;
     }
@@ -135,11 +123,6 @@ public class Commande {
         return this;
     }
 
-    public Commande compositions(List<Composition> compositions) {
-        setCompositions(compositions);
-        return this;
-    }
-
     public Commande formules(List<Contenu> formules) {
         setFormules(formules);
         return this;
@@ -155,20 +138,19 @@ public class Commande {
         Commande commande = (Commande) o;
         return Objects.equals(id, commande.id) && Objects.equals(dateCreation, commande.dateCreation)
                 && Objects.equals(dateDonnee, commande.dateDonnee) && Objects.equals(statut, commande.statut)
-                && Objects.equals(franchise, commande.franchise) && Objects.equals(compositions, commande.compositions)
-                && Objects.equals(formules, commande.formules);
+                && Objects.equals(franchise, commande.franchise) && Objects.equals(formules, commande.formules);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, dateCreation, dateDonnee, statut, franchise, compositions, formules);
+        return Objects.hash(id, dateCreation, dateDonnee, statut, franchise, formules);
     }
 
     @Override
     public String toString() {
         return "{" + " id='" + getId() + "'" + ", dateCreation='" + getDateCreation() + "'" + ", dateDonnee='"
                 + getDateDonnee() + "'" + ", statut='" + getStatut() + "'" + ", franchise='" + getFranchise() + "'"
-                + ", compositions='" + getCompositions() + "'" + ", formules='" + getFormules() + "'" + "}";
+                + ", formules='" + getFormules() + "'" + "}";
     }
 
     // #endregion
