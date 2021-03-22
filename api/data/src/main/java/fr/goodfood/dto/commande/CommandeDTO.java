@@ -15,20 +15,21 @@ public class CommandeDTO {
     private Date dateDonnee;
     private SimpleStatutDTO statut;
     private SimpleFranchiseDTO franchise;
-    private List<ContenuDTO> contenus;
+    private List<ContenuDTO> formules;
 
     // #region Générations
 
     public CommandeDTO() {
     }
 
-    public CommandeDTO(Long id, Date dateCreation, Date dateDonnee, SimpleStatutDTO statut, SimpleFranchiseDTO franchise, List<ContenuDTO> contenus) {
+    public CommandeDTO(Long id, Date dateCreation, Date dateDonnee, SimpleStatutDTO statut,
+            SimpleFranchiseDTO franchise, List<ContenuDTO> formules) {
         this.id = id;
         this.dateCreation = dateCreation;
         this.dateDonnee = dateDonnee;
         this.statut = statut;
         this.franchise = franchise;
-        this.contenus = contenus;
+        this.formules = formules;
     }
 
     public Long getId() {
@@ -71,12 +72,12 @@ public class CommandeDTO {
         this.franchise = franchise;
     }
 
-    public List<ContenuDTO> getContenus() {
-        return this.contenus;
+    public List<ContenuDTO> getFormules() {
+        return this.formules;
     }
 
-    public void setContenus(List<ContenuDTO> contenus) {
-        this.contenus = contenus;
+    public void setFormules(List<ContenuDTO> formules) {
+        this.formules = formules;
     }
 
     public CommandeDTO id(Long id) {
@@ -104,8 +105,8 @@ public class CommandeDTO {
         return this;
     }
 
-    public CommandeDTO contenus(List<ContenuDTO> contenus) {
-        setContenus(contenus);
+    public CommandeDTO formules(List<ContenuDTO> formules) {
+        setFormules(formules);
         return this;
     }
 
@@ -117,24 +118,21 @@ public class CommandeDTO {
             return false;
         }
         CommandeDTO commandeDTO = (CommandeDTO) o;
-        return Objects.equals(id, commandeDTO.id) && Objects.equals(dateCreation, commandeDTO.dateCreation) && Objects.equals(dateDonnee, commandeDTO.dateDonnee) && Objects.equals(statut, commandeDTO.statut) && Objects.equals(franchise, commandeDTO.franchise) && Objects.equals(contenus, commandeDTO.contenus);
+        return Objects.equals(id, commandeDTO.id) && Objects.equals(dateCreation, commandeDTO.dateCreation)
+                && Objects.equals(dateDonnee, commandeDTO.dateDonnee) && Objects.equals(statut, commandeDTO.statut)
+                && Objects.equals(franchise, commandeDTO.franchise) && Objects.equals(formules, commandeDTO.formules);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, dateCreation, dateDonnee, statut, franchise, contenus);
+        return Objects.hash(id, dateCreation, dateDonnee, statut, franchise, formules);
     }
 
     @Override
     public String toString() {
-        return "{" +
-            " id='" + getId() + "'" +
-            ", dateCreation='" + getDateCreation() + "'" +
-            ", dateDonnee='" + getDateDonnee() + "'" +
-            ", statut='" + getStatut() + "'" +
-            ", franchise='" + getFranchise() + "'" +
-            ", contenus='" + getContenus() + "'" +
-            "}";
+        return "{" + " id='" + getId() + "'" + ", dateCreation='" + getDateCreation() + "'" + ", dateDonnee='"
+                + getDateDonnee() + "'" + ", statut='" + getStatut() + "'" + ", franchise='" + getFranchise() + "'"
+                + ", formules='" + getFormules() + "'" + "}";
     }
 
     // #endregion
