@@ -5,5 +5,6 @@
 
     <!-- Liquibase des versions -->
     <include file="0.1.0/maj.xml" relativeToChangelogFile="true" />
+    <include file="0.2.0/maj.xml" relativeToChangelogFile="true" />
 
 </databaseChangeLog>

@@ -35,19 +35,23 @@ public class Commande {
     @OneToMany(mappedBy = "formule")
     private List<Composition> compositions;
 
+    @OneToMany(mappedBy = "commande")
+    private List<Contenu> contenus;
+
     // #region Générations
 
     public Commande() {
     }
 
     public Commande(Long id, Date dateCreation, Date dateDonnee, Statut statut, Franchise franchise,
-            List<Composition> compositions) {
+            List<Composition> compositions, List<Contenu> contenus) {
         this.id = id;
         this.dateCreation = dateCreation;
         this.dateDonnee = dateDonnee;
         this.statut = statut;
         this.franchise = franchise;
         this.compositions = compositions;
+        this.contenus = contenus;
     }
 
     public Long getId() {
@@ -98,6 +102,14 @@ public class Commande {
         this.compositions = compositions;
     }
 
+    public List<Contenu> getContenus() {
+        return this.contenus;
+    }
+
+    public void setContenus(List<Contenu> contenus) {
+        this.contenus = contenus;
+    }
+
     public Commande id(Long id) {
         setId(id);
         return this;
@@ -128,6 +140,11 @@ public class Commande {
         return this;
     }
 
+    public Commande contenus(List<Contenu> contenus) {
+        setContenus(contenus);
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -138,19 +155,20 @@ public class Commande {
         Commande commande = (Commande) o;
         return Objects.equals(id, commande.id) && Objects.equals(dateCreation, commande.dateCreation)
                 && Objects.equals(dateDonnee, commande.dateDonnee) && Objects.equals(statut, commande.statut)
-                && Objects.equals(franchise, commande.franchise) && Objects.equals(compositions, commande.compositions);
+                && Objects.equals(franchise, commande.franchise) && Objects.equals(compositions, commande.compositions)
+                && Objects.equals(contenus, commande.contenus);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, dateCreation, dateDonnee, statut, franchise, compositions);
+        return Objects.hash(id, dateCreation, dateDonnee, statut, franchise, compositions, contenus);
     }
 
     @Override
     public String toString() {
         return "{" + " id='" + getId() + "'" + ", dateCreation='" + getDateCreation() + "'" + ", dateDonnee='"
                 + getDateDonnee() + "'" + ", statut='" + getStatut() + "'" + ", franchise='" + getFranchise() + "'"
-                + ", compositions='" + getCompositions() + "'" + "}";
+                + ", compositions='" + getCompositions() + "'" + ", contenus='" + getContenus() + "'" + "}";
     }
 
     // #endregion

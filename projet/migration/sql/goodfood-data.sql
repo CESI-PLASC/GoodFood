@@ -48,7 +48,19 @@ insert into goodfood.Commande (id, date_creation, date_donnee, statut_id, franch
 	(1, "2020-01-01 12:00:00", "2020-01-01 12:00:00", 1, 1),
     (2, "2020-01-01 12:00:00", "2020-01-01 12:00:00", 4, 1)
 ;
-insert into goodfood.Composition (commande_id, formule_id, produit_id, quantite) values
-	(1, 1, 1, 1),
-    (1, 1, 2, 1)
+
+insert into goodfood.contenu (id, formule_id, commande_id) VALUES
+    (1, 1, 1),
+    (2, 1, 1)
 ;
+
+insert into goodfood.contient (contenu_id, produit_id, quantite) VALUES
+    (1, 1, 1),
+    (1, 2, 1),
+    (2, 2, 2)
+;
+
+-- insert into goodfood.Composition (commande_id, formule_id, produit_id, quantite) values
+-- 	(1, 1, 1, 1),
+--     (1, 1, 2, 1)
+-- ;
