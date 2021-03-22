@@ -2,12 +2,12 @@ package fr.goodfood.dto.contient;
 
 import java.util.Objects;
 
-import fr.goodfood.dto.produit.SimpleProduitDTO;
+import fr.goodfood.dto.produit.ProduitDTO;
 import fr.goodfood.entity.keys.ContientKey;
 
 public class ContientDTO {
     private ContientKey id;
-    private SimpleProduitDTO produit;
+    private ProduitDTO produit;
     private Long quantite;
 
     // #region Générations
@@ -15,7 +15,7 @@ public class ContientDTO {
     public ContientDTO() {
     }
 
-    public ContientDTO(ContientKey id, SimpleProduitDTO produit, Long quantite) {
+    public ContientDTO(ContientKey id, ProduitDTO produit, Long quantite) {
         this.id = id;
         this.produit = produit;
         this.quantite = quantite;
@@ -29,11 +29,11 @@ public class ContientDTO {
         this.id = id;
     }
 
-    public SimpleProduitDTO getProduit() {
+    public ProduitDTO getProduit() {
         return this.produit;
     }
 
-    public void setProduit(SimpleProduitDTO produit) {
+    public void setProduit(ProduitDTO produit) {
         this.produit = produit;
     }
 
@@ -50,7 +50,7 @@ public class ContientDTO {
         return this;
     }
 
-    public ContientDTO produit(SimpleProduitDTO produit) {
+    public ContientDTO produit(ProduitDTO produit) {
         setProduit(produit);
         return this;
     }
