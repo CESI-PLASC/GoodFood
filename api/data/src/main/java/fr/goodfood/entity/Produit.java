@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 
 import java.util.List;
 import java.util.Objects;
@@ -28,26 +27,19 @@ public class Produit {
     private float prix;
 
     @ManyToMany(targetEntity = Categorie.class)
-    @JoinTable(
-            name = "categorise",
-            joinColumns = @JoinColumn(name = "produit_id"),
-            inverseJoinColumns = @JoinColumn(name = "categorie_id"))
+    @JoinTable(name = "categorise", joinColumns = @JoinColumn(name = "produit_id"), inverseJoinColumns = @JoinColumn(name = "categorie_id"))
     private List<Categorie> categories;
 
-    @OneToMany(mappedBy = "produit")
-    private List<Composition> compositions;
-
-    //#region Générations
+    // #region Générations
 
     public Produit() {
     }
 
-    public Produit(Long id, String designation, float prix, List<Categorie> categories, List<Composition> compositions) {
+    public Produit(Long id, String designation, float prix, List<Categorie> categories) {
         this.id = id;
         this.designation = designation;
         this.prix = prix;
         this.categories = categories;
-        this.compositions = compositions;
     }
 
     public Long getId() {
@@ -82,14 +74,6 @@ public class Produit {
         this.categories = categories;
     }
 
-    public List<Composition> getCompositions() {
-        return this.compositions;
-    }
-
-    public void setCompositions(List<Composition> compositions) {
-        this.compositions = compositions;
-    }
-
     public Produit id(Long id) {
         setId(id);
         return this;
@@ -110,11 +94,6 @@ public class Produit {
         return this;
     }
 
-    public Produit compositions(List<Composition> compositions) {
-        setCompositions(compositions);
-        return this;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -123,24 +102,20 @@ public class Produit {
             return false;
         }
         Produit produit = (Produit) o;
-        return Objects.equals(id, produit.id) && Objects.equals(designation, produit.designation) && prix == produit.prix && Objects.equals(categories, produit.categories) && Objects.equals(compositions, produit.compositions);
+        return Objects.equals(id, produit.id) && Objects.equals(designation, produit.designation)
+                && prix == produit.prix && Objects.equals(categories, produit.categories);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, designation, prix, categories, compositions);
+        return Objects.hash(id, designation, prix, categories);
     }
 
     @Override
     public String toString() {
-        return "{" +
-            " id='" + getId() + "'" +
-            ", designation='" + getDesignation() + "'" +
-            ", prix='" + getPrix() + "'" +
-            ", categories='" + getCategories() + "'" +
-            ", compositions='" + getCompositions() + "'" +
-            "}";
+        return "{" + " id='" + getId() + "'" + ", designation='" + getDesignation() + "'" + ", prix='" + getPrix() + "'"
+                + ", categories='" + getCategories() + "'" + "}";
     }
 
-    //#endregion
+    // #endregion
 }

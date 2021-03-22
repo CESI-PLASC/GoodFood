@@ -9,10 +9,8 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseDataSource;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 
 import javax.sql.DataSource;
@@ -22,19 +20,18 @@ import javax.sql.DataSource;
 public class LiquibaseConfiguration {
     private final Logger log = LoggerFactory.getLogger(LiquibaseConfiguration.class);
     private final Environment env;
+
     public LiquibaseConfiguration(Environment env) {
         this.env = env;
     }
 
     @Bean
-    public SpringLiquibase liquibase(
-            @LiquibaseDataSource ObjectProvider<DataSource> liquibaseDataSource,
-            LiquibaseProperties liquibaseProperties,
-            ObjectProvider<DataSource> dataSource,
-            DataSourceProperties dataSourceProperties
-    ) {
+    public SpringLiquibase liquibase(@LiquibaseDataSource ObjectProvider<DataSource> liquibaseDataSource,
+            LiquibaseProperties liquibaseProperties, ObjectProvider<DataSource> dataSource,
+            DataSourceProperties dataSourceProperties) {
         log.info("Démarrage de liquibase");
-        SpringLiquibase liquibase = SpringLiquibaseUtil.createSpringLiquibase(liquibaseDataSource.getIfAvailable(), liquibaseProperties, dataSource.getIfUnique(), dataSourceProperties);
+        SpringLiquibase liquibase = SpringLiquibaseUtil.createSpringLiquibase(liquibaseDataSource.getIfAvailable(),
+                liquibaseProperties, dataSource.getIfUnique(), dataSourceProperties);
         liquibase.setChangeLog(env.getProperty("spring.liquibase.change-log"));
         liquibase.setContexts(liquibaseProperties.getContexts());
         liquibase.setDefaultSchema(liquibaseProperties.getDefaultSchema());
