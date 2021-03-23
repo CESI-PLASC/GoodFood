@@ -7,6 +7,7 @@ import java.util.Objects;
 import fr.goodfood.dto.contenu.ContenuDTO;
 import fr.goodfood.dto.franchise.SimpleFranchiseDTO;
 import fr.goodfood.dto.statut.SimpleStatutDTO;
+import fr.goodfood.dto.utilisateur.UtilisateurSDTO;
 
 public class CommandeDTO {
 
@@ -16,6 +17,7 @@ public class CommandeDTO {
     private SimpleStatutDTO statut;
     private SimpleFranchiseDTO franchise;
     private List<ContenuDTO> formules;
+    private UtilisateurSDTO utilisateur;
 
     // #region Générations
 
@@ -23,13 +25,14 @@ public class CommandeDTO {
     }
 
     public CommandeDTO(Long id, Date dateCreation, Date dateDonnee, SimpleStatutDTO statut,
-            SimpleFranchiseDTO franchise, List<ContenuDTO> formules) {
+            SimpleFranchiseDTO franchise, List<ContenuDTO> formules, UtilisateurSDTO utilisateur) {
         this.id = id;
         this.dateCreation = dateCreation;
         this.dateDonnee = dateDonnee;
         this.statut = statut;
         this.franchise = franchise;
         this.formules = formules;
+        this.utilisateur = utilisateur;
     }
 
     public Long getId() {
@@ -80,6 +83,14 @@ public class CommandeDTO {
         this.formules = formules;
     }
 
+    public UtilisateurSDTO getUtilisateur() {
+        return this.utilisateur;
+    }
+
+    public void setUtilisateur(UtilisateurSDTO utilisateur) {
+        this.utilisateur = utilisateur;
+    }
+
     public CommandeDTO id(Long id) {
         setId(id);
         return this;
@@ -110,6 +121,11 @@ public class CommandeDTO {
         return this;
     }
 
+    public CommandeDTO utilisateur(UtilisateurSDTO utilisateur) {
+        setUtilisateur(utilisateur);
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -120,19 +136,20 @@ public class CommandeDTO {
         CommandeDTO commandeDTO = (CommandeDTO) o;
         return Objects.equals(id, commandeDTO.id) && Objects.equals(dateCreation, commandeDTO.dateCreation)
                 && Objects.equals(dateDonnee, commandeDTO.dateDonnee) && Objects.equals(statut, commandeDTO.statut)
-                && Objects.equals(franchise, commandeDTO.franchise) && Objects.equals(formules, commandeDTO.formules);
+                && Objects.equals(franchise, commandeDTO.franchise) && Objects.equals(formules, commandeDTO.formules)
+                && Objects.equals(utilisateur, commandeDTO.utilisateur);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, dateCreation, dateDonnee, statut, franchise, formules);
+        return Objects.hash(id, dateCreation, dateDonnee, statut, franchise, formules, utilisateur);
     }
 
     @Override
     public String toString() {
         return "{" + " id='" + getId() + "'" + ", dateCreation='" + getDateCreation() + "'" + ", dateDonnee='"
                 + getDateDonnee() + "'" + ", statut='" + getStatut() + "'" + ", franchise='" + getFranchise() + "'"
-                + ", formules='" + getFormules() + "'" + "}";
+                + ", formules='" + getFormules() + "'" + ", utilisateur='" + getUtilisateur() + "'" + "}";
     }
 
     // #endregion

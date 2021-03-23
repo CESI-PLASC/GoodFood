@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b9d6e8da-035d-4740-9c6d-c6522d350dcd",
+		"_postman_id": "2f8252fc-c93a-4dbc-a9d8-05bbb79928dc",
 		"name": "Goodfood",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -55,7 +55,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"dateCreation\": \"2022-02-02\",\r\n    \"dateDonnee\": \"2022-02-02\",\r\n    \"franchise\": {\r\n        \"id\": 1\r\n    },\r\n    \"statut\": {\r\n        \"id\": 1\r\n    }\r\n}",
+									"raw": "{\r\n    \"dateCreation\": \"2022-02-02\",\r\n    \"dateDonnee\": \"2022-02-02\",\r\n    \"franchise\": {\r\n        \"id\": 1\r\n    },\r\n    \"statut\": {\r\n        \"id\": 1\r\n    },\r\n    \"utilisateur\": {\r\n        \"id\": 1\r\n    }\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -504,6 +504,126 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "Les utilisateurs",
+					"item": [
+						{
+							"name": "Tous les utilisateurs",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_data_res_utilisateurs}}",
+									"host": [
+										"{{api_data_res_utilisateurs}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Un utilisateur",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_data_res_utilisateurs}}/:idUtilisateur",
+									"host": [
+										"{{api_data_res_utilisateurs}}"
+									],
+									"path": [
+										":idUtilisateur"
+									],
+									"variable": [
+										{
+											"key": "idUtilisateur",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Créer un utilisateur",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nom\": \"Roglic\",\r\n    \"prenom\": \"Primoz\",\r\n    \"dateNaissance\": \"1989-10-29\",\r\n    \"email\": \"primoz.roglic@gmail.com\",\r\n    \"telephoneFixe\": \"0606060606\",\r\n    \"telephoneMobile\": \"0606060606\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_data_res_utilisateurs}}",
+									"host": [
+										"{{api_data_res_utilisateurs}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modifier un utilisateur",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"nom\": \"Roglic\",\r\n    \"prenom\": \"Primoz\",\r\n    \"dateNaissance\": \"1989-10-29\",\r\n    \"email\": \"primoz.roglic@gmail.com\",\r\n    \"telephoneFixe\": \"0606060606\",\r\n    \"telephoneMobile\": \"0606060606\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_data_res_utilisateurs}}/:idUtilisateur",
+									"host": [
+										"{{api_data_res_utilisateurs}}"
+									],
+									"path": [
+										":idUtilisateur"
+									],
+									"variable": [
+										{
+											"key": "idUtilisateur",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Supprimer un utilisateur",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api_data_res_utilisateurs}}/:idUtilisateur",
+									"host": [
+										"{{api_data_res_utilisateurs}}"
+									],
+									"path": [
+										":idUtilisateur"
+									],
+									"variable": [
+										{
+											"key": "idUtilisateur",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		}
@@ -564,6 +684,10 @@
 		{
 			"key": "api_data_res_categories",
 			"value": "{{api_data_url}}/categories"
+		},
+		{
+			"key": "api_data_res_utilisateurs",
+			"value": "{{api_data_url}}/utilisateurs"
 		},
 		{
 			"key": "api_auth_host",

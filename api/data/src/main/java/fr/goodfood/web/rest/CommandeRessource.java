@@ -74,13 +74,4 @@ public class CommandeRessource {
     public void delete(@PathVariable Long id) {
         this.commandeService.delete(id);
     }
-
-    // @GetMapping("/{id}/panier")
-    // public EntityModel<CommandePanierDto> panier(@PathVariable Long id) {
-    //     CommandePanierDto commande = this.commandeService.panier(id);
-
-    //     return EntityModel.of(commande, linkTo(methodOn(CommandeRessource.class).panier(id)).withSelfRel(),
-    //             linkTo(methodOn(CommandeRessource.class).one(id)).withRel("commande"),
-    //             linkTo(methodOn(CommandeRessource.class).all()).withRel("commandes"));
-    // }
 }
