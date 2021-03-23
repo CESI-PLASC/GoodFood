@@ -23,7 +23,7 @@
             </column>
             <column
                 name="adresse_id"
-                type="int">
+                type="bigint">
                 <constraints nullable="false" />
             </column>
             <column

@@ -1,0 +1,47 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet
+        id="0.2.0-create-table-localisation"
+        author="agillereau">
+        <createTable tableName="localisation">
+            <column
+                name="utilisateur_id"
+                type="bigint">
+                <constraints
+                    primaryKey="true"
+                    nullable="false" />
+            </column>
+            <column
+                name="adresse_id"
+                type="bigint">
+                <constraints
+                    primaryKey="true"
+                    nullable="false" />
+            </column>
+            <column
+                name="preferee"
+                type="boolean"
+                defaultValue="false">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint
+            baseTableName="localisation"
+            baseColumnNames="utilisateur_id"
+            constraintName="fk_localisation_utilisateur_id"
+            referencedTableName="utilisateur"
+            referencedColumnNames="id" />
+
+        <addForeignKeyConstraint
+            baseTableName="localisation"
+            baseColumnNames="adresse_id"
+            constraintName="fk_localisation_adresse_id"
+            referencedTableName="adresse"
+            referencedColumnNames="id" />
+    </changeSet>
+
+</databaseChangeLog>

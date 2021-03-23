@@ -35,19 +35,23 @@ public class Commande {
     @OneToMany(mappedBy = "commande")
     private List<Contenu> formules;
 
+    @ManyToOne
+    private Utilisateur utilisateur;
+
     // #region Générations
 
     public Commande() {
     }
 
     public Commande(Long id, Date dateCreation, Date dateDonnee, Statut statut, Franchise franchise,
-            List<Contenu> formules) {
+            List<Contenu> formules, Utilisateur utilisateur) {
         this.id = id;
         this.dateCreation = dateCreation;
         this.dateDonnee = dateDonnee;
         this.statut = statut;
         this.franchise = franchise;
         this.formules = formules;
+        this.utilisateur = utilisateur;
     }
 
     public Long getId() {
@@ -98,6 +102,14 @@ public class Commande {
         this.formules = formules;
     }
 
+    public Utilisateur getUtilisateur() {
+        return this.utilisateur;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
+
     public Commande id(Long id) {
         setId(id);
         return this;
@@ -128,6 +140,11 @@ public class Commande {
         return this;
     }
 
+    public Commande utilisateur(Utilisateur utilisateur) {
+        setUtilisateur(utilisateur);
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -138,19 +155,20 @@ public class Commande {
         Commande commande = (Commande) o;
         return Objects.equals(id, commande.id) && Objects.equals(dateCreation, commande.dateCreation)
                 && Objects.equals(dateDonnee, commande.dateDonnee) && Objects.equals(statut, commande.statut)
-                && Objects.equals(franchise, commande.franchise) && Objects.equals(formules, commande.formules);
+                && Objects.equals(franchise, commande.franchise) && Objects.equals(formules, commande.formules)
+                && Objects.equals(utilisateur, commande.utilisateur);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, dateCreation, dateDonnee, statut, franchise, formules);
+        return Objects.hash(id, dateCreation, dateDonnee, statut, franchise, formules, utilisateur);
     }
 
     @Override
     public String toString() {
         return "{" + " id='" + getId() + "'" + ", dateCreation='" + getDateCreation() + "'" + ", dateDonnee='"
                 + getDateDonnee() + "'" + ", statut='" + getStatut() + "'" + ", franchise='" + getFranchise() + "'"
-                + ", formules='" + getFormules() + "'" + "}";
+                + ", formules='" + getFormules() + "'" + ", utilisateur='" + getUtilisateur() + "'" + "}";
     }
 
     // #endregion
