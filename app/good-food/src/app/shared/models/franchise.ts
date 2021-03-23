@@ -5,7 +5,7 @@ export interface IFranchise {
   id?: number;
   designation?: string;
   telephoneFixe?: string | null;
-  telephonePortable?: string | null;
+  telephoneMobile?: string | null;
   email?: string;
   adresse?: IAdresse;
 }
@@ -14,7 +14,7 @@ export class Franchise implements IFranchise{
     id?: number;
     designation?: string;
     telephoneFixe?: string | null;
-    telephonePortable?: string | null;
+    telephoneMobile?: string | null;
     email?: string;
     adresse?: Adresse;
     constructor(opt?: Partial<IFranchise>) {
