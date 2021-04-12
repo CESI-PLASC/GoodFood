@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Commande } from 'src/app/shared/models/commande';
 
 @Component({
@@ -9,7 +10,11 @@ import { Commande } from 'src/app/shared/models/commande';
 export class PanierComponent {
   @Input() commande: Commande;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
+
+  navigateToCommande(){
+    this.router.navigate([`/franchise/${this.commande.franchise.id}/catalogue`]);
+  }
 }
