@@ -15,6 +15,7 @@ import { InfoFranchiseComponent } from './info-franchise/info-franchise.componen
 import { FiltreFranchiseComponent } from './filtre-franchise/filtre-franchise.component';
 import { SelecteurAdresseComponent } from './selecteur-adresse/selecteur-adresse.component';
 import { InfoAdresseComponent } from './info-adresse/info-adresse.component';
+import { PaiementCarteComponent } from './paiement-carte/paiement-carte.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { InfoAdresseComponent } from './info-adresse/info-adresse.component';
       PanierComponent,
       SelectBoxComponent,
       SelecteurAdresseComponent,
-      InfoAdresseComponent
+      InfoAdresseComponent,
+      PaiementCarteComponent
   ],
     imports: [
         CommonModule,
@@ -49,7 +51,8 @@ import { InfoAdresseComponent } from './info-adresse/info-adresse.component';
       FiltreFranchiseComponent,
       PanierComponent,
       SelectBoxComponent,
-      SelecteurAdresseComponent
+      SelecteurAdresseComponent,
+      PaiementCarteComponent
   ]
 })
 export class ComponentsModule { }

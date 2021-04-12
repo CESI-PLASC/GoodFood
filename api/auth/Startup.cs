@@ -21,6 +21,7 @@ using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using auth.infrastructure.Repositories;
 using auth.infrastructure.Services;
 using FluentValidation.AspNetCore;
+using Stripe;
 
 namespace auth
 {
@@ -108,6 +109,8 @@ namespace auth
             {
                 endpoints.MapControllers();
             });
+
+            StripeConfiguration.ApiKey = "sk_test_51IfNdbBWA8B9DUDpv5FYfcGtU2M5LDsZyq9vt2EnslVClK7PIPFUil17jFukFUpSAbuT5ckyYsdI1inLrSg8kS6b00hfScsOzq";
         }
     }
 }

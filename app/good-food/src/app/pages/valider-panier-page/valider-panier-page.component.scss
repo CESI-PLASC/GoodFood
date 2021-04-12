@@ -22,15 +22,19 @@
   }
 
   > div {
-    #valider-panier-page-franchise {
+    #valider-panier-page-franchise,
+    #valider-panier-page-adresses,
+    #valider-panier-page-paiement {
       background-color: $gray-100;
       padding: 20px;
+    }
+
+    #valider-panier-page-franchise {
       margin-bottom: 20px;
     }
 
     #valider-panier-page-adresses {
-      background-color: $gray-100;
-      padding: 20px;
+      margin-bottom: 20px;
 
       div:nth-child(1):nth-child(1) {
         display: flex;
@@ -53,6 +57,12 @@
         > div {
           flex: 1 1 auto;
         }
+      }
+    }
+
+    #valider-panier-page-paiement {
+      gf-paiement-carte{
+        width: 100%;
       }
     }
   }

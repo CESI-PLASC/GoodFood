@@ -24,6 +24,15 @@
         <gf-selecteur-adresse class="col" [localisations]="commande.utilisateur.localisations"></gf-selecteur-adresse>
       </div>
     </div>
-    <div>Les moyens de paiements</div>
+    <div id="valider-panier-page-paiement">
+      <div class="row">
+        <div class="col">
+          <h4>Moyen de paiement</h4>
+        </div>
+      </div>
+      <div class="row">
+        <gf-paiement-carte *ngIf="!!clientSecret" [clientSecret]="clientSecret"></gf-paiement-carte>
+      </div>
+    </div>
   </div>
 </div>

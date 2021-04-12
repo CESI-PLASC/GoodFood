@@ -13,6 +13,7 @@ export class ValiderPanierPageComponent implements OnInit {
 
   public readonly icons = Icons.validation;
   public commande?: Commande;
+  public clientSecret?: string;
 
   constructor(private route: ActivatedRoute, private readonly commandeService: CommandeService) {}
 
@@ -21,7 +22,13 @@ export class ValiderPanierPageComponent implements OnInit {
       this.commandeService.getOne(params.idCommande).subscribe(commande => {
         this.commande = commande;
       });
+
+      this.commandeService.getPaiementIntent(params.idCommande).subscribe(paiement => {
+        console.log(paiement.client_secret);
+        this.clientSecret = paiement.client_secret;
+      })
     })
+
   }
 
 }

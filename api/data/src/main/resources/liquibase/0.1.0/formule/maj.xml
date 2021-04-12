@@ -9,7 +9,7 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="designation" type="varchar(45)" />
-            <column name="prix" type="float" />
+            <column name="prix" type="decimal(10, 2)" />
         </createTable>
     </changeSet>
 
