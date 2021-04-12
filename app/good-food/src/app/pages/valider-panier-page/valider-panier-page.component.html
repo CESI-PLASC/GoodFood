@@ -12,7 +12,13 @@
     </div>
     <div id="valider-panier-page-adresses">
       <div class="row">
-        <h4 class="col">Adresse de livraison</h4>
+        <div class="col">
+          <h4>Adresse de livraison</h4>
+          <button type="button" class="btn btn-outline-success" disabled>
+            <fa-icon [icon]="icons.add"></fa-icon>
+          </button>
+          <div></div>
+        </div>
       </div>
       <div class="row">
         <gf-selecteur-adresse class="col" [localisations]="commande.utilisateur.localisations"></gf-selecteur-adresse>

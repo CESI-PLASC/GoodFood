@@ -17,5 +17,8 @@ export const Icons = {
     },
     franchise: {
         loupe: faSearch
+    },
+    validation: {
+        add: faPlus
     }
 };
