@@ -8,11 +8,14 @@ import { CatalogueFiltreComponent } from './catalogue-filtre/catalogue-filtre.co
 import { MultiSelectModule } from 'primeng/multiselect';
 import { FormsModule } from '@angular/forms';
 import { SelectBoxComponent } from './select-box/select-box.component';
-import { NgbAccordionModule, NgbCollapseModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbAccordionModule, NgbCollapseModule, NgbDropdownModule, NgbNavbar, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { PanierComponent } from './panier/panier.component';
 import { ListeFranchiseComponent } from './liste-franchise/liste-franchise.component';
 import { InfoFranchiseComponent } from './info-franchise/info-franchise.component';
 import { FiltreFranchiseComponent } from './filtre-franchise/filtre-franchise.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { AccueilComponent } from './accueil/accueil.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,9 @@ import { FiltreFranchiseComponent } from './filtre-franchise/filtre-franchise.co
       InfoFranchiseComponent,
       FiltreFranchiseComponent,
       PanierComponent,
-      SelectBoxComponent
+      SelectBoxComponent,
+      NavbarComponent,
+      AccueilComponent
   ],
     imports: [
         CommonModule,
@@ -33,7 +38,9 @@ import { FiltreFranchiseComponent } from './filtre-franchise/filtre-franchise.co
         FormsModule,
         NgbDropdownModule,
         NgbCollapseModule,
-        NgbAccordionModule
+        NgbAccordionModule,
+        NgbNavModule,
+        RouterModule
     ],
   exports: [
       CatalogueComponent,
