@@ -7,7 +7,7 @@ import { Formule, IFormule } from '../../shared/models/formule';
   styleUrls: ['./select-item.component.scss']
 })
 export class SelectItemComponent implements OnInit {
-    
+
   @Input() public formules: Formule[];
   @Input() public selectLabel: string = "Choisir une formule...";
   @Output() public itemSelected: EventEmitter<any> = new EventEmitter<any>();
@@ -19,15 +19,18 @@ export class SelectItemComponent implements OnInit {
     this.formules = [
       new Formule({
         id: 1,
-        designation: 'Formule - Gourmande'
+        designation: 'Formule - Gourmande',
+        prix: 24.99
       }),
       new Formule({
         id: 2,
-        designation: 'Formule - Classique'
+        designation: 'Formule - Classique',
+        prix: 14.99
       }),
       new Formule({
         id: 3,
-        designation: 'Formule - Petit creux'
+        designation: 'Formule - Petit creux',
+        prix: 7.99
       })
     ];
   }

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IProduit } from '../../shared/models/produit';
+import { IProduit, Produit } from '../../shared/models/produit';
 import { Icons } from '../../shared/constants/icons.constant';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
@@ -19,8 +19,7 @@ export class ProduitItemComponent implements OnInit {
   @Input() public produit: IProduit;
   @Input() public formulesChoisies: Formule[];
   @Output() public selectProduit: IProduit;
-  @Output() public itemSelected: EventEmitter<any> = new EventEmitter<any>();
-  produitsChoisis : IProduit[] = [];
+  @Output() public produitSelected: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }
 
@@ -28,12 +27,11 @@ export class ProduitItemComponent implements OnInit {
   }
 
   ajouterProduitPanier(item:IProduit) : void{
-    if (this.formulesChoisies.length == 0) {
-      alert("Veuillez choisir une formule d'abord.")
-    } else {
-      this.produitsChoisis.push(item);
-      this.itemSelected.emit(this.produitsChoisis);
-    }
+    // if (!this.formulesChoisies || this.formulesChoisies.length == 0) {
+    //   alert("Veuillez choisir une formule avant d'ajouter un produit.")
+    // } else {
+      this.produitSelected.emit(item);
+    // }
   }
 
 }

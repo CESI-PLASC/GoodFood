@@ -16,7 +16,7 @@
                     </div>
                     <div #collapse="ngbCollapse" [(ngbCollapse)]="collapsedList[i]">
                         <div *ngIf="categorie.produits && categorie.produits.length != 0" class="card-body">
-                            <gf-produit-list [produits]="categorie.produits" (itemSelected)="produitsChoisis = $event" [formulesChoisies]="formulesChoisies"></gf-produit-list>
+                            <gf-produit-list [produits]="categorie.produits" (produitSelected)="produitSelected = $event" [formulesChoisies]="formulesChoisies"></gf-produit-list>
                         </div>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
         </div>
 
         <div class="col-4">
-            <gf-panier-ajout-produit [produitsChoisis]="produitsChoisis" (formuleSelected)="formulesChoisies = $event"></gf-panier-ajout-produit>
+            <gf-panier-ajout-produit [produitSelected]="produitSelected" (formuleSelected)="formulesChoisies = $event" (idFormuleSelected)="idFormuleSelected = $event"></gf-panier-ajout-produit>
         </div>
     </div>
 

@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter, forwardRef } from '@angular/core';
+import { ConditionalExpr } from '@angular/compiler';
+import { Component, OnInit, Input, Output, EventEmitter, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { Icons } from 'src/app/shared/constants/icons.constant';
@@ -16,7 +17,7 @@ import { IProduit, Produit } from 'src/app/shared/models/produit';
   }]
 })
 
-export class FormuleListComponent implements OnInit, ControlValueAccessor {
+export class FormuleListComponent implements OnInit, ControlValueAccessor, OnChanges {
 
   formuleSelectionnee: Formule;
   tableauFormules: Formule[] = [];
@@ -24,18 +25,26 @@ export class FormuleListComponent implements OnInit, ControlValueAccessor {
   tableauProduitsSubject: Subject<IProduit[]> = new Subject<IProduit[]>();
   public icons = Icons;
   public collapsedList: boolean[] = [];
+  tabProduits: Produit[] = [];
+  indexFormule: number;
 
-  @Input() public produitsChoisis : IProduit[];
+  @Input() public produitSelected : IProduit;
   @Output() public formuleSelected: EventEmitter<any> = new EventEmitter<any>();
-  @Output() public prixTot: EventEmitter<any> = new EventEmitter<any>();
+  @Output() public idFormuleSelected: EventEmitter<any> = new EventEmitter<any>();
 
   public onTouch = ()=>{};
   public onChange = (value:IProduit[])=>{};
 
   constructor() { }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.produitSelected.currentValue != undefined && this.indexFormule != undefined) {
+      this.tabProduits.push(changes.produitSelected.currentValue);
+    }
+  }
+
   writeValue(obj: any): void {
-    this.produitsChoisis = obj;
+    this.produitSelected = obj;
   }
   registerOnChange(fn: any): void {
     this.onChange = fn;
@@ -46,7 +55,6 @@ export class FormuleListComponent implements OnInit, ControlValueAccessor {
 
 
   ngOnInit(): void {
-    this.formuleSelected.emit(this.tableauFormules);
   }
 
   ajouterFormule(): void{
@@ -55,6 +63,7 @@ export class FormuleListComponent implements OnInit, ControlValueAccessor {
     }
     else{
       this.tableauFormules.push(this.formuleSelectionnee);
+      this.formuleSelected.emit(this.tableauFormules);
     }
   }
 
@@ -65,11 +74,18 @@ export class FormuleListComponent implements OnInit, ControlValueAccessor {
   retirerFormule(index:number): void{
     if (confirm("Voulez-vous retirer cette formule de votre panier ?")) {
       this.tableauFormules.splice(index, 1);
+      this.formuleSelected.emit(this.tableauFormules);
     }
   }
 
   retirerProduit(index:number): void{
-    this.produitsChoisis.splice(index, 1);
+    this.tabProduits.splice(index, 1);
+  }
+
+  choisirFormule(indexFormule:number): void{
+    //this.idFormuleSelected.emit(indexFormule);
+    this.indexFormule = indexFormule;
+    console.log(indexFormule);
   }
 
 

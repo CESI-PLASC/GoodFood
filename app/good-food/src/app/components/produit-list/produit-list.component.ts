@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Formule } from 'src/app/shared/models/formule';
-import { ISimpleProduit, Produit } from '../../shared/models/produit';
+import { IProduit, ISimpleProduit, Produit } from '../../shared/models/produit';
 
 @Component({
   selector: 'gf-produit-list',
@@ -12,11 +12,15 @@ export class ProduitListComponent implements OnInit {
   @Input() public produits: ISimpleProduit[];
   @Input() public formulesChoisies: Formule[];
   produit: ISimpleProduit;
-  @Output() public itemSelected: EventEmitter<any> = new EventEmitter<any>();
+  @Output() public produitSelected: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  recupProduitSelected(item: IProduit): void{
+    this.produitSelected.emit(item);
   }
 
 

@@ -9,20 +9,30 @@ import { IProduit, Produit } from 'src/app/shared/models/produit';
 })
 export class PanierAjoutProduitComponent implements OnInit {
 
-  @Input() public produitsChoisis: IProduit[];
+  @Input() public produitSelected: Produit;
   @Output() public formuleSelected: EventEmitter<any> = new EventEmitter<any>();
+  infosFormule: Formule;
+  listFormule: Formule[] = [];
+  prixTotal: number = 0.00;
+  idFormuleSelected: number;
+
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  actualiserProduits(produits: Produit[]): void{
-    this.produitsChoisis = produits;
-    const TOTAL = this.produitsChoisis.reduce(
-      (sum,p)=>sum+p.prix,0
-    )
-    console.log("Test");
+  actualiseTotal(formule: Formule[]): void{
+    this.listFormule = formule;
+    this.prixTotal = 0.00;
+    formule.forEach(element => {
+      this.prixTotal += element.prix;
+    });
+  }
+
+  recupereFormuleARemplir(index:number): void{
+    this.idFormuleSelected = index;
+    this.formuleSelected.emit(this.listFormule[this.idFormuleSelected]);
   }
 
 }

@@ -23,10 +23,13 @@
             <h5 class="mb-0" (click)="retirerFormule(i)">
                 <fa-icon [icon]="icons.formule.delete"></fa-icon>
             </h5>
+            <h5 class="mb-0" (click)="choisirFormule(i)">
+                <fa-icon [icon]="icons.formule.infos"></fa-icon>
+            </h5>
         </div>
         <div #collapse="ngbCollapse" [(ngbCollapse)]="collapsedList[i]">
             <ul>
-                <li *ngFor="let item of produitsChoisis; let i = index">
+                <li *ngFor="let item of tabProduits; let i = index">
                     {{item?.designation}} {{item?.prix | currency: 'EUR':'symbol':'.2-2':'FR' }}
                     <button class="mb-0 btn btn-sm btn-danger" (click)="retirerProduit(i)">
                       <fa-icon [icon]="icons.produits.remove"></fa-icon>
@@ -34,5 +37,6 @@
                 </li>
             </ul>
         </div>
+        <h6>Total formule : {{ formule.prix | currency: 'EUR':'symbol':'.2-2':'FR'  }}</h6>
     </div>
 </div>
