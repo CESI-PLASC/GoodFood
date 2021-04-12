@@ -13,6 +13,8 @@ import { PanierComponent } from './panier/panier.component';
 import { ListeFranchiseComponent } from './liste-franchise/liste-franchise.component';
 import { InfoFranchiseComponent } from './info-franchise/info-franchise.component';
 import { FiltreFranchiseComponent } from './filtre-franchise/filtre-franchise.component';
+import { SelecteurAdresseComponent } from './selecteur-adresse/selecteur-adresse.component';
+import { InfoAdresseComponent } from './info-adresse/info-adresse.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { FiltreFranchiseComponent } from './filtre-franchise/filtre-franchise.co
       InfoFranchiseComponent,
       FiltreFranchiseComponent,
       PanierComponent,
-      SelectBoxComponent
+      SelectBoxComponent,
+      SelecteurAdresseComponent,
+      InfoAdresseComponent
   ],
     imports: [
         CommonModule,
@@ -44,7 +48,8 @@ import { FiltreFranchiseComponent } from './filtre-franchise/filtre-franchise.co
       InfoFranchiseComponent,
       FiltreFranchiseComponent,
       PanierComponent,
-      SelectBoxComponent
+      SelectBoxComponent,
+      SelecteurAdresseComponent
   ]
 })
 export class ComponentsModule { }

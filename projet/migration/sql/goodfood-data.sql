@@ -17,7 +17,10 @@ insert into goodfood.Formule (id, designation, prix) values
 
 insert into goodfood.Adresse (id, pays, code_postal, rue, ville) values
 	(1, "France", "16200", "17 Route de Bellevue", "Jarnac"),
-    (2, "France", "16100", "67Bis Rue François Premier", "Cognac")
+    (2, "France", "16100", "67Bis Rue François Premier", "Cognac"),
+    (3, "France", "17100", "12 Route de l'insolence", "Saintes"),
+    (4, "France", "79000", "27 Rue de la destiné", "Niort"),
+    (5, "France", "16100", "2 Impasse de la gloire", "Chateaubernard")
 ;
 
 insert into goodfood.utilisateur (id, nom, prenom, date_naissance, email, telephone_mobile, telephone_fixe) values
@@ -71,5 +74,9 @@ insert into goodfood.categorise (produit_id, categorie_id) values
 insert into goodfood.localisation (utilisateur_id, adresse_id, preferee) values
     (1, 2, 1),
     (2, 2, 0),
-    (5, 2, 1)
+    (5, 2, 1),
+    (5, 1, 0),
+    (5, 3, 0),
+    (5, 4, 0),
+    (5, 5, 0)
 ;

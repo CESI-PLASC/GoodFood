@@ -10,7 +10,14 @@
         </gf-info-franchise>
       </div>
     </div>
-    <div>Les adresses</div>
+    <div id="valider-panier-page-adresses">
+      <div class="row">
+        <h4 class="col">Adresse de livraison</h4>
+      </div>
+      <div class="row">
+        <gf-selecteur-adresse class="col" [localisations]="commande.utilisateur.localisations"></gf-selecteur-adresse>
+      </div>
+    </div>
     <div>Les moyens de paiements</div>
   </div>
 </div>
