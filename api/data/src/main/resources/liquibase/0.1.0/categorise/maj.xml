@@ -5,14 +5,11 @@
 
     <changeSet id="0.0.1-create-table-categorise" author="cgiboulot">
         <createTable tableName="categorise">
-            <column name="id" type="bigint" autoIncrement="true">
+            <column name="produit_id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="produit_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
             <column name="categorie_id" type="bigint">
-                <constraints nullable="false"/>
+                <constraints primaryKey="true" nullable="false"/>
             </column>
         </createTable>
 

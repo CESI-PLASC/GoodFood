@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 
 import java.util.List;
 import java.util.Objects;
@@ -28,110 +27,83 @@ public class Produit {
     private float prix;
 
     @ManyToMany(targetEntity = Categorie.class)
-    @JoinTable(
-            name = "categorise",
-            joinColumns = @JoinColumn(name = "produit_id"),
-            inverseJoinColumns = @JoinColumn(name = "categorie_id"))
+    @JoinTable(name = "categorise", joinColumns = @JoinColumn(name = "produit_id"), inverseJoinColumns = @JoinColumn(name = "categorie_id"))
     private List<Categorie> categories;
 
-    @OneToMany(mappedBy = "produit")
-    private List<Composition> compositions;
+    // #region Générations
 
-    /**
-     * Récupère : id.
-     *
-     * @return id.
-     */
-    public Long getId() {
-        return id;
+    public Produit() {
     }
 
-    /**
-     * Défini la nouvelle valeur de : id.
-     *
-     * @param id La nouvelle valeur.
-     * @return L'instance (Pattern fluent)
-     */
-    public Produit setId(Long id) {
+    public Produit(Long id, String designation, float prix, List<Categorie> categories) {
         this.id = id;
-        return this;
-    }
-
-    /**
-     * Récupère : designation.
-     *
-     * @return designation.
-     */
-    public String getDesignation() {
-        return designation;
-    }
-
-    /**
-     * Défini la nouvelle valeur de : designation.
-     *
-     * @param designation La nouvelle valeur.
-     * @return L'instance (Pattern fluent)
-     */
-    public Produit setDesignation(String designation) {
         this.designation = designation;
-        return this;
-    }
-
-    /**
-     * Récupère : prix.
-     *
-     * @return prix.
-     */
-    public float getPrix() {
-        return prix;
-    }
-
-    /**
-     * Défini la nouvelle valeur de : prix.
-     *
-     * @param prix La nouvelle valeur.
-     * @return L'instance (Pattern fluent)
-     */
-    public Produit setPrix(float prix) {
         this.prix = prix;
-        return this;
-    }
-
-    /**
-     * Récupère : categories.
-     *
-     * @return categories.
-     */
-    public List<Categorie> getCategories() {
-        return categories;
-    }
-
-    /**
-     * Défini la nouvelle valeur de : categories.
-     *
-     * @param categories La nouvelle valeur.
-     * @return L'instance (Pattern fluent)
-     */
-    public Produit setCategories(List<Categorie> categories) {
         this.categories = categories;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDesignation() {
+        return this.designation;
+    }
+
+    public void setDesignation(String designation) {
+        this.designation = designation;
+    }
+
+    public float getPrix() {
+        return this.prix;
+    }
+
+    public void setPrix(float prix) {
+        this.prix = prix;
+    }
+
+    public List<Categorie> getCategories() {
+        return this.categories;
+    }
+
+    public void setCategories(List<Categorie> categories) {
+        this.categories = categories;
+    }
+
+    public Produit id(Long id) {
+        setId(id);
         return this;
     }
 
-    public List<Composition> getCompositions(){
-        return this.compositions;
+    public Produit designation(String designation) {
+        setDesignation(designation);
+        return this;
     }
 
-    public Produit setCompositions(List<Composition> compositions){
-        this.compositions = compositions;
+    public Produit prix(float prix) {
+        setPrix(prix);
+        return this;
+    }
+
+    public Produit categories(List<Categorie> categories) {
+        setCategories(categories);
         return this;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == this)
+            return true;
+        if (!(o instanceof Produit)) {
+            return false;
+        }
         Produit produit = (Produit) o;
-        return Float.compare(produit.prix, prix) == 0 && Objects.equals(id, produit.id) && Objects.equals(designation, produit.designation) && Objects.equals(categories, produit.categories);
+        return Objects.equals(id, produit.id) && Objects.equals(designation, produit.designation)
+                && prix == produit.prix && Objects.equals(categories, produit.categories);
     }
 
     @Override
@@ -141,11 +113,9 @@ public class Produit {
 
     @Override
     public String toString() {
-        return "Produit{" +
-                "id=" + id +
-                ", designation='" + designation + '\'' +
-                ", prix=" + prix +
-                ", categories=" + categories +
-                '}';
+        return "{" + " id='" + getId() + "'" + ", designation='" + getDesignation() + "'" + ", prix='" + getPrix() + "'"
+                + ", categories='" + getCategories() + "'" + "}";
     }
+
+    // #endregion
 }

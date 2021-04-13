@@ -1,0 +1,47 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet
+        id="0.2.0-create-table-contient"
+        author="agillereau">
+        <createTable tableName="contient">
+            <column
+                name="contenu_id"
+                type="bigint">
+                <constraints
+                    primaryKey="true"
+                    nullable="false" />
+            </column>
+            <column
+                name="produit_id"
+                type="bigint">
+                <constraints
+                    primaryKey="true"
+                    nullable="false" />
+            </column>
+            <column
+                name="quantite"
+                type="bigint"
+                defaultValue="1">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint
+            baseTableName="contient"
+            baseColumnNames="contenu_id"
+            constraintName="fk_contient_contenu_id"
+            referencedTableName="contenu"
+            referencedColumnNames="id" />
+
+        <addForeignKeyConstraint
+            baseTableName="contient"
+            baseColumnNames="produit_id"
+            constraintName="fk_contient_produit_id"
+            referencedTableName="produit"
+            referencedColumnNames="id" />
+    </changeSet>
+
+</databaseChangeLog>

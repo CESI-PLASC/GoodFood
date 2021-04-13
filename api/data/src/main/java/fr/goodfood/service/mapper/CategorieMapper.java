@@ -5,9 +5,6 @@ import fr.goodfood.dto.categorie.SimpleCategorieDTO;
 import fr.goodfood.entity.Categorie;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring", uses = {
-        ProduitMapper.class,
-        FranchiseMapper.class
-})
+@Mapper(componentModel = "spring", uses = { ProduitMapper.class, FranchiseMapper.class })
 public interface CategorieMapper extends EntityMapper<CategorieDTO, SimpleCategorieDTO, Categorie> {
 }

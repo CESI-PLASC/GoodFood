@@ -1,20 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IFranchise } from 'src/app/shared/models/franchise';
+import { Franchise, IFranchise } from 'src/app/shared/models/franchise';
 import { Observable } from 'rxjs/internal/Observable';
-import { CS_URL } from '../../../shared/constants/url.constant';
+import { RESS_FRANCHISES } from 'src/app/shared/constants/ressources.contants';
+import {map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
 })
 export class FranchiseService {
-  private readonly ressourceUrl = `${CS_URL}/api/v1`;
 
   constructor(private readonly http: HttpClient) {}
 
-  public getFranchises(): Observable<IFranchise[]>{
-    return this.http.get<IFranchise[]>(`${this.ressourceUrl}/franchises`);
+  public getFranchises(): Observable<Franchise[]>{
+    return this.http.get<{content: IFranchise[]}>(RESS_FRANCHISES).pipe(map(reponse => reponse.content.map(franchise => new Franchise(franchise))));
   }
 
-
+  public getFranchise(idFranchise: number): Observable<Franchise>{
+    return this.http.get<IFranchise>(`${RESS_FRANCHISES}/${idFranchise}`).pipe(map(franchise => new Franchise(franchise)));
+  }
 }

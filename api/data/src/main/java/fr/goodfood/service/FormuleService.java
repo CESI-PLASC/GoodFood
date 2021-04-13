@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import fr.goodfood.entity.Formule;
 import fr.goodfood.repository.FormuleRepository;
-import fr.goodfood.ressource.error.FormuleNotFoundException;
+import fr.goodfood.ressource.error.NotFoundException;
 
 @Service
 public class FormuleService {
@@ -29,7 +29,7 @@ public class FormuleService {
     }
 
     public Formule one(Long id){
-        return this.formuleRepository.findById(id).orElseThrow(() -> new FormuleNotFoundException(id));
+        return this.formuleRepository.findById(id).orElseThrow(() -> new NotFoundException(id.toString()));
     }
 
     public List<Formule> all(){

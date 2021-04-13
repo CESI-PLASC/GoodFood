@@ -3,6 +3,9 @@
                     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 	                http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
+    <include file="adresse/maj.xml" relativeToChangelogFile="true" />
+    <include file="franchise/maj.xml" relativeToChangelogFile="true" />
+
     <include file="statut/maj.xml" relativeToChangelogFile="true" />
     <include file="ingredient/maj.xml" relativeToChangelogFile="true" />
     <include file="produit/maj.xml" relativeToChangelogFile="true" />
@@ -11,7 +14,6 @@
 
     <include file="commande/maj.xml" relativeToChangelogFile="true" />
 
-    <include file="composition/maj.xml" relativeToChangelogFile="true" />
     <include file="commandee/maj.xml" relativeToChangelogFile="true" />
     <include file="propose/maj.xml" relativeToChangelogFile="true" />
     <include file="requiert/maj.xml" relativeToChangelogFile="true" />

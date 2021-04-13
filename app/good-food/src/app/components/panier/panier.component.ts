@@ -1,27 +1,15 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { CommandeService } from 'src/app/pages/valider-panier-page/services/commande.service';
-import { ICommande } from 'src/app/shared/models/commande';
-import { Panier } from 'src/app/shared/models/panier';
+import { Component, Input } from '@angular/core';
+import { Commande } from 'src/app/shared/models/commande';
 
 @Component({
   selector: 'gf-panier',
   templateUrl: './panier.component.html',
   styleUrls: ['./panier.component.scss']
 })
-export class PanierComponent implements OnInit {
-  @Input() commande: ICommande;
+export class PanierComponent {
+  @Input() commande: Commande;
 
-  public panier?: Panier;
-  public chargement: boolean;
+  constructor() {}
 
-  constructor(private readonly commandeService: CommandeService) {
-    this.chargement = true;
-  }
-
-  ngOnInit(): void {
-    this.commandeService.getPanier(this.commande.id).subscribe(panier => {
-      this.chargement = false;
-      this.panier = new Panier(panier);
-    });
-  }
+  ngOnInit(): void {}
 }
