@@ -1,0 +1,9 @@
+.paiement-carte {
+  display: flex;
+  flex-flow: column;
+
+  .paiement-carte-conteneur {
+    flex: 1 1 auto;
+    max-width: 400px;
+  }
+}

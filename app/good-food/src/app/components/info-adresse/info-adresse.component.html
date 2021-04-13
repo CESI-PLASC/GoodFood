@@ -1,0 +1,33 @@
+<div class="gf-info-adresse card col">
+  <div class="card-body">
+    <div class="card-text">
+      <div *ngIf="!!adresse; else elseAdresse">
+        <div class="row">
+          <div class="col">
+            Pays: {{adresse.pays}}
+          </div>
+          <div class="col">
+            Ville: {{adresse.ville}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            Code postal: {{adresse.codePostal}}
+          </div>
+          <div class="col">
+            Emplacement: {{adresse.rue}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            Complément: {{adresse.complement}}
+          </div>
+        </div>
+      </div>
+
+      <ng-template #elseAdresse>
+        <span>Aucune adresse sélectionnée</span>
+      </ng-template>
+    </div>
+  </div>
+</div>

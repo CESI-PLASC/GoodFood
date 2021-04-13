@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.goodfood.dto.commande.CommandeDTO;
+import fr.goodfood.dto.commande.CommandePriceDTO;
 import fr.goodfood.entity.Commande;
 import fr.goodfood.service.CommandeService;
 import fr.goodfood.service.mapper.CommandeMapper;
@@ -73,5 +74,12 @@ public class CommandeRessource {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         this.commandeService.delete(id);
+    }
+
+    @GetMapping("/{id}/prix")
+    public EntityModel<CommandePriceDTO> getPrice(@PathVariable Long id){
+        CommandePriceDTO prix = new CommandePriceDTO(id, this.commandeService.getPrice(id));
+
+        return EntityModel.of(prix);
     }
 }

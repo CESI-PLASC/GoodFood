@@ -16,6 +16,9 @@ import { FiltreFranchiseComponent } from './filtre-franchise/filtre-franchise.co
 import { NavbarComponent } from './navbar/navbar.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { RouterModule } from '@angular/router';
+import { SelecteurAdresseComponent } from './selecteur-adresse/selecteur-adresse.component';
+import { InfoAdresseComponent } from './info-adresse/info-adresse.component';
+import { PaiementCarteComponent } from './paiement-carte/paiement-carte.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { RouterModule } from '@angular/router';
       PanierComponent,
       SelectBoxComponent,
       NavbarComponent,
-      AccueilComponent
+      AccueilComponent,
+      SelecteurAdresseComponent,
+      InfoAdresseComponent,
+      PaiementCarteComponent
   ],
     imports: [
         CommonModule,
@@ -52,7 +58,9 @@ import { RouterModule } from '@angular/router';
       InfoFranchiseComponent,
       FiltreFranchiseComponent,
       PanierComponent,
-      SelectBoxComponent
+      SelectBoxComponent,
+      SelecteurAdresseComponent,
+      PaiementCarteComponent
   ]
 })
 export class ComponentsModule { }

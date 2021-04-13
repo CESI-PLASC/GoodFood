@@ -1,0 +1,22 @@
+@import "../../../assets/theme/_variables.scss";
+
+.gf-selecteur-adresse {
+  .gf-selecteur-adresse-selectionnee:hover {
+    border: 1px solid $green;
+    cursor: pointer;
+  }
+}
+
+.gf-selecteur-adresse-liste {
+  .modal-body {
+    height: 400px;
+    overflow: scroll;
+
+    .gf-selecteur-adresse-liste-item {
+      &:hover {
+        border: 1px solid $green;
+        cursor: pointer;
+      }
+    }
+  }
+}

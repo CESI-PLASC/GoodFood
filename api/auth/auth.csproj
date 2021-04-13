@@ -16,6 +16,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.2" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.Mysql" Version="5.0.0-alpha.2" />
+    <PackageReference Include="Stripe.net" Version="39.43.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
     <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.0.2" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.0.2" />

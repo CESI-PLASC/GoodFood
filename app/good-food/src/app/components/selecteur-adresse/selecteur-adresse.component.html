@@ -1,0 +1,16 @@
+<div class="gf-selecteur-adresse">
+  <div class="gf-selecteur-adresse-selectionnee">
+    <gf-info-adresse [adresse]="adresse" (click)="open(content)"></gf-info-adresse>
+  </div>
+  <ng-template #content let-modal>
+    <div class="gf-selecteur-adresse-liste">
+      <div class="modal-header">
+        <h4 class="modal-title">Toutes vos adresses</h4>
+      </div>
+      <div class="modal-body">
+        <gf-info-adresse class="gf-selecteur-adresse-liste-item" *ngFor="let localisation of localisations"
+          [adresse]="localisation.adresse" (click)="selectAdresse(localisation.adresse)"></gf-info-adresse>
+      </div>
+    </div>
+  </ng-template>
+</div>
