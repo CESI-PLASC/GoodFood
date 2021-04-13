@@ -1,0 +1,14 @@
+<div ngbDropdown class="d-inline-block">
+    <div class="gf-dropdown-btn btn btn-outline-primary" ngbDropdownToggle id="dropdown">
+        <span class="mr-1" *ngFor="let item of selectedItems; let i = index">
+            {{ (!selectedLabel ? item : item[selectedLabel]) + (selectedItems.length > 1 && selectedItems.length - 1 != i ? ', ' : '') }}
+        </span>
+        <span class="mr-1" *ngIf="!selectedItems || selectedItems.length === 0">{{ label }}</span>
+    </div>
+    <div class="gf-dropdown-menu p-0" ngbDropdownMenu aria-labelledby="dropdown">
+        <button class="btn btn-outline-primary m-0 px-3 py-2" *ngFor="let item of items; let i = index" (click)="selectItem(item)" ngbDropdownItem>
+            <fa-icon class="mr-1" [icon]="selectedItems.includes(item) ? checkedIcon : uncheckedIcon"></fa-icon>
+            {{ optionLabel ? item[optionLabel] : item }}
+        </button>
+    </div>
+</div>

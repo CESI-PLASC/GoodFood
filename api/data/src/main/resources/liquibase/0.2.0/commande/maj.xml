@@ -1,0 +1,25 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet
+        id="0.2.0-create-table-commande"
+        author="agillereau">
+        <addColumn tableName="commande">
+            <column
+                name="utilisateur_id"
+                type="bigint">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+
+        <addForeignKeyConstraint
+            baseTableName="commande"
+            baseColumnNames="utilisateur_id"
+            constraintName="fk_commande_utilisateur_id"
+            referencedTableName="utilisateur"
+            referencedColumnNames="id" />
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,30 @@
+@import "../../../assets/theme/media.scss";
+@import "../../../assets/theme/_variables.scss";
+
+#valider-panier-page {
+  // Affichage sur écran large (ordi)
+  @media (min-width: $extra-large-media) {
+    // margin: 30px 5% 30px 5%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+
+    > gf-panier {
+      grid-column: 1 / 2;
+    }
+
+    > div {
+      grid-column: 2 / 2;
+    }
+  }
+  @media (max-width: $extra-large-media) {
+    // margin: 30px 0 30px 0;
+  }
+
+  > div {
+    #valider-panier-page-franchise {
+      background-color: $gray-100;
+      padding: 20px;
+    }
+  }
+}
