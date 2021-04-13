@@ -27,7 +27,6 @@
   "homepage": "https://github.com/CESI-PLASC/GoodFood#readme",
   "devDependencies": {
     "@angular/cli": "^11.1.4",
-    "@types/jest": "^26.0.22",
     "concurrently": "^5.3.0"
   }
 }
