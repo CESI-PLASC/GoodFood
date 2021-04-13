@@ -32,6 +32,14 @@ namespace auth.Migrations
                         .HasColumnType("tinyint(1)")
                         .HasColumnName("estSupprime");
 
+                    b.Property<string>("Mail")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4")
+                        .HasColumnName("mail");
+
+                    b.Property<string>("Tel")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4")
+                        .HasColumnName("tel");
+
                     b.HasKey("Id");
 
                     b.ToTable("franchise");

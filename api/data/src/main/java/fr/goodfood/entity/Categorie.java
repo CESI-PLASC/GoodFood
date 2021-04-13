@@ -3,10 +3,12 @@ package fr.goodfood.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -14,7 +16,7 @@ import java.util.Objects;
 public class Categorie {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
@@ -27,6 +29,14 @@ public class Categorie {
             joinColumns = @JoinColumn(name = "categorie_id"),
             inverseJoinColumns = @JoinColumn(name = "produit_id"))
     private List<Produit> produits;
+
+    @ManyToMany(targetEntity = Franchise.class)
+    @JoinTable(
+            name = "fcategorie",
+            joinColumns = @JoinColumn(name = "categorie_id"),
+            inverseJoinColumns = @JoinColumn(name = "franchise_id")
+    )
+    private List<Franchise> franchises;
 
     /**
      * Récupère : id.
@@ -73,7 +83,7 @@ public class Categorie {
      *
      * @return produits.
      */
-    public List<Produit> getProduitList() {
+    public List<Produit> getProduits() {
         return produits;
     }
 
@@ -83,7 +93,7 @@ public class Categorie {
      * @param produits La nouvelle valeur.
      * @return L'instance (Pattern fluent)
      */
-    public Categorie setProduitList(List<Produit> produits) {
+    public Categorie setProduits(List<Produit> produits) {
         this.produits = produits;
         return this;
     }
@@ -99,5 +109,15 @@ public class Categorie {
     @Override
     public int hashCode() {
         return Objects.hash(id, designation, produits);
+    }
+
+    @Override
+    public String toString() {
+        return "Categorie{" +
+                "id=" + id +
+                ", designation='" + designation + '\'' +
+                ", produits=" + produits +
+                ", franchises=" + franchises +
+                '}';
     }
 }

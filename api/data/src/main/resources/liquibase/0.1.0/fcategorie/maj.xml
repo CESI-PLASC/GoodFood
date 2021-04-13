@@ -1,0 +1,41 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet
+        id="0.0.1-create-table-fcategorie"
+        author="cgiboulot">
+        <createTable tableName="fcategorie">
+            <column
+                name="categorie_id"
+                type="bigint">
+                <constraints
+                    primaryKey="true"
+                    nullable="false" />
+            </column>
+            <column
+                name="franchise_id"
+                type="int">
+                <constraints
+                    primaryKey="true"
+                    nullable="false" />
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint
+            baseTableName="fcategorie"
+            baseColumnNames="franchise_id"
+            constraintName="fk_fcategorie_franchise_id"
+            referencedTableName="franchise"
+            referencedColumnNames="id" />
+
+        <addForeignKeyConstraint
+            baseTableName="fcategorie"
+            baseColumnNames="categorie_id"
+            constraintName="fk_fcategorie_categorie_id"
+            referencedTableName="categorie"
+            referencedColumnNames="id" />
+    </changeSet>
+
+</databaseChangeLog>

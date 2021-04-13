@@ -1,7 +1,8 @@
-import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/core';
-import { Formule, IFormule } from 'src/app/shared/models/formule';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { IProduit } from 'src/app/shared/models/produit';
-import { Franchise, IFranchise } from '../../shared/models/franchise';
+import { Franchise } from '../../shared/models/franchise';
+import { FranchiseService } from '../franchise-page/services/franchise.service';
 
 @Component({
   selector: 'gf-catalogue-page',
@@ -9,17 +10,17 @@ import { Franchise, IFranchise } from '../../shared/models/franchise';
   styleUrls: ['./catalogue-page.component.scss']
 })
 export class CataloguePageComponent implements OnInit{
-
-  public franchise: IFranchise;
+  public franchise: Franchise;
   produitSelected : IProduit;
   @Input() public produitChoisi: IProduit;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private readonly franchiseService: FranchiseService){}
 
   ngOnInit(): void {
-    this.franchise = new Franchise({
-      id: 777,
-      name: 'Spicy miam noodles'
-    });
+    this.route.params.subscribe(params => {
+      this.franchiseService.getFranchise(params.id).subscribe(franchise => {
+        this.franchise = franchise;
+      });
+    })
   }
 }

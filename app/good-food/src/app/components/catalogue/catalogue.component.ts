@@ -1,15 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Franchise } from '../../shared/models/franchise';
-import { Categorie, ICategorie } from '../../shared/models/categorie';
-import { IProduit, SimpleProduit } from '../../shared/models/produit';
+import { ICategorie } from '../../shared/models/categorie';
+import { IProduit } from '../../shared/models/produit';
 import { Icons } from '../../shared/constants/icons.constant';
+import { CatalogueService } from '../../pages/catalogue-page/services/catalogue.service';
 import { Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 
-interface ICollapsedItem {
-  id: number;
-  isCollapsed: boolean;
-}
 
 @Component({
   selector: 'gf-catalogue',
@@ -17,7 +14,6 @@ interface ICollapsedItem {
   styleUrls: ['./catalogue.component.scss']
 })
 export class CatalogueComponent implements OnInit {
-
   @Input() public franchise: Franchise;
 
   public categories: ICategorie[] = [];
@@ -25,45 +21,13 @@ export class CatalogueComponent implements OnInit {
   public icons = Icons.catalogue;
   @Output() public produitSelected: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor() { }
+  constructor(private readonly catalogueService: CatalogueService) { }
 
   ngOnInit(): void {
-    this.categories = [
-      new Categorie({
-        id: 1,
-        designation: 'Plats',
-        produits: [
-          new SimpleProduit({
-            id: 1,
-            designation: 'Scipy ramen',
-            prix: 10.9
-          }),
-          new SimpleProduit({
-            id: 2,
-            designation: 'Scipy noodles',
-            prix: 9
-          })
-        ]
-      }),
-      new Categorie({
-        id: 2,
-        designation: 'Desserts',
-        produits: [
-          new SimpleProduit({
-            id: 1,
-            designation: 'NO spicy cream',
-            prix: 3.5
-          }),
-          new SimpleProduit({
-            id: 2,
-            designation: 'Spicy ice cream',
-            prix: 5.2
-          })
-        ]
-      })
-    ];
-
-    this.categories.forEach(() => this.collapsedList.push(true));
+    this.collapsedList = [];
+    this.catalogueService.getByFranchiseId(this.franchise.id).subscribe(res => {
+      this.categories = res;
+    });
   }
 
   public onFilterChange(filters: any): void {

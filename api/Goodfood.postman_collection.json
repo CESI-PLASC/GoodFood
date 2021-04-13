@@ -1,147 +1,10 @@
 {
 	"info": {
-		"_postman_id": "70399b5d-7aef-4674-898e-f0755e09ada1",
+		"_postman_id": "2f8252fc-c93a-4dbc-a9d8-05bbb79928dc",
 		"name": "Goodfood",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
-		{
-			"name": "auth",
-			"item": [
-				{
-					"name": "Les franchisés",
-					"item": [
-						{
-							"name": "Tous les franchisés",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{gf_host_api_auth}}/api/v1/franchises",
-									"host": [
-										"{{gf_host_api_auth}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"franchises"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Un franchisé",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{gf_host_api_auth}}/api/v1/franchises/:idFranchise",
-									"host": [
-										"{{gf_host_api_auth}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"franchises",
-										":idFranchise"
-									],
-									"variable": [
-										{
-											"key": "idFranchise",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Créer un franchisé",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"designation\": \"Mon franchisé\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{gf_host_api_auth}}/api/v1/franchises",
-									"host": [
-										"{{gf_host_api_auth}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"franchises"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Modifier un franchisé",
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"id\": 1,\r\n    \"designation\": \"Mon franchisé modifié\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{gf_host_api_auth}}/api/v1/franchises",
-									"host": [
-										"{{gf_host_api_auth}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"franchises"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Supprimer un franchisé",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{gf_host_api_auth}}/api/v1/franchises/:idFranchise",
-									"host": [
-										"{{gf_host_api_auth}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"franchises",
-										":idFranchise"
-									],
-									"variable": [
-										{
-											"key": "idFranchise",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				}
-			]
-		},
 		{
 			"name": "data",
 			"item": [
@@ -154,12 +17,9 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host_goodfood}}/commandes",
+									"raw": "{{api_data_res_commandes}}",
 									"host": [
-										"{{host_goodfood}}"
-									],
-									"path": [
-										"commandes"
+										"{{api_data_res_commandes}}"
 									]
 								}
 							},
@@ -171,12 +31,11 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{gf_host_api_data}}/commandes/:id",
+									"raw": "{{api_data_res_commandes}}/:id",
 									"host": [
-										"{{gf_host_api_data}}"
+										"{{api_data_res_commandes}}"
 									],
 									"path": [
-										"commandes",
 										":id"
 									],
 									"variable": [
@@ -196,7 +55,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"dateCreation\": \"2022-02-02\",\r\n    \"dateDonnee\": \"2022-02-02\"\r\n}",
+									"raw": "{\r\n    \"dateCreation\": \"2022-02-02\",\r\n    \"dateDonnee\": \"2022-02-02\",\r\n    \"franchise\": {\r\n        \"id\": 1\r\n    },\r\n    \"statut\": {\r\n        \"id\": 1\r\n    },\r\n    \"utilisateur\": {\r\n        \"id\": 1\r\n    }\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -204,12 +63,9 @@
 									}
 								},
 								"url": {
-									"raw": "{{host_goodfood}}/commandes",
+									"raw": "{{api_data_res_commandes}}",
 									"host": [
-										"{{host_goodfood}}"
-									],
-									"path": [
-										"commandes"
+										"{{api_data_res_commandes}}"
 									]
 								}
 							},
@@ -222,7 +78,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"id\": 1,\r\n    \"dateCreation\": \"2022-02-01\",\r\n    \"dateDonnee\": \"2022-02-01\"\r\n}",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"dateCreation\": \"2022-02-02\",\r\n    \"dateDonnee\": \"2022-02-02\",\r\n    \"franchise\": {\r\n        \"id\": 1\r\n    },\r\n    \"statut\": {\r\n        \"id\": 2\r\n    }\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -230,12 +86,18 @@
 									}
 								},
 								"url": {
-									"raw": "{{host_goodfood}}/commandes",
+									"raw": "{{api_data_res_commandes}}/:idCommande",
 									"host": [
-										"{{host_goodfood}}"
+										"{{api_data_res_commandes}}"
 									],
 									"path": [
-										"commandes"
+										":idCommande"
+									],
+									"variable": [
+										{
+											"key": "idCommande",
+											"value": "1"
+										}
 									]
 								}
 							},
@@ -247,12 +109,11 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{host_goodfood}}/commandes/:id",
+									"raw": "{{api_data_res_commandes}}/:id",
 									"host": [
-										"{{host_goodfood}}"
+										"{{api_data_res_commandes}}"
 									],
 									"path": [
-										"commandes",
 										":id"
 									],
 									"variable": [
@@ -276,12 +137,487 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host_goodfood}}/statuts",
+									"raw": "{{api_data_res_statuts}}",
 									"host": [
-										"{{host_goodfood}}"
+										"{{api_data_res_statuts}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Les formules",
+					"item": [
+						{
+							"name": "Toutes les formules",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_data_res_formules}}",
+									"host": [
+										"{{api_data_res_formules}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Une formule",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_data_res_formules}}/:idFormule",
+									"host": [
+										"{{api_data_res_formules}}"
 									],
 									"path": [
-										"statuts"
+										":idFormule"
+									],
+									"variable": [
+										{
+											"key": "idFormule",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Créer une formule",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"designation\": \"Ma formule de test\",\r\n    \"prix\": 19.99\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_data_res_formules}}",
+									"host": [
+										"{{api_data_res_formules}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modifier une formule",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"designation\": \"Ma formule de test\",\r\n    \"prix\": 19.99\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_data_res_formules}}",
+									"host": [
+										"{{api_data_res_formules}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Supprimer une formule",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api_data_res_formules}}/:idFormule",
+									"host": [
+										"{{api_data_res_formules}}"
+									],
+									"path": [
+										":idFormule"
+									],
+									"variable": [
+										{
+											"key": "idFormule",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Les produits",
+					"item": [
+						{
+							"name": "Tous les produits",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_data_res_produits}}",
+									"host": [
+										"{{api_data_res_produits}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Un produit",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_data_res_produits}}/:idProduit",
+									"host": [
+										"{{api_data_res_produits}}"
+									],
+									"path": [
+										":idProduit"
+									],
+									"variable": [
+										{
+											"key": "idProduit",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Créer un produit",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"prix\": 53.99,\r\n    \"designation\": \"Mon produit de test2\",\r\n    \"categories\": [{\r\n        \"id\": 1\r\n    }, {\r\n        \"id\": 2\r\n    }]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_data_res_produits}}",
+									"host": [
+										"{{api_data_res_produits}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modifier un produit",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"designation\": \"Mon produit de test modifié\",\r\n    \"prix\": 19.99\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_data_res_produits}}",
+									"host": [
+										"{{api_data_res_produits}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Supprimer un produit",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api_data_res_produits}}/:idProduit",
+									"host": [
+										"{{api_data_res_produits}}"
+									],
+									"path": [
+										":idProduit"
+									],
+									"variable": [
+										{
+											"key": "idProduit",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Les catalogues",
+					"item": [
+						{
+							"name": "Le catalogue d'un franchisé",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_data_res_franchises}}/:idFranchise/catalogue",
+									"host": [
+										"{{api_data_res_franchises}}"
+									],
+									"path": [
+										":idFranchise",
+										"catalogue"
+									],
+									"variable": [
+										{
+											"key": "idFranchise",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Les catégories",
+					"item": [
+						{
+							"name": "Toutes les catégories",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_data_res_categories}}",
+									"host": [
+										"{{api_data_res_categories}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Créer une catégorie",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"designation\": \"Ma catégorie\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_data_res_categories}}",
+									"host": [
+										"{{api_data_res_categories}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Les franchises",
+					"item": [
+						{
+							"name": "Tous les franchises",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_data_res_franchises}}",
+									"host": [
+										"{{api_data_res_franchises}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Un franchisé",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_data_res_franchises}}/:idFranchise",
+									"host": [
+										"{{api_data_res_franchises}}"
+									],
+									"path": [
+										":idFranchise"
+									],
+									"variable": [
+										{
+											"key": "idFranchise",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Créer un franchisé",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"designation\": \"Mon franchisé de test\",\r\n    \"email\": \"franchise@test.fr\",\r\n    \"telephoneFixe\": \"036363636\",\r\n    \"telephoneMobile\": \"0606060606\",\r\n    \"adresse\": {\r\n        \"codePostal\": \"16200\",\r\n        \"pays\": \"France\",\r\n        \"rue\": \"17 rue de Bellevue\",\r\n        \"ville\": \"Jarnac\",\r\n        \"complement\": null\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_data_res_franchises}}",
+									"host": [
+										"{{api_data_res_franchises}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Les utilisateurs",
+					"item": [
+						{
+							"name": "Tous les utilisateurs",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_data_res_utilisateurs}}",
+									"host": [
+										"{{api_data_res_utilisateurs}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Un utilisateur",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_data_res_utilisateurs}}/:idUtilisateur",
+									"host": [
+										"{{api_data_res_utilisateurs}}"
+									],
+									"path": [
+										":idUtilisateur"
+									],
+									"variable": [
+										{
+											"key": "idUtilisateur",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Créer un utilisateur",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nom\": \"Roglic\",\r\n    \"prenom\": \"Primoz\",\r\n    \"dateNaissance\": \"1989-10-29\",\r\n    \"email\": \"primoz.roglic@gmail.com\",\r\n    \"telephoneFixe\": \"0606060606\",\r\n    \"telephoneMobile\": \"0606060606\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_data_res_utilisateurs}}",
+									"host": [
+										"{{api_data_res_utilisateurs}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modifier un utilisateur",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"nom\": \"Roglic\",\r\n    \"prenom\": \"Primoz\",\r\n    \"dateNaissance\": \"1989-10-29\",\r\n    \"email\": \"primoz.roglic@gmail.com\",\r\n    \"telephoneFixe\": \"0606060606\",\r\n    \"telephoneMobile\": \"0606060606\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_data_res_utilisateurs}}/:idUtilisateur",
+									"host": [
+										"{{api_data_res_utilisateurs}}"
+									],
+									"path": [
+										":idUtilisateur"
+									],
+									"variable": [
+										{
+											"key": "idUtilisateur",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Supprimer un utilisateur",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api_data_res_utilisateurs}}/:idUtilisateur",
+									"host": [
+										"{{api_data_res_utilisateurs}}"
+									],
+									"path": [
+										":idUtilisateur"
+									],
+									"variable": [
+										{
+											"key": "idUtilisateur",
+											"value": "1"
+										}
 									]
 								}
 							},
@@ -290,6 +626,80 @@
 					]
 				}
 			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api_data_host",
+			"value": "http://localhost:8080"
+		},
+		{
+			"key": "api_data_version",
+			"value": "v1"
+		},
+		{
+			"key": "api_data_url",
+			"value": "{{api_data_host}}/api"
+		},
+		{
+			"key": "api_data_res_commandes",
+			"value": "{{api_data_url}}/commandes"
+		},
+		{
+			"key": "api_data_res_statuts",
+			"value": "{{api_data_url}}/statuts"
+		},
+		{
+			"key": "api_data_res_formules",
+			"value": "{{api_data_url}}/formules"
+		},
+		{
+			"key": "api_data_res_produits",
+			"value": "{{api_data_url}}/produits"
+		},
+		{
+			"key": "api_data_res_franchises",
+			"value": "{{api_data_url}}/franchises"
+		},
+		{
+			"key": "api_data_res_categories",
+			"value": "{{api_data_url}}/categories"
+		},
+		{
+			"key": "api_data_res_utilisateurs",
+			"value": "{{api_data_url}}/utilisateurs"
+		},
+		{
+			"key": "api_auth_host",
+			"value": "http://localhost:5000"
+		},
+		{
+			"key": "api_auth_version",
+			"value": "v1"
+		},
+		{
+			"key": "api_auth_url",
+			"value": "{{api_auth_host}}/api/{{api_auth_version}}"
 		}
 	]
 }

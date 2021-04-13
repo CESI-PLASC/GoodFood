@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Icons } from '../../shared/constants/icons.constant';
 import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
 
@@ -8,7 +8,7 @@ import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./select-box.component.scss'],
   providers: [NgbDropdownConfig]
 })
-export class SelectBoxComponent implements OnInit {
+export class SelectBoxComponent {
 
   @Input() public items: any[] = [];
   @Input() public label = 'Choisir un item';
@@ -23,9 +23,6 @@ export class SelectBoxComponent implements OnInit {
 
   constructor(private config: NgbDropdownConfig) {
     config.autoClose = 'outside';
-  }
-
-  ngOnInit(): void {
   }
 
   public selectItem(item: any): void {

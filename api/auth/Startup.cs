@@ -1,3 +1,4 @@
+using System.Collections.Immutable;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -25,9 +26,11 @@ namespace auth
 {
     public class Startup
     {
+        readonly String MyAllowSpecificOrigins = "_myAllowSpecificOrigins"; 
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
         }
 
         public IConfiguration Configuration { get; }
@@ -36,7 +39,8 @@ namespace auth
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers()
-            .AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssemblyContaining<Startup>());
+                .AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssemblyContaining<Startup>())
+            ;
 
             services.AddSwaggerGen(c => {
                 c.OrderActionsBy(api => api.RelativePath);
@@ -57,6 +61,13 @@ namespace auth
                 options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 22)))
             );
 
+            services.AddCors(options => {
+                options.AddPolicy(MyAllowSpecificOrigins,builder => {
+                    builder.WithOrigins("*");
+                });
+            });
+
+
             services.AddAutoMapper(typeof(Startup).Assembly);
 
             // Repositories
@@ -76,7 +87,7 @@ namespace auth
 
             autoMapper.AssertConfigurationIsValid();
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
 
             app.UseSwagger();
 
@@ -86,6 +97,10 @@ namespace auth
             });
 
             app.UseRouting();
+
+            app.UseCors(builder => {
+                builder.AllowAnyOrigin();
+            });
 
             app.UseAuthorization();
 

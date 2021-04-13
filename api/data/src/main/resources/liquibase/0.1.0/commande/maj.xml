@@ -1,0 +1,31 @@
+<databaseChangeLog  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+	                http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="0.0.1-create-table-commande" author="cgiboulot">
+        <createTable tableName="commande">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="date_creation" type="datetime" />
+            <column name="date_donnee" type="datetime" />
+
+            <column name="statut_id" type="bigint" />
+            <column name="franchise_id" type="int" />
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="commande"
+                                 baseColumnNames="statut_id"
+                                 constraintName="fk_commande_statut_id"
+                                 referencedTableName="statut"
+                                 referencedColumnNames="id" />
+
+        <addForeignKeyConstraint baseTableName="commande"
+                                 baseColumnNames="franchise_id"
+                                 constraintName="fk_commande_franchise_id"
+                                 referencedTableName="franchise"
+                                 referencedColumnNames="id" />
+    </changeSet>
+
+</databaseChangeLog>
