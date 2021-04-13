@@ -4,8 +4,6 @@
     </div>
 
     <gf-catalogue-filtre [filters]="categories" (filterChange)="onFilterChange($event)"></gf-catalogue-filtre>
-    <div class="row">
-      <div class="col-8">
         <div *ngFor="let categorie of categories; let i = index">
           <div class="card">
             <div class="p-3 mb-0" (click)="collapse.toggle()" [attr.aria-expanded]="!collapsedList[i]">
@@ -19,8 +17,6 @@
                     <gf-produit-list [produits]="categorie.produits" (produitSelected)="recupProduit($event)"></gf-produit-list>
                 </div>
             </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
 </div>

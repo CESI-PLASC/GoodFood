@@ -8,7 +8,7 @@ import { Formule, IFormule } from '../../shared/models/formule';
 })
 export class SelectItemComponent implements OnInit {
 
-  @Input() public formules: Formule[];
+  @Input() public formules: IFormule[];
   @Input() public selectLabel: string = "Choisir une formule...";
   @Output() public itemSelected: EventEmitter<any> = new EventEmitter<any>();
 
@@ -16,23 +16,7 @@ export class SelectItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.formules = [
-      new Formule({
-        id: 1,
-        designation: 'Formule - Gourmande',
-        prix: 24.99
-      }),
-      new Formule({
-        id: 2,
-        designation: 'Formule - Classique',
-        prix: 14.99
-      }),
-      new Formule({
-        id: 3,
-        designation: 'Formule - Petit creux',
-        prix: 7.99
-      })
-    ];
+    console.log(this.formules);
   }
 
   getItem(item:any): void {

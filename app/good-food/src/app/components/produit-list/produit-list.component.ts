@@ -18,6 +18,5 @@ export class ProduitListComponent {
 
   recupProduitSelected(item: IProduit): void{
     this.produitSelected.emit(item);
-    //console.log(item);
   }
 }

@@ -1,13 +1,10 @@
-<div class="col-4">
-  <div class="card border-secondary mb-4" style="max-width: 30rem;">
+<div class="card border-secondary mb-4" style="max-width: 30rem;">
     <div class="card-header">Votre panier</div>
     <div class="card-body">
-        <gf-formule-list [produitChoisi]="produitChoisi" (formuleSelected)="actualiseTotal($event)"></gf-formule-list>
+        <gf-formule-list [produitChoisi]="produitChoisi" [formules]="formules" (formuleSelected)="actualiseTotal($event)"></gf-formule-list>
     </div>
     <div class="card-footer text-muted">
         Total : {{ prixTotal | currency: 'EUR':'symbol':'.2-2':'FR' }}
+        <button routerLink="/commande/1/validation" routerLinkActive="active" style="float: right;">Valider</button>
     </div>
-  </div>
 </div>
-
-

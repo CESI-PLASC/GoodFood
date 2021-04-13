@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Formule } from 'src/app/shared/models/formule';
+import { CatalogueService } from 'src/app/pages/catalogue-page/services/catalogue.service';
+import { Formule, IFormule } from 'src/app/shared/models/formule';
+import { Franchise } from 'src/app/shared/models/franchise';
 import { IProduit } from 'src/app/shared/models/produit';
 
 @Component({
@@ -10,13 +12,18 @@ import { IProduit } from 'src/app/shared/models/produit';
 export class PanierAjoutProduitComponent implements OnInit {
 
   @Input() public produitChoisi: IProduit;
+
+  public formules: IFormule[] = [];
   infosFormule: Formule;
   listFormule: Formule[] = [];
   prixTotal: number = 0.00;
 
-  constructor() { }
+  constructor(private readonly catalogueService: CatalogueService) { }
 
   ngOnInit(): void {
+    this.catalogueService.getFormules().subscribe(res => {
+      this.formules = res;
+    });
   }
 
   actualiseTotal(formule: Formule[]): void{
