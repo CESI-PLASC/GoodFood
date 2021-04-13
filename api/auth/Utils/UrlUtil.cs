@@ -21,6 +21,8 @@ namespace auth.Utils
             public const string PAIEMENTS = BASE_API_URL + "/paiements";
 
             public const string INTENT = PAIEMENTS + "/intent/{idCommande}";
+
+            public const string METHODES = PAIEMENTS + "/utilisateurs/{idUtilisateur}/methodes";
         }
     }
 }

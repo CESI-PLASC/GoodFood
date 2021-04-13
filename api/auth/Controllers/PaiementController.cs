@@ -1,62 +1,37 @@
-using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Net;
-using System.Net.Http;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using auth.Dto.commande;
+using auth.infrastructure.Services.paiement;
 using auth.Models.paiements;
 using auth.Utils;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
 using Stripe;
 
 namespace auth.Controllers
 {
     public class PaiementController : ControllerBase
     {
+        private IPaiementService _paiementService;
 
-        private IConfiguration Configuration;
-
-        public PaiementController(IConfiguration configuration)
+        public PaiementController(IPaiementService paiementService)
         {
-            Configuration = configuration;
+            this._paiementService = paiementService;
         }
 
         [HttpGet, Route(UrlUtil.PAIEMENT_RESSOURCE.INTENT), Produces("application/json")]
         [ProducesResponseType(typeof(PaymentIntent), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetIntent([FromRoute] int idCommande)
         {
-            String JAVA_URL = Configuration.GetValue<String>("JAVA_API:JAVA_URL");
+            PaiementModel paiement = await this._paiementService.commande(idCommande);
+            return Ok(paiement);
+        }
 
-            // Récupération du prix de la commande
-            Double prix = 0;
-            using (HttpClient httpClient = new HttpClient())
-            {
-                using (HttpResponseMessage response = await httpClient.GetAsync($"{JAVA_URL}/api/commandes/" + idCommande + "/prix"))
-                {
-                    string jsonstr = await response.Content.ReadAsStringAsync();
-                    prix = JsonConvert.DeserializeObject<CommandePriceDTO>(jsonstr).prix;
-                }
-            }
-            var match = Regex.Match(prix.ToString(), @"^([0-9]+)(?:,([0-9]+))?$");
-
-            // Création de l'intent
-            PaymentIntent intent = new PaymentIntentService().Create(new PaymentIntentCreateOptions
-            {
-                Amount = Int64.Parse(match.Groups[1].Value + match.Groups[2].Value),
-                Currency = "eur",
-                PaymentMethodTypes = new List<string>{
-                    "card"
-                }
-            });
-
-            return Ok(new PaiementModel()
-            {
-                client_secret = intent.ClientSecret
-            });
+        [HttpGet, Route(UrlUtil.PAIEMENT_RESSOURCE.METHODES), Produces("application/json")]
+        [ProducesResponseType(typeof(IEnumerable<PaiementMethodeModel>), (int)HttpStatusCode.OK)]
+        public IActionResult getMethodes([FromRoute] int idUtilisateur)
+        {
+            List<PaiementMethodeModel> methodes = this._paiementService.methodes(idUtilisateur);
+            return Ok(methodes);
         }
     }
 }
