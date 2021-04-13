@@ -44,9 +44,6 @@ export class PaiementCarteComponent implements OnInit, AfterViewInit {
     this.form.nativeElement.addEventListener("submit", async (event) => {
       event.preventDefault();
 
-      console.log(event);
-
-
       const resultat = await stripe.confirmCardPayment(this.clientSecret, {
         payment_method: {card}
       });
