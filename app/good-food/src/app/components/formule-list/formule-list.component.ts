@@ -1,6 +1,4 @@
-import { ConditionalExpr } from '@angular/compiler';
 import { Component, OnInit, Input, Output, EventEmitter, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { Icons } from 'src/app/shared/constants/icons.constant';
 import { Formule } from 'src/app/shared/models/formule';
@@ -9,15 +7,10 @@ import { IProduit, Produit } from 'src/app/shared/models/produit';
 @Component({
   selector: 'gf-formule-list',
   templateUrl: './formule-list.component.html',
-  styleUrls: ['./formule-list.component.scss'],
-  providers: [{
-    provide:NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(()=>FormuleListComponent),
-    multi:true
-  }]
+  styleUrls: ['./formule-list.component.scss']
 })
 
-export class FormuleListComponent implements OnInit, ControlValueAccessor, OnChanges {
+export class FormuleListComponent implements OnInit, OnChanges {
 
   formuleSelectionnee: Formule;
   tableauFormules: Formule[] = [];
@@ -28,7 +21,7 @@ export class FormuleListComponent implements OnInit, ControlValueAccessor, OnCha
   tabProduits: Produit[] = [];
   indexFormule: number;
 
-  @Input() public produitSelected : IProduit;
+  @Input() public produitChoisi : IProduit;
   @Output() public formuleSelected: EventEmitter<any> = new EventEmitter<any>();
   @Output() public idFormuleSelected: EventEmitter<any> = new EventEmitter<any>();
 
@@ -38,21 +31,11 @@ export class FormuleListComponent implements OnInit, ControlValueAccessor, OnCha
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.produitSelected.currentValue != undefined && this.indexFormule != undefined) {
-      this.tabProduits.push(changes.produitSelected.currentValue);
+    if (changes.produitChoisi.currentValue != undefined && this.indexFormule != undefined) {
+      this.tabProduits.push(changes.produitChoisi.currentValue);
+      this.produitChoisi = undefined;
     }
   }
-
-  writeValue(obj: any): void {
-    this.produitSelected = obj;
-  }
-  registerOnChange(fn: any): void {
-    this.onChange = fn;
-  }
-  registerOnTouched(fn: any): void {
-    this.onTouch = fn;
-  }
-
 
   ngOnInit(): void {
   }
@@ -83,9 +66,9 @@ export class FormuleListComponent implements OnInit, ControlValueAccessor, OnCha
   }
 
   choisirFormule(indexFormule:number): void{
-    //this.idFormuleSelected.emit(indexFormule);
+    this.idFormuleSelected.emit(indexFormule);
     this.indexFormule = indexFormule;
-    console.log(indexFormule);
+    console.log(this.indexFormule);
   }
 
 

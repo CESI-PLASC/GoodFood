@@ -21,7 +21,7 @@ import { PanierAjoutProduitComponent } from './panier-ajout-produit/panier-ajout
         CommonModule, FontAwesomeModule, MultiSelectModule, FormsModule, NgbDropdownModule, NgbCollapseModule
     ],
   exports: [
-      CatalogueComponent
+      CatalogueComponent, PanierAjoutProduitComponent
   ]
 })
 export class ComponentsModule { }

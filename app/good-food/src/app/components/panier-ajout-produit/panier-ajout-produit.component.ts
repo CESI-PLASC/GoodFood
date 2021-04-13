@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Formule } from 'src/app/shared/models/formule';
-import { IProduit, Produit } from 'src/app/shared/models/produit';
+import { IProduit } from 'src/app/shared/models/produit';
 
 @Component({
   selector: 'gf-panier-ajout-produit',
@@ -9,13 +9,10 @@ import { IProduit, Produit } from 'src/app/shared/models/produit';
 })
 export class PanierAjoutProduitComponent implements OnInit {
 
-  @Input() public produitSelected: Produit;
-  @Output() public formuleSelected: EventEmitter<any> = new EventEmitter<any>();
+  @Input() public produitChoisi: IProduit;
   infosFormule: Formule;
   listFormule: Formule[] = [];
   prixTotal: number = 0.00;
-  idFormuleSelected: number;
-
 
   constructor() { }
 
@@ -29,10 +26,4 @@ export class PanierAjoutProduitComponent implements OnInit {
       this.prixTotal += element.prix;
     });
   }
-
-  recupereFormuleARemplir(index:number): void{
-    this.idFormuleSelected = index;
-    this.formuleSelected.emit(this.listFormule[this.idFormuleSelected]);
-  }
-
 }

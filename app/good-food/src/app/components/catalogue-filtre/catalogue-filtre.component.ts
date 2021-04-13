@@ -15,7 +15,7 @@ export class CatalogueFiltreComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.filters);
+    //console.log(this.filters);
     this.filters.push(new SimpleCategorie({
       id: 3,
       designation: 'Entrées'

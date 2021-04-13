@@ -1,1 +1,2 @@
-<gf-catalogue [franchise]="franchise"></gf-catalogue>
+<gf-catalogue [franchise]="franchise" (produitSelected)="produitChoisi = $event"></gf-catalogue>
+<gf-panier-ajout-produit [produitChoisi]="produitChoisi"></gf-panier-ajout-produit>

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/core';
+import { Formule, IFormule } from 'src/app/shared/models/formule';
+import { IProduit } from 'src/app/shared/models/produit';
 import { Franchise, IFranchise } from '../../shared/models/franchise';
 
 @Component({
@@ -6,9 +8,11 @@ import { Franchise, IFranchise } from '../../shared/models/franchise';
   templateUrl: './catalogue-page.component.html',
   styleUrls: ['./catalogue-page.component.scss']
 })
-export class CataloguePageComponent implements OnInit {
+export class CataloguePageComponent implements OnInit{
 
   public franchise: IFranchise;
+  produitSelected : IProduit;
+  @Input() public produitChoisi: IProduit;
 
   constructor() { }
 
@@ -18,5 +22,4 @@ export class CataloguePageComponent implements OnInit {
       name: 'Spicy miam noodles'
     });
   }
-
 }
