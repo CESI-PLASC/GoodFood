@@ -8,7 +8,7 @@ import { CatalogueFiltreComponent } from './catalogue-filtre/catalogue-filtre.co
 import { MultiSelectModule } from 'primeng/multiselect';
 import { FormsModule } from '@angular/forms';
 import { SelectBoxComponent } from './select-box/select-box.component';
-import { NgbAccordionModule, NgbCarouselModule, NgbCollapseModule, NgbDropdownModule, NgbNavbar, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbAccordionModule, NgbCarouselModule, NgbCollapseModule, NgbDropdownModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { PanierComponent } from './panier/panier.component';
 import { ListeFranchiseComponent } from './liste-franchise/liste-franchise.component';
 import { InfoFranchiseComponent } from './info-franchise/info-franchise.component';
@@ -16,6 +16,9 @@ import { FiltreFranchiseComponent } from './filtre-franchise/filtre-franchise.co
 import { NavbarComponent } from './navbar/navbar.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { RouterModule } from '@angular/router';
+import { PanierAjoutProduitComponent } from './panier-ajout-produit/panier-ajout-produit.component';
+import { FormuleListComponent } from './formule-list/formule-list.component';
+import { SelectItemComponent } from './select-item/select-item.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { RouterModule } from '@angular/router';
       PanierComponent,
       SelectBoxComponent,
       NavbarComponent,
-      AccueilComponent
+      AccueilComponent,
+      PanierAjoutProduitComponent,
+      FormuleListComponent,
+      SelectItemComponent
   ],
     imports: [
         CommonModule,
@@ -41,7 +47,9 @@ import { RouterModule } from '@angular/router';
         NgbAccordionModule,
         NgbNavModule,
         RouterModule,
-        NgbCarouselModule
+        NgbCarouselModule,
+        NgbCollapseModule,
+        NgbDropdownModule
     ],
   exports: [
       CatalogueComponent,
@@ -52,7 +60,10 @@ import { RouterModule } from '@angular/router';
       InfoFranchiseComponent,
       FiltreFranchiseComponent,
       PanierComponent,
-      SelectBoxComponent
+      SelectBoxComponent,
+      PanierAjoutProduitComponent,
+      FormuleListComponent,
+      SelectItemComponent
   ]
 })
 export class ComponentsModule { }

@@ -1,4 +1,4 @@
-import { faCheckSquare, faChevronDown, faChevronRight, faMinus, faPlus, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faCheckSquare, faChevronDown, faChevronRight, faMinus, faPlus, faSearch, faTimes, faEye } from '@fortawesome/free-solid-svg-icons';
 import { faSquare } from '@fortawesome/free-regular-svg-icons';
 
 
@@ -14,6 +14,10 @@ export const Icons = {
     catalogue: {
         collapsed: faChevronRight,
         uncollapsed: faChevronDown
+    },
+    formule: {
+        delete: faTimes,
+        infos: faEye
     },
     franchise: {
         loupe: faSearch

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Franchise, IFranchise } from '../../shared/models/franchise';
+import { IProduit } from 'src/app/shared/models/produit';
+import { Franchise } from '../../shared/models/franchise';
 import { FranchiseService } from '../franchise-page/services/franchise.service';
 
 @Component({
@@ -10,6 +11,8 @@ import { FranchiseService } from '../franchise-page/services/franchise.service';
 })
 export class CataloguePageComponent implements OnInit{
   public franchise: Franchise;
+  produitSelected : IProduit;
+  @Input() public produitChoisi: IProduit;
 
   constructor(private route: ActivatedRoute, private readonly franchiseService: FranchiseService){}
 
