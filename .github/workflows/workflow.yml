@@ -54,6 +54,8 @@ jobs:
     name: Build
     needs: init
     steps:     
+      - name: logs
+        run: ls
       - name: Restore project
         run: cd ./api/auth && dotnet restore
 
