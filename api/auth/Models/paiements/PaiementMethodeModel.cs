@@ -6,5 +6,6 @@ namespace auth.Models.paiements
         public string derniersChiffres { get; set; }
         public long expireMois { get; set; }
         public long expireAnnee { get; set; }
+        public string type { get; set; }
     }
 }

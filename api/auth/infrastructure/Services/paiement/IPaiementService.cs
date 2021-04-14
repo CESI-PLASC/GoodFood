@@ -7,7 +7,7 @@ namespace auth.infrastructure.Services.paiement
 {
     public interface IPaiementService
     {
-        Task<PaiementModel> commande(int idCommande);
+        Task commande(int idCommande, string idPaiementMethode);
         Task<List<PaiementMethodeModel>> methodes(int idUtilisateur);
         PaiementCodeModele generateCodePaiement(UtilisateurModel utilisateur);
     }

@@ -9,14 +9,14 @@
     </div>
 
     <div class="mb-3">
-      <gf-selecteur-adresse [titre]="'Adresse de livraison'"
-                            [(ngModel)]="commande.adresseLivraison"
-                            [localisations]="commande.utilisateur.localisations">
+      <gf-selecteur-adresse [titre]="'Adresse de livraison'" [(ngModel)]="commande.adresseLivraison"
+        [localisations]="commande.utilisateur.localisations">
       </gf-selecteur-adresse>
     </div>
 
     <div class="mb-3">
-      <h4>Moyen de paiement</h4>
+      <gf-selecteur-paiement [titre]="'Moyen de paiement'" [methodesPaiement]="methodesPaiement">
+      </gf-selecteur-paiement>
       <!-- <gf-paiement-carte *ngIf="!!clientSecret" [clientSecret]="clientSecret"></gf-paiement-carte> -->
     </div>
 

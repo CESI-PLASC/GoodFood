@@ -14,11 +14,13 @@ namespace auth.infrastructure.Services.paiement
     {
         private ICommandeService _commandeService;
         private IUtilisateurService _utilisateurService;
+        private PaymentIntentService _paymentIntentService;
 
         public PaiementService(ICommandeService commandeService, IUtilisateurService utilisateurService)
         {
             this._commandeService = commandeService;
             this._utilisateurService = utilisateurService;
+            this._paymentIntentService = new PaymentIntentService();
         }
 
         public PaiementCodeModele generateCodePaiement(UtilisateurModel utilisateur)
@@ -37,7 +39,7 @@ namespace auth.infrastructure.Services.paiement
             };
         }
 
-        public async Task<PaiementModel> commande(int idCommande/*, string idPaiementMethode*/)
+        public async Task commande(int idCommande, string idPaiementMethode)
         {
             // Récupération du prix de la commande
             CommandeModel commande = await this._commandeService.one(idCommande);
@@ -45,21 +47,16 @@ namespace auth.infrastructure.Services.paiement
             var match = Regex.Match(prix.ToString(), @"^([0-9]+)(?:,([0-9]+))?$");
 
             // Création de l'intent
-            PaymentIntent intent = new PaymentIntentService().Create(new PaymentIntentCreateOptions
+            PaymentIntent intent = this._paymentIntentService.Create(new PaymentIntentCreateOptions
             {
                 Amount = Int64.Parse(match.Groups[1].Value + match.Groups[2].Value),
                 Currency = "eur",
-                PaymentMethodTypes = new List<string>{
-                    "card"
-                },
-                // PaymentMethod = idPaiementMethode,
+                PaymentMethod = idPaiementMethode,
                 Customer = commande.utilisateur.codePaiement
             });
 
-            return new PaiementModel()
-            {
-                client_secret = intent.ClientSecret
-            };
+            // Validation du paiement
+            this._paymentIntentService.Confirm(intent.Id);
         }
 
         public async Task<List<PaiementMethodeModel>> methodes(int idUtilisateur)
@@ -86,7 +83,8 @@ namespace auth.infrastructure.Services.paiement
                             id = methodePaiement.Id,
                             derniersChiffres = methodePaiement.Card.Last4,
                             expireAnnee = methodePaiement.Card.ExpYear,
-                            expireMois = methodePaiement.Card.ExpMonth
+                            expireMois = methodePaiement.Card.ExpMonth,
+                            type = methodePaiement.Card.Brand
                         });
                     }
                 }

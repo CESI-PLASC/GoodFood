@@ -24,6 +24,9 @@ import { AdresseModalComponent } from './adresse-box/modal/adresse-modal.compone
 import { SelecteurAdresseListModalComponent } from './selecteur-adresse/modal/selecteur-adresse-list-modal.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { LoginModalComponent } from './login-form/modal/login-modal.component';
+import { SelecteurPaiementComponent } from './selecteur-paiement/selecteur-paiement.component';
+import { InfoPaiementComponent } from './info-paiement/info-paiement.component';
+import { SelecteurPaiementListModalComponent } from './selecteur-paiement/modal/selecteur-paiement-list-modal.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,10 @@ import { LoginModalComponent } from './login-form/modal/login-modal.component';
       AdresseModalComponent,
       SelecteurAdresseListModalComponent,
       LoginFormComponent,
-      LoginModalComponent
+      LoginModalComponent,
+      SelecteurPaiementComponent,
+      InfoPaiementComponent,
+      SelecteurPaiementListModalComponent
   ],
     imports: [
         CommonModule,
@@ -73,7 +79,9 @@ import { LoginModalComponent } from './login-form/modal/login-modal.component';
         SelecteurAdresseComponent,
         PaiementCarteComponent,
         AdresseFormComponent,
-        LoginFormComponent
+        LoginFormComponent,
+        SelecteurPaiementComponent,
+        InfoPaiementComponent
     ]
 })
 export class ComponentsModule { }

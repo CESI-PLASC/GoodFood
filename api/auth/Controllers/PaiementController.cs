@@ -20,12 +20,12 @@ namespace auth.Controllers
             this._paiementService = paiementService;
         }
 
-        [HttpGet, Route(UrlUtil.PAIEMENT_RESSOURCE.PAYER_COMMANDE), Produces("application/json")]
-        [ProducesResponseType(typeof(PaymentIntent), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> payerCommande([FromRoute] int idCommande)
+        [HttpPost, Route(UrlUtil.PAIEMENT_RESSOURCE.PAIEMENT_COMMANDES), Produces("application/json")]
+        [ProducesResponseType(typeof(void), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> payerCommande([FromBody] PaiementCommande paiementCommande)
         {
-            PaiementModel paiement = await this._paiementService.commande(idCommande);
-            return Ok(paiement);
+            await this._paiementService.commande(paiementCommande.idCommande, paiementCommande.idPaiementMethode);
+            return Ok();
         }
 
         [HttpGet, Route(UrlUtil.PAIEMENT_RESSOURCE.METHODES), Produces("application/json")]
