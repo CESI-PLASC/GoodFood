@@ -1,4 +1,6 @@
-import { faCheckSquare, faChevronDown, faChevronRight, faMinus, faPlus, faSearch } from '@fortawesome/free-solid-svg-icons';
+import {
+    faCheckSquare, faChevronDown, faChevronRight, faEye, faMinus, faPlus, faSearch, faSyncAlt, faTimes
+} from '@fortawesome/free-solid-svg-icons';
 import { faSquare } from '@fortawesome/free-regular-svg-icons';
 
 
