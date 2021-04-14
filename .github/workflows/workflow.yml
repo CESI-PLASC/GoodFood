@@ -75,12 +75,14 @@ jobs:
           java-version: "11"
           distribution: 'adopt'
 
+      - name: Test JAVA
+        run : cd ./api/data && mvn test
+
       - name: Test Angular   
         run: cd ./app/good-food && ng test --watch=false --code-coverage
 
-        
-      - name: Test JAVA
-        run : cd ./api/data && mvn test
+
+
 
 
 
