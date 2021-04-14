@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { IProduit } from '../../shared/models/produit';
 import { Icons } from '../../shared/constants/icons.constant';
 import { registerLocaleData } from '@angular/common';
@@ -14,4 +14,14 @@ registerLocaleData(localeFr);
 export class ProduitItemComponent {
   public readonly icons = Icons.produits;
   @Input() public produit: IProduit;
+  @Output() public produitSelected: EventEmitter<any> = new EventEmitter<any>();
+
+  constructor() { }
+
+  ngOnInit(): void { }
+
+  ajouterProduitPanier(item:IProduit) : void{
+    this.produitSelected.emit(item);
+  }
+
 }

@@ -1,32 +1,32 @@
 {
-  "name": "goodfood",
-  "version": "1.0.0",
-  "description": "Projet goodfood",
-  "main": "index.js",
-  "scripts": {
-    "update": "concurrently \"npm run update:auth\" \"npm run update:data\" \"npm run update:app\"",
-    "update:auth": "cd ./api/auth && dotnet restore && dotnet tool run dotnet-ef database update",
-    "update:data": "cd ./api/data && ./mvnw clean",
-    "update:app": "cd ./app/good-food && npm i",
-    "start": "concurrently \"npm run start:auth\" \"npm run start:data\" \"npm run start:app\"",
-    "start:auth": "cd ./api/auth && dotnet watch run",
-    "start:data": "cd ./api/data && ./mvnw spring-boot:run",
-    "start:app": "cd ./app/good-food && ng serve",
-    "serve": "npm run update && npm run start"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/CESI-PLASC/GoodFood.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/CESI-PLASC/GoodFood/issues"
-  },
-  "homepage": "https://github.com/CESI-PLASC/GoodFood#readme",
-  "devDependencies": {
-    "@angular/cli": "^11.1.4",
-    "concurrently": "^5.3.0"
-  }
+    "name": "goodfood",
+    "version": "1.0.0",
+    "description": "Projet goodfood",
+    "main": "index.js",
+    "scripts": {
+        "update": "concurrently \"npm run update:auth\" \"npm run update:data\" \"npm run update:app\"",
+        "update:auth": "cd ./api/auth && dotnet restore && dotnet tool run dotnet-ef database update",
+        "update:data": "cd ./api/data && mvn clean",
+        "update:app": "cd ./app/good-food && npm i",
+        "start": "concurrently \"npm run start:auth\" \"npm run start:data\" \"npm run start:app\"",
+        "start:auth": "cd ./api/auth && dotnet watch run",
+        "start:data": "cd ./api/data && mvn spring-boot:run",
+        "start:app": "cd ./app/good-food && ng serve",
+        "serve": "npm run update && npm run start"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/CESI-PLASC/GoodFood.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/CESI-PLASC/GoodFood/issues"
+    },
+    "homepage": "https://github.com/CESI-PLASC/GoodFood#readme",
+    "devDependencies": {
+        "@angular/cli": "^11.1.4",
+        "concurrently": "^5.3.0"
+    }
 }

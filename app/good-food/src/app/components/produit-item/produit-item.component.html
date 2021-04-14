@@ -4,11 +4,8 @@
         <h5 class="card-title">{{ produit.designation }}</h5>
         <p class="card-subtitle text-right">{{ produit.prix | currency: 'EUR':'symbol':'.2-2':'FR' }}</p>
         <div class="btn-group float-right mt-3">
-            <button class="btn btn-sm btn-success">
+            <button class="btn btn-sm btn-success" (click)="ajouterProduitPanier(produit)">
                 <fa-icon [icon]="icons.add"></fa-icon>
-            </button>
-            <button class="btn btn-sm btn-danger">
-                <fa-icon [icon]="icons.remove"></fa-icon>
             </button>
         </div>
 

@@ -24,6 +24,9 @@ import { AdresseModalComponent } from './adresse-box/modal/adresse-modal.compone
 import { SelecteurAdresseListModalComponent } from './selecteur-adresse/modal/selecteur-adresse-list-modal.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { LoginModalComponent } from './login-form/modal/login-modal.component';
+import { PanierAjoutProduitComponent } from './panier-ajout-produit/panier-ajout-produit.component';
+import { FormuleListComponent } from './formule-list/formule-list.component';
+import { SelectItemComponent } from './select-item/select-item.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,11 @@ import { LoginModalComponent } from './login-form/modal/login-modal.component';
       AdresseModalComponent,
       SelecteurAdresseListModalComponent,
       LoginFormComponent,
-      LoginModalComponent
+      LoginModalComponent,
+      AccueilComponent,
+      PanierAjoutProduitComponent,
+      FormuleListComponent,
+      SelectItemComponent
   ],
     imports: [
         CommonModule,
@@ -58,23 +65,28 @@ import { LoginModalComponent } from './login-form/modal/login-modal.component';
         NgbNavModule,
         RouterModule,
         NgbCarouselModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        NgbCollapseModule,
+        NgbDropdownModule
     ],
-    exports: [
-        CatalogueComponent,
-        ProduitItemComponent,
-        ProduitListComponent,
-        CatalogueFiltreComponent,
-        ListeFranchiseComponent,
-        InfoFranchiseComponent,
-        FiltreFranchiseComponent,
-        PanierComponent,
-        SelectBoxComponent,
-        SelecteurAdresseComponent,
-        PaiementCarteComponent,
-        AdresseFormComponent,
-        LoginFormComponent,
-        NavbarComponent
-    ]
+  exports: [
+      CatalogueComponent,
+      ProduitItemComponent,
+      ProduitListComponent,
+      CatalogueFiltreComponent,
+      ListeFranchiseComponent,
+      InfoFranchiseComponent,
+      FiltreFranchiseComponent,
+      PanierComponent,
+      SelectBoxComponent,
+      PanierAjoutProduitComponent,
+      FormuleListComponent,
+      SelectItemComponent,
+      SelecteurAdresseComponent,
+      PaiementCarteComponent,
+      AdresseFormComponent,
+      LoginFormComponent,
+      NavbarComponent
+  ]
 })
 export class ComponentsModule { }
