@@ -23,8 +23,6 @@ namespace auth.infrastructure.Services.paiement
 
         public PaiementCodeModele generateCodePaiement(UtilisateurModel utilisateur)
         {
-            Console.WriteLine(utilisateur.email);
-
             Customer customer = new CustomerService().Create(new CustomerCreateOptions
             {
                 Email = utilisateur.email,
@@ -32,8 +30,6 @@ namespace auth.infrastructure.Services.paiement
                 Phone = utilisateur.telephoneFixe,
                 Description = $"{utilisateur.nom} {utilisateur.prenom}"
             });
-
-            Console.WriteLine(customer.Id);
 
             return new PaiementCodeModele
             {

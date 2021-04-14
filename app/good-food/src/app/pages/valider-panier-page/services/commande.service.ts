@@ -17,7 +17,7 @@ export class CommandeService {
     return this.http.get<CommandeArgs>(`${RESS_COMMANDES}/${idCommande}`).pipe(map(reponse => new Commande(reponse)));
   }
 
-  public getPaiementIntent(idCommande: number): Observable<Paiement>{
-    return this.http.get<PaiementArgs>(`${RESS_PAIEMENTS}/intent/${idCommande}`).pipe(map(response => new Paiement(response)));
+  public payerCommande(idCommande: number): Observable<Paiement>{
+    return this.http.get<PaiementArgs>(`${RESS_PAIEMENTS}/commandes/${idCommande}`).pipe(map(response => new Paiement(response)));
   }
 }

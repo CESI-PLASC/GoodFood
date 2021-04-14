@@ -2,6 +2,6 @@ namespace auth.Models.paiements
 {
     public class PaiementMethodeModel
     {
-        public string id;
+        public string id { get; set; }
     }
 }

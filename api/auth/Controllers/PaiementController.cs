@@ -20,9 +20,9 @@ namespace auth.Controllers
             this._paiementService = paiementService;
         }
 
-        [HttpGet, Route(UrlUtil.PAIEMENT_RESSOURCE.INTENT), Produces("application/json")]
+        [HttpGet, Route(UrlUtil.PAIEMENT_RESSOURCE.PAYER_COMMANDE), Produces("application/json")]
         [ProducesResponseType(typeof(PaymentIntent), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> GetIntent([FromRoute] int idCommande)
+        public async Task<IActionResult> payerCommande([FromRoute] int idCommande)
         {
             PaiementModel paiement = await this._paiementService.commande(idCommande);
             return Ok(paiement);
@@ -40,7 +40,6 @@ namespace auth.Controllers
         [ProducesResponseType(typeof(PaiementCodeModele), (int)HttpStatusCode.OK)]
         public IActionResult generateCodePaiement([FromBody] UtilisateurModel utilisateur)
         {
-            Console.WriteLine(utilisateur);
             PaiementCodeModele codePaiement = this._paiementService.generateCodePaiement(utilisateur);
             return Ok(codePaiement);
         }
