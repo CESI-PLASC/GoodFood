@@ -3,6 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Icons } from 'src/app/shared/constants/icons.constant';
 import { Commande } from 'src/app/shared/models/commande';
 import { CommandeService } from './services/commande.service';
+import { Franchise } from '../../shared/models/franchise';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AdresseModalComponent } from '../../components/adresse-box/modal/adresse-modal.component';
+import { Adresse, IAdresse } from '../../shared/models/adresse';
 
 @Component({
   selector: 'gf-valider-panier-page',
@@ -11,11 +15,12 @@ import { CommandeService } from './services/commande.service';
 })
 export class ValiderPanierPageComponent implements OnInit {
 
-  public readonly icons = Icons.validation;
   public commande?: Commande;
   public clientSecret?: string;
 
-  constructor(private route: ActivatedRoute, private readonly commandeService: CommandeService) {}
+  constructor(
+      private route: ActivatedRoute,
+      private readonly commandeService: CommandeService) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -24,11 +29,13 @@ export class ValiderPanierPageComponent implements OnInit {
       });
 
       this.commandeService.getPaiementIntent(params.idCommande).subscribe(paiement => {
-        console.log(paiement.client_secret);
         this.clientSecret = paiement.client_secret;
-      })
-    })
+      });
+    });
+  }
 
+  public valideCommande(): void {
+    console.log(this.commande);
   }
 
 }

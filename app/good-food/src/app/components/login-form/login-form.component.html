@@ -1,0 +1,13 @@
+<form [formGroup]="connectForm" (submit)="signup()">
+    <div class="form-group">
+        <label for="login">Identifiant</label>
+        <input type="text" class="form-control" id="login" formControlName="login">
+    </div>
+    <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input type="password" class="form-control" id="password" formControlName="password">
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary" [disabled]="connectForm.invalid">Connection</button>
+    </div>
+</form>

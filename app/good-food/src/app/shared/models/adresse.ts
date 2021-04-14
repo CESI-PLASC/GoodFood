@@ -8,7 +8,7 @@ export interface IAdresse {
   complement?: string | null;
 }
 
-export class Adresse implements IAdresse{
+export class Adresse implements IAdresse {
   id?: number;
   pays?: string;
   codePostal?: string;

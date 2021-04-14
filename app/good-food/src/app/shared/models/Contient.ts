@@ -1,4 +1,4 @@
-import { Produit } from "./produit";
+import { Produit } from './produit';
 
 export interface IContient{
   id?: {contenuId: number; produitId: number};
@@ -7,7 +7,7 @@ export interface IContient{
 }
 
 export class Contient implements IContient{
-  id?: IContient["id"];
+  id?: IContient['id'];
   produit?: Produit;
   quantite?: number;
 

@@ -4,11 +4,21 @@ import { CataloguePageComponent } from './catalogue-page/catalogue-page.componen
 import { ValiderPanierPageComponent } from './valider-panier-page/valider-panier-page.component';
 import { FranchisePageComponent } from './franchise-page/franchise-page.component';
 import { AccueilComponent } from '../components/accueil/accueil.component';
+import { CoordonneeClientPageComponent } from './coordonnee-client-page/coordonnee-client-page.component';
 
 const routes: Routes = [
   {
-    path: 'commande/:idCommande/validation',
-    component: ValiderPanierPageComponent
+    path: 'commande/:idCommande',
+    children: [
+      {
+        path: 'coordonnee',
+        component: CoordonneeClientPageComponent
+      },
+      {
+        path: 'validation',
+        component: ValiderPanierPageComponent,
+      }
+    ]
   },
   {
     path: 'franchise',
