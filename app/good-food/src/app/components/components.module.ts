@@ -8,11 +8,17 @@ import { CatalogueFiltreComponent } from './catalogue-filtre/catalogue-filtre.co
 import { MultiSelectModule } from 'primeng/multiselect';
 import { FormsModule } from '@angular/forms';
 import { SelectBoxComponent } from './select-box/select-box.component';
-import { NgbAccordionModule, NgbCollapseModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbAccordionModule, NgbCarouselModule, NgbCollapseModule, NgbDropdownModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { PanierComponent } from './panier/panier.component';
 import { ListeFranchiseComponent } from './liste-franchise/liste-franchise.component';
 import { InfoFranchiseComponent } from './info-franchise/info-franchise.component';
 import { FiltreFranchiseComponent } from './filtre-franchise/filtre-franchise.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { AccueilComponent } from './accueil/accueil.component';
+import { RouterModule } from '@angular/router';
+import { PanierAjoutProduitComponent } from './panier-ajout-produit/panier-ajout-produit.component';
+import { FormuleListComponent } from './formule-list/formule-list.component';
+import { SelectItemComponent } from './select-item/select-item.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +30,12 @@ import { FiltreFranchiseComponent } from './filtre-franchise/filtre-franchise.co
       InfoFranchiseComponent,
       FiltreFranchiseComponent,
       PanierComponent,
-      SelectBoxComponent
+      SelectBoxComponent,
+      NavbarComponent,
+      AccueilComponent,
+      PanierAjoutProduitComponent,
+      FormuleListComponent,
+      SelectItemComponent
   ],
     imports: [
         CommonModule,
@@ -33,7 +44,12 @@ import { FiltreFranchiseComponent } from './filtre-franchise/filtre-franchise.co
         FormsModule,
         NgbDropdownModule,
         NgbCollapseModule,
-        NgbAccordionModule
+        NgbAccordionModule,
+        NgbNavModule,
+        RouterModule,
+        NgbCarouselModule,
+        NgbCollapseModule,
+        NgbDropdownModule
     ],
   exports: [
       CatalogueComponent,
@@ -44,7 +60,10 @@ import { FiltreFranchiseComponent } from './filtre-franchise/filtre-franchise.co
       InfoFranchiseComponent,
       FiltreFranchiseComponent,
       PanierComponent,
-      SelectBoxComponent
+      SelectBoxComponent,
+      PanierAjoutProduitComponent,
+      FormuleListComponent,
+      SelectItemComponent
   ]
 })
 export class ComponentsModule { }

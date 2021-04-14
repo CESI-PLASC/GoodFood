@@ -1,7 +1,15 @@
 <div id="valider-panier-page">
   <gf-panier *ngIf="commande" [commande]="commande"></gf-panier>
   <div>
-    <div>Le franchisé</div>
+    <div id="valider-panier-page-franchise">
+      <div class="row">
+        <h4 class="col">Le franchisé</h4>
+      </div>
+      <div class="row">
+        <gf-info-franchise class="col" *ngIf="commande.franchise" [franchise]="commande.franchise" [actions]="false">
+        </gf-info-franchise>
+      </div>
+    </div>
     <div>Les adresses</div>
     <div>Les moyens de paiements</div>
   </div>

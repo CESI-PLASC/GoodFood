@@ -8,11 +8,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { FranchisePageComponent } from './franchise-page/franchise-page.component';
 import { ValiderPanierPageComponent } from './valider-panier-page/valider-panier-page.component';
 
+
 @NgModule({
   declarations: [
     CataloguePageComponent,
     FranchisePageComponent,
-    ValiderPanierPageComponent
+    ValiderPanierPageComponent,
   ],
   imports: [
     CommonModule,
