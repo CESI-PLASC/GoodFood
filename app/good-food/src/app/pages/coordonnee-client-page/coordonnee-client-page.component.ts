@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginModalComponent } from '../../components/login-form/modal/login-modal.component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'gf-coordonnee-client-page',
@@ -12,7 +11,7 @@ import { map } from 'rxjs/operators';
 })
 export class CoordonneeClientPageComponent implements OnInit {
 
-  public isConnected = true;
+  public isConnected = false;
   private commandeId: string;
 
   constructor(private readonly fb: FormBuilder,
@@ -37,7 +36,13 @@ export class CoordonneeClientPageComponent implements OnInit {
     });
   }
 
-  public envoyerCoordonnee(): void {
-    this.router.navigate(['commande', this.commandeId, 'validation']);
+  async envoyerCoordonnee(): Promise<void> {
+    if (this.infoForm.valid) {
+      await this.router.navigate(['commande', this.commandeId, 'validation']);
+    }
+  }
+
+  previousPage(): void {
+    history.back();
   }
 }

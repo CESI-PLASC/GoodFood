@@ -7,20 +7,22 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PagesModule } from './pages/pages.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule,
-    PagesModule,
-    FontAwesomeModule,
-    BrowserAnimationsModule,
-    CommonModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        NgbModule,
+        PagesModule,
+        FontAwesomeModule,
+        BrowserAnimationsModule,
+        CommonModule,
+        ComponentsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

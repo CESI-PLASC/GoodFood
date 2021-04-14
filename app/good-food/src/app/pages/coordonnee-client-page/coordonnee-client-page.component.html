@@ -1,10 +1,10 @@
-<div class="w-100 text-center mb-5">
+<div class="w-100 text-center mb-4">
     <h3 *ngIf="!isConnected">Renseignez vos coordonnées</h3>
     <h3 *ngIf="isConnected">Récapitulatif de vos coordonnées</h3>
 </div>
 <div class="row w-100 d-flex justify-content-center">
-    <div class="col-md-6 col-lg-5 col-xl-3">
-        <form [formGroup]="infoForm" (submit)="envoyerCoordonnee()">
+    <div class="col-sm-9 col-md-7 col-lg-5 col-xl-4">
+        <form class="p-5 gf-bg-gray" [formGroup]="infoForm" (submit)="envoyerCoordonnee()">
             <div class="form-group">
                 <label for="nom">Nom*</label>
                 <input type="text" class="form-control" id="nom" formControlName="nom" required>
@@ -23,8 +23,11 @@
             </div>
             <small class="form-text text-muted">*Champs obligatoires</small>
             <div class="text-center d-flex flex-column align-items-center mt-4">
-                <button class="btn btn-link" (click)="openSignupModal()">Vous avez déjà un compte ?</button>
-                <button type="submit" class="btn btn-primary" [disabled]="infoForm.invalid">Valider les coordonnées</button>
+                <button *ngIf="!isConnected" type="button" class="btn btn-link" (click)="openSignupModal()">Vous avez déjà un compte ?</button>
+                <div>
+                    <button type="button" class="btn btn-secondary mr-2 mb-2" (click)="previousPage()">Retour</button>
+                    <button type="submit" class="btn btn-primary mb-2" [disabled]="infoForm.invalid">Valider les coordonnées</button>
+                </div>
             </div>
         </form>
     </div>

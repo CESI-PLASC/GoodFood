@@ -8,7 +8,7 @@ import { CatalogueFiltreComponent } from './catalogue-filtre/catalogue-filtre.co
 import { MultiSelectModule } from 'primeng/multiselect';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SelectBoxComponent } from './select-box/select-box.component';
-import { NgbAccordionModule, NgbCarouselModule, NgbCollapseModule, NgbDropdownModule, NgbNavbar, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbAccordionModule, NgbCarouselModule, NgbCollapseModule, NgbDropdownModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { PanierComponent } from './panier/panier.component';
 import { ListeFranchiseComponent } from './liste-franchise/liste-franchise.component';
 import { InfoFranchiseComponent } from './info-franchise/info-franchise.component';
@@ -73,7 +73,8 @@ import { LoginModalComponent } from './login-form/modal/login-modal.component';
         SelecteurAdresseComponent,
         PaiementCarteComponent,
         AdresseFormComponent,
-        LoginFormComponent
+        LoginFormComponent,
+        NavbarComponent
     ]
 })
 export class ComponentsModule { }

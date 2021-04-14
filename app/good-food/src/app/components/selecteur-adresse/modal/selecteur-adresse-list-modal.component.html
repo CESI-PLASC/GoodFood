@@ -1,5 +1,10 @@
 <div class="modal-header">
-    <h3 class="modal-title">Choisissez une adresse ou créez en une nouvelle</h3>
+    <div class="w-100 d-flex gf-justify-evenly align-items-center">
+
+        <h3 class="modal-title">Choisissez une adresse</h3>
+        <h5 class="modal-title">ou</h5>
+        <h3 class="modal-title">créez en une nouvelle</h3>
+    </div>
     <button type="button" class="close" (click)="close()">
         <fa-icon [icon]="icons.cancel"></fa-icon>
     </button>
@@ -10,7 +15,7 @@
             <gf-info-adresse [adresse]="localisation.adresse"
                              (click)="close(localisation.adresse)">
             </gf-info-adresse>
-            <fa-icon *ngIf="localisation.preferee" [icon]="faStar" [size]="'lg'" title="Votre adresse favorite"></fa-icon>
+            <fa-icon *ngIf="localisation.preferee" class="m-2" [icon]="faStar" [size]="'lg'" title="Votre adresse favorite"></fa-icon>
         </div>
     </div>
     <div class="col-lg-6">
