@@ -10,6 +10,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: log
+        run: ls
+
       - name: Shutdown Ubuntu MySQL
         run: sudo service mysql stop
 
