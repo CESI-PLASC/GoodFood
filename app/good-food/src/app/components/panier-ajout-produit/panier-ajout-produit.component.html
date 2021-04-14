@@ -1,7 +1,7 @@
 <div class="card border-secondary mb-4" style="max-width: 30rem;">
     <div class="card-header">Votre panier</div>
     <div class="card-body">
-        <gf-formule-list [produitChoisi]="produitChoisi" [formules]="formules" (formuleSelected)="actualiseTotal($event)"></gf-formule-list>
+        <gf-formule-list [formules]="formules" (formuleSelected)="actualiseTotal($event)"></gf-formule-list>
     </div>
     <div class="card-footer text-muted">
         Total : {{ prixTotal | currency: 'EUR':'symbol':'.2-2':'FR' }}

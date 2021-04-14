@@ -1,5 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
+import { Input } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs';
+import { PanierService } from 'src/app/pages/catalogue-page/services/panier.service';
 import { Icons } from 'src/app/shared/constants/icons.constant';
 import { Formule, IFormule } from 'src/app/shared/models/formule';
 import { IProduit, Produit } from 'src/app/shared/models/produit';
@@ -10,44 +12,25 @@ import { IProduit, Produit } from 'src/app/shared/models/produit';
   styleUrls: ['./formule-list.component.scss']
 })
 
-export class FormuleListComponent implements OnInit, OnChanges {
+export class FormuleListComponent {
 
-  formuleSelectionnee: Formule;
+  formuleSelectionnee: IFormule;
   tableauFormules: Formule[] = [];
   prixTotal: number;
   tableauProduitsSubject: Subject<IProduit[]> = new Subject<IProduit[]>();
   public icons = Icons;
   public collapsedList: boolean[] = [];
-  tabProduits: Produit[] = [];
-  indexFormule: number;
 
   @Input() public formules: IFormule[];
-  @Input() public produitChoisi : IProduit;
   @Output() public formuleSelected: EventEmitter<any> = new EventEmitter<any>();
   @Output() public idFormuleSelected: EventEmitter<any> = new EventEmitter<any>();
 
-  public onTouch = ()=>{};
-  public onChange = (value:IProduit[])=>{};
 
-  constructor() { }
+  constructor(public panierService: PanierService) { }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.produitChoisi.currentValue != undefined && this.indexFormule != undefined) {
-      this.tabProduits.push(changes.produitChoisi.currentValue);
-    }
-  }
-
-  ngOnInit(): void {
-  }
 
   ajouterFormule(): void{
-    if (this.formuleSelectionnee === undefined) {
-      alert("Veuillez choisir une formule.")
-    }
-    else{
-      this.tableauFormules.push(this.formuleSelectionnee);
-      this.formuleSelected.emit(this.tableauFormules);
-    }
+    this.panierService.addFormule(this.formuleSelectionnee);
   }
 
   voirDetailsFormule(id:number): void{
@@ -55,26 +38,26 @@ export class FormuleListComponent implements OnInit, OnChanges {
   }
 
   retirerFormule(index:number): void{
-    if (confirm("Voulez-vous retirer cette formule de votre panier ?")) {
-      this.tableauFormules.splice(index, 1);
-      this.formuleSelected.emit(this.tableauFormules);
-    }
+    throw new Error("Todo");
+    // if (confirm("Voulez-vous retirer cette formule de votre panier ?")) {
+    //   this.tableauFormules.splice(index, 1);
+    //   this.formuleSelected.emit(this.tableauFormules);
+    // }
   }
 
   retirerProduit(index:number): void{
-    this.tabProduits.splice(index, 1);
+    throw new Error("Todo");
   }
 
   choisirFormule(indexFormule:number): void{
-    this.idFormuleSelected.emit(indexFormule);
-    this.indexFormule = indexFormule;
-    console.log(this.indexFormule);
+    this.panierService.selectFormule(indexFormule);
+    console.log(this.panierService.formulesWithProducts);
   }
 
   /**
    * {
    *    'id' = 1,
-   *    'libelle' = 'gourmande',
+   *    'designation' = 'gourmande',
    *    'prix' = 29.99,
    *    'compose' = {
    *        {
