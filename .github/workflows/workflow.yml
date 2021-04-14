@@ -77,7 +77,7 @@ jobs:
 
 
       - name: Test JAVA
-        run : cd ./api/data && mvn clean verify
+        run : cd ./api/data && mvn test
 
 
 
