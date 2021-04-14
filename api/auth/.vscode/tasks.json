@@ -1,0 +1,9 @@
+{
+    "label": "dotnet unit test",
+    "command": "dotnet",
+    "type": "process",
+    "args": [
+        "test",
+        "${workspaceFolder}/tests/auth.UnitTests/auth.UnitTests.csproj"
+    ]
+}

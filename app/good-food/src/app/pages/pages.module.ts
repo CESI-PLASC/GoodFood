@@ -7,19 +7,25 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { FranchisePageComponent } from './franchise-page/franchise-page.component';
 import { ValiderPanierPageComponent } from './valider-panier-page/valider-panier-page.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CoordonneeClientPageComponent } from './coordonnee-client-page/coordonnee-client-page.component';
+
 
 @NgModule({
   declarations: [
     CataloguePageComponent,
     FranchisePageComponent,
-    ValiderPanierPageComponent
+    ValiderPanierPageComponent,
+    CoordonneeClientPageComponent,
   ],
-  imports: [
-    CommonModule,
-    ComponentsModule,
-    PagesRoutingModule,
-    FontAwesomeModule,
-    HttpClientModule
-  ]
+    imports: [
+        CommonModule,
+        ComponentsModule,
+        PagesRoutingModule,
+        FontAwesomeModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule
+    ]
 })
 export class PagesModule { }

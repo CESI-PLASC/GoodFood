@@ -1,22 +1,9 @@
-@import "../../../assets/theme/_variables.scss";
+@import "../../../assets/theme/variables";
 
-.gf-selecteur-adresse {
-  .gf-selecteur-adresse-selectionnee:hover {
-    border: 1px solid $green;
-    cursor: pointer;
-  }
-}
-
-.gf-selecteur-adresse-liste {
-  .modal-body {
-    height: 400px;
-    overflow: scroll;
-
-    .gf-selecteur-adresse-liste-item {
-      &:hover {
-        border: 1px solid $green;
-        cursor: pointer;
-      }
-    }
+.card {
+  transition: transform .2s, box-shadow .2s;
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: $gray-400 0 0 .8rem 0;
   }
 }
