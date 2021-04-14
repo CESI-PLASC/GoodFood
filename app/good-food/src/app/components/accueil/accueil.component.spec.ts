@@ -1,25 +1,24 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { AccueilComponent } from './accueil.component';
+import { Spectator } from '@ngneat/spectator';
+import { createComponentFactory } from '@ngneat/spectator/jest';
+import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 
-describe('AccueilComponent', () => {
-  let component: AccueilComponent;
-  let fixture: ComponentFixture<AccueilComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ AccueilComponent ]
-    })
-    .compileComponents();
+describe('Accueil component tests', () => {
+  let spectator: Spectator<AccueilComponent>;
+  let comp: AccueilComponent;
+  const createComponent = createComponentFactory({
+    component: AccueilComponent,
+    imports: [
+        NgbCarouselModule
+    ]
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AccueilComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    spectator = createComponent();
+    comp = spectator.component;
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('Should create component', () => {
+    expect(comp).toBeDefined();
   });
 });

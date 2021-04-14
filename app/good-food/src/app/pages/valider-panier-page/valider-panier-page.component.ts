@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Icons } from 'src/app/shared/constants/icons.constant';
 import { Commande } from 'src/app/shared/models/commande';
 import { CommandeService } from './services/commande.service';
-import { Franchise } from '../../shared/models/franchise';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AdresseModalComponent } from '../../components/adresse-box/modal/adresse-modal.component';
-import { Adresse, IAdresse } from '../../shared/models/adresse';
 
 @Component({
   selector: 'gf-valider-panier-page',

@@ -1,15 +1,16 @@
 import { Spectator } from '@ngneat/spectator';
 import { createComponentFactory } from '@ngneat/spectator/jest';
-import { FiltreFranchiseComponent } from './filtre-franchise.component';
-import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
+import { AdresseFormComponent } from './adresse-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-describe('Accueil component tests', () => {
-  let spectator: Spectator<FiltreFranchiseComponent>;
-  let comp: FiltreFranchiseComponent;
+describe('Adresse form component tests', () => {
+  let spectator: Spectator<AdresseFormComponent>;
+  let comp: AdresseFormComponent;
   const createComponent = createComponentFactory({
-    component: FiltreFranchiseComponent,
+    component: AdresseFormComponent,
     imports: [
-      FontAwesomeTestingModule
+      ReactiveFormsModule,
+      FormsModule
     ]
   });
 

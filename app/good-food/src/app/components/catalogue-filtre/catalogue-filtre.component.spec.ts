@@ -1,25 +1,28 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Spectator } from '@ngneat/spectator';
+import { createComponentFactory } from '@ngneat/spectator/jest';
 import { CatalogueFiltreComponent } from './catalogue-filtre.component';
+import { SelectBoxComponent } from '../select-box/select-box.component';
+import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 
-describe('CatalogueFiltreComponent', () => {
-  let component: CatalogueFiltreComponent;
-  let fixture: ComponentFixture<CatalogueFiltreComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ CatalogueFiltreComponent ]
-    })
-    .compileComponents();
+describe('Catalogue filtre component tests', () => {
+  let spectator: Spectator<CatalogueFiltreComponent>;
+  let comp: CatalogueFiltreComponent;
+  const createComponent = createComponentFactory({
+    component: CatalogueFiltreComponent,
+    imports: [
+        FontAwesomeTestingModule
+    ],
+    entryComponents: [
+        SelectBoxComponent
+    ]
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CatalogueFiltreComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    spectator = createComponent();
+    comp = spectator.component;
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('Should create component', () => {
+    expect(comp).toBeDefined();
   });
 });
