@@ -14,6 +14,7 @@ using FluentValidation.AspNetCore;
 using Stripe;
 using auth.infrastructure.Services.commande;
 using auth.infrastructure.Services.paiement;
+using auth.infrastructure.Services.utilisateur;
 
 namespace auth
 {
@@ -73,6 +74,7 @@ namespace auth
             // Services
             services.AddTransient<IFranchiseService, FranchiseService>();
             services.AddTransient<ICommandeService, CommandeService>();
+            services.AddTransient<IUtilisateurService, UtilisateurService>();
             services.AddTransient<IPaiementService, PaiementService>();
         }
 

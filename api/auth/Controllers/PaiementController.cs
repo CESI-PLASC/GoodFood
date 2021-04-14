@@ -2,10 +2,12 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using auth.infrastructure.Services.paiement;
+using auth.Models;
 using auth.Models.paiements;
 using auth.Utils;
 using Microsoft.AspNetCore.Mvc;
 using Stripe;
+using System;
 
 namespace auth.Controllers
 {
@@ -28,10 +30,19 @@ namespace auth.Controllers
 
         [HttpGet, Route(UrlUtil.PAIEMENT_RESSOURCE.METHODES), Produces("application/json")]
         [ProducesResponseType(typeof(IEnumerable<PaiementMethodeModel>), (int)HttpStatusCode.OK)]
-        public IActionResult getMethodes([FromRoute] int idUtilisateur)
+        public async Task<IActionResult> getMethodes([FromRoute] int idUtilisateur)
         {
-            List<PaiementMethodeModel> methodes = this._paiementService.methodes(idUtilisateur);
+            List<PaiementMethodeModel> methodes = await this._paiementService.methodes(idUtilisateur);
             return Ok(methodes);
+        }
+
+        [HttpPost, Route(UrlUtil.PAIEMENT_RESSOURCE.UTILISATEURS), Produces("application/json")]
+        [ProducesResponseType(typeof(PaiementCodeModele), (int)HttpStatusCode.OK)]
+        public IActionResult generateCodePaiement([FromBody] UtilisateurModel utilisateur)
+        {
+            Console.WriteLine(utilisateur);
+            PaiementCodeModele codePaiement = this._paiementService.generateCodePaiement(utilisateur);
+            return Ok(codePaiement);
         }
     }
 }

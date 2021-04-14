@@ -19,10 +19,9 @@ namespace auth.Utils
         public static class PAIEMENT_RESSOURCE
         {
             public const string PAIEMENTS = BASE_API_URL + "/paiements";
-
             public const string INTENT = PAIEMENTS + "/intent/{idCommande}";
-
-            public const string METHODES = PAIEMENTS + "/utilisateurs/{idUtilisateur}/methodes";
+            public const string UTILISATEURS = PAIEMENTS + "/utilisateurs";
+            public const string METHODES = UTILISATEURS + "/{idUtilisateur}/methodes";
         }
     }
 }

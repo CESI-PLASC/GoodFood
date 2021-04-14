@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using auth.infrastructure.Services.commande;
+using auth.infrastructure.Services.utilisateur;
 using auth.Models;
 using auth.Models.paiements;
 using Stripe;
@@ -12,20 +13,40 @@ namespace auth.infrastructure.Services.paiement
     public class PaiementService : IPaiementService
     {
         private ICommandeService _commandeService;
+        private IUtilisateurService _utilisateurService;
 
-        public PaiementService(ICommandeService commandeService)
+        public PaiementService(ICommandeService commandeService, IUtilisateurService utilisateurService)
         {
             this._commandeService = commandeService;
+            this._utilisateurService = utilisateurService;
+        }
+
+        public PaiementCodeModele generateCodePaiement(UtilisateurModel utilisateur)
+        {
+            Console.WriteLine(utilisateur.email);
+
+            Customer customer = new CustomerService().Create(new CustomerCreateOptions
+            {
+                Email = utilisateur.email,
+                Name = utilisateur.nom,
+                Phone = utilisateur.telephoneFixe,
+                Description = $"{utilisateur.nom} {utilisateur.prenom}"
+            });
+
+            Console.WriteLine(customer.Id);
+
+            return new PaiementCodeModele
+            {
+                codePaiement = customer.Id
+            };
         }
 
         public async Task<PaiementModel> commande(int idCommande/*, string idPaiementMethode*/)
         {
-
             // Récupération du prix de la commande
             CommandeModel commande = await this._commandeService.one(idCommande);
             double prix = await this._commandeService.prix(idCommande);
             var match = Regex.Match(prix.ToString(), @"^([0-9]+)(?:,([0-9]+))?$");
-            Console.WriteLine(commande.utilisateur.id.ToString());
 
             // Création de l'intent
             PaymentIntent intent = new PaymentIntentService().Create(new PaymentIntentCreateOptions
@@ -36,7 +57,7 @@ namespace auth.infrastructure.Services.paiement
                     "card"
                 },
                 // PaymentMethod = idPaiementMethode,
-                Customer = commande.utilisateur.id.ToString()
+                Customer = commande.utilisateur.codePaiement
             });
 
             return new PaiementModel()
@@ -45,31 +66,35 @@ namespace auth.infrastructure.Services.paiement
             };
         }
 
-        public List<PaiementMethodeModel> methodes(int idUtilisateur)
+        public async Task<List<PaiementMethodeModel>> methodes(int idUtilisateur)
         {
-            List<PaiementMethodeModel> methodesPaiement = new List<PaiementMethodeModel>();
+            // Récupération de l'utilisateur
+            UtilisateurModel utilisateur = await this._utilisateurService.one(idUtilisateur);
 
             // Récupération des moyen de paiements si l'utilisateur existe
-            try
+            List<PaiementMethodeModel> methodesPaiement = new List<PaiementMethodeModel>();
             {
-                StripeList<PaymentMethod> methodesPaiementStripe = new PaymentMethodService().List(new PaymentMethodListOptions
+                try
                 {
-                    Customer = idUtilisateur.ToString(),
-                    Type = "card"
-                });
-
-
-                foreach (PaymentMethod methodePaiement in methodesPaiementStripe)
-                {
-                    methodesPaiement.Add(new PaiementMethodeModel
+                    StripeList<PaymentMethod> methodesPaiementStripe = new PaymentMethodService().List(new PaymentMethodListOptions
                     {
-                        id = methodePaiement.Id
+                        Customer = utilisateur.codePaiement,
+                        Type = "card"
                     });
-                }
-            }
-            catch (StripeException) { }
 
-            return methodesPaiement;
+
+                    foreach (PaymentMethod methodePaiement in methodesPaiementStripe)
+                    {
+                        methodesPaiement.Add(new PaiementMethodeModel
+                        {
+                            id = methodePaiement.Id
+                        });
+                    }
+                }
+                catch (StripeException) { }
+
+                return methodesPaiement;
+            }
         }
     }
 }

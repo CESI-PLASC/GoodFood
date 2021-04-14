@@ -37,6 +37,9 @@ public class Utilisateur {
     @Column(name = "telephone_mobile")
     private String telephoneMobile;
 
+    @Column(name = "code_paiement", nullable = false)
+    private String codePaiement;
+
     @OneToMany(mappedBy = "utilisateur")
     List<Commande> commandes;
 
@@ -49,7 +52,7 @@ public class Utilisateur {
     }
 
     public Utilisateur(Long id, String nom, String prenom, Date dateNaissance, String email, String telephoneFixe,
-            String telephoneMobile, List<Commande> commandes, List<Localisation> localisations) {
+            String telephoneMobile, String codePaiement, List<Commande> commandes, List<Localisation> localisations) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -57,6 +60,7 @@ public class Utilisateur {
         this.email = email;
         this.telephoneFixe = telephoneFixe;
         this.telephoneMobile = telephoneMobile;
+        this.codePaiement = codePaiement;
         this.commandes = commandes;
         this.localisations = localisations;
     }
@@ -117,6 +121,14 @@ public class Utilisateur {
         this.telephoneMobile = telephoneMobile;
     }
 
+    public String getCodePaiement() {
+        return this.codePaiement;
+    }
+
+    public void setCodePaiement(String codePaiement) {
+        this.codePaiement = codePaiement;
+    }
+
     public List<Commande> getCommandes() {
         return this.commandes;
     }
@@ -168,6 +180,11 @@ public class Utilisateur {
         return this;
     }
 
+    public Utilisateur codePaiement(String codePaiement) {
+        setCodePaiement(codePaiement);
+        return this;
+    }
+
     public Utilisateur commandes(List<Commande> commandes) {
         setCommandes(commandes);
         return this;
@@ -191,22 +208,24 @@ public class Utilisateur {
                 && Objects.equals(dateNaissance, utilisateur.dateNaissance) && Objects.equals(email, utilisateur.email)
                 && Objects.equals(telephoneFixe, utilisateur.telephoneFixe)
                 && Objects.equals(telephoneMobile, utilisateur.telephoneMobile)
+                && Objects.equals(codePaiement, utilisateur.codePaiement)
                 && Objects.equals(commandes, utilisateur.commandes)
                 && Objects.equals(localisations, utilisateur.localisations);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nom, prenom, dateNaissance, email, telephoneFixe, telephoneMobile, commandes,
-                localisations);
+        return Objects.hash(id, nom, prenom, dateNaissance, email, telephoneFixe, telephoneMobile, codePaiement,
+                commandes, localisations);
     }
 
     @Override
     public String toString() {
         return "{" + " id='" + getId() + "'" + ", nom='" + getNom() + "'" + ", prenom='" + getPrenom() + "'"
                 + ", dateNaissance='" + getDateNaissance() + "'" + ", email='" + getEmail() + "'" + ", telephoneFixe='"
-                + getTelephoneFixe() + "'" + ", telephoneMobile='" + getTelephoneMobile() + "'" + ", commandes='"
-                + getCommandes() + "'" + ", localisations='" + getLocalisations() + "'" + "}";
+                + getTelephoneFixe() + "'" + ", telephoneMobile='" + getTelephoneMobile() + "'" + ", codePaiement='"
+                + getCodePaiement() + "'" + ", commandes='" + getCommandes() + "'" + ", localisations='"
+                + getLocalisations() + "'" + "}";
     }
 
     // #endregion

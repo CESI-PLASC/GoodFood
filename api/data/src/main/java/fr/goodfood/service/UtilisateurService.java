@@ -15,7 +15,17 @@ public class UtilisateurService {
     @Autowired
     private UtilisateurRepository utilisateurRepository;
 
+    private PaiementService paiementService;
+    @Autowired
+    public void setPaiementService(PaiementService paiementService){
+        this.paiementService = paiementService;
+    }
+
     public Utilisateur create(Utilisateur utilisateur) {
+        
+        utilisateur.codePaiement(this.paiementService.genererCodePaiement(utilisateur));
+        System.out.println(utilisateur.getCodePaiement());
+
         return this.utilisateurRepository.save(utilisateur);
     }
 
