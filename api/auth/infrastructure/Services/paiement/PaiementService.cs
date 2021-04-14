@@ -83,7 +83,10 @@ namespace auth.infrastructure.Services.paiement
                     {
                         methodesPaiement.Add(new PaiementMethodeModel
                         {
-                            id = methodePaiement.Id
+                            id = methodePaiement.Id,
+                            derniersChiffres = methodePaiement.Card.Last4,
+                            expireAnnee = methodePaiement.Card.ExpYear,
+                            expireMois = methodePaiement.Card.ExpMonth
                         });
                     }
                 }
