@@ -3,11 +3,10 @@ name: GoodFood CI
 on: [push]
 
 jobs:
-  build:
+  init:
     runs-on: ubuntu-18.04
-    name: Build
-    steps:
-      - name: Checkout
+    name: Init
+     - name: Checkout
         uses: actions/checkout@v2
 
       - name: Shutdown Ubuntu MySQL
@@ -41,14 +40,19 @@ jobs:
         with:
           dotnet-version: '3.1.x'
 
-      - name: Restore project
-        run: cd ./api/auth && dotnet restore
-
       - name: Setup Java
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
 
+  build:
+    runs-on: ubuntu-18.04
+    name: Build
+    needs: init
+    steps:     
+      - name: Restore project
+        run: cd ./api/auth && dotnet restore
+        
       - name: Maven Package
         run: cd ./api/data && mvn clean package -DskipTests
 
@@ -68,6 +72,7 @@ jobs:
   test:
     runs-on: ubuntu-18.04
     name: Tests
+    needs: init
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-java@v2
