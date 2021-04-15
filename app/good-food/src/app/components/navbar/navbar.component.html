@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
   <a class="navbar-brand" [routerLink]="['/accueil']">GoodFood</a>
 
   <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
@@ -11,7 +11,7 @@
         <a class="nav-link" [routerLink]="['/accueil']" (click)="isMenuCollapsed = true">Accueil</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/franchise']" (click)="isMenuCollapsed = true">Les franchisés</a>
+        <a class="nav-link" style="transition: .25s" [routerLink]="['/franchise']" (click)="isMenuCollapsed = true">Les franchisés</a>
       </li>
     </ul>
   </div>

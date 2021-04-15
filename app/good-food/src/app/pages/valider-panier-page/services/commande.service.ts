@@ -2,6 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/operators';
+import { RESS_COMMANDES, RESS_METHODES_PAIEMENT } from '../../../shared/constants/ressources.contants';
+import MethodePaiement, { MethodePaiementArgs } from '../../../shared/models/methode-paiement/methode-paiement';
+import { Commande, CommandeArgs } from '../../../shared/models/commande/commande';
 
 @Injectable({
   providedIn: 'root'

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import MethodePaiement from 'src/app/shared/models/methode-paiement';
+import MethodePaiement from 'src/app/shared/models/methode-paiement/methode-paiement';
 
 @Component({
   selector: 'gf-info-paiement',

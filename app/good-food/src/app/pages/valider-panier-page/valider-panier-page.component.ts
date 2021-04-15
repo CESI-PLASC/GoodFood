@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { loadStripe, Stripe } from '@stripe/stripe-js';
-import { Commande } from 'src/app/shared/models/commande';
-import MethodePaiement from 'src/app/shared/models/methode-paiement';
+import { Commande } from 'src/app/shared/models/commande/commande';
+import MethodePaiement from 'src/app/shared/models/methode-paiement/methode-paiement';
 import { environment } from 'src/environments/environment';
 import { CommandeService } from './services/commande.service';
 
@@ -32,7 +32,7 @@ export class ValiderPanierPageComponent implements OnInit {
 
         this.commandeService.methodesPaiementUtilisateur(this.commande.utilisateur.id).subscribe(methodes => {
           this.methodesPaiement = methodes;
-        })
+        });
       });
     });
   }

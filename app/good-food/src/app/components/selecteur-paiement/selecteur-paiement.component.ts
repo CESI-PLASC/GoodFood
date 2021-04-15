@@ -2,7 +2,7 @@ import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Icons } from 'src/app/shared/constants/icons.constant';
-import MethodePaiement from 'src/app/shared/models/methode-paiement';
+import MethodePaiement from 'src/app/shared/models/methode-paiement/methode-paiement';
 import { SelecteurPaiementListModalComponent } from './modal/selecteur-paiement-list-modal.component';
 
 @Component({

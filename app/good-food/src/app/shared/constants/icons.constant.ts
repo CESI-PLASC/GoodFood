@@ -1,4 +1,6 @@
-
+import {
+    faCheckSquare, faChevronDown, faChevronRight, faEye, faMinus, faPlus, faSearch, faSquare, faSyncAlt, faTimes
+} from '@fortawesome/free-solid-svg-icons';
 
 export const Icons = {
     produits: {

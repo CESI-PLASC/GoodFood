@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import MethodePaiement from 'src/app/shared/models/methode-paiement';
+import MethodePaiement from 'src/app/shared/models/methode-paiement/methode-paiement';
 
 @Component({
   selector: 'gf-methode-paiement-form',
@@ -19,7 +19,7 @@ export class MethodePaiementFormComponent implements OnInit {
     name: this.fb.control('', [Validators.required]),
     numero: this.fb.control('', [Validators.required, Validators.pattern(/^\d{4}(-\d{4}){3}$/)]),
     dateExpire: this.fb.control('', [Validators.required, Validators.pattern(/^\d{2}-\d{4}$/)]),
-    cvc: this.fb.control('', [Validators.required, , Validators.pattern(/^\d{3}$/)]),
+    cvc: this.fb.control('', [Validators.required, Validators.pattern(/^\d{3}$/)]),
   });
 
   constructor(private readonly fb: FormBuilder) { }
