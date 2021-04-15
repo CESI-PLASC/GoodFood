@@ -1,31 +1,21 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ComponentsModule } from '../components/components.module';
-import { CataloguePageComponent } from './catalogue-page/catalogue-page.component';
+import { AccueilPageModule } from './layouts/accueil-page/accueil-page.module';
+import { CataloguePageModule } from './catalogue-page/catalogue-page.module';
+import { CoordonneeClientPageModule } from './coordonnee-client-page/coordonnee-client-page.module';
+import { FranchisePageModule } from './franchise-page/franchise-page.module';
+import { ValiderPanierPageModule } from './valider-panier-page/valider-panier-page.module';
 import { PagesRoutingModule } from './pages-routing.module';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { HttpClientModule } from '@angular/common/http';
-import { FranchisePageComponent } from './franchise-page/franchise-page.component';
-import { ValiderPanierPageComponent } from './valider-panier-page/valider-panier-page.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CoordonneeClientPageComponent } from './coordonnee-client-page/coordonnee-client-page.component';
 
 
 @NgModule({
-  declarations: [
-    CataloguePageComponent,
-    FranchisePageComponent,
-    ValiderPanierPageComponent,
-    CoordonneeClientPageComponent,
-  ],
     imports: [
-        CommonModule,
-        ComponentsModule,
         PagesRoutingModule,
-        FontAwesomeModule,
-        HttpClientModule,
-        FormsModule,
-        ReactiveFormsModule
+
+        AccueilPageModule,
+        CataloguePageModule,
+        CoordonneeClientPageModule,
+        FranchisePageModule,
+        ValiderPanierPageModule,
     ]
 })
 export class PagesModule { }

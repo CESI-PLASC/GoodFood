@@ -1,0 +1,22 @@
+@import "src/assets/theme/variables";
+
+:host(.ng-invalid:not(form)),
+:host(.ng-valid[required]),
+:host(.ng-valid.required) {
+  border: none;
+}
+
+input.ng-invalid:not(form) {
+  border: $red solid 1px;
+  &:focus {
+    box-shadow: 0 0 0 0.2rem transparentize($red, .75);
+  }
+}
+
+input.ng-valid[required],
+input.ng-valid.required {
+  border: $green solid 1px;
+  &:focus {
+    box-shadow: 0 0 0 0.2rem transparentize($green, .75);
+  }
+}

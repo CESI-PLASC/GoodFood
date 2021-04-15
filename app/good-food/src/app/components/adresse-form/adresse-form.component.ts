@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Adresse, IAdresse } from '../../shared/models/adresse';
+import { Adresse, IAdresse } from '../../shared/models/adresse/adresse';
 
 @Component({
   selector: 'gf-adresse-form',

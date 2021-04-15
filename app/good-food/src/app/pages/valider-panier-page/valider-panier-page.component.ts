@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Commande } from 'src/app/shared/models/commande';
+import { Commande } from 'src/app/shared/models/commande/commande';
 import { CommandeService } from './services/commande.service';
 
 @Component({

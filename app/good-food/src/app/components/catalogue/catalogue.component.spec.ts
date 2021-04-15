@@ -3,10 +3,10 @@ import { createComponentFactory } from '@ngneat/spectator/jest';
 import { CatalogueComponent } from './catalogue.component';
 import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
-import { CatalogueFiltreComponent } from '../catalogue-filtre/catalogue-filtre.component';
+import { CatalogueFiltreComponent } from './catalogue-filtre/catalogue-filtre.component';
 import { SelectBoxComponent } from '../select-box/select-box.component';
-import { ProduitListComponent } from '../produit-list/produit-list.component';
-import { ProduitItemComponent } from '../produit-item/produit-item.component';
+import { ProduitListComponent } from '../produit/produit-list/produit-list.component';
+import { ProduitItemComponent } from '../produit/produit-item/produit-item.component';
 
 /* TODO (node:26449) UnhandledPromiseRejectionWarning: TypeError: Converting circular structure to JSON */
 

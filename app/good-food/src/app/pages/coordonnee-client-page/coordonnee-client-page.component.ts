@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { LoginModalComponent } from '../../components/login-form/modal/login-modal.component';
+import { LoginModalComponent } from '../../components/admin/login-form/modal/login-modal.component';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IProduit } from 'src/app/shared/models/produit';
-import { Franchise } from '../../shared/models/franchise';
+import { IProduit } from 'src/app/shared/models/produit/produit';
+import { Franchise } from '../../shared/models/franchise/franchise';
 import { FranchiseService } from '../franchise-page/services/franchise.service';
 
 @Component({
@@ -21,6 +21,6 @@ export class CataloguePageComponent implements OnInit{
       this.franchiseService.getFranchise(params.id).subscribe(franchise => {
         this.franchise = franchise;
       });
-    })
+    });
   }
 }

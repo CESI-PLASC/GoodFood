@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Commande } from 'src/app/shared/models/commande';
+import { Commande } from 'src/app/shared/models/commande/commande';
 
 @Component({
   selector: 'gf-panier',
@@ -12,9 +12,7 @@ export class PanierComponent {
 
   constructor(private router: Router) {}
 
-  ngOnInit(): void {}
-
-  navigateToCommande(){
-    this.router.navigate([`/franchise/${this.commande.franchise.id}/catalogue`]);
+  async navigateToCommande() : Promise<void> {
+    await this.router.navigate([`/franchise/${this.commande.franchise.id}/catalogue`]);
   }
 }

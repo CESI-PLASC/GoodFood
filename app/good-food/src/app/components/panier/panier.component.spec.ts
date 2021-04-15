@@ -1,7 +1,7 @@
 import { Spectator } from '@ngneat/spectator';
 import { createComponentFactory } from '@ngneat/spectator/jest';
 import { PanierComponent } from './panier.component';
-import { Commande } from '../../shared/models/commande';
+import { Commande } from '../../shared/models/commande/commande';
 import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 
 /* TODO (node:26449) UnhandledPromiseRejectionWarning: TypeError: Converting circular structure to JSON */

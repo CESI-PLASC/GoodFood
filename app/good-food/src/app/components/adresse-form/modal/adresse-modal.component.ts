@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Icons } from '../../../shared/constants/icons.constant';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { IAdresse } from '../../../shared/models/adresse';
+import { IAdresse } from '../../../shared/models/adresse/adresse';
 
 @Component({
   selector: 'gf-adresse-modal',

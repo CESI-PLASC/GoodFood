@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/operators';
 import { RESS_COMMANDES, RESS_PAIEMENTS } from 'src/app/shared/constants/ressources.contants';
-import { Commande, CommandeArgs, ICommande } from 'src/app/shared/models/commande';
-import Paiement, { PaiementArgs } from 'src/app/shared/models/paiement';
+import { Commande, CommandeArgs } from 'src/app/shared/models/commande/commande';
+import Paiement, { PaiementArgs } from 'src/app/shared/models/paiement/paiement';
 
 @Injectable({
   providedIn: 'root'

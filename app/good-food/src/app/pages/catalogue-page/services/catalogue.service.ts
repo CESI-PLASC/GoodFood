@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ICategorie } from '../../../shared/models/categorie';
+import { ICategorie } from '../../../shared/models/categorie/categorie';
 import { RESS_FRANCHISES } from 'src/app/shared/constants/ressources.contants';
 
 @Injectable({

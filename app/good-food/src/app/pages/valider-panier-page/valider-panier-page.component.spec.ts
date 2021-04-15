@@ -8,7 +8,7 @@ import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testi
 import { InfoAdresseComponent } from '../../components/info-adresse/info-adresse.component';
 import { PanierComponent } from '../../components/panier/panier.component';
 import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
-import { InfoFranchiseComponent } from '../../components/info-franchise/info-franchise.component';
+import { InfoFranchiseComponent } from '../../components/franchise/info-franchise/info-franchise.component';
 import { RouterTestingModule } from '@angular/router/testing';
 
 /* TODO (node:26449) UnhandledPromiseRejectionWarning: TypeError: Converting circular structure to JSON */

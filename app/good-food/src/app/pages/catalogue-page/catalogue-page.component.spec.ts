@@ -1,11 +1,11 @@
 import { Spectator } from '@ngneat/spectator';
 import { createComponentFactory } from '@ngneat/spectator/jest';
 import { CataloguePageComponent } from './catalogue-page.component';
-import { PanierAjoutProduitComponent } from '../../components/panier-ajout-produit/panier-ajout-produit.component';
+import { PanierAjoutProduitComponent } from '../../components/panier/panier-ajout-produit/panier-ajout-produit.component';
 import { CatalogueComponent } from '../../components/catalogue/catalogue.component';
-import { CatalogueFiltreComponent } from '../../components/catalogue-filtre/catalogue-filtre.component';
-import { ProduitListComponent } from '../../components/produit-list/produit-list.component';
-import { ProduitItemComponent } from '../../components/produit-item/produit-item.component';
+import { CatalogueFiltreComponent } from '../../components/catalogue/catalogue-filtre/catalogue-filtre.component';
+import { ProduitListComponent } from '../../components/produit/produit-list/produit-list.component';
+import { ProduitItemComponent } from '../../components/produit/produit-item/produit-item.component';
 import { NgbCollapseModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 import { FormuleListComponent } from '../../components/formule-list/formule-list.component';
