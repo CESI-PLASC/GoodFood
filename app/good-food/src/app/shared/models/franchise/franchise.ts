@@ -1,5 +1,6 @@
-import { Adresse, IAdresse } from '../adresse/adresse';
-import {omit} from 'lodash';
+import { Adresse } from '../adresse/adresse';
+import { IAdresse } from '../adresse/IAdresse';
+import { omit } from 'lodash';
 
 export interface IFranchise {
   id?: number;

@@ -1,4 +1,4 @@
-import { Contient } from '../contient/Contient';
+import { Contient } from '../contient/contient';
 import { Formule } from '../formule/formule';
 
 export interface IContenu{

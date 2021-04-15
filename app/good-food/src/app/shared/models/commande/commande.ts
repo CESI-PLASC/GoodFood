@@ -1,12 +1,12 @@
 import * as _ from 'lodash';
 import * as moment from 'moment';
 import { Moment } from 'moment';
-import { Contenu, IContenu } from '../contenu/Contenu';
-import { Contient } from '../contient/Contient';
+import { Contenu, IContenu } from '../contenu/contenu';
+import { Contient } from '../contient/contient';
 import { Formule } from '../formule/formule';
 import { Franchise, IFranchise } from '../franchise/franchise';
-import Statut, { IStatut } from '../statut/Statut';
-import Utilisateur, { IUtilisateur } from '../utilisateur/Utilisateur';
+import Statut, { IStatut } from '../statut/statut';
+import Utilisateur, { IUtilisateur } from '../utilisateur/utilisateur';
 import { Adresse, IAdresse } from '../adresse/adresse';
 
 export type CommandeArgs = Pick<ICommande, 'id' | 'formules' | 'statut' | 'franchise' | 'utilisateur'> & {

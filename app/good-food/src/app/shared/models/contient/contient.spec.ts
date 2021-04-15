@@ -1,4 +1,4 @@
-import { Contient } from './Contient';
+import { Contient } from './contient';
 
 describe('Contient', () => {
   it('should create an instance', () => {

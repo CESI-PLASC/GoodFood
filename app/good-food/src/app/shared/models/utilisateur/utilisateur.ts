@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import Localisation, { ILocalisation } from '../localisation/Localisation';
+import Localisation, { ILocalisation } from '../localisation/localisation';
 
 export interface IUtilisateur{
   id?: number;

@@ -1,4 +1,4 @@
-import Statut from './Statut';
+import Statut from './statut';
 
 describe('Statut', () => {
   it('should create an instance', () => {

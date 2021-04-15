@@ -4,7 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginModalComponent } from '../../components/admin/login-form/modal/login-modal.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CoordonneeClientService } from './services/coordonnee-client.service';
-import Utilisateur from '../../shared/models/utilisateur/Utilisateur';
+import Utilisateur from '../../shared/models/utilisateur/utilisateur';
 
 @Component({
   selector: 'gf-coordonnee-client-page',

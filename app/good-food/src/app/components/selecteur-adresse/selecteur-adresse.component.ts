@@ -1,7 +1,7 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IAdresse } from 'src/app/shared/models/adresse/adresse';
-import { ILocalisation } from 'src/app/shared/models/localisation/Localisation';
+import { ILocalisation } from 'src/app/shared/models/localisation/localisation';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Icons } from '../../shared/constants/icons.constant';
 import { SelecteurAdresseListModalComponent } from './modal/selecteur-adresse-list-modal.component';

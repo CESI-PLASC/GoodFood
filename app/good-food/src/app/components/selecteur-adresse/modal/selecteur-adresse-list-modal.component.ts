@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Icons } from '../../../shared/constants/icons.constant';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { IAdresse } from '../../../shared/models/adresse/adresse';
-import { ILocalisation } from '../../../shared/models/localisation/Localisation';
+import { ILocalisation } from '../../../shared/models/localisation/localisation';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
