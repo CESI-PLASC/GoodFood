@@ -23,7 +23,10 @@
             </div>
             <small class="form-text text-muted">*Champs obligatoires</small>
             <div class="text-center d-flex flex-column align-items-center mt-4">
-                <button *ngIf="!isConnected" type="button" class="btn btn-link" (click)="openSignupModal()">Vous avez déjà un compte ?</button>
+                <div class="">
+                    <span>Vous avez déjà un compte ?</span>
+                    <button *ngIf="!isConnected" type="button" class="btn btn-link" (click)="openSignupModal()">Connectez-vous</button>
+                </div>
                 <div>
                     <button type="button" class="btn btn-secondary mr-2 mb-2" (click)="previousPage()">Retour</button>
                     <button type="submit" class="btn btn-primary mb-2" [disabled]="infoForm.invalid">Valider les coordonnées</button>

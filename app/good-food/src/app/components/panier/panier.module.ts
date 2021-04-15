@@ -5,6 +5,7 @@ import { PanierAjoutProduitComponent } from './panier-ajout-produit/panier-ajout
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormuleListModule } from '../formule-list/formule-list.module';
 import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -13,14 +14,15 @@ import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
       PanierComponent,
       PanierAjoutProduitComponent,
   ],
-  imports: [
-    CommonModule,
-      FormsModule,
-      ReactiveFormsModule,
-      NgbAccordionModule,
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgbAccordionModule,
 
-      FormuleListModule,
-  ],
+        FormuleListModule,
+        RouterModule,
+    ],
   exports: [
       PanierComponent,
       PanierAjoutProduitComponent,

@@ -7,7 +7,7 @@
         <div *ngFor="let categorie of categories; let i = index">
           <div class="card">
             <div class="p-3 mb-0" (click)="collapse.toggle()" [attr.aria-expanded]="!collapsedList[i]">
-                <h5 class="mb-0">
+                <h5 class="gf-collapse mb-0">
                     <fa-icon class="mr-2" [icon]="collapsedList[i] ? icons.collapsed : icons.uncollapsed"></fa-icon>
                     {{ categorie.designation }}
                 </h5>

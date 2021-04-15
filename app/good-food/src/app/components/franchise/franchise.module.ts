@@ -5,6 +5,7 @@ import { InfoFranchiseComponent } from './info-franchise/info-franchise.componen
 import { ListeFranchiseComponent } from './liste-franchise/liste-franchise.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -14,11 +15,12 @@ import { HttpClientModule } from '@angular/common/http';
       InfoFranchiseComponent,
       ListeFranchiseComponent,
   ],
-  imports: [
-    CommonModule,
-      FontAwesomeModule,
-      HttpClientModule
-  ],
+    imports: [
+        CommonModule,
+        FontAwesomeModule,
+        HttpClientModule,
+        RouterModule
+    ],
   exports: [
       FiltreFranchiseComponent,
       InfoFranchiseComponent,

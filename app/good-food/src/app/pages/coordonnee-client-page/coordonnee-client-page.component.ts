@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginModalComponent } from '../../components/admin/login-form/modal/login-modal.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CoordonneeClientService } from './services/coordonnee-client.service';
+import Utilisateur from '../../shared/models/utilisateur/Utilisateur';
 
 @Component({
   selector: 'gf-coordonnee-client-page',
@@ -17,7 +19,8 @@ export class CoordonneeClientPageComponent implements OnInit {
   constructor(private readonly fb: FormBuilder,
               private readonly modalService: NgbModal,
               private readonly router: Router,
-              private readonly activeRoute: ActivatedRoute) { }
+              private readonly activeRoute: ActivatedRoute,
+              private readonly coordonneeClientService: CoordonneeClientService) { }
 
   public infoForm: FormGroup = this.fb.group({
     nom: this.fb.control('', Validators.required),
@@ -38,6 +41,7 @@ export class CoordonneeClientPageComponent implements OnInit {
 
   async envoyerCoordonnee(): Promise<void> {
     if (this.infoForm.valid) {
+      this.coordonneeClientService.updateUtilisateur(new Utilisateur({...this.infoForm.value}));
       await this.router.navigate(['commande', this.commandeId, 'validation']);
     }
   }

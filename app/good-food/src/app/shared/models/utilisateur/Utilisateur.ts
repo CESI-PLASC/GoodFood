@@ -25,6 +25,6 @@ export default class Utilisateur implements IUtilisateur{
   constructor(args?: IUtilisateur){
     Object.assign(this, _.omit(args, ['localisations']));
 
-    this.localisations = args.localisations.map(localisation => new Localisation(localisation));
+    this.localisations = args.localisations?.map(localisation => new Localisation(localisation));
   }
 }

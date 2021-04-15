@@ -12,10 +12,10 @@
           {{franchise.adresse}}<br>
           {{franchise.email}}
         </p>
-        <span *ngIf="actions !== false">
-          <a href="#" class="btn btn-light">Livraison</a>
-          <a href="#" class="btn btn-light">Emporter</a>
-        </span>
+        <div *ngIf="actions !== false">
+          <button class="btn btn-secondary" [routerLink]="[franchise.id, 'catalogue']" >Livraison</button>
+          <button class="btn btn-secondary" [routerLink]="[franchise.id, 'catalogue']" >À emporter</button>
+        </div>
       </div>
     </div>
   </div>
