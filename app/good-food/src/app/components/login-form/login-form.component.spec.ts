@@ -1,25 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Spectator } from '@ngneat/spectator';
+import { createComponentFactory } from '@ngneat/spectator/jest';
 import { LoginFormComponent } from './login-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-describe('LoginFormComponent', () => {
-  let component: LoginFormComponent;
-  let fixture: ComponentFixture<LoginFormComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ LoginFormComponent ]
-    })
-    .compileComponents();
+describe('Info adresse component tests', () => {
+  let spectator: Spectator<LoginFormComponent>;
+  let comp: LoginFormComponent;
+  const createComponent = createComponentFactory({
+    component: LoginFormComponent,
+    imports: [
+        ReactiveFormsModule,
+        FormsModule
+    ]
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginFormComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    spectator = createComponent();
+    comp = spectator.component;
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('Should create component', () => {
+    expect(comp).toBeDefined();
   });
 });

@@ -1,25 +1,24 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Spectator } from '@ngneat/spectator';
+import { createComponentFactory } from '@ngneat/spectator/jest';
 import { ProduitItemComponent } from './produit-item.component';
+import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 
-describe('ProduitItemComponent', () => {
-  let component: ProduitItemComponent;
-  let fixture: ComponentFixture<ProduitItemComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ ProduitItemComponent ]
-    })
-    .compileComponents();
+describe('Produit item component tests', () => {
+  let spectator: Spectator<ProduitItemComponent>;
+  let comp: ProduitItemComponent;
+  const createComponent = createComponentFactory({
+    component: ProduitItemComponent,
+    imports: [
+      FontAwesomeTestingModule
+    ]
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProduitItemComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    spectator = createComponent();
+    comp = spectator.component;
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('Should create component', () => {
+    expect(comp).toBeDefined();
   });
 });

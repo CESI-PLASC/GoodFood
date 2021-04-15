@@ -1,25 +1,35 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Spectator } from '@ngneat/spectator';
+import { createComponentFactory } from '@ngneat/spectator/jest';
 import { LoginModalComponent } from './login-modal.component';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { LoginFormComponent } from '../login-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 
-describe('LoginModalComponent', () => {
-  let component: LoginModalComponent;
-  let fixture: ComponentFixture<LoginModalComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ LoginModalComponent ]
-    })
-    .compileComponents();
+describe('Info adresse component tests', () => {
+  let spectator: Spectator<LoginModalComponent>;
+  let comp: LoginModalComponent;
+  const createComponent = createComponentFactory({
+    component: LoginModalComponent,
+    imports: [
+        ReactiveFormsModule,
+        FormsModule,
+        FontAwesomeTestingModule
+    ],
+    providers: [
+      NgbActiveModal
+    ],
+    entryComponents: [
+        LoginFormComponent
+    ]
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginModalComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    spectator = createComponent();
+    comp = spectator.component;
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('Should create component', () => {
+    expect(comp).toBeDefined();
   });
 });

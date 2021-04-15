@@ -1,25 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Spectator } from '@ngneat/spectator';
+import { createComponentFactory } from '@ngneat/spectator/jest';
 import { InfoAdresseComponent } from './info-adresse.component';
 
-describe('InfoAdresseComponent', () => {
-  let component: InfoAdresseComponent;
-  let fixture: ComponentFixture<InfoAdresseComponent>;
+describe('Info adresse component tests', () => {
+  let spectator: Spectator<InfoAdresseComponent>;
+  let comp: InfoAdresseComponent;
+  const createComponent = createComponentFactory({
+    component: InfoAdresseComponent,
+    imports: [
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ InfoAdresseComponent ]
-    })
-    .compileComponents();
+    ]
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InfoAdresseComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    spectator = createComponent();
+    comp = spectator.component;
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('Should create component', () => {
+    expect(comp).toBeDefined();
   });
 });
