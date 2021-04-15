@@ -1,7 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Input } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs';
+import { PanierService } from 'src/app/pages/catalogue-page/services/panier.service';
 import { Icons } from 'src/app/shared/constants/icons.constant';
-import { Formule } from 'src/app/shared/models/formule/formule';
+// TODO IFormuleWithProducts move to formule.ts
+import { Formule, IFormule, IFormuleWithProducts } from 'src/app/shared/models/formule/formule';
 import { IProduit, Produit } from 'src/app/shared/models/produit/produit';
 
 @Component({
@@ -10,44 +13,30 @@ import { IProduit, Produit } from 'src/app/shared/models/produit/produit';
   styleUrls: ['./formule-list.component.scss']
 })
 
-export class FormuleListComponent implements OnInit, OnChanges {
+export class FormuleListComponent {
 
-  formuleSelectionnee: Formule;
-  tableauFormules: Formule[] = [];
+  formuleSelectionnee: IFormule;
+  tableauFormules: IFormule[] = [];
   prixTotal: number;
+  activateFormule: IFormuleWithProducts;
+  indexFormuleSelectionnee: number;
   tableauProduitsSubject: Subject<IProduit[]> = new Subject<IProduit[]>();
   public icons = Icons;
   public collapsedList: boolean[] = [];
-  tabProduits: Produit[] = [];
-  indexFormule: number;
 
-  @Input() public produitChoisi : IProduit;
+  @Input() public formules: IFormule[];
   @Output() public formuleSelected: EventEmitter<any> = new EventEmitter<any>();
   @Output() public idFormuleSelected: EventEmitter<any> = new EventEmitter<any>();
 
-  public onTouch = () => {};
-  public onChange = (_: IProduit[]) => {};
 
-  constructor() { }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.produitChoisi.currentValue !== undefined && this.indexFormule !== undefined) {
-      this.tabProduits.push(changes.produitChoisi.currentValue);
-      this.produitChoisi = undefined;
-    }
-  }
-
-  ngOnInit(): void {
-  }
+  constructor(public panierService: PanierService) { }
 
   ajouterFormule(): void{
-    if (this.formuleSelectionnee === undefined) {
-      alert('Veuillez choisir une formule.');
-    }
-    else{
-      this.tableauFormules.push(this.formuleSelectionnee);
-      this.formuleSelected.emit(this.tableauFormules);
-    }
+    this.panierService.addFormule(this.formuleSelectionnee);
+    this.indexFormuleSelectionnee = this.panierService.formulesWithProducts.length - 1;
+    this.activateFormule = this.panierService.formulesWithProducts[this.indexFormuleSelectionnee];
+
+    this.formuleSelected.emit(this.panierService.formulesWithProducts);
   }
 
   voirDetailsFormule(id: number): void{
@@ -56,20 +45,37 @@ export class FormuleListComponent implements OnInit, OnChanges {
 
   retirerFormule(index: number): void{
     if (confirm('Voulez-vous retirer cette formule de votre panier ?')) {
-      this.tableauFormules.splice(index, 1);
-      this.formuleSelected.emit(this.tableauFormules);
+      this.panierService.removeFormule(index);
     }
   }
 
   retirerProduit(index: number): void{
-    this.tabProduits.splice(index, 1);
+    this.panierService.removeProduit(index);
   }
 
   choisirFormule(indexFormule: number): void{
-    this.idFormuleSelected.emit(indexFormule);
-    this.indexFormule = indexFormule;
-    console.log(this.indexFormule);
+    this.panierService.selectFormule(indexFormule);
+    this.activateFormule = this.panierService.formulesWithProducts[indexFormule];
   }
 
+  /**
+   * {
+   *    'id' = 1,
+   *    'designation' = 'gourmande',
+   *    'prix' = 29.99,
+   *    'compose' = {
+   *        {
+   *             'id' = 1,
+   *             'nom' = soupe,
+   *             'prix' = 9.99
+   *        },
+   *        {
+   *             'id' = 2,
+   *             'nom' = burger,
+   *             'prix' = 14.99
+   *        }
+   *     }
+   * }
+   */
 
 }

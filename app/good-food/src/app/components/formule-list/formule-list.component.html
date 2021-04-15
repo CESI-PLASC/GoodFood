@@ -2,7 +2,7 @@
     <div class="input-group-prepend">
         <span class="input-group-text bg-primary text-light">Formules</span>
     </div>
-    <gf-select-item (itemSelected)="formuleSelectionnee = $event"></gf-select-item>
+    <gf-select-item (itemSelected)="formuleSelectionnee = $event" [formules]="formules"></gf-select-item>
     <div class="mb-0">
         <button class="btn btn-sm btn-success" (click)="ajouterFormule()">
             <fa-icon [icon]="icons.produits.add"></fa-icon>
@@ -14,11 +14,11 @@
 </div>
 
 <div>
-    <div class="card" *ngFor="let formule of tableauFormules; let i = index">
+    <div class="card" [class.active]="formule === activateFormule" *ngFor="let formule of panierService.formulesWithProducts; let i = index">
         <div class="p-3 mb-0 d-flex justify-content-between gf-formule" [attr.aria-expanded]="!collapsedList[i]">
             <h5 class="mb-0" (click)="collapse.toggle()">
                 <fa-icon class="mr-2" [icon]="collapsedList[i] ? icons.catalogue.collapsed : icons.catalogue.uncollapsed"></fa-icon>
-                {{formule.designation}}
+                Formule - {{formule.designation}}
             </h5>
             <h5 class="mb-0" (click)="retirerFormule(i)">
                 <fa-icon [icon]="icons.formule.delete"></fa-icon>
@@ -29,7 +29,7 @@
         </div>
         <div #collapse="ngbCollapse" [(ngbCollapse)]="collapsedList[i]">
             <ul>
-                <li *ngFor="let item of tabProduits; let i = index">
+                <li *ngFor="let item of formule.produits; let i = index">
                     {{item?.designation}} {{item?.prix | currency: 'EUR':'symbol':'.2-2':'FR' }}
                     <button class="mb-0 btn btn-sm btn-danger" (click)="retirerProduit(i)">
                       <fa-icon [icon]="icons.produits.remove"></fa-icon>
@@ -37,6 +37,6 @@
                 </li>
             </ul>
         </div>
-        <h6>Total formule : {{ formule.prix | currency: 'EUR':'symbol':'.2-2':'FR'  }}</h6>
+        <h6>Total formule : {{ formule.prix | currency: 'EUR':'symbol':'.2-2':'FR' }}</h6>
     </div>
 </div>

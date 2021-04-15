@@ -1,8 +1,10 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
-import { IProduit } from '../../../shared/models/produit/produit';
-import { Icons } from '../../../shared/constants/icons.constant';
+import { Component, Input } from '@angular/core';
+//TODO voir pourquoi c'était rouge au merge
+import { IProduit } from '../../shared/models/produit/produit';
+import { Icons } from '../../shared/constants/icons.constant';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { PanierService } from 'src/app/pages/catalogue-page/services/panier.service';
 
 registerLocaleData(localeFr);
 
@@ -14,10 +16,11 @@ registerLocaleData(localeFr);
 export class ProduitItemComponent {
   public readonly icons = Icons.produits;
   @Input() public produit: IProduit;
-  @Output() public produitSelected: EventEmitter<any> = new EventEmitter<any>();
 
-  ajouterProduitPanier(item: IProduit) : void {
-    this.produitSelected.emit(item);
+  constructor(public panierService: PanierService) { }
+
+  ajouterProduitPanier(item: IProduit) : void{
+    this.panierService.addProduit(item);
   }
 
 }
