@@ -1,7 +1,7 @@
-export type PaiementArgs = Pick<Paiement, "client_secret">
+export type PaiementArgs = Pick<Paiement, 'clientSecret'>;
 
 export default class Paiement{
-  client_secret: string;
+  clientSecret: string;
 
   constructor(args: PaiementArgs){
     Object.assign(this, args);

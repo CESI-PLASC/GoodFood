@@ -24,7 +24,7 @@ export class ValiderPanierPageComponent implements OnInit {
       });
 
       this.commandeService.getPaiementIntent(params.idCommande).subscribe(paiement => {
-        this.clientSecret = paiement.client_secret;
+        this.clientSecret = paiement.clientSecret;
       });
     });
   }
