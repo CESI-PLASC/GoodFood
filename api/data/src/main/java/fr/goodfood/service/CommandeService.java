@@ -41,4 +41,8 @@ public class CommandeService {
     public void delete(Long id) {
         this.commandeRepository.deleteById(id);
     }
+
+    public Double getPrice(Long id){
+        return this.commandeRepository.getPrice(id);
+    }
 }

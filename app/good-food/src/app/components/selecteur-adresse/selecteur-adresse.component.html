@@ -1,0 +1,14 @@
+<div class="d-flex align-items-center mb-2">
+  <h4 class="m-0">{{ titre }}</h4>
+  <button *ngIf="adresse" type="button" class="btn btn-sm btn-outline-primary ml-2" (click)="openModal()">
+    <fa-icon [icon]="icons.change" [size]="'lg'"></fa-icon>
+  </button>
+</div>
+
+<gf-info-adresse *ngIf="adresse" [adresse]="adresse"></gf-info-adresse>
+
+<div *ngIf="!adresse" class="btn card text-muted" (click)="openModal()">
+  <div class="card-body d-flex justify-content-center align-items-center">
+    <fa-icon [icon]="icons.add" [size]="'lg'"></fa-icon>
+  </div>
+</div>

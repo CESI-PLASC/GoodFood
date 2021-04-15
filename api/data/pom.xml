@@ -108,7 +108,7 @@
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
-			<scope>test</scope>
+			<scope>4.5.13</scope>
 		</dependency>
 		<!-- Inject -->
 		<dependency>
@@ -116,7 +116,21 @@
 			<artifactId>sisu-inject-bean</artifactId>
 			<version>1.4.2</version>
 		</dependency>
-        <dependency>
+		<!-- Stripe -->
+		<dependency>
+			<groupId>com.stripe</groupId>
+			<artifactId>stripe-java</artifactId>
+			<version>20.47.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.5</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>

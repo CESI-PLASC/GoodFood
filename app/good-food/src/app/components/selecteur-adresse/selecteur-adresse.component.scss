@@ -1,0 +1,9 @@
+@import "../../../assets/theme/variables";
+
+.card {
+  transition: transform .2s, box-shadow .2s;
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: $gray-400 0 0 .8rem 0;
+  }
+}

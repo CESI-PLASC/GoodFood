@@ -1,0 +1,25 @@
+<form class="row" (submit)="save()" [formGroup]="methodePaiementForm">
+  <div class="col-sm-12 form-group">
+    <label for="name">Nom pour la carte*</label>
+    <input class="form-control" id="name" type="text" formControlName="name" required>
+  </div>
+  <div class="col-sm-12 form-group">
+    <label for="numero">Numéro de la carte*</label>
+    <input class="form-control" id="numero" type="text" formControlName="numero" required
+      placeholder="XXXX-XXXX-XXXX-XXXX">
+  </div>
+  <div class="col-sm-6 form-group">
+    <label for="dateExpire">Date d'expiration*</label>
+    <input class="form-control" id="dateExpire" type="text" formControlName="dateExpire" required placeholder="XX/XXXX">
+  </div>
+  <div class="col-sm-6 form-group">
+    <label for="cvc">CVC*</label>
+    <input class="form-control" id="cvc" type="text" formControlName="cvc" required placeholder="XXX">
+  </div>
+  <small class="col-12 form-text text-muted">*Champs obligatoires</small>
+  <div class="col text-right">
+    <button type="button" class="btn btn-secondary mr-2" (click)="cancel()">Annuler</button>
+    <button type="submit" class="btn btn-primary" [disabled]="this.methodePaiementForm.invalid || true">Ajouter la méthode de
+      paiement</button>
+  </div>
+</form>

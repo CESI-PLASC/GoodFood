@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Franchise } from '../../shared/models/franchise';
-import { ICategorie } from '../../shared/models/categorie';
-import { IProduit } from '../../shared/models/produit';
+import { Franchise } from '../../shared/models/franchise/franchise';
+import { ICategorie } from '../../shared/models/categorie/categorie';
+import { IProduit } from '../../shared/models/produit/produit';
 import { Icons } from '../../shared/constants/icons.constant';
 import { CatalogueService } from '../../pages/catalogue-page/services/catalogue.service';
 import { Output } from '@angular/core';
@@ -35,7 +35,7 @@ export class CatalogueComponent implements OnInit {
     console.log(filters);
   }
 
-  public recupProduit(item:IProduit): void{
+  public recupProduit(item: IProduit): void{
     this.produitSelected.emit(item);
   }
 }

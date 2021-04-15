@@ -1,16 +1,29 @@
-<div id="valider-panier-page">
-  <gf-panier *ngIf="commande" [commande]="commande"></gf-panier>
-  <div>
-    <div id="valider-panier-page-franchise">
-      <div class="row">
-        <h4 class="col">Le franchisé</h4>
-      </div>
-      <div class="row">
-        <gf-info-franchise class="col" *ngIf="commande.franchise" [franchise]="commande.franchise" [actions]="false">
-        </gf-info-franchise>
-      </div>
+<div *ngIf="commande" class="row">
+  <gf-panier class="col-lg-6 mb-lg-0 mb-3" [commande]="commande"></gf-panier>
+  <div class="col-lg-6">
+
+    <div class="mb-3">
+      <h4>Le franchisé</h4>
+      <gf-info-franchise *ngIf="commande.franchise" [franchise]="commande.franchise" [actions]="false">
+      </gf-info-franchise>
     </div>
-    <div>Les adresses</div>
-    <div>Les moyens de paiements</div>
+
+    <div class="mb-3">
+      <gf-selecteur-adresse [titre]="'Adresse de livraison'" [(ngModel)]="commande.adresseLivraison"
+        [localisations]="commande.utilisateur.localisations">
+      </gf-selecteur-adresse>
+    </div>
+
+    <div class="mb-3">
+      <gf-selecteur-paiement [titre]="'Moyen de paiement'" [methodesPaiement]="methodesPaiement">
+      </gf-selecteur-paiement>
+      <!-- <gf-paiement-carte *ngIf="!!clientSecret" [clientSecret]="clientSecret"></gf-paiement-carte> -->
+    </div>
+
+    <div>
+      <button class="btn btn-secondary mr-2" [routerLink]="['/commande', commande.id, 'coordonnee']">Retour</button>
+      <button class="btn btn-primary" (click)="valideCommande()">Valider la commande</button>
+    </div>
+
   </div>
 </div>

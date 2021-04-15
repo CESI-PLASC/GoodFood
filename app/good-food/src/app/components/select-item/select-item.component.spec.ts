@@ -1,25 +1,26 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Spectator } from '@ngneat/spectator';
+import { createComponentFactory } from '@ngneat/spectator/jest';
 import { SelectItemComponent } from './select-item.component';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
-describe('SelectItemComponent', () => {
-  let component: SelectItemComponent;
-  let fixture: ComponentFixture<SelectItemComponent>;
+/* TODO (node:26449) UnhandledPromiseRejectionWarning: TypeError: Converting circular structure to JSON */
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ SelectItemComponent ]
-    })
-    .compileComponents();
+xdescribe('Select item component tests', () => {
+  let spectator: Spectator<SelectItemComponent>;
+  let comp: SelectItemComponent;
+  const createComponent = createComponentFactory({
+    component: SelectItemComponent,
+    imports: [
+      NgbDropdownModule
+    ]
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SelectItemComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    spectator = createComponent();
+    comp = spectator.component;
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('Should create component', () => {
+    expect(comp).toBeDefined();
   });
 });

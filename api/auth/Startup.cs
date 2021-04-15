@@ -1,32 +1,24 @@
-using System.Collections.Immutable;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
 using auth.data;
 using auth.infrastructure.helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
-using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
-using auth.infrastructure.Repositories;
-using auth.infrastructure.Services;
 using FluentValidation.AspNetCore;
+using Stripe;
+using auth.infrastructure.Services.commande;
+using auth.infrastructure.Services.paiement;
+using auth.infrastructure.Services.utilisateur;
 
 namespace auth
 {
     public class Startup
     {
-        readonly String MyAllowSpecificOrigins = "_myAllowSpecificOrigins"; 
+        readonly String MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -42,9 +34,11 @@ namespace auth
                 .AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssemblyContaining<Startup>())
             ;
 
-            services.AddSwaggerGen(c => {
+            services.AddSwaggerGen(c =>
+            {
                 c.OrderActionsBy(api => api.RelativePath);
-                c.SwaggerDoc("v1", new OpenApiInfo{
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
                     Title = "Goodfood / Commande api",
                     Version = "v1"
                 });
@@ -61,8 +55,10 @@ namespace auth
                 options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 22)))
             );
 
-            services.AddCors(options => {
-                options.AddPolicy(MyAllowSpecificOrigins,builder => {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins, builder =>
+                {
                     builder.WithOrigins("*");
                 });
             });
@@ -71,10 +67,12 @@ namespace auth
             services.AddAutoMapper(typeof(Startup).Assembly);
 
             // Repositories
-            services.AddTransient<IFranchiseRepository, FranchiseRepository>();
 
             // Services
-            services.AddTransient<IFranchiseService, FranchiseService>();
+            services.AddTransient<ICommandeService, CommandeService>();
+            services.AddTransient<IUtilisateurService, UtilisateurService>();
+            services.AddTransient<IPaiementService, PaiementService>();
+            services.AddTransient<IMethodePaiementService, MethodePaiementService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -91,14 +89,16 @@ namespace auth
 
             app.UseSwagger();
 
-            app.UseSwaggerUI(c => {
+            app.UseSwaggerUI(c =>
+            {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Goodfood api - Utilisateurs");
                 c.RoutePrefix = String.Empty;
             });
 
             app.UseRouting();
 
-            app.UseCors(builder => {
+            app.UseCors(builder =>
+            {
                 builder.AllowAnyOrigin();
             });
 
@@ -108,6 +108,8 @@ namespace auth
             {
                 endpoints.MapControllers();
             });
+
+            StripeConfiguration.ApiKey = Configuration.GetValue<String>("Stripe:API_KEY");
         }
     }
 }

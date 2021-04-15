@@ -1,14 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
-  listefranchise: string[];
-  ngOnInit(): void {
-    this.listefranchise = []
-  }
-  title = 'good-food';
+export class AppComponent {
+  title = 'Good Food';
 }

@@ -1,26 +1,22 @@
 <div *ngIf="franchise" class="container-fluid">
-    <div>
+    <div class="mb-4">
         <h1>{{ franchise.designation }}</h1>
     </div>
 
-    <gf-catalogue-filtre [filters]="categories" (filterChange)="onFilterChange($event)"></gf-catalogue-filtre>
-    <div class="row">
-      <div class="col-8">
-        <div *ngFor="let categorie of categories; let i = index">
-          <div class="card">
-            <div class="p-3 mb-0" (click)="collapse.toggle()" [attr.aria-expanded]="!collapsedList[i]">
-                <h5 class="mb-0">
-                    <fa-icon class="mr-2" [icon]="collapsedList[i] ? icons.collapsed : icons.uncollapsed"></fa-icon>
-                    {{ categorie.designation }}
-                </h5>
-            </div>
-            <div #collapse="ngbCollapse" [(ngbCollapse)]="collapsedList[i]">
-                <div *ngIf="categorie.produits && categorie.produits.length != 0" class="card-body">
-                    <gf-produit-list [produits]="categorie.produits" (produitSelected)="recupProduit($event)"></gf-produit-list>
-                </div>
+    <gf-catalogue-filtre *ngIf="false" [filters]="categories" (filterChange)="onFilterChange($event)"></gf-catalogue-filtre>
+    <div class="mb-2" *ngFor="let categorie of categories; let i = index">
+      <div class="card">
+        <div class="p-3 mb-0" (click)="collapse.toggle()" [attr.aria-expanded]="!collapsedList[i]">
+            <h5 class="gf-collapse mb-0">
+                <fa-icon class="mr-2" [icon]="collapsedList[i] ? icons.collapsed : icons.uncollapsed"></fa-icon>
+                {{ categorie.designation }}
+            </h5>
+        </div>
+        <div #collapse="ngbCollapse" [(ngbCollapse)]="collapsedList[i]">
+            <div *ngIf="categorie.produits && categorie.produits.length != 0" class="card-body">
+                <gf-produit-list [produits]="categorie.produits" (produitSelected)="recupProduit($event)"></gf-produit-list>
             </div>
         </div>
       </div>
     </div>
-  </div>
 </div>

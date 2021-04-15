@@ -1,0 +1,27 @@
+<form class="row" (submit)="save()" [formGroup]="addressForm">
+    <div class="col-sm-12 form-group">
+        <label for="pays">Pays*</label>
+        <input class="form-control" id="pays" type="text" formControlName="pays" required>
+    </div>
+    <div class="col-sm-4 form-group">
+        <label for="codePostal">Code postal*</label>
+        <input class="form-control" id="codePostal" type="text" formControlName="codePostal" required>
+    </div>
+    <div class="col-sm-8 form-group">
+        <label for="ville">Ville*</label>
+        <input class="form-control" id="ville" type="text" formControlName="ville" required>
+    </div>
+    <div class="col-sm-6 form-group">
+        <label for="rue">Numéro et rue*</label>
+        <input class="form-control" id="rue" type="text" formControlName="rue" required>
+    </div>
+    <div class="col-sm-6 form-group">
+        <label for="complement">Complément</label>
+        <input class="form-control" id="complement" type="text" formControlName="complement">
+    </div>
+    <small class="col-12 form-text text-muted">*Champs obligatoires</small>
+    <div class="col text-right">
+        <button type="button" class="btn btn-secondary mr-2" (click)="cancel()">Annuler</button>
+        <button type="submit" class="btn btn-primary" [disabled]="this.addressForm.invalid">Ajouter l'adresse</button>
+    </div>
+</form>

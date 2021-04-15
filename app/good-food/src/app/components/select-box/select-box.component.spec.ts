@@ -1,25 +1,24 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Spectator } from '@ngneat/spectator';
+import { createComponentFactory } from '@ngneat/spectator/jest';
 import { SelectBoxComponent } from './select-box.component';
+import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 
-describe('SelectBoxComponent', () => {
-  let component: SelectBoxComponent;
-  let fixture: ComponentFixture<SelectBoxComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ SelectBoxComponent ]
-    })
-    .compileComponents();
+describe('Select box component tests', () => {
+  let spectator: Spectator<SelectBoxComponent>;
+  let comp: SelectBoxComponent;
+  const createComponent = createComponentFactory({
+    component: SelectBoxComponent,
+    imports: [
+      FontAwesomeTestingModule
+    ]
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SelectBoxComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    spectator = createComponent();
+    comp = spectator.component;
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('Should create component', () => {
+    expect(comp).toBeDefined();
   });
 });

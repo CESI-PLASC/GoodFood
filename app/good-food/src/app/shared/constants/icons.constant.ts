@@ -1,6 +1,6 @@
-import { faCheckSquare, faChevronDown, faChevronRight, faMinus, faPlus, faSearch, faTimes, faEye } from '@fortawesome/free-solid-svg-icons';
-import { faSquare } from '@fortawesome/free-regular-svg-icons';
-
+import {
+    faCheckSquare, faChevronDown, faChevronRight, faEye, faMinus, faPlus, faSearch, faSquare, faSyncAlt, faTimes
+} from '@fortawesome/free-solid-svg-icons';
 
 export const Icons = {
     produits: {
@@ -21,5 +21,10 @@ export const Icons = {
     },
     franchise: {
         loupe: faSearch
+    },
+    validation: {
+        add: faPlus,
+        cancel: faTimes,
+        change: faSyncAlt
     }
 };

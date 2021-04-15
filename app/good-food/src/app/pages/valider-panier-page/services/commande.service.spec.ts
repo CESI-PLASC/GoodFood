@@ -1,16 +1,22 @@
-import { TestBed } from '@angular/core/testing';
-
+import { createServiceFactory, SpectatorService } from '@ngneat/spectator/jest';
+import { HttpClientModule } from '@angular/common/http';
 import { CommandeService } from './commande.service';
 
-describe('CommandeService', () => {
+describe('Commande service tests', () => {
+  let spectator: SpectatorService<CommandeService>;
+  const createService = createServiceFactory({
+    service: CommandeService,
+    imports: [
+      HttpClientModule
+    ],
+  });
+
   let service: CommandeService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(CommandeService);
+    spectator = createService();
+    service = spectator.service;
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
+  it('Should init service', () => expect(service).toBeDefined());
 });
