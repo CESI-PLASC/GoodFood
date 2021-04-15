@@ -38,7 +38,7 @@
                 name="telephone_fixe"
                 type="varchar(10)" />
             <column
-                name="code_paiement"
+                name="stripe"
                 type="varchar(20)">
                 <constraints nullable="false" />
             </column>

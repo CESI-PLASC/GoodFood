@@ -1,19 +1,22 @@
+import * as _ from "lodash";
+import { MethodePaiementCarte, MethodePaiementCarteArgs } from "./methode-paiement-carte";
+
 export type MethodePaiementArgs = {
   id: number;
-  derniersChiffres: string;
-  expireMois: number;
-  expireAnnee: number;
   type: string;
+  carte?: MethodePaiementCarteArgs;
 }
 
 export default class MethodePaiement{
   id: number;
-  derniersChiffres: string;
-  expireMois: number;
-  expireAnnee: number;
   type: string;
+  carte?: MethodePaiementCarte;
 
   constructor(args: MethodePaiementArgs){
-    Object.assign(this, args);
+    Object.assign(this, _.omit(args, ["carte"]));
+
+    if(args.carte){
+      this.carte = new MethodePaiementCarte(args.carte);
+    }
   }
 }

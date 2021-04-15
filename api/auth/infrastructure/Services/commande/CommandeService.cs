@@ -16,15 +16,15 @@ namespace auth.infrastructure.Services.commande
             this.JAVA_URL = configuration.GetValue<string>("JAVA_API:JAVA_URL");
         }
 
-        public async Task<CommandeModel> one(int idCommande)
+        public async Task<CommandeModele> one(int idCommande)
         {
-            CommandeModel commande;
+            CommandeModele commande;
             using (HttpClient httpClient = new HttpClient())
             {
                 using (HttpResponseMessage response = await httpClient.GetAsync($"{JAVA_URL}/api/commandes/{idCommande}"))
                 {
                     string jsonstr = await response.Content.ReadAsStringAsync();
-                    commande = JsonConvert.DeserializeObject<CommandeModel>(jsonstr);
+                    commande = JsonConvert.DeserializeObject<CommandeModele>(jsonstr);
                 }
             }
 

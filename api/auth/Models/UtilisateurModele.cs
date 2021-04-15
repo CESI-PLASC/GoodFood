@@ -1,6 +1,6 @@
 namespace auth.Models
 {
-    public class UtilisateurModel
+    public class UtilisateurModele
     {
         public int id {get; set;}
         public string nom {get; set;}
@@ -9,6 +9,6 @@ namespace auth.Models
         public string email {get; set;}
         public string telephoneFixe {get; set;}
         public string telephoneMobile {get; set;}
-        public string codePaiement {get; set;}
+        public string stripe {get; set;}
     }
 }

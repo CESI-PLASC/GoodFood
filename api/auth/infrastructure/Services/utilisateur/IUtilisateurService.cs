@@ -5,6 +5,6 @@ namespace auth.infrastructure.Services.utilisateur
 {
     public interface IUtilisateurService
     {
-        Task<UtilisateurModel> one(int idUtilisateur);
+        Task<UtilisateurModele> one(long idUtilisateur);
     }
 }

@@ -22,6 +22,8 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import java.util.List;
 
+import com.stripe.exception.StripeException;
+
 @RestController
 @RequestMapping("api/utilisateurs")
 public class UtilisateurResource {
@@ -50,7 +52,7 @@ public class UtilisateurResource {
     }
 
     @PostMapping
-    public EntityModel<UtilisateurDTO> create(@RequestBody Utilisateur utilisateurJson) {
+    public EntityModel<UtilisateurDTO> create(@RequestBody Utilisateur utilisateurJson) throws StripeException {
         Utilisateur utilisateur = this.utilisateurService.create(utilisateurJson);
         UtilisateurDTO utilisateurDto = this.utilisateurMapper.toDto(utilisateur);
 
@@ -59,7 +61,8 @@ public class UtilisateurResource {
     }
 
     @PutMapping("/{id}")
-    public EntityModel<UtilisateurDTO> update(@PathVariable Long id, @RequestBody Utilisateur utilisateurJson) {
+    public EntityModel<UtilisateurDTO> update(@PathVariable Long id, @RequestBody Utilisateur utilisateurJson)
+            throws StripeException {
         Utilisateur utilisateur = this.utilisateurService.update(utilisateurJson);
         UtilisateurDTO utilisateurDto = this.utilisateurMapper.toDto(utilisateur);
 

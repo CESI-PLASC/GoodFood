@@ -14,7 +14,7 @@ public class UtilisateurSDTO {
     private String email;
     private String telephoneFixe;
     private String telephoneMobile;
-    private String codePaiement;
+    private String stripe;
     List<LocalisationSDTO> localisations;
 
     // #region Générations
@@ -23,7 +23,7 @@ public class UtilisateurSDTO {
     }
 
     public UtilisateurSDTO(Long id, String nom, String prenom, Date dateNaissance, String email, String telephoneFixe,
-            String telephoneMobile, String codePaiement, List<LocalisationSDTO> localisations) {
+            String telephoneMobile, String stripe, List<LocalisationSDTO> localisations) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -31,7 +31,7 @@ public class UtilisateurSDTO {
         this.email = email;
         this.telephoneFixe = telephoneFixe;
         this.telephoneMobile = telephoneMobile;
-        this.codePaiement = codePaiement;
+        this.stripe = stripe;
         this.localisations = localisations;
     }
 
@@ -91,12 +91,12 @@ public class UtilisateurSDTO {
         this.telephoneMobile = telephoneMobile;
     }
 
-    public String getCodePaiement() {
-        return this.codePaiement;
+    public String getStripe() {
+        return this.stripe;
     }
 
-    public void setCodePaiement(String codePaiement) {
-        this.codePaiement = codePaiement;
+    public void setStripe(String stripe) {
+        this.stripe = stripe;
     }
 
     public List<LocalisationSDTO> getLocalisations() {
@@ -142,8 +142,8 @@ public class UtilisateurSDTO {
         return this;
     }
 
-    public UtilisateurSDTO codePaiement(String codePaiement) {
-        setCodePaiement(codePaiement);
+    public UtilisateurSDTO stripe(String stripe) {
+        setStripe(stripe);
         return this;
     }
 
@@ -166,13 +166,13 @@ public class UtilisateurSDTO {
                 && Objects.equals(email, utilisateurSDTO.email)
                 && Objects.equals(telephoneFixe, utilisateurSDTO.telephoneFixe)
                 && Objects.equals(telephoneMobile, utilisateurSDTO.telephoneMobile)
-                && Objects.equals(codePaiement, utilisateurSDTO.codePaiement)
+                && Objects.equals(stripe, utilisateurSDTO.stripe)
                 && Objects.equals(localisations, utilisateurSDTO.localisations);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nom, prenom, dateNaissance, email, telephoneFixe, telephoneMobile, codePaiement,
+        return Objects.hash(id, nom, prenom, dateNaissance, email, telephoneFixe, telephoneMobile, stripe,
                 localisations);
     }
 
@@ -180,8 +180,8 @@ public class UtilisateurSDTO {
     public String toString() {
         return "{" + " id='" + getId() + "'" + ", nom='" + getNom() + "'" + ", prenom='" + getPrenom() + "'"
                 + ", dateNaissance='" + getDateNaissance() + "'" + ", email='" + getEmail() + "'" + ", telephoneFixe='"
-                + getTelephoneFixe() + "'" + ", telephoneMobile='" + getTelephoneMobile() + "'" + ", codePaiement='"
-                + getCodePaiement() + "'" + ", localisations='" + getLocalisations() + "'" + "}";
+                + getTelephoneFixe() + "'" + ", telephoneMobile='" + getTelephoneMobile() + "'" + ", stripe='"
+                + getStripe() + "'" + ", localisations='" + getLocalisations() + "'" + "}";
     }
 
     // #endregion

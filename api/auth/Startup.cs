@@ -8,8 +8,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
-using auth.infrastructure.Repositories;
-using auth.infrastructure.Services;
 using FluentValidation.AspNetCore;
 using Stripe;
 using auth.infrastructure.Services.commande;
@@ -69,13 +67,12 @@ namespace auth
             services.AddAutoMapper(typeof(Startup).Assembly);
 
             // Repositories
-            services.AddTransient<IFranchiseRepository, FranchiseRepository>();
 
             // Services
-            services.AddTransient<IFranchiseService, FranchiseService>();
             services.AddTransient<ICommandeService, CommandeService>();
             services.AddTransient<IUtilisateurService, UtilisateurService>();
             services.AddTransient<IPaiementService, PaiementService>();
+            services.AddTransient<IMethodePaiementService, MethodePaiementService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

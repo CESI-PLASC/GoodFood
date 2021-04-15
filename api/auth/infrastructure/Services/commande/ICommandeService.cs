@@ -5,7 +5,7 @@ namespace auth.infrastructure.Services.commande
 {
     public interface ICommandeService
     {
-        Task<CommandeModel> one(int idCommande);
+        Task<CommandeModele> one(int idCommande);
         Task<double> prix(int idCommande);
     }
 }

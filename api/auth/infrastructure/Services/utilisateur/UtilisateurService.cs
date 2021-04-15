@@ -15,22 +15,22 @@ namespace auth.infrastructure.Services.utilisateur
             this.JAVA_URL = configuration.GetValue<string>("JAVA_API:JAVA_URL");
         }
 
-        public async Task<UtilisateurModel> one(int idUtilisateur)
+        public async Task<UtilisateurModele> one(long idUtilisateur)
         {
-            UtilisateurModel utilisateur;
+            UtilisateurModele utilisateur;
             using (HttpClient httpClient = new HttpClient())
             {
                 using (HttpResponseMessage response = await httpClient.GetAsync($"{JAVA_URL}/api/utilisateurs/{idUtilisateur}"))
                 {
                     string jsonstr = await response.Content.ReadAsStringAsync();
-                    utilisateur = JsonConvert.DeserializeObject<UtilisateurModel>(jsonstr);
+                    utilisateur = JsonConvert.DeserializeObject<UtilisateurModele>(jsonstr);
                 }
             }
 
             return utilisateur;
         }
 
-        public async void update(UtilisateurModel utilisateur)
+        public async void update(UtilisateurModele utilisateur)
         {
             StringContent utilisateurStr = new StringContent(utilisateur.ToString());
 

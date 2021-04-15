@@ -1,12 +1,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using auth.Models;
 using auth.Models.paiements;
 
 namespace auth.infrastructure.Services.paiement
 {
-    public interface IPaiementService
+    public interface IMethodePaiementService
     {
-        Task commande(int idCommande, string idPaiementMethode);
+        Task<List<MethodePaiementModele>> allByUser(long idUtilisateur);
     }
 }

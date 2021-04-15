@@ -23,7 +23,7 @@ insert into goodfood.Adresse (id, pays, code_postal, rue, ville) values
     (5, "France", "16100", "2 Impasse de la gloire", "Chateaubernard")
 ;
 
-insert into goodfood.utilisateur (id, nom, prenom, date_naissance, email, telephone_mobile, telephone_fixe, code_paiement) values
+insert into goodfood.utilisateur (id, nom, prenom, date_naissance, email, telephone_mobile, telephone_fixe, stripe) values
     (1, "Raoult", "Didier", "1952-03-13 12:00:00", "didier.raoult@gmail.com", "0505050505", "0606060606", "cus_JILchj0mIXpfYk"),
     (2, "Pesquet", "Thomas", "1978-02-27 12:00:00", "thomas.pesquet@gmail.com", "0505050505", "0606060606", "cus_JILeqep5cG0zM5"),
     (3, "Kressman", "Taylor", "1903-08-19 12:00:00", "kressman.taylor@gmail.com", null, null, "cus_JILeZrMO07qaKj"),
