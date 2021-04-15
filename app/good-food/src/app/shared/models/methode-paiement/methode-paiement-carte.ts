@@ -4,7 +4,7 @@ export type MethodePaiementCarteArgs = {
   expireMois: number;
   expireAnnee: number;
   derniersChiffres: string;
-}
+};
 
 export class MethodePaiementCarte{
   marque: string;
