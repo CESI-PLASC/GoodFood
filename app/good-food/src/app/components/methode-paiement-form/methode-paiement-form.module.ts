@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MethodePaiementFormComponent } from './methode-paiement-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -9,7 +10,9 @@ import { MethodePaiementFormComponent } from './methode-paiement-form.component'
       MethodePaiementFormComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+      FormsModule,
+      ReactiveFormsModule
   ],
   exports: [
       MethodePaiementFormComponent,

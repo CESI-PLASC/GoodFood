@@ -7,22 +7,24 @@ import { SelecteurAdresseModule } from '../../components/selecteur-adresse/selec
 import { PaiementCarteModule } from '../../components/paiement-carte/paiement-carte.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { SelecteurPaiementModule } from '../../components/selecteur-paiement/selecteur-paiement.module';
 
 
 
 @NgModule({
   declarations: [ValiderPanierPageComponent],
-  imports: [
-    CommonModule,
-      FormsModule,
-      ReactiveFormsModule,
-      RouterModule,
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule,
 
-      PanierModule,
-      FranchiseModule,
-      SelecteurAdresseModule,
-      PaiementCarteModule,
-  ],
+        PanierModule,
+        FranchiseModule,
+        SelecteurAdresseModule,
+        PaiementCarteModule,
+        SelecteurPaiementModule,
+    ],
   exports: [ValiderPanierPageComponent]
 })
 export class ValiderPanierPageModule { }
