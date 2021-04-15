@@ -1,16 +1,22 @@
-import { TestBed } from '@angular/core/testing';
-
+import { createServiceFactory, SpectatorService } from '@ngneat/spectator/jest';
+import { HttpClientModule } from '@angular/common/http';
 import { CoordonneeClientService } from './coordonnee-client.service';
 
-describe('CoordonneeClientService', () => {
+describe('Coordonnee client service tests', () => {
+  let spectator: SpectatorService<CoordonneeClientService>;
+  const createService = createServiceFactory({
+    service: CoordonneeClientService,
+    imports: [
+      HttpClientModule
+    ],
+  });
+
   let service: CoordonneeClientService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(CoordonneeClientService);
+    spectator = createService();
+    service = spectator.service;
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
+  it('Should init service', () => expect(service).toBeDefined());
 });
