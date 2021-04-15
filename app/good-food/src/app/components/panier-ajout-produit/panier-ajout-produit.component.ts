@@ -1,8 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CatalogueService } from 'src/app/pages/catalogue-page/services/catalogue.service';
-import { Formule, IFormule } from 'src/app/shared/models/formule';
-import { Franchise } from 'src/app/shared/models/franchise';
-import { IProduit } from 'src/app/shared/models/produit';
+import { IFormule, IFormuleWithProducts } from 'src/app/shared/models/formule';
 
 @Component({
   selector: 'gf-panier-ajout-produit',
@@ -11,11 +9,7 @@ import { IProduit } from 'src/app/shared/models/produit';
 })
 export class PanierAjoutProduitComponent implements OnInit {
 
-  @Input() public produitChoisi: IProduit;
-
   public formules: IFormule[] = [];
-  infosFormule: Formule;
-  listFormule: Formule[] = [];
   prixTotal: number = 0.00;
 
   constructor(private readonly catalogueService: CatalogueService) { }
@@ -26,8 +20,7 @@ export class PanierAjoutProduitComponent implements OnInit {
     });
   }
 
-  actualiseTotal(formule: Formule[]): void{
-    this.listFormule = formule;
+  actualiseTotal(formule: IFormuleWithProducts[]): void{
     this.prixTotal = 0.00;
     formule.forEach(element => {
       this.prixTotal += element.prix;

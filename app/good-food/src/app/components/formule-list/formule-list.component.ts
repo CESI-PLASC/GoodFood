@@ -3,7 +3,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs';
 import { PanierService } from 'src/app/pages/catalogue-page/services/panier.service';
 import { Icons } from 'src/app/shared/constants/icons.constant';
-import { Formule, IFormule } from 'src/app/shared/models/formule';
+import { Formule, IFormule, IFormuleWithProducts } from 'src/app/shared/models/formule';
 import { IProduit, Produit } from 'src/app/shared/models/produit';
 
 @Component({
@@ -15,8 +15,10 @@ import { IProduit, Produit } from 'src/app/shared/models/produit';
 export class FormuleListComponent {
 
   formuleSelectionnee: IFormule;
-  tableauFormules: Formule[] = [];
+  tableauFormules: IFormule[] = [];
   prixTotal: number;
+  activateFormule: IFormuleWithProducts;
+  indexFormuleSelectionnee: number;
   tableauProduitsSubject: Subject<IProduit[]> = new Subject<IProduit[]>();
   public icons = Icons;
   public collapsedList: boolean[] = [];
@@ -28,9 +30,12 @@ export class FormuleListComponent {
 
   constructor(public panierService: PanierService) { }
 
-
   ajouterFormule(): void{
     this.panierService.addFormule(this.formuleSelectionnee);
+    this.indexFormuleSelectionnee = this.panierService.formulesWithProducts.length - 1;
+    this.activateFormule = this.panierService.formulesWithProducts[this.indexFormuleSelectionnee];
+
+    this.formuleSelected.emit(this.panierService.formulesWithProducts);
   }
 
   voirDetailsFormule(id:number): void{
@@ -38,20 +43,18 @@ export class FormuleListComponent {
   }
 
   retirerFormule(index:number): void{
-    throw new Error("Todo");
-    // if (confirm("Voulez-vous retirer cette formule de votre panier ?")) {
-    //   this.tableauFormules.splice(index, 1);
-    //   this.formuleSelected.emit(this.tableauFormules);
-    // }
+    if (confirm("Voulez-vous retirer cette formule de votre panier ?")) {
+      this.panierService.removeFormule(index);
+    }
   }
 
   retirerProduit(index:number): void{
-    throw new Error("Todo");
+    this.panierService.removeProduit(index);
   }
 
   choisirFormule(indexFormule:number): void{
     this.panierService.selectFormule(indexFormule);
-    console.log(this.panierService.formulesWithProducts);
+    this.activateFormule = this.panierService.formulesWithProducts[indexFormule];
   }
 
   /**

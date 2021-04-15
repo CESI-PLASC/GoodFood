@@ -14,11 +14,11 @@
 </div>
 
 <div>
-    <div class="card" *ngFor="let formule of panierService.formulesWithProducts; let i = index">
+    <div class="card" [class.active]="formule === activateFormule" *ngFor="let formule of panierService.formulesWithProducts; let i = index">
         <div class="p-3 mb-0 d-flex justify-content-between gf-formule" [attr.aria-expanded]="!collapsedList[i]">
             <h5 class="mb-0" (click)="collapse.toggle()">
                 <fa-icon class="mr-2" [icon]="collapsedList[i] ? icons.catalogue.collapsed : icons.catalogue.uncollapsed"></fa-icon>
-                {{formule.designation}}
+                Formule - {{formule.designation}}
             </h5>
             <h5 class="mb-0" (click)="retirerFormule(i)">
                 <fa-icon [icon]="icons.formule.delete"></fa-icon>

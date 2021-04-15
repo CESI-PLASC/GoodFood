@@ -11,12 +11,25 @@ export class PanierService {
   public index: number;
 
   public addProduit(produit: IProduit) {
-    this.formulesWithProducts[this.index].produits.push(produit);
+    if (this.formulesWithProducts.length == 0) {
+      alert('Veuillez sélectionner une formule.');
+    }
+    else{
+      this.formulesWithProducts[this.index].produits.push(produit);
+    }
+  }
+
+  public removeProduit(indexProduit: number) {
+    this.formulesWithProducts[this.index].produits.splice(indexProduit,1);
   }
 
   public addFormule(formule: IFormule){
     this.formulesWithProducts.push({...formule, produits:[]});
     this.index = this.formulesWithProducts.length - 1;
+  }
+
+  public removeFormule(indexFormule: number) {
+    this.formulesWithProducts.splice(indexFormule,1);
   }
 
   public selectFormule(index: number){
