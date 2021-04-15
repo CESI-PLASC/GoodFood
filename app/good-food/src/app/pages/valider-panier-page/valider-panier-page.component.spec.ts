@@ -13,7 +13,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 /* TODO (node:26449) UnhandledPromiseRejectionWarning: TypeError: Converting circular structure to JSON */
 
-xdescribe('Adresse form component tests', () => {
+describe('Adresse form component tests', () => {
   let spectator: Spectator<ValiderPanierPageComponent>;
   let comp: ValiderPanierPageComponent;
   const createComponent = createComponentFactory({
