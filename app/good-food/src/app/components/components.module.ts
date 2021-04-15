@@ -27,6 +27,7 @@ import { LoginModalComponent } from './login-form/modal/login-modal.component';
 import { SelecteurPaiementComponent } from './selecteur-paiement/selecteur-paiement.component';
 import { InfoPaiementComponent } from './info-paiement/info-paiement.component';
 import { SelecteurPaiementListModalComponent } from './selecteur-paiement/modal/selecteur-paiement-list-modal.component';
+import { MethodePaiementFormComponent } from './methode-paiement-form/methode-paiement-form.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { SelecteurPaiementListModalComponent } from './selecteur-paiement/modal/
       LoginModalComponent,
       SelecteurPaiementComponent,
       InfoPaiementComponent,
-      SelecteurPaiementListModalComponent
+      SelecteurPaiementListModalComponent,
+      MethodePaiementFormComponent
   ],
     imports: [
         CommonModule,

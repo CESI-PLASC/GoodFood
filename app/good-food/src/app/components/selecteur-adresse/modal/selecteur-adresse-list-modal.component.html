@@ -1,19 +1,18 @@
 <div class="modal-header">
-    <h3 class="modal-title">Choisissez une adresse ou créez en une nouvelle</h3>
-    <button type="button" class="close" (click)="close()">
-        <fa-icon [icon]="icons.cancel"></fa-icon>
-    </button>
+  <h3 class="modal-title">Choisissez une adresse ou créez en une nouvelle</h3>
+  <button type="button" class="close" (click)="close()">
+    <fa-icon [icon]="icons.cancel"></fa-icon>
+  </button>
 </div>
 <div class="modal-body row pb-5">
-    <div class="col-lg-6 gf-adresse-liste">
-        <div class="my-1 gf-adresse-item" *ngFor="let localisation of localisations">
-            <gf-info-adresse [adresse]="localisation.adresse"
-                             (click)="close(localisation.adresse)">
-            </gf-info-adresse>
-            <fa-icon *ngIf="localisation.preferee" [icon]="faStar" [size]="'lg'" title="Votre adresse favorite"></fa-icon>
-        </div>
+  <div class="col-lg-6 gf-adresse-liste">
+    <div class="my-1 gf-adresse-item" *ngFor="let localisation of localisations">
+      <gf-info-adresse [adresse]="localisation.adresse" (click)="close(localisation.adresse)">
+      </gf-info-adresse>
+      <fa-icon *ngIf="localisation.preferee" [icon]="faStar" [size]="'lg'" title="Votre adresse favorite"></fa-icon>
     </div>
-    <div class="col-lg-6">
-        <gf-adresse-form (submitAddress)="close($event)"></gf-adresse-form>
-    </div>
+  </div>
+  <div class="col-lg-6">
+    <gf-adresse-form (submitAddress)="close($event)"></gf-adresse-form>
+  </div>
 </div>
