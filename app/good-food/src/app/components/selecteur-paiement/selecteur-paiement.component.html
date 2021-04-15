@@ -1,0 +1,14 @@
+<div class="d-flex align-items-center mb-2">
+  <h4 class="m-0">{{ titre }}</h4>
+  <button *ngIf="methodePaiement" type="button" class="btn btn-sm btn-outline-primary ml-2" (click)="openModal()">
+    <fa-icon [icon]="icons.change" [size]="'lg'"></fa-icon>
+  </button>
+</div>
+
+<gf-info-paiement *ngIf="methodePaiement" [methodePaiement]="methodePaiement"></gf-info-paiement>
+
+<div *ngIf="!methodePaiement" class="btn card text-muted" (click)="openModal()">
+  <div class="card-body d-flex justify-content-center align-items-center">
+    <fa-icon [icon]="icons.add" [size]="'lg'"></fa-icon>
+  </div>
+</div>

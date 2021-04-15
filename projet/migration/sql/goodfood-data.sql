@@ -24,12 +24,12 @@ insert into goodfood.Adresse (id, pays, code_postal, rue, ville) values
     (5, "France", "16100", "2 Impasse de la gloire", "Chateaubernard")
 ;
 
-insert into goodfood.utilisateur (id, nom, prenom, date_naissance, email, telephone_mobile, telephone_fixe) values
-    (1, "Raoult", "Didier", "1952-03-13 12:00:00", "didier.raoult@gmail.com", "0505050505", "0606060606"),
-    (2, "Pesquet", "Thomas", "1978-02-27 12:00:00", "thomas.pesquet@gmail.com", "0505050505", "0606060606"),
-    (3, "Kressman", "Taylor", "1903-08-19 12:00:00", "kressman.taylor@gmail.com", null, null),
-    (4, "Garnier", "Arnaud", "1984-06-18 12:00:00", "garnier.arnaud@gmail.com", null, null),
-    (5, "Gaudu", "David", "1996-10-10 12:00:00", "gaudu.david@gmail.com", null, null)
+insert into goodfood.utilisateur (id, nom, prenom, date_naissance, email, telephone_mobile, telephone_fixe, stripe) values
+    (1, "Raoult", "Didier", "1952-03-13 12:00:00", "didier.raoult@gmail.com", "0505050505", "0606060606", "cus_JILchj0mIXpfYk"),
+    (2, "Pesquet", "Thomas", "1978-02-27 12:00:00", "thomas.pesquet@gmail.com", "0505050505", "0606060606", "cus_JILeqep5cG0zM5"),
+    (3, "Kressman", "Taylor", "1903-08-19 12:00:00", "kressman.taylor@gmail.com", null, null, "cus_JILeZrMO07qaKj"),
+    (4, "Garnier", "Arnaud", "1984-06-18 12:00:00", "garnier.arnaud@gmail.com", null, null, "cus_JILfDQiSq0YrMS"),
+    (5, "Gaudu", "David", "1996-10-10 12:00:00", "gaudu.david@gmail.com", null, null, "cus_JILfKfybM9nRXM")
 ;
 
 insert into goodfood.Franchise (id, designation, email, telephone_fixe, telephone_mobile, adresse_id) values
@@ -82,7 +82,8 @@ insert into goodfood.localisation (utilisateur_id, adresse_id, preferee) values
     (5, 1, 0),
     (5, 3, 0),
     (5, 4, 0),
-    (5, 5, 0)
+    (5, 5, 0),
+    (5, 2, 1)
 ;
 
 insert into goodfood.propose (formule_id, franchise_id, prix) values

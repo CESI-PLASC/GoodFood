@@ -1,7 +1,5 @@
-import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
-import {loadStripe, Stripe, StripeCardElement, StripeElements} from "@stripe/stripe-js"
-import { environment } from 'src/environments/environment';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import {Stripe, StripeCardElement} from "@stripe/stripe-js"
 
 @Component({
   selector: 'gf-paiement-carte',
@@ -10,27 +8,27 @@ import { environment } from 'src/environments/environment';
 })
 export class PaiementCarteComponent implements OnInit, AfterViewInit {
 
-  @Input() clientSecret: string;
   @ViewChild("conteneur") conteneur;
   @ViewChild("erreur") erreur;
   @ViewChild("paymentForm") form;
+  @Input() stripe: Stripe;
+  @Output() initCard = new EventEmitter<StripeCardElement>();
 
-  constructor(private readonly http: HttpClient) {
-   }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   async ngAfterViewInit(): Promise<void> {
-    const stripe = await loadStripe(environment.stripe_pk);
 
-    const elements = stripe.elements();
+    // Affichage du composant pour saisir une carte
+    const elements = this.stripe.elements();
     const card = elements.create("card", {style: {
       base: {
         iconColor: "black",
       }
     }});
 
+    // Gestion de l'affichage des erreurs
     card.on("change", (event) => {
       if(event.error){
         this.erreur.nativeElement.textContent = event.error.message;
@@ -38,25 +36,8 @@ export class PaiementCarteComponent implements OnInit, AfterViewInit {
         this.erreur.nativeElement.textContent = "";
       }
     })
-
     card.mount(this.conteneur.nativeElement);
 
-    this.form.nativeElement.addEventListener("submit", async (event) => {
-      event.preventDefault();
-
-      console.log(event);
-
-
-      const resultat = await stripe.confirmCardPayment(this.clientSecret, {
-        payment_method: {card}
-      });
-
-      if(resultat.error){
-        this.erreur.nativeElement.textContent = resultat.error.message;
-      } else {
-        alert("Paiement réussi");
-      }
-      // stripeTokenHandler(result.token);
-    })
+    this.initCard.emit(card);
   }
 }

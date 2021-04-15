@@ -1,0 +1,8 @@
+<div *ngIf="methodePaiement.carte" class="card">
+  <div class="card-body">
+    <div class="card-text">
+      <h5 class="m-0">{{methodePaiement.carte.marque}} / ****-{{methodePaiement.carte.derniersChiffres}}
+        ({{methodePaiement.carte.expireMois}}/{{methodePaiement.carte.expireAnnee}})</h5>
+    </div>
+  </div>
+</div>

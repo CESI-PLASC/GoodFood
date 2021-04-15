@@ -1,4 +1,4 @@
-<div *ngIf="commande"  class="row">
+<div *ngIf="commande" class="row">
   <gf-panier class="col-lg-6 mb-lg-0 mb-3" [commande]="commande"></gf-panier>
   <div class="col-lg-6">
 
@@ -9,15 +9,15 @@
     </div>
 
     <div class="mb-3">
-      <gf-selecteur-adresse [titre]="'Adresse de livraison'"
-                            [(ngModel)]="commande.adresseLivraison"
-                            [localisations]="commande.utilisateur.localisations">
+      <gf-selecteur-adresse [titre]="'Adresse de livraison'" [(ngModel)]="commande.adresseLivraison"
+        [localisations]="commande.utilisateur.localisations">
       </gf-selecteur-adresse>
     </div>
 
     <div class="mb-3">
-      <h4>Moyen de paiement</h4>
-      <gf-paiement-carte *ngIf="!!clientSecret" [clientSecret]="clientSecret"></gf-paiement-carte>
+      <gf-selecteur-paiement [titre]="'Moyen de paiement'" [methodesPaiement]="methodesPaiement">
+      </gf-selecteur-paiement>
+      <!-- <gf-paiement-carte *ngIf="!!clientSecret" [clientSecret]="clientSecret"></gf-paiement-carte> -->
     </div>
 
     <div>

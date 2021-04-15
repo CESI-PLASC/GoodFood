@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Commande } from 'src/app/shared/models/commande/commande';
+import { loadStripe, Stripe } from '@stripe/stripe-js';
+import { Commande } from 'src/app/shared/models/commande';
+import MethodePaiement from 'src/app/shared/models/methode-paiement';
+import { environment } from 'src/environments/environment';
 import { CommandeService } from './services/commande.service';
 
 @Component({
@@ -11,20 +14,25 @@ import { CommandeService } from './services/commande.service';
 export class ValiderPanierPageComponent implements OnInit {
 
   public commande?: Commande;
-  public clientSecret?: string;
+  public stripe?: Stripe;
+  public methodesPaiement: MethodePaiement[] = [];
 
   constructor(
       private route: ActivatedRoute,
       private readonly commandeService: CommandeService) {}
 
   ngOnInit(): void {
+    loadStripe(environment.stripe_pk).then(stripe => {
+      this.stripe = stripe;
+    });
+
     this.route.params.subscribe(params => {
       this.commandeService.getOne(params.idCommande).subscribe(commande => {
         this.commande = commande;
-      });
 
-      this.commandeService.getPaiementIntent(params.idCommande).subscribe(paiement => {
-        this.clientSecret = paiement.clientSecret;
+        this.commandeService.methodesPaiementUtilisateur(this.commande.utilisateur.id).subscribe(methodes => {
+          this.methodesPaiement = methodes;
+        })
       });
     });
   }
@@ -32,5 +40,4 @@ export class ValiderPanierPageComponent implements OnInit {
   public valideCommande(): void {
     console.log(this.commande);
   }
-
 }
