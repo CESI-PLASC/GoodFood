@@ -1,5 +1,5 @@
-import { Component, Input} from '@angular/core';
-import { ISimpleProduit } from '../../shared/models/produit';
+import { Component, Input, EventEmitter, Output} from '@angular/core';
+import { ISimpleProduit, IProduit } from '../../shared/models/produit';
 
 @Component({
   selector: 'gf-produit-list',
@@ -8,4 +8,15 @@ import { ISimpleProduit } from '../../shared/models/produit';
 })
 export class ProduitListComponent {
   @Input() public produits: ISimpleProduit[];
+  produit: ISimpleProduit;
+  @Output() public produitSelected: EventEmitter<any> = new EventEmitter<any>();
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+  recupProduitSelected(item: IProduit): void{
+    this.produitSelected.emit(item);
+  }
 }

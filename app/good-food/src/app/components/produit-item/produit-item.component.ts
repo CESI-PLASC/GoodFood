@@ -3,6 +3,7 @@ import { IProduit } from '../../shared/models/produit';
 import { Icons } from '../../shared/constants/icons.constant';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { PanierService } from 'src/app/pages/catalogue-page/services/panier.service';
 
 registerLocaleData(localeFr);
 
@@ -14,4 +15,11 @@ registerLocaleData(localeFr);
 export class ProduitItemComponent {
   public readonly icons = Icons.produits;
   @Input() public produit: IProduit;
+
+  constructor(public panierService: PanierService) { }
+
+  ajouterProduitPanier(item:IProduit) : void{
+    this.panierService.addProduit(item);
+  }
+
 }

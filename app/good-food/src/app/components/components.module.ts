@@ -8,7 +8,7 @@ import { CatalogueFiltreComponent } from './catalogue-filtre/catalogue-filtre.co
 import { MultiSelectModule } from 'primeng/multiselect';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SelectBoxComponent } from './select-box/select-box.component';
-import { NgbAccordionModule, NgbCarouselModule, NgbCollapseModule, NgbDropdownModule, NgbNavbar, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbAccordionModule, NgbCarouselModule, NgbCollapseModule, NgbDropdownModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { PanierComponent } from './panier/panier.component';
 import { ListeFranchiseComponent } from './liste-franchise/liste-franchise.component';
 import { InfoFranchiseComponent } from './info-franchise/info-franchise.component';
@@ -28,6 +28,9 @@ import { SelecteurPaiementComponent } from './selecteur-paiement/selecteur-paiem
 import { InfoPaiementComponent } from './info-paiement/info-paiement.component';
 import { SelecteurPaiementListModalComponent } from './selecteur-paiement/modal/selecteur-paiement-list-modal.component';
 import { MethodePaiementFormComponent } from './methode-paiement-form/methode-paiement-form.component';
+import { PanierAjoutProduitComponent } from './panier-ajout-produit/panier-ajout-produit.component';
+import { FormuleListComponent } from './formule-list/formule-list.component';
+import { SelectItemComponent } from './select-item/select-item.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,10 @@ import { MethodePaiementFormComponent } from './methode-paiement-form/methode-pa
       SelecteurPaiementComponent,
       InfoPaiementComponent,
       SelecteurPaiementListModalComponent,
-      MethodePaiementFormComponent
+      MethodePaiementFormComponent,
+      PanierAjoutProduitComponent,
+      FormuleListComponent,
+      SelectItemComponent
   ],
     imports: [
         CommonModule,
@@ -83,7 +89,12 @@ import { MethodePaiementFormComponent } from './methode-paiement-form/methode-pa
         AdresseFormComponent,
         LoginFormComponent,
         SelecteurPaiementComponent,
-        InfoPaiementComponent
-    ]
+        InfoPaiementComponent,
+        NgbCollapseModule,
+        NgbDropdownModule,
+        PanierAjoutProduitComponent,
+        FormuleListComponent,
+        SelectItemComponent
+    ],
 })
 export class ComponentsModule { }
