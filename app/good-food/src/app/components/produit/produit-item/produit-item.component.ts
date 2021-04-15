@@ -1,10 +1,9 @@
 import { Component, Input } from '@angular/core';
-//TODO voir pourquoi c'était rouge au merge
-import { IProduit } from '../../shared/models/produit/produit';
-import { Icons } from '../../shared/constants/icons.constant';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { PanierService } from 'src/app/pages/catalogue-page/services/panier.service';
+import { Icons } from '../../../shared/constants/icons.constant';
+import { IProduit } from '../../../shared/models/produit/produit';
 
 registerLocaleData(localeFr);
 

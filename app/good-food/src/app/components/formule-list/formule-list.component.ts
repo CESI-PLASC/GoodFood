@@ -3,9 +3,8 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs';
 import { PanierService } from 'src/app/pages/catalogue-page/services/panier.service';
 import { Icons } from 'src/app/shared/constants/icons.constant';
-// TODO IFormuleWithProducts move to formule.ts
-import { Formule, IFormule, IFormuleWithProducts } from 'src/app/shared/models/formule/formule';
-import { IProduit, Produit } from 'src/app/shared/models/produit/produit';
+import { IFormule, IFormuleWithProducts } from 'src/app/shared/models/formule/formule';
+import { IProduit } from 'src/app/shared/models/produit/produit';
 
 @Component({
   selector: 'gf-formule-list',

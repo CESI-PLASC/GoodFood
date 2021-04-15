@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CatalogueService } from 'src/app/pages/catalogue-page/services/catalogue.service';
-// TODO same later
 import { IFormule, IFormuleWithProducts } from 'src/app/shared/models/formule/formule';
 
 @Component({

@@ -1,4 +1,4 @@
-import { IProduit } from "./produit";
+import { IProduit } from '../produit/produit';
 
 export interface IFormule{
   designation?: string;
