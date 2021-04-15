@@ -162,7 +162,7 @@ jobs:
         run : cd ./api/data && mvn test
 
       - name: Test Angular   
-        run: cd ./app/good-food && npm run test
+        run: cd ./app/good-food && ng test --coverage
 
 
 
