@@ -1,3 +1,5 @@
+using auth.Models.paiements.carte;
+
 namespace auth.Models.paiements
 {
     public class MethodePaiementModele

@@ -4,6 +4,7 @@ import { MethodePaiementCarte, MethodePaiementCarteArgs, MethodePaiementCarteCre
 export type MethodePaiementCreer = ({
   type: "carte";
   carte: MethodePaiementCarteCreer;
+  utilisateurId: number;
 })
 
 export type MethodePaiementArgs = {

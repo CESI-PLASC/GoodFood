@@ -3,6 +3,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Icons } from 'src/app/shared/constants/icons.constant';
 import MethodePaiement from 'src/app/shared/models/methode-paiement/methode-paiement';
+import Utilisateur from 'src/app/shared/models/utilisateur/utilisateur';
 import { SelecteurPaiementListModalComponent } from './modal/selecteur-paiement-list-modal.component';
 
 @Component({
@@ -18,6 +19,7 @@ import { SelecteurPaiementListModalComponent } from './modal/selecteur-paiement-
   ]
 })
 export class SelecteurPaiementComponent implements OnInit, ControlValueAccessor {
+  @Input() utilisateur: Utilisateur;
   @Input() titre: string;
   @Input() methodesPaiement: MethodePaiement[];
 
@@ -63,6 +65,7 @@ export class SelecteurPaiementComponent implements OnInit, ControlValueAccessor 
     });
 
     modalRef.componentInstance.methodesPaiement = this.methodesPaiement;
+    modalRef.componentInstance.utilisateur = this.utilisateur;
     modalRef.result.then((result: MethodePaiement) => {
       if (result) {
         this.value = result;

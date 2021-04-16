@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using auth.infrastructure.Services.utilisateur;
 using auth.Models;
 using auth.Models.paiements;
+using auth.Models.paiements.carte;
 using Stripe;
 
 namespace auth.infrastructure.Services.paiement
@@ -11,17 +12,18 @@ namespace auth.infrastructure.Services.paiement
     public class MethodePaiementService : IMethodePaiementService
     {
         private IUtilisateurService _utilisateurService;
+        private PaymentMethodService _paymentMethodService;
 
         public MethodePaiementService(IUtilisateurService utilisateurService)
         {
             this._utilisateurService = utilisateurService;
+            this._paymentMethodService = new PaymentMethodService();
         }
 
         public async Task<List<MethodePaiementModele>> allByUser(long idUtilisateur)
         {
             // Récupération de l'utilisateur
             UtilisateurModele utilisateur = await this._utilisateurService.one(idUtilisateur);
-            
 
             // Récupération des moyen de paiements si l'utilisateur existe
             List<MethodePaiementModele> methodesPaiement = new List<MethodePaiementModele>();
@@ -53,6 +55,45 @@ namespace auth.infrastructure.Services.paiement
             catch (StripeException) { }
 
             return methodesPaiement;
+        }
+
+        public async Task<MethodePaiementModele> creerMethodePaiementUtilisateur(MethodePaiementCreerModele methodePaiementCreer)
+        {
+            // Récupération de l'utilisateur
+            UtilisateurModele utilisateur = await this._utilisateurService.one(methodePaiementCreer.utilisateurId);
+
+            // Création du moyen de paiement
+            PaymentMethod methodePaiementStripe = this._paymentMethodService.Create(new PaymentMethodCreateOptions
+            {
+                Type = "card",
+                Card = new PaymentMethodCardOptions
+                {
+                    Number = methodePaiementCreer.carte.numero,
+                    ExpMonth = methodePaiementCreer.carte.expireMois,
+                    ExpYear = methodePaiementCreer.carte.expireAnnee,
+                    Cvc = methodePaiementCreer.carte.cvc
+                }
+            });
+
+            // Ajout du propriétaire du moyen de paiement
+            this._paymentMethodService.Attach(methodePaiementStripe.Id, new PaymentMethodAttachOptions
+            {
+                Customer = utilisateur.stripe
+            });
+
+            return new MethodePaiementModele
+            {
+                id = methodePaiementStripe.Id,
+                type = methodePaiementStripe.Type,
+                carte = new MethodePaiementCarteModele
+                {
+                    marque = methodePaiementStripe.Card.Brand,
+                    expireAnnee = methodePaiementStripe.Card.ExpYear,
+                    expireMois = methodePaiementStripe.Card.ExpMonth,
+                    pays = methodePaiementStripe.Card.Country,
+                    derniersChiffres = methodePaiementStripe.Card.Last4
+                }
+            };
         }
     }
 }

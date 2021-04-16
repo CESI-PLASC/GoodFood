@@ -125,6 +125,30 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Obtenir le prix de la commande",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_data_res_commandes}}/:idCommande/prix",
+									"host": [
+										"{{api_data_res_commandes}}"
+									],
+									"path": [
+										":idCommande",
+										"prix"
+									],
+									"variable": [
+										{
+											"key": "idCommande",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -575,7 +599,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"id\": 1,\r\n    \"nom\": \"Roglic\",\r\n    \"prenom\": \"Primoz\",\r\n    \"dateNaissance\": \"1989-10-29\",\r\n    \"email\": \"primoz.roglic@gmail.com\",\r\n    \"telephoneFixe\": \"0606060606\",\r\n    \"telephoneMobile\": \"0606060606\"\r\n}",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"nom\": \"Roglic\",\r\n    \"prenom\": \"Primoz\",\r\n    \"dateNaissance\": \"1989-10-29\",\r\n    \"email\": \"primoz.roglic@gmail.com\",\r\n    \"telephoneFixe\": \"0606060606\",\r\n    \"telephoneMobile\": \"0606060606\",\r\n    \"codePaiement\": null\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -626,6 +650,104 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Paiement",
+					"item": [
+						{
+							"name": "Payer une commande",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"idCommande\": 1,\r\n    \"idPaiementMethode\": \"card_1Ig3gsBWA8B9DUDpc3W7Y8dz\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_auth_res_paiements}}/commandes",
+									"host": [
+										"{{api_auth_res_paiements}}"
+									],
+									"path": [
+										"commandes"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Methodes de paiement",
+					"item": [
+						{
+							"name": "Méthodes de paiement d'un utilisateur",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_auth_res_methodes_paiement}}/utilisateurs/:idUtilisateur",
+									"host": [
+										"{{api_auth_res_methodes_paiement}}"
+									],
+									"path": [
+										"utilisateurs",
+										":idUtilisateur"
+									],
+									"variable": [
+										{
+											"key": "idUtilisateur",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Créer méthode de paiement d'un utilisateur",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"type\": \"carte\",\r\n    \"utilisateurId\": 5,\r\n    \"carte\": {\r\n        \"expireAnnee\": 2023,\r\n        \"expireMois\": 12,\r\n        \"numero\": \"5555555555554444\",\r\n        \"cvc\": \"123\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_auth_res_methodes_paiement}}/utilisateurs/:idUtilisateur",
+									"host": [
+										"{{api_auth_res_methodes_paiement}}"
+									],
+									"path": [
+										"utilisateurs",
+										":idUtilisateur"
+									],
+									"variable": [
+										{
+											"key": "idUtilisateur",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
 		}
 	],
 	"event": [
@@ -650,56 +772,79 @@
 	],
 	"variable": [
 		{
+			"id": "8b7b912b-f0de-4bf7-bc6a-14ab4148151c",
 			"key": "api_data_host",
 			"value": "http://localhost:8080"
 		},
 		{
+			"id": "fbee6d1c-b5da-45d0-991e-8d41801566b7",
 			"key": "api_data_version",
 			"value": "v1"
 		},
 		{
+			"id": "1b999c7e-54b0-48b3-9c84-9428bdb6c108",
 			"key": "api_data_url",
 			"value": "{{api_data_host}}/api"
 		},
 		{
+			"id": "291862ac-587f-438e-b372-c75ed1f58d81",
 			"key": "api_data_res_commandes",
 			"value": "{{api_data_url}}/commandes"
 		},
 		{
+			"id": "dc7b549f-21a4-44b6-8d15-dea22d92dee9",
 			"key": "api_data_res_statuts",
 			"value": "{{api_data_url}}/statuts"
 		},
 		{
+			"id": "aff46699-d0b3-4ff7-a8ef-1d05aafe90c9",
 			"key": "api_data_res_formules",
 			"value": "{{api_data_url}}/formules"
 		},
 		{
+			"id": "74134927-5f8f-47b5-b337-4e1c9a0f597f",
 			"key": "api_data_res_produits",
 			"value": "{{api_data_url}}/produits"
 		},
 		{
+			"id": "6f21c519-1e24-4e6a-b7e5-7424e3166f4c",
 			"key": "api_data_res_franchises",
 			"value": "{{api_data_url}}/franchises"
 		},
 		{
+			"id": "c536bdc9-f31c-450b-8a87-e5419dfa8243",
 			"key": "api_data_res_categories",
 			"value": "{{api_data_url}}/categories"
 		},
 		{
+			"id": "88a70f9e-463f-467d-8ec5-21611044eada",
 			"key": "api_data_res_utilisateurs",
 			"value": "{{api_data_url}}/utilisateurs"
 		},
 		{
+			"id": "c1dbe280-4e07-4260-a077-da33a5678cd8",
 			"key": "api_auth_host",
 			"value": "http://localhost:5000"
 		},
 		{
+			"id": "548d2164-ff5e-4c2a-91ab-db66db3e293e",
 			"key": "api_auth_version",
 			"value": "v1"
 		},
 		{
+			"id": "23eb2434-4396-4ba6-9d7c-ef5bbd5bdd92",
 			"key": "api_auth_url",
 			"value": "{{api_auth_host}}/api/{{api_auth_version}}"
+		},
+		{
+			"id": "c4c2a75d-60d7-47d3-a49a-d07cb251f37a",
+			"key": "api_auth_res_paiements",
+			"value": "{{api_auth_url}}/paiements"
+		},
+		{
+			"id": "5a34b396-f0a4-48aa-bbcc-ae2133dfd041",
+			"key": "api_auth_res_methodes_paiement",
+			"value": "{{api_auth_url}}/methodesPaiement"
 		}
 	]
 }

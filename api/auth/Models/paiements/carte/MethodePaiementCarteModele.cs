@@ -1,4 +1,4 @@
-namespace auth.Models.paiements
+namespace auth.Models.paiements.carte
 {
     public class MethodePaiementCarteModele
     {

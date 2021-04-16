@@ -1,6 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MethodePaiementCreer } from 'src/app/shared/models/methode-paiement/methode-paiement';
+import Utilisateur from 'src/app/shared/models/utilisateur/utilisateur';
 
 @Component({
   selector: 'gf-methode-paiement-form',
@@ -8,6 +9,8 @@ import { MethodePaiementCreer } from 'src/app/shared/models/methode-paiement/met
   styleUrls: ['./methode-paiement-form.component.scss']
 })
 export class MethodePaiementFormComponent implements OnInit {
+
+  @Input() utilisateur: Utilisateur;
 
   @Output()
   public submitMethodePaiement: EventEmitter<MethodePaiementCreer> = new EventEmitter<MethodePaiementCreer>();
@@ -28,6 +31,7 @@ export class MethodePaiementFormComponent implements OnInit {
 
     return {
       type: "carte",
+      utilisateurId: this.utilisateur.id,
       carte: {
         expireAnnee: parseInt(expireAnnee),
         expireMois: parseInt(expireMois),
