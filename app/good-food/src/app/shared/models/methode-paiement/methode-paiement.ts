@@ -1,5 +1,10 @@
 import * as _ from 'lodash';
-import { MethodePaiementCarte, MethodePaiementCarteArgs } from './methode-paiement-carte';
+import { MethodePaiementCarte, MethodePaiementCarteArgs, MethodePaiementCarteCreer } from './methode-paiement-carte';
+
+export type MethodePaiementCreer = ({
+  type: "carte";
+  carte: MethodePaiementCarteCreer;
+})
 
 export type MethodePaiementArgs = {
   id: number;

@@ -15,11 +15,10 @@ export class SelecteurPaiementListModalComponent implements OnInit {
 
   constructor(private readonly activeModal: NgbActiveModal) { }
 
-  ngOnInit(): void {
-    console.log(this.methodesPaiement);
-  }
+  ngOnInit(): void {}
 
   public close(methode?: MethodePaiement): void {
+    console.log("close");
     if (methode) {
       this.activeModal.close(methode);
     } else {

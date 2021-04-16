@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import MethodePaiement from 'src/app/shared/models/methode-paiement/methode-paiement';
+import { MethodePaiementCreer } from 'src/app/shared/models/methode-paiement/methode-paiement';
 
 @Component({
   selector: 'gf-methode-paiement-form',
@@ -10,10 +10,7 @@ import MethodePaiement from 'src/app/shared/models/methode-paiement/methode-paie
 export class MethodePaiementFormComponent implements OnInit {
 
   @Output()
-  public methodePaiement: MethodePaiement;
-
-  @Output()
-  public submitMethodePaiement: EventEmitter<MethodePaiement> = new EventEmitter<MethodePaiement>();
+  public submitMethodePaiement: EventEmitter<MethodePaiementCreer> = new EventEmitter<MethodePaiementCreer>();
 
   public methodePaiementForm: FormGroup = this.fb.group({
     name: this.fb.control('', [Validators.required]),
@@ -24,18 +21,25 @@ export class MethodePaiementFormComponent implements OnInit {
 
   constructor(private readonly fb: FormBuilder) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  // public createFromForm(): MethodePaiement {
-  //   return new MethodePaiement({
-  //     id: this.methodePaiement?.id
-  //   });
-  // }
+  public createFromForm(): MethodePaiementCreer {
+    const [, expireMois, expireAnnee] = (this.methodePaiementForm.value.cvc as string).match(/^(\d{2})-(\d{4})$/);
+
+    return {
+      type: "carte",
+      carte: {
+        expireAnnee: parseInt(expireAnnee),
+        expireMois: parseInt(expireMois),
+        numero: this.methodePaiementForm.value.numero,
+        cvc: this.methodePaiementForm.value.cvc
+      }
+    };
+  }
 
   public save(): void {
     if (this.methodePaiementForm.valid) {
-      this.submitMethodePaiement.emit(); // Manque le renvoi
+      this.submitMethodePaiement.emit(this.createFromForm());
     }
   }
 

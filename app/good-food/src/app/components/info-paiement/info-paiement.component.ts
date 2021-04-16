@@ -10,9 +10,7 @@ export class InfoPaiementComponent implements OnInit {
 
   @Input() methodePaiement: MethodePaiement;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

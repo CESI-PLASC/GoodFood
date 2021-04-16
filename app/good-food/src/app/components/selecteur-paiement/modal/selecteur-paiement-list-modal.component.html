@@ -1,5 +1,10 @@
 <div class="modal-header">
-  <h3 class="modal-title">Choisissez une methode de paiement ou créez en une nouvelle</h3>
+  <div class="w-100 d-flex gf-justify-evenly align-items-center">
+
+    <h3 class="modal-title">Choisissez une methode depaiement</h3>
+    <h5 class="modal-title">ou</h5>
+    <h3 class="modal-title">créez en une nouvelle</h3>
+</div>
   <button type="button" class="close" (click)="close()">
     <fa-icon [icon]="icons.cancel"></fa-icon>
   </button>
@@ -12,6 +17,6 @@
     </div>
   </div>
   <div class="col-lg-6">
-    <gf-methode-paiement-form class="col-lg-6" (submitAddress)="close($event)"></gf-methode-paiement-form>
+    <gf-methode-paiement-form class="col-lg-6" (submitMethodePaiement)="close($event)"></gf-methode-paiement-form>
   </div>
 </div>

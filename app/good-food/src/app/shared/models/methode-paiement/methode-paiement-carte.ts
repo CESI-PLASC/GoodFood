@@ -1,3 +1,8 @@
+export type MethodePaiementCarteCreer = Pick<MethodePaiementCarteArgs, "expireAnnee" | "expireMois"> & {
+  numero: string;
+  cvc: string;
+}
+
 export type MethodePaiementCarteArgs = {
   marque: string;
   pays: string;

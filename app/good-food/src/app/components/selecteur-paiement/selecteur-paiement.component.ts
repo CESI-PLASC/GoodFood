@@ -1,5 +1,5 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Icons } from 'src/app/shared/constants/icons.constant';
 import MethodePaiement from 'src/app/shared/models/methode-paiement/methode-paiement';
@@ -17,7 +17,7 @@ import { SelecteurPaiementListModalComponent } from './modal/selecteur-paiement-
     }
   ]
 })
-export class SelecteurPaiementComponent implements OnInit {
+export class SelecteurPaiementComponent implements OnInit, ControlValueAccessor {
   @Input() titre: string;
   @Input() methodesPaiement: MethodePaiement[];
 
@@ -43,6 +43,18 @@ export class SelecteurPaiementComponent implements OnInit {
   constructor(private readonly modalService: NgbModal) {}
 
   ngOnInit(): void {}
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouch = fn;
+  }
+
+  writeValue(value: MethodePaiement): void {
+    this.methodePaiement = value;
+  }
 
   public openModal(): void {
     const modalRef = this.modalService.open(SelecteurPaiementListModalComponent, {
