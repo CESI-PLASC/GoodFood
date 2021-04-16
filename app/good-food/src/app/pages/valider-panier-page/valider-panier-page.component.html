@@ -15,7 +15,8 @@
     </div>
 
     <div class="mb-3">
-      <gf-selecteur-paiement [titre]="'Moyen de paiement'" [methodesPaiement]="methodesPaiement" [utilisateur]="commande.utilisateur">
+      <gf-selecteur-paiement [titre]="'Moyen de paiement'" [methodesPaiement]="methodesPaiement"
+        [methodePaiement]="methodePaiement" (methodePaiementChange)="methodePaiementChange($event)">
       </gf-selecteur-paiement>
     </div>
 

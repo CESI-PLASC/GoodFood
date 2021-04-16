@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MethodePaiementCreer } from 'src/app/shared/models/methode-paiement/methode-paiement';
+import { MethodePaiementCreer, MethodePaiementCreerSansUtilisateur } from 'src/app/shared/models/methode-paiement/methode-paiement';
 import Utilisateur from 'src/app/shared/models/utilisateur/utilisateur';
 
 @Component({
@@ -10,10 +10,8 @@ import Utilisateur from 'src/app/shared/models/utilisateur/utilisateur';
 })
 export class MethodePaiementFormComponent implements OnInit {
 
-  @Input() utilisateur: Utilisateur;
-
   @Output()
-  public submitMethodePaiement: EventEmitter<MethodePaiementCreer> = new EventEmitter<MethodePaiementCreer>();
+  public submitMethodePaiement: EventEmitter<MethodePaiementCreerSansUtilisateur> = new EventEmitter<MethodePaiementCreerSansUtilisateur>();
 
   public methodePaiementForm: FormGroup = this.fb.group({
     name: this.fb.control('', [Validators.required]),
@@ -26,15 +24,14 @@ export class MethodePaiementFormComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  public createFromForm(): MethodePaiementCreer {
-    const [, expireMois, expireAnnee] = (this.methodePaiementForm.value.cvc as string).match(/^(\d{2})-(\d{4})$/);
+  public createFromForm(): MethodePaiementCreerSansUtilisateur {
+    const matches = (this.methodePaiementForm.value.dateExpire as string).match(/^(\d{2})-(\d{4})$/);
 
     return {
       type: "carte",
-      utilisateurId: this.utilisateur.id,
       carte: {
-        expireAnnee: parseInt(expireAnnee),
-        expireMois: parseInt(expireMois),
+        expireAnnee: parseInt(matches[1]),
+        expireMois: parseInt(matches[2]),
         numero: this.methodePaiementForm.value.numero,
         cvc: this.methodePaiementForm.value.cvc
       }

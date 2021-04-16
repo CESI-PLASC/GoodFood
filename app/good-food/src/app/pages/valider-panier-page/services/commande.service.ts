@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/operators';
 import { RESS_COMMANDES, RESS_METHODES_PAIEMENT } from '../../../shared/constants/ressources.contants';
-import MethodePaiement, { MethodePaiementArgs } from '../../../shared/models/methode-paiement/methode-paiement';
+import MethodePaiement, { MethodePaiementArgs, MethodePaiementCreer } from '../../../shared/models/methode-paiement/methode-paiement';
 import { Commande, CommandeArgs } from '../../../shared/models/commande/commande';
 
 @Injectable({
@@ -21,6 +21,13 @@ export class CommandeService {
     return this.http
       .get<MethodePaiementArgs[]>(`${RESS_METHODES_PAIEMENT}/utilisateurs/${idUtilisateur}`)
       .pipe(map(reponse => reponse.map((rep: MethodePaiementArgs) => new MethodePaiement(rep))))
+    ;
+  }
+
+  public creerMethodePaiementUtilisateur(methodePaiement: MethodePaiementCreer): Observable<MethodePaiement>{
+    return this.http
+      .post<MethodePaiementArgs>(`${RESS_METHODES_PAIEMENT}/utilisateurs`, methodePaiement)
+      .pipe(map(reponse => new MethodePaiement(reponse)))
     ;
   }
 

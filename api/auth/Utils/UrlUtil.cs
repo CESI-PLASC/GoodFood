@@ -27,7 +27,8 @@ namespace auth.Utils
         public static class METHODE_PAIEMENT_RESSOURCE
         {
             public const string METHODES_PAIEMENT = BASE_API_URL + "/methodesPaiement";
-            public const string METHODES_PAIEMENT_PAR_UTILISATEUR = METHODES_PAIEMENT + "/utilisateurs/{idUtilisateur}";
+            public const string METHODES_PAIEMENT_UTILISATEURS = METHODES_PAIEMENT + "/utilisateurs";
+            public const string METHODES_PAIEMENT_UTILISATEUR = METHODES_PAIEMENT_UTILISATEURS + "/{idUtilisateur}";
         }
     }
 }

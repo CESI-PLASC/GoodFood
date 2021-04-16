@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Icons } from 'src/app/shared/constants/icons.constant';
-import MethodePaiement from 'src/app/shared/models/methode-paiement/methode-paiement';
-import Utilisateur from 'src/app/shared/models/utilisateur/utilisateur';
+import MethodePaiement, { MethodePaiementCreerSansUtilisateur } from 'src/app/shared/models/methode-paiement/methode-paiement';
 
 @Component({
   selector: 'gf-selecteur-paiement-list-modal',
@@ -11,8 +10,6 @@ import Utilisateur from 'src/app/shared/models/utilisateur/utilisateur';
 })
 export class SelecteurPaiementListModalComponent implements OnInit {
 
-  @Input() utilisateur: Utilisateur;
-
   public icons = Icons.validation;
   public methodesPaiement: MethodePaiement[];
 
@@ -20,8 +17,7 @@ export class SelecteurPaiementListModalComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  public close(methode?: MethodePaiement): void {
-    console.log("close");
+  public close(methode?: MethodePaiement | MethodePaiementCreerSansUtilisateur): void {
     if (methode) {
       this.activeModal.close(methode);
     } else {

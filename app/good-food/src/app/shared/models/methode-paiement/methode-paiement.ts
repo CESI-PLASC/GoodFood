@@ -1,6 +1,8 @@
 import * as _ from 'lodash';
 import { MethodePaiementCarte, MethodePaiementCarteArgs, MethodePaiementCarteCreer } from './methode-paiement-carte';
 
+export type MethodePaiementCreerSansUtilisateur = Omit<MethodePaiementCreer, "utilisateurId">;
+
 export type MethodePaiementCreer = ({
   type: "carte";
   carte: MethodePaiementCarteCreer;
