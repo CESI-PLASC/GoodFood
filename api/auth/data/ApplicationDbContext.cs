@@ -1,4 +1,3 @@
-using auth.entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace auth.data
@@ -9,7 +8,7 @@ namespace auth.data
 
         }
 
-        public DbSet<Franchise> Franchise {get; set;}
+        // public DbSet<Franchise> Franchise {get; set;}
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

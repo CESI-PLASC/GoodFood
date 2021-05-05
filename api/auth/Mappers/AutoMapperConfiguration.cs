@@ -1,5 +1,3 @@
-
-using auth.Mappers.Profiles;
 using AutoMapper;
 
 namespace auth.Mappers
@@ -10,7 +8,7 @@ namespace auth.Mappers
         {
             return new MapperConfiguration(cfg =>
             {
-                cfg.AddProfile(new FranchiseProfile());
+                // cfg.AddProfile(new FranchiseProfile());
             });
         }
     }
