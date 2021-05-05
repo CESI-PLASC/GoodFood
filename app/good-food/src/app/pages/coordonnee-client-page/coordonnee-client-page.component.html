@@ -23,7 +23,7 @@
             </div>
             <small class="form-text text-muted">*Champs obligatoires</small>
             <div class="text-center d-flex flex-column align-items-center mt-4">
-                <div class="">
+                <div *ngIf="false">
                     <span>Vous avez déjà un compte ?</span>
                     <button *ngIf="!isConnected" type="button" class="btn btn-link" (click)="openSignupModal()">Connectez-vous</button>
                 </div>
