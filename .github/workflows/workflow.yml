@@ -114,9 +114,9 @@ jobs:
         run: cd ./app/good-food && npm run build
 
 
-  test:
+  test_java:
     runs-on: ubuntu-18.04
-    name: Tests
+    name: Test Java
     needs: init
     steps:
       - name: Checkout
@@ -131,26 +131,12 @@ jobs:
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
 
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-      #- name: Install SonarCloud scanner
-      #  if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
-      #  shell: powershell
-      #  run: |
-      #    New-Item -Path .\.sonar\scanner -ItemType Directory
-      #    dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
-
-      - name: Cache SonarCloud scanner
-        id: cache-sonar-scanner
+      - name: Cache Maven packages
         uses: actions/cache@v1
         with:
-          path: .\.sonar\scanner
-          key: ${{ runner.os }}-sonar-scanner
-          restore-keys: ${{ runner.os }}-sonar-scanner
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
 
       - name: Shutdown Ubuntu MySQL
         run: sudo service mysql stop
@@ -175,17 +161,6 @@ jobs:
       - name: Install node dependencies
         run: npm i
 
-      - name: Install app dependencies
-        run: cd ./app/good-food && npm i
-
-      - name: Setup Dotnet
-        uses: actions/setup-dotnet@v1
-        #env:
-        #  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-        #  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          dotnet-version: '3.1.x'
-
       - name: Setup Java
         uses: actions/setup-java@v1
         with:
@@ -197,13 +172,98 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run : cd ./api/data && mvn test
 
-      - name: Test Angular   
+
+  test_dotnet:
+    runs-on: windows-latest
+    name: Tests C#
+    needs: init
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v1
+        with:
+          path: ~\sonar\cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+
+      - name: Cache SonarCloud scanner
+        id: cache-sonar-scanner
+        uses: actions/cache@v1
+        with:
+          path: .\.sonar\scanner
+          key: ${{ runner.os }}-sonar-scanner
+          restore-keys: ${{ runner.os }}-sonar-scanner
+
+      - name: Install SonarCloud scanner
+        if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
+        shell: powershell
+        run: |
+          New-Item -Path .\.sonar\scanner -ItemType Directory
+          dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
+
+      - name: Shutdown Ubuntu MySQL
+        run: sudo service mysql stop
+
+      - name: Setup Mysql
+        uses: mirromutth/mysql-action@v1.1
+        with:
+          host port: 3306
+          container port: 3306
+          character set server: 'utf8'
+          collation server: 'utf8_general_ci'
+          mysql version: '8.0'
+          mysql database: 'goodfood'
+          mysql user: 'goodfood'
+          mysql password: 'goodfood'
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12
+
+      - name: Install node dependencies
+        run: npm i
+
+      - name: Setup Dotnet
+        uses: actions/setup-dotnet@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          dotnet-version: '3.1.x'
+
+  test_angular:
+    runs-on: ubuntu-18.04
+    name: Tests Angular
+    needs: init
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12
+
+      - name: Install node dependencies
+        run: npm i
+
+      - name: Install app dependencies
+        run: cd ./app/good-food && npm i
+
+
+      - name: Test Angular
         run: cd ./app/good-food && npm run test --coverage
-
-
-
-
-
-
-
 
