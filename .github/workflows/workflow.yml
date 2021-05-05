@@ -206,7 +206,8 @@ jobs:
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
 
       - name: Shutdown Ubuntu MySQL
-        run: sudo service mysql stop
+        shell: powershell
+        run: mysqladmin shutdown
 
       - name: Setup Mysql
         uses: mirromutth/mysql-action@v1.1
