@@ -205,9 +205,9 @@ jobs:
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
 
-      - name: Shutdown Ubuntu MySQL
-        shell: powershell
-        run: mysqladmin shutdown
+      #- name: Shutdown Ubuntu MySQL
+      #  shell: powershell
+      #  run: mysqladmin shutdown
 
       - name: Setup Mysql
         uses: mirromutth/mysql-action@v1.1
