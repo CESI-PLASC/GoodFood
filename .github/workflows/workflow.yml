@@ -115,7 +115,10 @@ jobs:
 
 
   test:
-    runs-on: [self-hosted, ubuntu-18.04,  windows-latest]
+    runs-on:
+      - self-hosted
+      - windows-latest
+      - ubuntu-18.04
     name: Tests
     needs: init
     steps:
