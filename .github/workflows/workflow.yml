@@ -174,7 +174,7 @@ jobs:
 
 
   test_dotnet:
-    runs-on: windows-latest
+    runs-on: ubuntu-18.04
     name: Tests C#
     needs: init
     steps:
@@ -200,14 +200,12 @@ jobs:
 
       - name: Install SonarCloud scanner
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
-        shell: powershell
         run: |
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
 
-      #- name: Shutdown Ubuntu MySQL
-      #  shell: powershell
-      #  run: mysqladmin shutdown
+      - name: Shutdown Ubuntu MySQL
+        run: sudo service mysql stop
 
       - name: Setup Mysql
         uses: mirromutth/mysql-action@v1.1
