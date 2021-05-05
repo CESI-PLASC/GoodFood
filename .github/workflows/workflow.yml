@@ -1,18 +1,173 @@
-name: Workflow GoodFood
+name: GoodFood CI
+
 on: [push]
+
 jobs:
-  build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ ubuntu-18.04 ]
+  init:
+    runs-on: ubuntu-18.04
+    name: Init
     steps:
-      - name: Install docker
-        uses: docker
-      - name: Install Node
-        uses: node
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Shutdown Ubuntu MySQL
+        run: sudo service mysql stop
+
+      - name: Setup Mysql
+        uses: mirromutth/mysql-action@v1.1
         with:
-          node-version: 12.x
-      - name: Verify install
-        run: node -v && docker -v
+          host port: 3306
+          container port: 3306
+          character set server: 'utf8'
+          collation server: 'utf8_general_ci'
+          mysql version: '8.0'
+          mysql database: 'goodfood'
+          mysql user: 'goodfood'
+          mysql password: 'goodfood'
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12
+
+      - name: Install node dependencies
+        run: npm i
+
+      - name: Install app dependencies
+        run: cd ./app/good-food && npm i
+
+      - name: Setup Dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.x'
+
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+  build:
+    runs-on: ubuntu-18.04
+    name: Build
+    needs: init
+    steps:     
+
+   
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: logs
+        run: ls
+
+      - name: Shutdown Ubuntu MySQL
+        run: sudo service mysql stop
+
+      - name: Setup Mysql
+        uses: mirromutth/mysql-action@v1.1
+        with:
+          host port: 3306
+          container port: 3306
+          character set server: 'utf8'
+          collation server: 'utf8_general_ci'
+          mysql version: '8.0'
+          mysql database: 'goodfood'
+          mysql user: 'goodfood'
+          mysql password: 'goodfood'
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12
+
+      - name: Install node dependencies
+        run: npm i
+
+      - name: Install app dependencies
+        run: cd ./app/good-food && npm i
+
+      - name: Setup Dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.x'
+
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Restore project
+        run: cd ./api/auth && dotnet restore
+
+      - name: Maven Package
+        run: cd ./api/data && mvn clean package -DskipTests
+
+      - name: Maven Verify
+        run: cd ./api/data && mvn clean verify -DskipTests
+
+      - name: Build C# API
+        run: cd ./api/auth && dotnet build
+
+      - name: Build Java API
+        run: cd ./api/data && mvn spring-boot:start
+
+      - name: Build Angular app
+        run: cd ./app/good-food && npm run build
+
+
+  test:
+    runs-on: ubuntu-18.04
+    name: Tests
+    needs: init
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Shutdown Ubuntu MySQL
+        run: sudo service mysql stop
+
+      - name: Setup Mysql
+        uses: mirromutth/mysql-action@v1.1
+        with:
+          host port: 3306
+          container port: 3306
+          character set server: 'utf8'
+          collation server: 'utf8_general_ci'
+          mysql version: '8.0'
+          mysql database: 'goodfood'
+          mysql user: 'goodfood'
+          mysql password: 'goodfood'
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12
+
+      - name: Install node dependencies
+        run: npm i
+
+      - name: Install app dependencies
+        run: cd ./app/good-food && npm i
+
+      - name: Setup Dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.x'
+
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Test JAVA
+        run : cd ./api/data && mvn test
+
+      - name: Test Angular   
+        run: cd ./app/good-food && npm run test --coverage
+
+
+
+
+
+
+
+
