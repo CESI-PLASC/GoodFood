@@ -12,16 +12,16 @@ public class LocalisationKey implements Serializable {
     private Long utilisateurId;
 
     @Column(name = "adresse_id")
-    private Long adresse_id;
+    private Long adresseId;
 
     // #region Générations
 
     public LocalisationKey() {
     }
 
-    public LocalisationKey(Long utilisateurId, Long adresse_id) {
+    public LocalisationKey(Long utilisateurId, Long adresseId) {
         this.utilisateurId = utilisateurId;
-        this.adresse_id = adresse_id;
+        this.adresseId = adresseId;
     }
 
     public Long getUtilisateurId() {
@@ -32,12 +32,12 @@ public class LocalisationKey implements Serializable {
         this.utilisateurId = utilisateurId;
     }
 
-    public Long getAdresse_id() {
-        return this.adresse_id;
+    public Long getAdresseId() {
+        return this.adresseId;
     }
 
-    public void setAdresse_id(Long adresse_id) {
-        this.adresse_id = adresse_id;
+    public void setAdresseId(Long adresseId) {
+        this.adresseId = adresseId;
     }
 
     public LocalisationKey utilisateurId(Long utilisateurId) {
@@ -45,8 +45,8 @@ public class LocalisationKey implements Serializable {
         return this;
     }
 
-    public LocalisationKey adresse_id(Long adresse_id) {
-        setAdresse_id(adresse_id);
+    public LocalisationKey adresseId(Long adresseId) {
+        setAdresseId(adresseId);
         return this;
     }
 
@@ -59,17 +59,17 @@ public class LocalisationKey implements Serializable {
         }
         LocalisationKey localisationKey = (LocalisationKey) o;
         return Objects.equals(utilisateurId, localisationKey.utilisateurId)
-                && Objects.equals(adresse_id, localisationKey.adresse_id);
+                && Objects.equals(adresseId, localisationKey.adresseId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(utilisateurId, adresse_id);
+        return Objects.hash(utilisateurId, adresseId);
     }
 
     @Override
     public String toString() {
-        return "{" + " utilisateurId='" + getUtilisateurId() + "'" + ", adresse_id='" + getAdresse_id() + "'" + "}";
+        return "{" + " utilisateurId='" + getUtilisateurId() + "'" + ", adresseId='" + getAdresseId() + "'" + "}";
     }
 
     // #endregion
