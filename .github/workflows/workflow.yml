@@ -115,10 +115,7 @@ jobs:
 
 
   test:
-    runs-on:
-      - self-hosted
-      - windows-latest
-      - ubuntu-18.04
+    runs-on: ubuntu-18.04
     name: Tests
     needs: init
     steps:
@@ -140,12 +137,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-      - name: Install SonarCloud scanner
-        if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
-        shell: powershell
-        run: |
-          New-Item -Path .\.sonar\scanner -ItemType Directory
-          dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
+      #- name: Install SonarCloud scanner
+      #  if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
+      #  shell: powershell
+      #  run: |
+      #    New-Item -Path .\.sonar\scanner -ItemType Directory
+      #    dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
 
       - name: Cache SonarCloud scanner
         id: cache-sonar-scanner
@@ -183,9 +180,9 @@ jobs:
 
       - name: Setup Dotnet
         uses: actions/setup-dotnet@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        #env:
+        #  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+        #  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           dotnet-version: '3.1.x'
 
