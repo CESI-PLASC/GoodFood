@@ -223,8 +223,8 @@ jobs:
         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"goodfood-csharp" /o:"cesi-plasc" /d:sonar.login="${{ secrets.SONAR_CSHARP_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
-          cd ./api/auth && dotnet build
-          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_CSHARP_TOKEN }}"
+          cd .\api\auth && dotnet build
+          ..\..\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_CSHARP_TOKEN }}"
 
   test_angular:
     runs-on: ubuntu-18.04
