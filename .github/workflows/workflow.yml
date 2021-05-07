@@ -251,7 +251,7 @@ jobs:
         run: cd ./app/good-food && npm i
 
       - name: Test Angular
-        run: cd ./app/good-food && npm run test --coverage
+        run: cd ./app/good-food && npm run test:ci
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
