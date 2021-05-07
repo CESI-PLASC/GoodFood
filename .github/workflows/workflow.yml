@@ -170,7 +170,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_JAVA_TOKEN }}
-        run : cd ./api/data && mvn test
+        run : cd ./api/data && mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
 
 
   test_dotnet:
@@ -215,9 +215,9 @@ jobs:
 
       - name: Setup Dotnet
         uses: actions/setup-dotnet@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        #env:
+        #  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+        #  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           dotnet-version: '3.1.x'
 
@@ -231,12 +231,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_ANGULAR_TOKEN }}
-
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
@@ -248,7 +242,12 @@ jobs:
       - name: Install app dependencies
         run: cd ./app/good-food && npm i
 
-
       - name: Test Angular
         run: cd ./app/good-food && npm run test --coverage
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_ANGULAR_TOKEN }}
 
