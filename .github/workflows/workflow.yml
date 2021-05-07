@@ -214,11 +214,14 @@ jobs:
         run: npm i
 
       - name: Setup Dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.x'
+
+      - name: Build Dotnet
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_CSHARP_TOKEN: ${{ secrets.SONAR_CSHARP_TOKEN }}
-        with:
-          dotnet-version: '3.1.x'
         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"goodfood-csharp" /o:"cesi-plasc" /d:sonar.login="${{ secrets.SONAR_CSHARP_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
