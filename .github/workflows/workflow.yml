@@ -215,11 +215,16 @@ jobs:
 
       - name: Setup Dotnet
         uses: actions/setup-dotnet@v1
-        #env:
-        #  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-        #  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_CSHARP_TOKEN: ${{ secrets.SONAR_CSHARP_TOKEN }}
         with:
           dotnet-version: '3.1.x'
+        shell: powershell
+        run: |
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"goodfood-csharp" /o:"cesi-plasc" /d:sonar.login="${{ secrets.SONAR_CSHARP_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+          cd ./api/auth && dotnet build
+          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_CSHARP_TOKEN }}"
 
   test_angular:
     runs-on: ubuntu-18.04
