@@ -55,15 +55,6 @@ namespace auth
                 options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 22)))
             );
 
-            services.AddCors(options =>
-            {
-                options.AddPolicy(MyAllowSpecificOrigins, builder =>
-                {
-                    builder.WithOrigins("*");
-                });
-            });
-
-
             services.AddAutoMapper(typeof(Startup).Assembly);
 
             // Repositories
@@ -99,7 +90,7 @@ namespace auth
 
             app.UseCors(builder =>
             {
-                builder.AllowAnyOrigin();
+                builder.AllowAnyOrigin().WithMethods("GET", "PUT", "POST", "DELETE").AllowAnyHeader();
             });
 
             app.UseAuthorization();

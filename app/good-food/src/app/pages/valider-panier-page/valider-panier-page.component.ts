@@ -39,12 +39,19 @@ export class ValiderPanierPageComponent implements OnInit {
   }
 
   public methodePaiementChange(methode?: MethodePaiement | MethodePaiementCreerSansUtilisateur){
+
+    // Aucune sélection
     if(!methode){
       this.methodePaiement = undefined;
-    } else if ("id" in methode){
+    } 
+    
+    // Sélection d'une méthode de paiement existante
+    else if ("id" in methode){
       this.methodePaiement = methode;
-    } else {
-      // Création d'une nouvelle méthode de paiement
+    } 
+    
+    // Création d'une nouvelle méthode de paiement
+    else {
       this.commandeService.creerMethodePaiementUtilisateur({
         ...methode,
         utilisateurId: this.commande.utilisateur.id

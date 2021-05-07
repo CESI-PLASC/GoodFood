@@ -1,5 +1,7 @@
 import { IProduit } from '../produit/produit';
 
+export type FormuleCreer = Pick<Formule, "designation" | "prix">;
+
 export interface IFormule{
   designation?: string;
   prix?: number;
