@@ -17,7 +17,7 @@
 		<java.version>11</java.version>
 		<spring.profiles.active>local,no-liquibase</spring.profiles.active>
 		<!-- Setup sonar -->
-		<sonar.projectKey>CESI-PLASC_GoodFood</sonar.projectKey>
+		<sonar.projectKey>goodfood-java</sonar.projectKey>
 		<sonar.organization>cesi-plasc</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>

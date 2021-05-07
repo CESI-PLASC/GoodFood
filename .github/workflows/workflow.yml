@@ -169,12 +169,12 @@ jobs:
       - name: Test JAVA
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_JAVA_TOKEN }}
         run : cd ./api/data && mvn test
 
 
   test_dotnet:
-    runs-on: ubuntu-18.04
+    runs-on: windows-latest
     name: Tests C#
     needs: init
     steps:
@@ -200,24 +200,10 @@ jobs:
 
       - name: Install SonarCloud scanner
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
+        shell: powershell
         run: |
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
-
-      - name: Shutdown Ubuntu MySQL
-        run: sudo service mysql stop
-
-      - name: Setup Mysql
-        uses: mirromutth/mysql-action@v1.1
-        with:
-          host port: 3306
-          container port: 3306
-          character set server: 'utf8'
-          collation server: 'utf8_general_ci'
-          mysql version: '8.0'
-          mysql database: 'goodfood'
-          mysql user: 'goodfood'
-          mysql password: 'goodfood'
 
       - name: Setup Node
         uses: actions/setup-node@v2
@@ -249,7 +235,7 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_ANGULAR_TOKEN }}
 
       - name: Setup Node
         uses: actions/setup-node@v2
