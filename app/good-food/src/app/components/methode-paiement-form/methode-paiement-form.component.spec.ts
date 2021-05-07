@@ -1,25 +1,26 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Spectator } from '@ngneat/spectator';
+import { createComponentFactory } from '@ngneat/spectator/jest';
 import { MethodePaiementFormComponent } from './methode-paiement-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('MethodePaiementFormComponent', () => {
-  let component: MethodePaiementFormComponent;
-  let fixture: ComponentFixture<MethodePaiementFormComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ MethodePaiementFormComponent ]
-    })
-    .compileComponents();
+  let spectator: Spectator<MethodePaiementFormComponent>;
+  const createComponent = createComponentFactory({
+    component: MethodePaiementFormComponent,
+    imports: [
+      FormsModule,
+      ReactiveFormsModule,
+    ]
   });
+
+  let comp: MethodePaiementFormComponent;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MethodePaiementFormComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    spectator = createComponent();
+    comp = spectator.component;
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('Should create component', () => {
+    expect(comp).toBeDefined();
   });
 });

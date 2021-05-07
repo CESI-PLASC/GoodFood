@@ -6,11 +6,6 @@ import MethodePaiement from 'src/app/shared/models/methode-paiement/methode-paie
   templateUrl: './info-paiement.component.html',
   styleUrls: ['./info-paiement.component.scss']
 })
-export class InfoPaiementComponent implements OnInit {
-
+export class InfoPaiementComponent {
   @Input() methodePaiement: MethodePaiement;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }

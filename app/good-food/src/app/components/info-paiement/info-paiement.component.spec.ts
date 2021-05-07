@@ -1,25 +1,24 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { InfoPaiementComponent } from './info-paiement.component';
+import { Spectator } from '@ngneat/spectator';
+import { createComponentFactory } from '@ngneat/spectator/jest';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('InfoPaiementComponent', () => {
-  let component: InfoPaiementComponent;
-  let fixture: ComponentFixture<InfoPaiementComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ InfoPaiementComponent ]
-    })
-    .compileComponents();
+  let spectator: Spectator<InfoPaiementComponent>;
+  const createComponent = createComponentFactory({
+    component: InfoPaiementComponent,
+    imports: [
+    ]
   });
+
+  let comp: InfoPaiementComponent;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InfoPaiementComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    spectator = createComponent();
+    comp = spectator.component;
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('Should create component', () => {
+    expect(comp).toBeDefined();
   });
 });
