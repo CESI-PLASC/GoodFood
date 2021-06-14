@@ -13,7 +13,7 @@ using Stripe;
 using GoodFood.Auth.Infrastructure.Services.Commande;
 using GoodFood.Auth.Infrastructure.Services.Paiement;
 using GoodFood.Auth.Infrastructure.Services.Utilisateur;
-using GoodFood.Auth.Repositories.EmployeRepository;
+using GoodFood.Auth.Infrastructure.Repositories.EmployeRepository;
 
 namespace auth
 {

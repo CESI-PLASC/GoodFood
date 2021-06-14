@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using GoodFood.Auth.Models;
+using GoodFood.Auth.Infrastructure.Models;
 
 namespace GoodFood.Auth.Infrastructure.Services.Commande
 {

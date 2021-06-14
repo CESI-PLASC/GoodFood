@@ -4,8 +4,8 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using GoodFood.Auth.Infrastructure.Services.Commande;
 using GoodFood.Auth.Infrastructure.Services.Utilisateur;
-using GoodFood.Auth.Models;
-using GoodFood.Auth.Models.Paiements;
+using GoodFood.Auth.Infrastructure.Models;
+using GoodFood.Auth.Infrastructure.Models.Paiements;
 using Stripe;
 
 namespace GoodFood.Auth.Infrastructure.Services.Paiement

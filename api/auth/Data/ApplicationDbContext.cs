@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-using GoodFood.Auth.Entities;
+using GoodFood.Auth.Infrastructure.Entities;
 
 namespace GoodFood.Auth.Data
 {

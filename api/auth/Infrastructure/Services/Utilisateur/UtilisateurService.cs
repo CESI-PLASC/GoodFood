@@ -1,6 +1,6 @@
 using System.Net.Http;
 using System.Threading.Tasks;
-using GoodFood.Auth.Models;
+using GoodFood.Auth.Infrastructure.Models;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 

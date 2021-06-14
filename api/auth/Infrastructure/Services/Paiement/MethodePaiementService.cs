@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using GoodFood.Auth.Models;
-using GoodFood.Auth.Models.Paiements;
-using GoodFood.Auth.Models.Paiements.Carte;
+using GoodFood.Auth.Infrastructure.Models;
+using GoodFood.Auth.Infrastructure.Models.Paiements;
+using GoodFood.Auth.Infrastructure.Models.Paiements.Carte;
 using GoodFood.Auth.Infrastructure.Services.Utilisateur;
 using Stripe;
 
