@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace auth.data
+using GoodFood.Auth.Entities;
+
+namespace GoodFood.Auth.Data
 {
     public class ApplicationDbContext : DbContext
     {
@@ -8,7 +10,7 @@ namespace auth.data
 
         }
 
-        // public DbSet<Franchise> Franchise {get; set;}
+        public DbSet<Employe> Employe {get; set;}
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

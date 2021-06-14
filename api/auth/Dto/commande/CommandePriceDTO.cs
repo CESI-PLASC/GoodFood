@@ -1,4 +1,4 @@
-namespace auth.Dto.commande
+namespace GoodFood.Auth.Dto.Commande
 {
     public class CommandePriceDTO
     {

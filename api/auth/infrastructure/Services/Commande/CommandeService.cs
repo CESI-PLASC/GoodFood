@@ -1,11 +1,11 @@
 using System.Net.Http;
 using System.Threading.Tasks;
-using auth.Dto.commande;
-using auth.Models;
+using GoodFood.Auth.Dto.Commande;
+using GoodFood.Auth.Models;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 
-namespace auth.infrastructure.Services.commande
+namespace GoodFood.Auth.Infrastructure.Services.Commande
 {
     public class CommandeService: ICommandeService
     {

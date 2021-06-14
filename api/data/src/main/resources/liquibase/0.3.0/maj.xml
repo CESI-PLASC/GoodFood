@@ -3,22 +3,23 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <!-- Aucune dépendance -->
+    <!-- Dépend de Franchisé -->
     <include
-        file="contenu/maj.xml"
-        relativeToChangelogFile="true" />
-    <include
-        file="contient/maj.xml"
-        relativeToChangelogFile="true" />
-    <include
-        file="utilisateur/maj.xml"
+        file="employe/maj.xml"
         relativeToChangelogFile="true" />
 
-    <!-- Dépend de utilisateur -->
+    <!-- Dépend de Employé -->
     <include
-        file="commande/maj.xml"
+        file="privilege/maj.xml"
         relativeToChangelogFile="true" />
+
+    <!-- Dépend de Franchisé et Privilège -->
     <include
-        file="localisation/maj.xml"
-        relativeToChangelogFile="true" />
+            file="possede/maj.xml"
+            relativeToChangelogFile="true" />
+
+    <!-- Dépend de Privilège -->
+    <include
+            file="regroupe/maj.xml"
+            relativeToChangelogFile="true" />
 </databaseChangeLog>

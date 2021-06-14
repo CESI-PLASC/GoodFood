@@ -3,13 +3,32 @@
                     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 	                http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <changeSet id="0.0.1-create-table-statut" author="cgiboulot">
-        <createTable tableName="statut">
+    <changeSet id="0.3.0-create-table-regroupe" author="cgiboulot">
+        <createTable tableName="regroupe">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="designation" type="varchar(20)" />
+            <column name="privilege_parent_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="privilege_enfant_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
+    </changeSet>
+
+    <changeSet id="0.3.0-constraints-table-regroupe" author="cgiboulot">
+        <addForeignKeyConstraint baseTableName="regroupe"
+                                 baseColumnNames="privilege_parent_id"
+                                 constraintName="fk_regroupe_privilege_parent_id"
+                                 referencedTableName="privilege"
+                                 referencedColumnNames="id" />
+
+        <addForeignKeyConstraint baseTableName="regroupe"
+                                 baseColumnNames="privilege_enfant_id"
+                                 constraintName="fk_regroupe_privilege_enfant_id"
+                                 referencedTableName="privilege"
+                                 referencedColumnNames="id" />
     </changeSet>
 
 </databaseChangeLog>

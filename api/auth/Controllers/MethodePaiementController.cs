@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
-using auth.infrastructure.Services.paiement;
-using auth.Models.paiements;
-using auth.Utils;
+using GoodFood.Auth.Infrastructure.Services.Paiement;
+using GoodFood.Auth.Models.Paiements;
+using GoodFood.Auth.Utils;
 using Microsoft.AspNetCore.Mvc;
 
-namespace auth.Controllers
+namespace GoodFood.Auth.Controllers
 {
     public class MethodePaiementController : ControllerBase
     {

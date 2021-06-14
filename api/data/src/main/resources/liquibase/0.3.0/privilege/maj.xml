@@ -3,12 +3,14 @@
                     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 	                http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <changeSet id="0.0.1-create-table-statut" author="cgiboulot">
-        <createTable tableName="statut">
+    <changeSet id="0.3.0-create-table-privilege" author="cgiboulot">
+        <createTable tableName="privilege">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="designation" type="varchar(20)" />
+            <column name="designation" type="varchar(45)">
+                <constraints nullable="false" />
+            </column>
         </createTable>
     </changeSet>
 

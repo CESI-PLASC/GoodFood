@@ -1,6 +1,6 @@
 using AutoMapper;
 
-namespace auth.Mappers
+namespace GoodFood.Auth.Mappers
 {
     public static class AutoMapperConfiguration
     {

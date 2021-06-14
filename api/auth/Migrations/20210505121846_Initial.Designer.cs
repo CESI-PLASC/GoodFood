@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using auth.data;
+using GoodFood.Auth.Data;
 
-namespace auth.Migrations
+namespace GoodFood.Auth.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20210505121846_Initial")]

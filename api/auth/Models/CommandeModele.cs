@@ -1,4 +1,4 @@
-namespace auth.Models
+namespace GoodFood.Auth.Models
 {
     public class CommandeModele
     {

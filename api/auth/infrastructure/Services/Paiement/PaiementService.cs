@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using auth.infrastructure.Services.commande;
-using auth.infrastructure.Services.utilisateur;
-using auth.Models;
-using auth.Models.paiements;
+using GoodFood.Auth.Infrastructure.Services.Commande;
+using GoodFood.Auth.Infrastructure.Services.Utilisateur;
+using GoodFood.Auth.Models;
+using GoodFood.Auth.Models.Paiements;
 using Stripe;
 
-namespace auth.infrastructure.Services.paiement
+namespace GoodFood.Auth.Infrastructure.Services.Paiement
 {
     public class PaiementService : IPaiementService
     {

@@ -1,4 +1,4 @@
-namespace auth.Utils
+namespace GoodFood.Auth.Utils
 {
     /// <summary>
     /// Exception message util.

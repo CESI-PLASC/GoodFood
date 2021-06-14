@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
-using auth.Models;
+using GoodFood.Auth.Models;
 
-namespace auth.infrastructure.Services.commande
+namespace GoodFood.Auth.Infrastructure.Services.Commande
 {
     public interface ICommandeService
     {

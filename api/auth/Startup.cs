@@ -1,6 +1,6 @@
 using System;
-using auth.data;
-using auth.infrastructure.helpers;
+using GoodFood.Auth.Data;
+using GoodFood.Auth.Infrastructure.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -10,9 +10,10 @@ using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using FluentValidation.AspNetCore;
 using Stripe;
-using auth.infrastructure.Services.commande;
-using auth.infrastructure.Services.paiement;
-using auth.infrastructure.Services.utilisateur;
+using GoodFood.Auth.Infrastructure.Services.Commande;
+using GoodFood.Auth.Infrastructure.Services.Paiement;
+using GoodFood.Auth.Infrastructure.Services.Utilisateur;
+using GoodFood.Auth.Repositories.EmployeRepository;
 
 namespace auth
 {
@@ -73,6 +74,8 @@ namespace auth
             services.AddTransient<IUtilisateurService, UtilisateurService>();
             services.AddTransient<IPaiementService, PaiementService>();
             services.AddTransient<IMethodePaiementService, MethodePaiementService>();
+
+            services.AddTransient<IEmployeRepository, EmployeRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,10 +1,10 @@
 using System.Net.Http;
 using System.Threading.Tasks;
-using auth.Models;
+using GoodFood.Auth.Models;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 
-namespace auth.infrastructure.Services.utilisateur
+namespace GoodFood.Auth.Infrastructure.Services.Utilisateur
 {
     public class UtilisateurService : IUtilisateurService
     {

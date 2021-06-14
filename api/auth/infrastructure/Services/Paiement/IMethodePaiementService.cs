@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using auth.Models.paiements;
+using GoodFood.Auth.Models.Paiements;
 
-namespace auth.infrastructure.Services.paiement
+namespace GoodFood.Auth.Infrastructure.Services.Paiement
 {
     public interface IMethodePaiementService
     {

@@ -1,13 +1,12 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using auth.infrastructure.Services.utilisateur;
-using auth.Models;
-using auth.Models.paiements;
-using auth.Models.paiements.carte;
+using GoodFood.Auth.Models;
+using GoodFood.Auth.Models.Paiements;
+using GoodFood.Auth.Models.Paiements.Carte;
+using GoodFood.Auth.Infrastructure.Services.Utilisateur;
 using Stripe;
 
-namespace auth.infrastructure.Services.paiement
+namespace GoodFood.Auth.Infrastructure.Services.Paiement
 {
     public class MethodePaiementService : IMethodePaiementService
     {

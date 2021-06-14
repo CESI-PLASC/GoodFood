@@ -1,6 +1,6 @@
-using auth.Models.paiements.carte;
+using GoodFood.Auth.Models.Paiements.Carte;
 
-namespace auth.Models.paiements
+namespace GoodFood.Auth.Models.Paiements
 {
     public class MethodePaiementCreerModele
     {

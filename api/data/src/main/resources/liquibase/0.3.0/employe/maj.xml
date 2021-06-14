@@ -3,13 +3,34 @@
                     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 	                http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <changeSet id="0.0.1-create-table-statut" author="cgiboulot">
-        <createTable tableName="statut">
+    <changeSet id="0.3.0-create-table-employe" author="cgiboulot">
+        <createTable tableName="employe">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="designation" type="varchar(20)" />
+            <column name="nom" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="prenom" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="telephone_mobile" type="varchar(10)" />
+
+            <column name="franchise_id" type="int">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
+    </changeSet>
+
+    <changeSet id="0.3.0-constraints-table-employe" author="cgiboulot">
+        <addForeignKeyConstraint baseTableName="employe"
+                                 baseColumnNames="franchise_id"
+                                 constraintName="fk_employe_franchise_id"
+                                 referencedTableName="franchise"
+                                 referencedColumnNames="id" />
     </changeSet>
 
 </databaseChangeLog>

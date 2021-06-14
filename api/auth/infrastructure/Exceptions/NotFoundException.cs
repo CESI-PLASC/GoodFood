@@ -1,5 +1,5 @@
 using System;
-namespace auth.infrastructure.Exceptions
+namespace GoodFood.Auth.Infrastructure.Exceptions
 {
     public class NotFoundException : Exception
     {

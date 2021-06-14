@@ -1,4 +1,4 @@
-namespace auth.infrastructure.helpers
+namespace GoodFood.Auth.Infrastructure.Helpers
 {
     public class AppSettings
     {
