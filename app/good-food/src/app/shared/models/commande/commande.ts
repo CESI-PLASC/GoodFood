@@ -3,7 +3,6 @@ import * as moment from 'moment';
 import { Moment } from 'moment';
 import { Contenu, IContenu } from '../contenu/contenu';
 import { Contient } from '../contient/contient';
-import { Formule } from '../formule/formule';
 import { Franchise, IFranchise } from '../franchise/franchise';
 import Statut, { IStatut } from '../statut/statut';
 import Utilisateur, { IUtilisateur } from '../utilisateur/utilisateur';
@@ -59,7 +58,7 @@ export class Commande implements ICommande {
       ? moment(opts.dateCreation, 'YYYY-MM-DD')
       : undefined;
 
-    this.formules = opts.formules?.map((formule) => new Formule(formule)) || [];
+    this.formules = opts.formules?.map((formule) => new Contenu(formule)) || [];
     this.statut = opts.statut ? new Statut(opts.statut) : undefined;
     this.franchise = opts.franchise ? new Franchise(opts.franchise) : undefined;
   }
@@ -81,4 +80,35 @@ export class Commande implements ICommande {
       0
     );
   }
+
+  // /**
+  //  * Permet de vérifier que le contenu de la commande est valide selon la structure des formules
+  //  * @returns Vrai si la structure des formules est respectée
+  //  */
+  // public structureValide(): boolean {
+  //   const estValide = true;
+  //   for (const contenu of this.formules) {
+  //     const {
+  //       produits,
+  //       formule: { structure },
+  //     } = contenu;
+
+  //     // Quantités par catégorie
+  //     const quantites: Record<number, number> = {};
+  //     for (const requiert of structure) {
+  //       const categorieId = requiert.categorie.id;
+  //       if (!(requiert.categorie.id in quantites)) {
+  //         quantites[requiert.categorie.id] = 0;
+  //       }
+  //       quantites[categorieId] += requiert.quantite;
+  //     }
+
+  //     // Analyse des produits de la formule
+  //     for (const produit of produits) {
+
+  //     }
+  //   }
+
+  //   return true;
+  // }
 }
