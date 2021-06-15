@@ -8,8 +8,8 @@
 
     <include file="statut/maj.xml" relativeToChangelogFile="true" />
     <include file="ingredient/maj.xml" relativeToChangelogFile="true" />
-    <include file="produit/maj.xml" relativeToChangelogFile="true" />
     <include file="categorie/maj.xml" relativeToChangelogFile="true" />
+    <include file="produit/maj.xml" relativeToChangelogFile="true" />
     <include file="formule/maj.xml" relativeToChangelogFile="true" />
 
     <include file="commande/maj.xml" relativeToChangelogFile="true" />
@@ -17,7 +17,6 @@
     <include file="commandee/maj.xml" relativeToChangelogFile="true" />
     <include file="propose/maj.xml" relativeToChangelogFile="true" />
     <include file="requiert/maj.xml" relativeToChangelogFile="true" />
-    <include file="categorise/maj.xml" relativeToChangelogFile="true" />
     <include file="compose/maj.xml" relativeToChangelogFile="true" />
     <include file="fcategorie/maj.xml" relativeToChangelogFile="true" />
 

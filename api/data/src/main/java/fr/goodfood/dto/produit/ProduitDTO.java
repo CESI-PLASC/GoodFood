@@ -2,7 +2,6 @@ package fr.goodfood.dto.produit;
 
 import fr.goodfood.dto.categorie.SimpleCategorieDTO;
 
-import java.util.List;
 import java.util.Objects;
 
 public class ProduitDTO {
@@ -10,18 +9,18 @@ public class ProduitDTO {
     private Long id;
     private String designation;
     private float prix;
-    private List<SimpleCategorieDTO> categories;
+    private SimpleCategorieDTO categorie;
 
     // #region Générations
 
     public ProduitDTO() {
     }
 
-    public ProduitDTO(Long id, String designation, float prix, List<SimpleCategorieDTO> categories) {
+    public ProduitDTO(Long id, String designation, float prix, SimpleCategorieDTO categorie) {
         this.id = id;
         this.designation = designation;
         this.prix = prix;
-        this.categories = categories;
+        this.categorie = categorie;
     }
 
     public Long getId() {
@@ -48,12 +47,12 @@ public class ProduitDTO {
         this.prix = prix;
     }
 
-    public List<SimpleCategorieDTO> getCategories() {
-        return this.categories;
+    public SimpleCategorieDTO getCategorie() {
+        return this.categorie;
     }
 
-    public void setCategories(List<SimpleCategorieDTO> categories) {
-        this.categories = categories;
+    public void setCategorie(SimpleCategorieDTO categorie) {
+        this.categorie = categorie;
     }
 
     public ProduitDTO id(Long id) {
@@ -71,8 +70,8 @@ public class ProduitDTO {
         return this;
     }
 
-    public ProduitDTO categories(List<SimpleCategorieDTO> categories) {
-        setCategories(categories);
+    public ProduitDTO categorie(SimpleCategorieDTO categorie) {
+        setCategorie(categorie);
         return this;
     }
 
@@ -85,18 +84,18 @@ public class ProduitDTO {
         }
         ProduitDTO produitDTO = (ProduitDTO) o;
         return Objects.equals(id, produitDTO.id) && Objects.equals(designation, produitDTO.designation)
-                && prix == produitDTO.prix && Objects.equals(categories, produitDTO.categories);
+                && prix == produitDTO.prix && Objects.equals(categorie, produitDTO.categorie);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, designation, prix, categories);
+        return Objects.hash(id, designation, prix, categorie);
     }
 
     @Override
     public String toString() {
         return "{" + " id='" + getId() + "'" + ", designation='" + getDesignation() + "'" + ", prix='" + getPrix() + "'"
-                + ", categories='" + getCategories() + "'" + "}";
+                + ", categorie='" + getCategorie() + "'" + "}";
     }
 
     // #endregion

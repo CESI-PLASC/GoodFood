@@ -24,8 +24,7 @@ public class Categorie {
     @Column(name = "designation")
     private String designation;
 
-    @ManyToMany(targetEntity = Produit.class)
-    @JoinTable(name = "categorise", joinColumns = @JoinColumn(name = "categorie_id"), inverseJoinColumns = @JoinColumn(name = "produit_id"))
+    @OneToMany(mappedBy = "categorie")
     private List<Produit> produits;
 
     @ManyToMany(targetEntity = Franchise.class)
