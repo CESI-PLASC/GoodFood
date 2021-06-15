@@ -5,35 +5,35 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace GoodFood.Auth.Infrastructure.Entities
 {
     [Table("employe")]
-    public class Employe
+    public class EmployeEntity
     {
         [Key]
         [Column("id")]
-        public int id {get; set;}
+        public int Id {get; set;}
 
         [Column("nom")]
         [Required]
-        public string nom {get; set;}
+        public string Nom {get; set;}
 
         [Column("prenom")]
         [Required]
-        public string prenom {get; set;}
+        public string Prenom {get; set;}
 
         [Column("email")]
         [Required]
-        public string email {get; set;}
+        public string Email {get; set;}
 
         [Column("telephone_mobile")]
-        public string telephoneMobile {get; set;}
+        public string TelephoneMobile {get; set;}
 
         [Column("franchise_id")]
         [Required]
         [ForeignKey("fk_employe_franchise_id")]
-        public int franchiseId {get; set;}
-        public Franchise franchise {get; set;}
+        public int FranchiseId {get; set;}
+        public Franchise Franchise {get; set;}
 
         [Required]
         [ForeignKey("fk_possede_franchise_id")]
-        public ICollection<Privilege> privileges {get; set;}
+        public ICollection<Privilege> Privileges {get; set;}
     }
 }

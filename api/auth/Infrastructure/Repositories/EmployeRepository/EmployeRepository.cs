@@ -4,7 +4,7 @@ using GoodFood.Auth.Data;
 
 using GoodFood.Auth.Infrastructure.Entities;
 
-namespace GoodFood.Auth.Infrastructure.Repositories.EmployeRepository
+namespace GoodFood.Auth.Infrastructure.Repositories.Employe
 {
     public class EmployeRepository : IEmployeRepository {
 
@@ -14,25 +14,25 @@ namespace GoodFood.Auth.Infrastructure.Repositories.EmployeRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<Employe>> GetAllAsync() {
-            return _context.Employe.toListAsync();
+        public async Task<IEnumerable<EmployeEntity>> GetAllAsync() {
+            return _context.Employe;
         }
-        public async Task<Employe> GetAsync(int id) {
+        public async Task<EmployeEntity> GetAsync(int id) {
             return await _context.Employe.AsNoTracking()
                 .Where(e => e.id == id)
                 .FirstOrDefaultAsync(); 
         }
-        public async Task<Employe> AddAsync(Employe employe) {
+        public async Task<EmployeEntity> AddAsync(EmployeEntity employe) {
             _context.Employe.Add(employe);
             await _context.SaveChangesAsync();
             return employe;
         }
-        public async Task<Employe> UpdateAsync(Employe employe) {
+        public async Task<EmployeEntity> UpdateAsync(EmployeEntity employe) {
             _context.Employe.Update(employe);
             await _context.SaveChangesAsync();
             return employe;
         }
-        public async void DeleteAsync(Employe employe) {
+        public async void DeleteAsync(EmployeEntity employe) {
             _context.Remove(employe);
             await _context.SaveChangesAsync();
         }

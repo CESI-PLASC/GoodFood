@@ -1,4 +1,7 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
+using GoodFood.Auth.Infrastructure.Dto.Franchise;
+using GoodFood.Auth.Infrastructure.Dto.Privilege;
 
 namespace GoodFood.Auth.Infrastructure.Dto.Employe
 {
@@ -13,13 +16,13 @@ namespace GoodFood.Auth.Infrastructure.Dto.Employe
         [JsonProperty("email")]
         public string Email {get; set;}
 
-        [JsonProperty("telephoneFixe")]
-        public string TelephoneFixe {get; set;}
-
         [JsonProperty("telephoneMobile")]
         public string TelephoneMobile {get; set;}
 
         [JsonProperty("franchise")]
-        public string Franchise {get; set;}
+        public FranchiseBase Franchise {get; set;}
+
+        [JsonProperty("privileges")]
+        public ICollection<PrivilegeBase> Privileges {get; set;}
     }
 }

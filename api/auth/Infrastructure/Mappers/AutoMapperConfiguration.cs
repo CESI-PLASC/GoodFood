@@ -1,4 +1,5 @@
 using AutoMapper;
+using GoodFood.Auth.Infrastructure.Mappers.Employe;
 
 namespace GoodFood.Auth.Infrastructure.Mappers
 {
@@ -8,7 +9,7 @@ namespace GoodFood.Auth.Infrastructure.Mappers
         {
             return new MapperConfiguration(cfg =>
             {
-                // cfg.AddProfile(new FranchiseProfile());
+                cfg.AddProfile(new EmployeProfile());
             });
         }
     }

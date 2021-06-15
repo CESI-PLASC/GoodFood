@@ -13,9 +13,9 @@ using Stripe;
 using GoodFood.Auth.Infrastructure.Services.Commande;
 using GoodFood.Auth.Infrastructure.Services.Paiement;
 using GoodFood.Auth.Infrastructure.Services.Utilisateur;
-using GoodFood.Auth.Infrastructure.Repositories.EmployeRepository;
+using GoodFood.Auth.Infrastructure.Repositories.Employe;
 
-namespace auth
+namespace GoodFood
 {
     public class Startup
     {
@@ -47,6 +47,8 @@ namespace auth
                 // var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 // var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 // c.IncludeXmlComments(xmlPath);
+
+                // c.AddFluentValidationRules();
             });
 
             var appSettingsSection = Configuration.GetSection("AppSettings");

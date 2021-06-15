@@ -10,7 +10,7 @@ namespace GoodFood.Auth.Data
 
         }
 
-        public DbSet<Employe> Employe {get; set;}
+        public DbSet<EmployeEntity> Employe {get; set;}
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
