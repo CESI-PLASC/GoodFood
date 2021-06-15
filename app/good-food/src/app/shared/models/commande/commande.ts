@@ -81,34 +81,57 @@ export class Commande implements ICommande {
     );
   }
 
-  // /**
-  //  * Permet de vérifier que le contenu de la commande est valide selon la structure des formules
-  //  * @returns Vrai si la structure des formules est respectée
-  //  */
-  // public structureValide(): boolean {
-  //   const estValide = true;
-  //   for (const contenu of this.formules) {
-  //     const {
-  //       produits,
-  //       formule: { structure },
-  //     } = contenu;
+  /**
+   * Permet de vérifier que le contenu de la commande est valide selon la structure des formules
+   * @returns Vrai si la structure des formules est respectée
+   */
+  public structureValide(): boolean {
+    let estValide = true;
+    for (const contenu of this.formules) {
+      const {
+        produits,
+        formule: { structure },
+      } = contenu;
 
-  //     // Quantités par catégorie
-  //     const quantites: Record<number, number> = {};
-  //     for (const requiert of structure) {
-  //       const categorieId = requiert.categorie.id;
-  //       if (!(requiert.categorie.id in quantites)) {
-  //         quantites[requiert.categorie.id] = 0;
-  //       }
-  //       quantites[categorieId] += requiert.quantite;
-  //     }
+      // Quantités par catégorie
+      const quantites: Record<number, number> = {};
+      for (const requiert of structure) {
+        const categorieId = requiert.categorie.id;
+        if (!(requiert.categorie.id in quantites)) {
+          quantites[requiert.categorie.id] = 0;
+        }
+        quantites[categorieId] += requiert.quantite;
+      }
 
-  //     // Analyse des produits de la formule
-  //     for (const produit of produits) {
+      // Analyse des produits de la formule
+      for (const contenu of produits) {
+        const categorieId = contenu.produit.categorie.id;
 
-  //     }
-  //   }
+        // Retire les produits de la quantités
+        if (categorieId in quantites) {
+          quantites[categorieId] -= contenu.quantite;
 
-  //   return true;
-  // }
+          // Si trop de produits, la commande n'est pas valide
+          if (quantites[categorieId] < 0) {
+            estValide = false;
+            break;
+          }
+
+          // Supprime la catégorie car limite de quantité autorisée atteinte
+          else if (quantites[categorieId] === 0) {
+            delete quantites[categorieId];
+          }
+        } else {
+          estValide = false;
+          break;
+        }
+      }
+
+      if (!estValide) {
+        break;
+      }
+    }
+
+    return estValide;
+  }
 }

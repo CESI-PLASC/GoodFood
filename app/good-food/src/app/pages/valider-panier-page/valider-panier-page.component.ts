@@ -75,6 +75,7 @@ export class ValiderPanierPageComponent implements OnInit {
 
   public validerCommande(): void {
     if (this.commande.id && this.methodePaiement) {
+      console.log(this.commande.structureValide());
       this.chargement = 'paiement';
       this.commandeService
         .payerCommande({
