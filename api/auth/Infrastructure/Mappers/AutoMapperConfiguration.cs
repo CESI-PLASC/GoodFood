@@ -1,5 +1,6 @@
 using AutoMapper;
-using GoodFood.Auth.Infrastructure.Mappers.Employe;
+
+using GoodFood.Auth.Infrastructure.Mappers.Profiles;
 
 namespace GoodFood.Auth.Infrastructure.Mappers
 {

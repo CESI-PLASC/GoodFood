@@ -1,6 +1,4 @@
 using System;
-using GoodFood.Auth.Data;
-using GoodFood.Auth.Infrastructure.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -9,11 +7,16 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using FluentValidation.AspNetCore;
+using Newtonsoft.Json.Converters;
 using Stripe;
+
+using GoodFood.Auth.Data;
+using GoodFood.Auth.Infrastructure.Helpers;
+using GoodFood.Auth.Infrastructure.Repositories.Employe;
+using GoodFood.Auth.Infrastructure.Services.Employe;
 using GoodFood.Auth.Infrastructure.Services.Commande;
 using GoodFood.Auth.Infrastructure.Services.Paiement;
 using GoodFood.Auth.Infrastructure.Services.Utilisateur;
-using GoodFood.Auth.Infrastructure.Repositories.Employe;
 
 namespace GoodFood
 {
@@ -32,6 +35,11 @@ namespace GoodFood
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers()
+                .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling =
+                    Newtonsoft.Json.ReferenceLoopHandling.Ignore)
+                .AddNewtonsoftJson(opt => {
+                    opt.SerializerSettings.Converters.Add(new StringEnumConverter());
+                })
                 .AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssemblyContaining<Startup>())
             ;
 
@@ -55,7 +63,8 @@ namespace GoodFood
             services.Configure<AppSettings>(appSettingsSection);
 
             services.AddDbContextPool<ApplicationDbContext>(
-                options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 22)))
+                options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
+                new MySqlServerVersion(new Version(8, 0, 22)))
             );
 
             services.AddCors(options =>
@@ -70,14 +79,14 @@ namespace GoodFood
             services.AddAutoMapper(typeof(Startup).Assembly);
 
             // Repositories
+            services.AddTransient<IEmployeRepository, EmployeRepository>();
 
             // Services
             services.AddTransient<ICommandeService, CommandeService>();
             services.AddTransient<IUtilisateurService, UtilisateurService>();
             services.AddTransient<IPaiementService, PaiementService>();
             services.AddTransient<IMethodePaiementService, MethodePaiementService>();
-
-            services.AddTransient<IEmployeRepository, EmployeRepository>();
+            services.AddTransient<IEmployeService, EmployeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
