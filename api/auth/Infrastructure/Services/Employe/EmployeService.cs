@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-using GoodFood.Auth.Data;
+using GoodFood.Auth.Infrastructure.Exceptions;
 using GoodFood.Auth.Entities;
 using GoodFood.Auth.Infrastructure.Repositories.Employe;
 
@@ -20,13 +20,21 @@ namespace GoodFood.Auth.Infrastructure.Services.Employe
             return _repository.GetAllAsync();
         }
 
-        public async Task<EmployeEntity> GetOne(int id)
+        public async Task<EmployeEntity> GetOneById(int id)
         {
-            return await _repository.GetAsync(id);
+            return await _repository.GetByIdAsync(id);
+        }
+
+        public async Task<EmployeEntity> GetOneByEmail(string email)
+        {
+            return await _repository.GetByEmailAsync(email);
         }
 
         public async Task<EmployeEntity> Add(EmployeEntity employe)
         {
+            if (_repository.ExistingEmail(employe.Email)) {
+                throw new ExistingEmailException();
+            }
             return await _repository.AddAsync(employe);
         }
 

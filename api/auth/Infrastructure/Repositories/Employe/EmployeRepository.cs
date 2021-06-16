@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 using GoodFood.Auth.Data;
 using GoodFood.Auth.Entities;
@@ -15,21 +17,19 @@ namespace GoodFood.Auth.Infrastructure.Repositories.Employe
             _context = context;
         }
 
-        public Task<IEnumerable<EmployeEntity>> GetAllAsync()
+        public async Task<IEnumerable<EmployeEntity>> GetAllAsync()
         {
-            return null;
+            return await _context.EmployeEntities.ToListAsync();
         }
 
-        public async Task<EmployeEntity> GetAsync(int id)
+        public async Task<EmployeEntity> GetByIdAsync(int id)
         {
-            object[] args = new object[1];
-            args[0] = id;
+            return await _context.EmployeEntities.AsNoTracking().Where(e => e.Id == id).FirstOrDefaultAsync();
+        }
 
-            Console.WriteLine("\n\n\n");
-            Console.WriteLine(await _context.EmployeEntities.FindAsync(args));
-            Console.WriteLine("\n\n\n");
-
-            return new EmployeEntity();
+        public async Task<EmployeEntity> GetByEmailAsync(string email)
+        {
+            return await _context.EmployeEntities.AsNoTracking().Where(e => e.Email == email).FirstOrDefaultAsync();
         }
 
         public async Task<EmployeEntity> AddAsync(EmployeEntity employe)
@@ -46,15 +46,20 @@ namespace GoodFood.Auth.Infrastructure.Repositories.Employe
             return employe;
         }
 
-        public void DeleteAsync(EmployeEntity employe)
+        public async void DeleteAsync(EmployeEntity employe)
         {
             _context.EmployeEntities.Remove(employe);
-            _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
 
         public bool Exist(int id)
         {
-            return false; // TODO _context.EmployeEntity.Any() not found
+            return _context.EmployeEntities.Any(e => e.Id == id);
+        }
+
+        public bool ExistingEmail(string email)
+        {
+            return _context.EmployeEntities.Any(e => e.Email == email);
         }
     }
 }

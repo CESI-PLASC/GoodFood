@@ -2,12 +2,9 @@ using Newtonsoft.Json;
 
 namespace GoodFood.Auth.Infrastructure.Dto.Employe
 {
-    public abstract class EmployeUpdateDTO : EmployeDTO
+    public abstract class EmployeAuthResponseDTO : EmployeBase
     {
         [JsonProperty("id")]
         public int Id {get; set;}
-
-        [JsonProperty("password")]
-        public int Password {get; set;}
     }
 }

@@ -33,10 +33,19 @@ namespace GoodFood.Auth.Infrastructure.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var employe = await _service.GetOne(id);
+            var employe = await _service.GetOneById(id);
             if (employe is null) {
                 return NotFound();
             }
+            return Ok(employe);
+        }
+
+
+        [HttpGet, Route(RESSOURCE_URL), Produces("application/json")]
+        [ProducesResponseType(typeof(IEnumerable<EmployeDTO>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAll()
+        {
+            var employe = await _service.GetAll();
             return Ok(employe);
         }
     }

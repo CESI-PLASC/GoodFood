@@ -5,10 +5,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using FluentValidation.AspNetCore;
 using Newtonsoft.Json.Converters;
 using Stripe;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 using GoodFood.Auth.Data;
 using GoodFood.Auth.Infrastructure.Helpers;
@@ -17,6 +21,7 @@ using GoodFood.Auth.Infrastructure.Services.Employe;
 using GoodFood.Auth.Infrastructure.Services.Commande;
 using GoodFood.Auth.Infrastructure.Services.Paiement;
 using GoodFood.Auth.Infrastructure.Services.Utilisateur;
+using GoodFood.Auth.Security.Services;
 
 namespace GoodFood
 {
@@ -82,15 +87,20 @@ namespace GoodFood
             services.AddTransient<IEmployeRepository, EmployeRepository>();
 
             // Services
+            services.AddTransient<IAuthService, AuthService>();
+            services.AddTransient<IPasswordHasher, PasswordHasher>();
             services.AddTransient<ICommandeService, CommandeService>();
             services.AddTransient<IUtilisateurService, UtilisateurService>();
             services.AddTransient<IPaiementService, PaiementService>();
             services.AddTransient<IMethodePaiementService, MethodePaiementService>();
             services.AddTransient<IEmployeService, EmployeService>();
+
+            
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AutoMapper.IConfigurationProvider autoMapper)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AutoMapper.IConfigurationProvider autoMapper, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
