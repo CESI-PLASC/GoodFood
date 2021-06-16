@@ -107,26 +107,32 @@ export class Commande implements ICommande {
       for (const contenu of produits) {
         const categorieId = contenu.produit.categorie.id;
 
-        // Retire les produits de la quantités
-        if (categorieId in quantites) {
-          quantites[categorieId] -= contenu.quantite;
-
-          // Si trop de produits, la commande n'est pas valide
-          if (quantites[categorieId] < 0) {
-            estValide = false;
-            break;
-          }
-
-          // Supprime la catégorie car limite de quantité autorisée atteinte
-          else if (quantites[categorieId] === 0) {
-            delete quantites[categorieId];
-          }
-        } else {
+        // Trop de produit pour la catégorie
+        if (
+          !(categorieId in quantites) ||
+          quantites[categorieId] - contenu.quantite < 0
+        ) {
           estValide = false;
           break;
         }
+
+        // Retire le nombre de produits de la catégorie
+        else {
+          quantites[categorieId] -= contenu.quantite;
+
+          // Supprime la catégorie car limite de quantité autorisée atteinte
+          if (quantites[categorieId] === 0) {
+            delete quantites[categorieId];
+          }
+        }
       }
 
+      // Si il manque des produits
+      if (!_.isEmpty(quantites)) {
+        estValide = false;
+      }
+
+      // Ne vérifie pas les autres formules car n'est pas correct de toutes façons
       if (!estValide) {
         break;
       }

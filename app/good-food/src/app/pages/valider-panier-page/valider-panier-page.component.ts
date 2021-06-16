@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { loadStripe, Stripe } from '@stripe/stripe-js';
+import * as _ from 'lodash';
 import { Commande } from 'src/app/shared/models/commande/commande';
 import MethodePaiement, {
   MethodePaiementCreerSansUtilisateur,
@@ -14,41 +15,37 @@ import { CommandeService } from './services/commande.service';
   styleUrls: ['./valider-panier-page.component.scss'],
 })
 export class ValiderPanierPageComponent implements OnInit {
-  public commande?: Commande;
+  public _ = _;
   public stripe?: Stripe;
-  public methodesPaiement: MethodePaiement[] = [];
-  public methodePaiement?: MethodePaiement;
 
+  // Gestion des chargements
   public chargement?: 'paiement';
 
-  constructor(
-    private route: ActivatedRoute,
-    private readonly commandeService: CommandeService,
-    private router: Router
-  ) {}
+  //#region Gestion des erreurs
+  public erreurs: Record<string, string> = {};
+  //#endregion
 
-  ngOnInit(): void {
-    loadStripe(environment.stripe_pk).then((stripe) => {
-      this.stripe = stripe;
-    });
-
-    this.route.params.subscribe((params) => {
-      this.commandeService.getOne(params.idCommande).subscribe((commande) => {
-        this.commande = commande;
-
-        this.commandeService
-          .methodesPaiementUtilisateur(this.commande.utilisateur.id)
-          .subscribe((methodes) => {
-            this.methodesPaiement = methodes;
-          });
-      });
-    });
+  //#region Gestion de la méthode de paiement
+  public methodesPaiement: MethodePaiement[] = [];
+  private _methodePaiement?: MethodePaiement;
+  public get methodePaiement(): MethodePaiement | undefined {
+    return this._methodePaiement;
+  }
+  public set methodePaiement(methodePaiement: MethodePaiement | undefined) {
+    if (!methodePaiement) {
+      this.erreurs['methodePaiement'] =
+        'Aucune méthode de paiement sélectionnée';
+    } else if ('methodePaiement' in this.erreurs) {
+      delete this.erreurs['methodePaiement'];
+    }
+    this._methodePaiement = methodePaiement;
   }
 
+  // Sélection d'une nouvelle méthode de paiement via le sélecteur
   public methodePaiementChange(
     methode?: MethodePaiement | MethodePaiementCreerSansUtilisateur
   ) {
-    // Aucune sélection
+    // Aucune méthode de paiement sélectionnée
     if (!methode) {
       this.methodePaiement = undefined;
     }
@@ -73,9 +70,55 @@ export class ValiderPanierPageComponent implements OnInit {
     }
   }
 
+  //#endregion
+
+  //#region Gestion de la commande
+  private _commande?: Commande;
+  public get commande(): Commande | undefined {
+    return this._commande;
+  }
+  public set commande(commande: Commande | undefined) {
+    if (!commande) {
+      this.erreurs['commande'] = 'Commande introuvable';
+    } else if (!commande.structureValide()) {
+      this.erreurs['commande'] =
+        "La structure de la commande n'est pas correcte";
+    } else if ('commande' in this.erreurs) {
+      delete this.erreurs['commande'];
+    }
+    this._commande = commande;
+  }
+  //#endregion
+
+  constructor(
+    private route: ActivatedRoute,
+    private readonly commandeService: CommandeService,
+    private router: Router
+  ) {
+    this.methodePaiement = undefined;
+    this.commande = undefined;
+  }
+
+  ngOnInit(): void {
+    loadStripe(environment.stripe_pk).then((stripe) => {
+      this.stripe = stripe;
+    });
+
+    this.route.params.subscribe((params) => {
+      this.commandeService.getOne(params.idCommande).subscribe((commande) => {
+        this.commande = commande;
+
+        this.commandeService
+          .methodesPaiementUtilisateur(this.commande.utilisateur.id)
+          .subscribe((methodes) => {
+            this.methodesPaiement = methodes;
+          });
+      });
+    });
+  }
+
   public validerCommande(): void {
-    if (this.commande.id && this.methodePaiement) {
-      console.log(this.commande.structureValide());
+    if (_.isEmpty(this.erreurs)) {
       this.chargement = 'paiement';
       this.commandeService
         .payerCommande({
