@@ -11,10 +11,10 @@ import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testi
 import { FormuleListComponent } from '../../components/formule-list/formule-list.component';
 import { SelectBoxComponent } from '../../components/select-box/select-box.component';
 import { SelectItemComponent } from '../../components/select-item/select-item.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-/* TODO (node:26449) UnhandledPromiseRejectionWarning: TypeError: Converting circular structure to JSON */
-
-xdescribe('Catalogue page tests', () => {
+describe('Catalogue page tests', () => {
   let spectator: Spectator<CataloguePageComponent>;
   let comp: CataloguePageComponent;
   const createComponent = createComponentFactory({
@@ -22,7 +22,9 @@ xdescribe('Catalogue page tests', () => {
     imports: [
       NgbCollapseModule,
         NgbDropdownModule,
-        FontAwesomeTestingModule
+        FontAwesomeTestingModule,
+        RouterTestingModule,
+        HttpClientTestingModule
     ],
     entryComponents: [
         CatalogueComponent,

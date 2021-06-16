@@ -2,17 +2,17 @@ import { Spectator } from '@ngneat/spectator';
 import { createComponentFactory } from '@ngneat/spectator/jest';
 import { CoordonneeClientPageComponent } from './coordonnee-client-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 
-/* TODO (node:26449) UnhandledPromiseRejectionWarning: TypeError: Converting circular structure to JSON */
-
-xdescribe('Coordonnee client page tests', () => {
+describe('Coordonnee client page tests', () => {
   let spectator: Spectator<CoordonneeClientPageComponent>;
   let comp: CoordonneeClientPageComponent;
   const createComponent = createComponentFactory({
     component: CoordonneeClientPageComponent,
     imports: [
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        RouterTestingModule
     ],
     entryComponents: [
     ]

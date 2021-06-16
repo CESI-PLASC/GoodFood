@@ -5,9 +5,7 @@ import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testi
 import { SelectItemComponent } from '../select-item/select-item.component';
 import { NgbCollapseModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
-/* TODO (node:26449) UnhandledPromiseRejectionWarning: TypeError: Converting circular structure to JSON */
-
-xdescribe('Accueil component tests', () => {
+describe('Accueil component tests', () => {
   let spectator: Spectator<FormuleListComponent>;
   let comp: FormuleListComponent;
   const createComponent = createComponentFactory({

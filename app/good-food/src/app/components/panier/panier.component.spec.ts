@@ -3,21 +3,25 @@ import { createComponentFactory } from '@ngneat/spectator/jest';
 import { PanierComponent } from './panier.component';
 import { Commande } from '../../shared/models/commande/commande';
 import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterTestingModule } from '@angular/router/testing';
 
-/* TODO (node:26449) UnhandledPromiseRejectionWarning: TypeError: Converting circular structure to JSON */
-
-xdescribe('Panier component tests', () => {
+describe('Panier component tests', () => {
   let spectator: Spectator<PanierComponent>;
   let comp: PanierComponent;
   const createComponent = createComponentFactory({
     component: PanierComponent,
     imports: [
-      NgbAccordionModule
+      NgbAccordionModule,
+        RouterTestingModule
     ]
   });
 
   beforeEach(() => {
-    spectator = createComponent();
+    spectator = createComponent({
+      props: {
+        commande: new Commande({id: 777})
+      }
+    });
     comp = spectator.component;
   });
 
@@ -28,7 +32,7 @@ xdescribe('Panier component tests', () => {
   it('Should formules is empty', () => {
     comp.commande = new Commande({formules: []});
 
-    const panier = spectator.query<HTMLDivElement>('gf-panier-contenu > div');
+    const panier = spectator.query('.gf-panier-contenu');
     expect(panier.textContent).toContain('Le panier est vide');
   });
 });

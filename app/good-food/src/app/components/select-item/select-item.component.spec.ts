@@ -3,9 +3,7 @@ import { createComponentFactory } from '@ngneat/spectator/jest';
 import { SelectItemComponent } from './select-item.component';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
-/* TODO (node:26449) UnhandledPromiseRejectionWarning: TypeError: Converting circular structure to JSON */
-
-xdescribe('Select item component tests', () => {
+describe('Select item component tests', () => {
   let spectator: Spectator<SelectItemComponent>;
   let comp: SelectItemComponent;
   const createComponent = createComponentFactory({

@@ -10,8 +10,9 @@ import { PanierComponent } from '../../components/panier/panier.component';
 import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 import { InfoFranchiseComponent } from '../../components/franchise/info-franchise/info-franchise.component';
 import { RouterTestingModule } from '@angular/router/testing';
-
-/* TODO (node:26449) UnhandledPromiseRejectionWarning: TypeError: Converting circular structure to JSON */
+import { MockComponent } from 'ng-mocks';
+import { SelecteurPaiementComponent } from '../../components/selecteur-paiement/selecteur-paiement.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('Adresse form component tests', () => {
   let spectator: Spectator<ValiderPanierPageComponent>;
@@ -24,13 +25,15 @@ describe('Adresse form component tests', () => {
       FormsModule,
       NgbAccordionModule,
       ReactiveFormsModule,
+      HttpClientTestingModule,
     ],
     declarations: [
-      PanierComponent,
-      InfoAdresseComponent,
-      SelecteurAdresseComponent,
-      InfoFranchiseComponent,
-      PaiementCarteComponent,
+      MockComponent(PanierComponent),
+      MockComponent(InfoAdresseComponent),
+      MockComponent(SelecteurAdresseComponent),
+      MockComponent(SelecteurPaiementComponent),
+      MockComponent(InfoFranchiseComponent),
+      MockComponent(PaiementCarteComponent),
     ]
   });
 

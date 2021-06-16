@@ -18,7 +18,11 @@ describe('Selecteur adresse component tests', () => {
   });
 
   beforeEach(() => {
-    spectator = createComponent();
+    spectator = createComponent({
+      props: {
+        localisations: []
+      }
+    });
     comp = spectator.component;
   });
 

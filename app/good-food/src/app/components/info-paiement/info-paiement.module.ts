@@ -9,7 +9,7 @@ import { InfoPaiementComponent } from './info-paiement.component';
       InfoPaiementComponent,
   ],
   imports: [
-    CommonModule
+      CommonModule
   ],
   exports: [
       InfoPaiementComponent,

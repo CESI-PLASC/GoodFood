@@ -5,16 +5,18 @@ import { ListeFranchiseComponent } from '../../components/franchise/liste-franch
 import { FiltreFranchiseComponent } from '../../components/franchise/filtre-franchise/filtre-franchise.component';
 import { InfoFranchiseComponent } from '../../components/franchise/info-franchise/info-franchise.component';
 import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-/* TODO (node:26449) UnhandledPromiseRejectionWarning: TypeError: Converting circular structure to JSON */
-
-xdescribe('Franchise page tests', () => {
+describe('Franchise page tests', () => {
   let spectator: Spectator<FranchisePageComponent>;
   let comp: FranchisePageComponent;
   const createComponent = createComponentFactory({
     component: FranchisePageComponent,
     imports: [
-        FontAwesomeTestingModule
+        FontAwesomeTestingModule,
+        RouterTestingModule,
+        HttpClientTestingModule
     ],
     entryComponents: [
         ListeFranchiseComponent,

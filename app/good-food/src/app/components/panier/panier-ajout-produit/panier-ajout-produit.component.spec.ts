@@ -5,10 +5,14 @@ import { NgbCollapseModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap
 import { FormuleListComponent } from '../../formule-list/formule-list.component';
 import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 import { SelectItemComponent } from '../../select-item/select-item.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { LOCALE_ID } from '@angular/core';
+import localeFr from '@angular/common/locales/fr';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeFr);
 
-/* TODO (node:26449) UnhandledPromiseRejectionWarning: TypeError: Converting circular structure to JSON */
-
-xdescribe('Panier ajout produit component tests', () => {
+describe('Panier ajout produit component tests', () => {
   let spectator: Spectator<PanierAjoutProduitComponent>;
   let comp: PanierAjoutProduitComponent;
   const createComponent = createComponentFactory({
@@ -16,8 +20,11 @@ xdescribe('Panier ajout produit component tests', () => {
     imports: [
       FontAwesomeTestingModule,
         NgbCollapseModule,
-        NgbDropdownModule
+        NgbDropdownModule,
+        RouterTestingModule,
+        HttpClientTestingModule
     ],
+    providers: [ { provide: LOCALE_ID, useValue: 'FR' } ],
     entryComponents: [
         FormuleListComponent,
         SelectItemComponent

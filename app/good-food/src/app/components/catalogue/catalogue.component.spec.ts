@@ -7,17 +7,18 @@ import { CatalogueFiltreComponent } from './catalogue-filtre/catalogue-filtre.co
 import { SelectBoxComponent } from '../select-box/select-box.component';
 import { ProduitListComponent } from '../produit/produit-list/produit-list.component';
 import { ProduitItemComponent } from '../produit/produit-item/produit-item.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { Franchise } from '../../shared/models/franchise/franchise';
 
-/* TODO (node:26449) UnhandledPromiseRejectionWarning: TypeError: Converting circular structure to JSON */
-
-xdescribe('Catalogue component tests', () => {
+describe('Catalogue component tests', () => {
   let spectator: Spectator<CatalogueComponent>;
   let comp: CatalogueComponent;
   const createComponent = createComponentFactory({
     component: CatalogueComponent,
     imports: [
         FontAwesomeTestingModule,
-        NgbCollapseModule
+        NgbCollapseModule,
+        HttpClientTestingModule
     ],
     entryComponents: [
         CatalogueFiltreComponent,
@@ -28,7 +29,11 @@ xdescribe('Catalogue component tests', () => {
   });
 
   beforeEach(() => {
-    spectator = createComponent();
+    spectator = createComponent({
+        props: {
+            franchise: new Franchise({id: 777})
+        }
+    });
     comp = spectator.component;
   });
 

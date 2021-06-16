@@ -5,10 +5,9 @@ import { SelecteurAdresseListModalComponent } from './selecteur-adresse-list-mod
 import { InfoAdresseComponent } from '../../info-adresse/info-adresse.component';
 import { AdresseFormComponent } from '../../adresse-form/adresse-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
-/* TODO (node:26449) UnhandledPromiseRejectionWarning: TypeError: Converting circular structure to JSON */
-
-xdescribe('Selecteur adresse component tests', () => {
+describe('Selecteur adresse component tests', () => {
   let spectator: Spectator<SelecteurAdresseListModalComponent>;
   let comp: SelecteurAdresseListModalComponent;
   const createComponent = createComponentFactory({
@@ -18,6 +17,9 @@ xdescribe('Selecteur adresse component tests', () => {
         FormsModule,
         ReactiveFormsModule
     ],
+    providers: [
+      NgbActiveModal
+    ],
     entryComponents: [
         InfoAdresseComponent,
         AdresseFormComponent
@@ -25,7 +27,11 @@ xdescribe('Selecteur adresse component tests', () => {
   });
 
   beforeEach(() => {
-    spectator = createComponent();
+    spectator = createComponent({
+      props: {
+        localisations: []
+      }
+    });
     comp = spectator.component;
   });
 

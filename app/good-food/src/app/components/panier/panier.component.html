@@ -1,4 +1,4 @@
-<div class="gf-panier">
+<div *ngIf="commande" class="gf-panier">
   <div class="gf-panier-header row">
     <h4 class="col">Mon panier</h4>
     <button type="button" class="col btn btn-outline-success" (click)="navigateToCommande()">Modifier mon panier</button>
@@ -6,7 +6,7 @@
 
   <div class="gf-panier-contenu">
 
-    <div *ngIf="commande.formules; else panierVide">
+    <div *ngIf="commande.formules && commande.formules.length !== 0; else panierVide">
       <ngb-accordion class="gf-une-formule">
         <ngb-panel *ngFor="let formule of commande.formules">
           <ng-template ngbPanelTitle>

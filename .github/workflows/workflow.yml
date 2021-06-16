@@ -117,7 +117,7 @@ jobs:
   test_java:
     runs-on: ubuntu-18.04
     name: Test Java
-    needs: init
+    needs: build
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -176,7 +176,7 @@ jobs:
   test_dotnet:
     runs-on: windows-latest
     name: Tests C#
-    needs: init
+    needs: build
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -216,7 +216,7 @@ jobs:
       - name: Setup Dotnet
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '3.1.x'
+          dotnet-version: '5.0.x'
 
       - name: Build Dotnet
         env:
@@ -232,7 +232,7 @@ jobs:
   test_angular:
     runs-on: ubuntu-18.04
     name: Tests Angular
-    needs: init
+    needs: build
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -251,7 +251,7 @@ jobs:
         run: cd ./app/good-food && npm i
 
       - name: Test Angular
-        run: cd ./app/good-food && npm run test --coverage
+        run: cd ./app/good-food && npm run test:ci
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
