@@ -1,6 +1,7 @@
 package fr.goodfood.service;
 
 import fr.goodfood.dto.categorie.CategorieDTO;
+import fr.goodfood.entity.Categorie;
 import fr.goodfood.repository.CategorieRepository;
 import fr.goodfood.service.mapper.CategorieMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +19,8 @@ public class CatalogueService {
     @Inject
     CategorieMapper categorieMapper;
 
-    public List<CategorieDTO> getCatalogueByFranchiseId(Long id) {
-        // RestTemplate restTemplate = new RestTemplate();
-        // Franchise result = restTemplate.getForObject("http://localhost:5001/???",
-        // Franchise.class);
-        // return
-        // categorieMapper.toDtos(categorieRepository.findAllByFranchises(result));
+    public List<CategorieDTO> getCatalogueByFranchiseId(Long idFranchise){
         return categorieMapper.toDtos(categorieRepository.findAll());
+        //return this.categorieRepository.findAllByFranchiseById(idFranchise);
     }
 }

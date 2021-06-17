@@ -33,7 +33,7 @@ public class Categorie {
     @ManyToMany(targetEntity = Franchise.class)
     @JoinTable(
             name = "fcategorie",
-            joinColumns = @JoinColumn(name = "categorie_id"),
+            joinColumns = @JoinColumn(name = "formule_id"),
             inverseJoinColumns = @JoinColumn(name = "franchise_id")
     )
     private List<Franchise> franchises;

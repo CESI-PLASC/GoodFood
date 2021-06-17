@@ -7,6 +7,7 @@ import { AccueilPageComponent } from './layouts/accueil-page/accueil-page.compon
 import { CoordonneeClientPageComponent } from './coordonnee-client-page/coordonnee-client-page.component';
 import { AdministrationPageComponent } from './administration-page/administration-page.component';
 import { AdministrationProduitsPageComponent } from './administration-produits-page/administration-produits-page.component';
+import { AdministrationFormulesPageComponent } from './administration-formules-page/administration-formules-page.component';
 
 const routes: Routes = [
   {
@@ -45,6 +46,10 @@ const routes: Routes = [
        {
          path: ':id/produits',
          component: AdministrationProduitsPageComponent
+       },
+       {
+         path: ':id/formules',
+         component: AdministrationFormulesPageComponent
        }
     ],
     data: {

@@ -18,9 +18,13 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import fr.goodfood.dto.franchise.FranchiseDTO;
+import fr.goodfood.dto.formule.FormuleDTO;
 import fr.goodfood.entity.Franchise;
+import fr.goodfood.entity.Formule;
 import fr.goodfood.service.FranchiseService;
+import fr.goodfood.service.FormuleService;
 import fr.goodfood.service.mapper.FranchiseMapper;
+import fr.goodfood.service.mapper.FormuleMapper;
 
 @RestController
 @RequestMapping("/api/franchises")
@@ -29,8 +33,14 @@ public class FranchiseRessource {
     @Autowired
     private FranchiseService franchiseService;
 
+    @Autowired
+    private FormuleService formuleService;
+
     @Inject
     private FranchiseMapper franchiseMapper;
+
+    @Inject
+    private FormuleMapper formuleMapper;
 
     @GetMapping
     public CollectionModel<FranchiseDTO> all() {
@@ -55,5 +65,14 @@ public class FranchiseRessource {
 
         return EntityModel.of(franchiseDto, linkTo(methodOn(FranchiseRessource.class).one(id)).withSelfRel(),
                 linkTo(methodOn(FranchiseRessource.class).all()).withRel("franchises"));
+    }
+
+    @GetMapping("/{id}/formules")
+    public CollectionModel<FormuleDTO> formules(@PathVariable Long id) {
+        List<Formule> formules = this.formuleService.getAllByFranchise(id);
+        List<FormuleDTO> formuleDto = this.formuleMapper.toDtos(formules);
+
+        return CollectionModel.of(formuleDto, linkTo(methodOn(FormuleRessource.class).one(id)).withSelfRel(),
+                linkTo(methodOn(FormuleRessource.class).all()).withRel("formules"));
     }
 }

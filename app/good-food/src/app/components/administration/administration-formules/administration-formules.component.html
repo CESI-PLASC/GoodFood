@@ -1,0 +1,11 @@
+<h1>Formules</h1>
+<br>
+
+<div *ngFor="let item of formules" class="col-3">
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">{{ item.designation }}</h5>
+            <p class="card-subtitle text-right">{{ item.prix | currency: 'EUR':'symbol':'.2-2':'FR' }}</p>
+        </div>
+    </div>
+</div>

@@ -39,4 +39,8 @@ public class FormuleService {
     public void delete(Long id){
         this.formuleRepository.deleteById(id);
     }
+
+    public List<Formule> getAllByFranchise(Long idFranchise){
+        return this.formuleRepository.findAllByFranchiseId(idFranchise);
+    }
 }
