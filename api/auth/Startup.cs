@@ -76,7 +76,9 @@ namespace GoodFood
             {
                 options.AddPolicy(MyAllowSpecificOrigins, builder =>
                 {
-                    builder.WithOrigins("*");
+                    builder.WithOrigins("*")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
                 });
             });
 
@@ -121,10 +123,7 @@ namespace GoodFood
 
             app.UseRouting();
 
-            app.UseCors(builder =>
-            {
-                builder.AllowAnyOrigin();
-            });
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseAuthorization();
 
