@@ -7,6 +7,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PagesModule } from './pages/pages.module';
 import { NavbarModule } from './components/navbar/navbar.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SecurityModule } from './security/security.module';
+import { authInterceptorProviders } from './security/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -19,10 +21,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         NgbModule,
         BrowserAnimationsModule,
 
+        SecurityModule,
         PagesModule,
         NavbarModule,
     ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
