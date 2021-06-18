@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Objects;
 
 import fr.goodfood.dto.contient.ContientDTO;
-import fr.goodfood.dto.formule.SimpleFormuleDTO;
+import fr.goodfood.dto.formule.FormuleDTO;
 
 public class ContenuDTO {
     private Long id;
-    private SimpleFormuleDTO formule;
+    private FormuleDTO formule;
     private List<ContientDTO> produits;
 
     // #region Générations
@@ -16,7 +16,7 @@ public class ContenuDTO {
     public ContenuDTO() {
     }
 
-    public ContenuDTO(Long id, SimpleFormuleDTO formule, List<ContientDTO> produits) {
+    public ContenuDTO(Long id, FormuleDTO formule, List<ContientDTO> produits) {
         this.id = id;
         this.formule = formule;
         this.produits = produits;
@@ -30,11 +30,11 @@ public class ContenuDTO {
         this.id = id;
     }
 
-    public SimpleFormuleDTO getFormule() {
+    public FormuleDTO getFormule() {
         return this.formule;
     }
 
-    public void setFormule(SimpleFormuleDTO formule) {
+    public void setFormule(FormuleDTO formule) {
         this.formule = formule;
     }
 
@@ -51,7 +51,7 @@ public class ContenuDTO {
         return this;
     }
 
-    public ContenuDTO formule(SimpleFormuleDTO formule) {
+    public ContenuDTO formule(FormuleDTO formule) {
         setFormule(formule);
         return this;
     }

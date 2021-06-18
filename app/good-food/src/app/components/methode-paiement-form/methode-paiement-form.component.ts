@@ -30,9 +30,9 @@ export class MethodePaiementFormComponent implements OnInit {
     return {
       type: "carte",
       carte: {
-        expireAnnee: parseInt(matches[1]),
-        expireMois: parseInt(matches[2]),
-        numero: this.methodePaiementForm.value.numero,
+        expireAnnee: parseInt(matches[2]),
+        expireMois: parseInt(matches[1]),
+        numero: this.methodePaiementForm.value.numero.replaceAll("-", ""),
         cvc: this.methodePaiementForm.value.cvc
       }
     };

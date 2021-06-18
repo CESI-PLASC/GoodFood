@@ -1,22 +1,27 @@
 package fr.goodfood.dto.formule;
 
+import java.util.List;
 import java.util.Objects;
+
+import fr.goodfood.dto.requiert.RequiertDTO;
 
 public class FormuleDTO {
 
     private Long id;
     private String designation;
     private Float prix;
+    private List<RequiertDTO> structure;
 
     // #region Générations
 
     public FormuleDTO() {
     }
 
-    public FormuleDTO(Long id, String designation, Float prix) {
+    public FormuleDTO(Long id, String designation, Float prix, List<RequiertDTO> structure) {
         this.id = id;
         this.designation = designation;
         this.prix = prix;
+        this.structure = structure;
     }
 
     public Long getId() {
@@ -43,6 +48,14 @@ public class FormuleDTO {
         this.prix = prix;
     }
 
+    public List<RequiertDTO> getStructure() {
+        return this.structure;
+    }
+
+    public void setStructure(List<RequiertDTO> structure) {
+        this.structure = structure;
+    }
+
     public FormuleDTO id(Long id) {
         setId(id);
         return this;
@@ -58,6 +71,11 @@ public class FormuleDTO {
         return this;
     }
 
+    public FormuleDTO structure(List<RequiertDTO> structure) {
+        setStructure(structure);
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -65,20 +83,20 @@ public class FormuleDTO {
         if (!(o instanceof FormuleDTO)) {
             return false;
         }
-        FormuleDTO formuleDto = (FormuleDTO) o;
-        return Objects.equals(id, formuleDto.id) && Objects.equals(designation, formuleDto.designation)
-                && Objects.equals(prix, formuleDto.prix);
+        FormuleDTO formuleDTO = (FormuleDTO) o;
+        return Objects.equals(id, formuleDTO.id) && Objects.equals(designation, formuleDTO.designation)
+                && Objects.equals(prix, formuleDTO.prix) && Objects.equals(structure, formuleDTO.structure);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, designation, prix);
+        return Objects.hash(id, designation, prix, structure);
     }
 
     @Override
     public String toString() {
         return "{" + " id='" + getId() + "'" + ", designation='" + getDesignation() + "'" + ", prix='" + getPrix() + "'"
-                + "}";
+                + ", structure='" + getStructure() + "'" + "}";
     }
 
     // #endregion

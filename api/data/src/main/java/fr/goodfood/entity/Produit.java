@@ -5,11 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
-import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -26,20 +23,19 @@ public class Produit {
     @Column(name = "prix")
     private float prix;
 
-    @ManyToMany(targetEntity = Categorie.class)
-    @JoinTable(name = "categorise", joinColumns = @JoinColumn(name = "produit_id"), inverseJoinColumns = @JoinColumn(name = "categorie_id"))
-    private List<Categorie> categories;
+    @ManyToOne
+    private Categorie categorie;
 
     // #region Générations
 
     public Produit() {
     }
 
-    public Produit(Long id, String designation, float prix, List<Categorie> categories) {
+    public Produit(Long id, String designation, float prix, Categorie categorie) {
         this.id = id;
         this.designation = designation;
         this.prix = prix;
-        this.categories = categories;
+        this.categorie = categorie;
     }
 
     public Long getId() {
@@ -66,12 +62,12 @@ public class Produit {
         this.prix = prix;
     }
 
-    public List<Categorie> getCategories() {
-        return this.categories;
+    public Categorie getCategorie() {
+        return this.categorie;
     }
 
-    public void setCategories(List<Categorie> categories) {
-        this.categories = categories;
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
     }
 
     public Produit id(Long id) {
@@ -89,8 +85,8 @@ public class Produit {
         return this;
     }
 
-    public Produit categories(List<Categorie> categories) {
-        setCategories(categories);
+    public Produit categorie(Categorie categorie) {
+        setCategorie(categorie);
         return this;
     }
 
@@ -103,18 +99,18 @@ public class Produit {
         }
         Produit produit = (Produit) o;
         return Objects.equals(id, produit.id) && Objects.equals(designation, produit.designation)
-                && prix == produit.prix && Objects.equals(categories, produit.categories);
+                && prix == produit.prix && Objects.equals(categorie, produit.categorie);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, designation, prix, categories);
+        return Objects.hash(id, designation, prix, categorie);
     }
 
     @Override
     public String toString() {
         return "{" + " id='" + getId() + "'" + ", designation='" + getDesignation() + "'" + ", prix='" + getPrix() + "'"
-                + ", categories='" + getCategories() + "'" + "}";
+                + ", categorie='" + getCategorie() + "'" + "}";
     }
 
     // #endregion

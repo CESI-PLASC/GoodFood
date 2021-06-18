@@ -6,6 +6,7 @@ import { Icons } from '../../shared/constants/icons.constant';
 import { CatalogueService } from '../../pages/catalogue-page/services/catalogue.service';
 import { Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -21,13 +22,16 @@ export class CatalogueComponent implements OnInit {
   public icons = Icons.catalogue;
   @Output() public produitSelected: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private readonly catalogueService: CatalogueService) { }
+  public isAdministration = false;
+
+  constructor(private readonly catalogueService: CatalogueService, private readonly activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.collapsedList = [];
     this.catalogueService.getByFranchiseId(this.franchise.id).subscribe(res => {
       this.categories = res;
     });
+    this.isAdministration = this.activatedRoute.snapshot?.data?.isAdministration;
   }
 
   public onFilterChange(filters: any): void {

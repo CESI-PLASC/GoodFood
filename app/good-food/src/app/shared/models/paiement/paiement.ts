@@ -1,9 +1,10 @@
-export type PaiementArgs = Pick<Paiement, 'clientSecret'>;
+export type PaiementArgs = Pick<Paiement, 'idCommande' | 'idPaiementMethode'>;
 
-export default class Paiement{
-  clientSecret: string;
+export default class Paiement {
+  idCommande: number;
+  idPaiementMethode: string;
 
-  constructor(args: PaiementArgs){
+  constructor(args: PaiementArgs) {
     Object.assign(this, args);
   }
 }

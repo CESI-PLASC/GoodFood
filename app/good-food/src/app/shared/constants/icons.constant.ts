@@ -1,5 +1,5 @@
 import {
-    faCheckSquare, faChevronDown, faChevronRight, faEye, faMinus, faPlus, faSearch, faSquare, faSyncAlt, faTimes
+    faCheckSquare, faChevronDown, faChevronRight, faEye, faMinus, faPlus, faSearch, faSquare, faSyncAlt, faTimes, faUtensils, faPallet, faCookieBite, faShoppingBasket
 } from '@fortawesome/free-solid-svg-icons';
 
 export const Icons = {
@@ -26,5 +26,11 @@ export const Icons = {
         add: faPlus,
         cancel: faTimes,
         change: faSyncAlt
-    }
+    },
+    admin: {
+        formules: faUtensils,
+        stock: faPallet,
+        produits: faCookieBite,
+        commandes: faShoppingBasket
+  }
 };

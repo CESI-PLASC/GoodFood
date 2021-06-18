@@ -47,13 +47,16 @@ public class Franchise {
     @ManyToOne(targetEntity = Adresse.class, cascade = CascadeType.ALL)
     private Adresse adresse;
 
+    @ManyToMany(targetEntity = Formule.class)
+    @JoinTable(name = "propose", joinColumns = @JoinColumn(name = "franchise_id"), inverseJoinColumns = @JoinColumn(name = "formule_id"))
+    private List<Formule> formules;
+
     // #region Générations
 
     public Franchise() {
     }
 
-    public Franchise(Long id, String designation, Boolean estSupprime, String email, String telephoneFixe,
-            String telephoneMobile, List<Categorie> categories, List<Commande> commandes, Adresse adresse) {
+    public Franchise(Long id, String designation, Boolean estSupprime, String email, String telephoneFixe, String telephoneMobile, List<Categorie> categories, List<Commande> commandes, Adresse adresse, List<Formule> formules) {
         this.id = id;
         this.designation = designation;
         this.estSupprime = estSupprime;
@@ -63,6 +66,7 @@ public class Franchise {
         this.categories = categories;
         this.commandes = commandes;
         this.adresse = adresse;
+        this.formules = formules;
     }
 
     public Long getId() {
@@ -141,6 +145,14 @@ public class Franchise {
         this.adresse = adresse;
     }
 
+    public List<Formule> getFormules() {
+        return this.formules;
+    }
+
+    public void setFormules(List<Formule> formules) {
+        this.formules = formules;
+    }
+
     public Franchise id(Long id) {
         setId(id);
         return this;
@@ -186,6 +198,11 @@ public class Franchise {
         return this;
     }
 
+    public Franchise formules(List<Formule> formules) {
+        setFormules(formules);
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -194,27 +211,30 @@ public class Franchise {
             return false;
         }
         Franchise franchise = (Franchise) o;
-        return Objects.equals(id, franchise.id) && Objects.equals(designation, franchise.designation)
-                && Objects.equals(estSupprime, franchise.estSupprime) && Objects.equals(email, franchise.email)
-                && Objects.equals(telephoneFixe, franchise.telephoneFixe)
-                && Objects.equals(telephoneMobile, franchise.telephoneMobile)
-                && Objects.equals(categories, franchise.categories) && Objects.equals(commandes, franchise.commandes)
-                && Objects.equals(adresse, franchise.adresse);
+        return Objects.equals(id, franchise.id) && Objects.equals(designation, franchise.designation) && Objects.equals(estSupprime, franchise.estSupprime) && Objects.equals(email, franchise.email) && Objects.equals(telephoneFixe, franchise.telephoneFixe) && Objects.equals(telephoneMobile, franchise.telephoneMobile) && Objects.equals(categories, franchise.categories) && Objects.equals(commandes, franchise.commandes) && Objects.equals(adresse, franchise.adresse) && Objects.equals(formules, franchise.formules);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, designation, estSupprime, email, telephoneFixe, telephoneMobile, categories, commandes,
-                adresse);
+        return Objects.hash(id, designation, estSupprime, email, telephoneFixe, telephoneMobile, categories, commandes, adresse, formules);
     }
 
     @Override
     public String toString() {
-        return "{" + " id='" + getId() + "'" + ", designation='" + getDesignation() + "'" + ", estSupprime='"
-                + isEstSupprime() + "'" + ", email='" + getEmail() + "'" + ", telephoneFixe='" + getTelephoneFixe()
-                + "'" + ", telephoneMobile='" + getTelephoneMobile() + "'" + ", categories='" + getCategories() + "'"
-                + ", commandes='" + getCommandes() + "'" + ", adresse='" + getAdresse() + "'" + "}";
+        return "{" +
+            " id='" + getId() + "'" +
+            ", designation='" + getDesignation() + "'" +
+            ", estSupprime='" + isEstSupprime() + "'" +
+            ", email='" + getEmail() + "'" +
+            ", telephoneFixe='" + getTelephoneFixe() + "'" +
+            ", telephoneMobile='" + getTelephoneMobile() + "'" +
+            ", categories='" + getCategories() + "'" +
+            ", commandes='" + getCommandes() + "'" +
+            ", adresse='" + getAdresse() + "'" +
+            ", formules='" + getFormules() + "'" +
+            "}";
     }
+
 
     // #endregion
 }

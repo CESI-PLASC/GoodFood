@@ -28,7 +28,7 @@ namespace GoodFood.Auth.Infrastructure.Services.Paiement
             // Récupération du prix de la commande
             CommandeModele commande = await this._commandeService.one(idCommande);
             double prix = await this._commandeService.prix(idCommande);
-            var match = Regex.Match(prix.ToString(), @"^([0-9]+)(?:,([0-9]+))?$");
+            var match = Regex.Match(prix.ToString(), @"^([0-9]+)(?:(?:,|.)([0-9]+))?$");
 
             // Création de l'intent
             PaymentIntent intent = this._paymentIntentService.Create(new PaymentIntentCreateOptions

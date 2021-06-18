@@ -97,8 +97,8 @@ namespace GoodFood
             services.AddTransient<IMethodePaiementService, MethodePaiementService>();
             services.AddTransient<IEmployeService, EmployeService>();
 
-            
-            
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

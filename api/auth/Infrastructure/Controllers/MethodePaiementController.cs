@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
@@ -26,7 +27,7 @@ namespace GoodFood.Auth.Infrastructure.Controllers
         }
 
         [HttpPost, Route(UrlUtil.METHODE_PAIEMENT_RESSOURCE.METHODES_PAIEMENT_UTILISATEURS), Produces("application/json")]
-        [ProducesResponseType(typeof(IEnumerable<MethodePaiementModele>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(MethodePaiementModele), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> creerMethodeUtilisateur([FromBody] MethodePaiementCreerModele methodePaiementCreer)
         {
             MethodePaiementModele methodePaiement = await this._methodePaiementService.creerMethodePaiementUtilisateur(methodePaiementCreer);

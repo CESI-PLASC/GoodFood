@@ -22,8 +22,17 @@
 
     <div>
       <button class="btn btn-secondary mr-2" [routerLink]="['/commande', commande.id, 'coordonnee']">Retour</button>
-      <button class="btn btn-primary" (click)="valideCommande()">Valider la commande</button>
+      <button class="btn btn-primary" (click)="validerCommande()" [disabled]="!_.isEmpty(erreurs)">
+        <span *ngIf="chargement === 'paiement'">
+          <div class="spinner-border">
+            <span class="sr-only">Chargement...</span>
+          </div>
+        </span>
+        <span *ngIf="chargement !== 'paiement'">Valider la commande</span>
+      </button>
     </div>
+
+    <div *ngFor="let erreur of _.values(erreurs)" style="color: red;">{{erreur}}</div>
 
   </div>
 </div>

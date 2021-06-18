@@ -8,7 +8,7 @@ import javax.persistence.Column;
 public class LocalisationKey implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Column(name = "uilisateur_id")
+    @Column(name = "utilisateur_id")
     private Long utilisateurId;
 
     @Column(name = "adresse_id")
