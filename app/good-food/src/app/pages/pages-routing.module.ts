@@ -7,6 +7,7 @@ import { AccueilPageComponent } from './layouts/accueil-page/accueil-page.compon
 import { CoordonneeClientPageComponent } from './coordonnee-client-page/coordonnee-client-page.component';
 import { AdministrationPageComponent } from './administration-page/administration-page.component';
 import { AdministrationProduitsPageComponent } from './administration-produits-page/administration-produits-page.component';
+import { CommandePageComponent } from './commande-page/commande-page.component';
 import { AdministrationFormulesPageComponent } from './administration-formules-page/administration-formules-page.component';
 
 const routes: Routes = [
@@ -15,62 +16,63 @@ const routes: Routes = [
     children: [
       {
         path: 'coordonnee',
-        component: CoordonneeClientPageComponent
+        component: CoordonneeClientPageComponent,
       },
       {
         path: 'validation',
         component: ValiderPanierPageComponent,
-      }
-    ]
+      },
+      {
+        path: '',
+        component: CommandePageComponent,
+      },
+    ],
   },
   {
     path: 'franchise',
     children: [
-       {
-         path: '',
-         component: FranchisePageComponent
-       },
+      {
+        path: '',
+        component: FranchisePageComponent,
+      },
       {
         path: ':id/catalogue',
-        component: CataloguePageComponent
-      }
-    ]
+        component: CataloguePageComponent,
+      },
+    ],
   },
   {
     path: 'administration',
     children: [
-       {
-         path: ':id',
-         component: AdministrationPageComponent
-       },
-       {
-         path: ':id/produits',
-         component: AdministrationProduitsPageComponent
-       },
-       {
-         path: ':id/formules',
-         component: AdministrationFormulesPageComponent
-       }
+      {
+        path: ':id',
+        component: AdministrationPageComponent,
+      },
+      {
+        path: ':id/produits',
+        component: AdministrationProduitsPageComponent,
+      },
+      {
+        path: ':id/formules',
+        component: AdministrationFormulesPageComponent,
+      },
     ],
     data: {
-      isAdministration: true
-    }
+      isAdministration: true,
+    },
   },
   {
     path: 'accueil',
-    component: AccueilPageComponent
+    component: AccueilPageComponent,
   },
   {
     path: '**',
-    redirectTo: 'accueil'
-  }
-
+    redirectTo: 'accueil',
+  },
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forChild(routes)
-  ],
-  exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class PagesRoutingModule { }
+export class PagesRoutingModule {}

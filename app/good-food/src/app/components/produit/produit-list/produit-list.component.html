@@ -1,7 +1,9 @@
 <div class="row" *ngIf="!isAdministration">
-    <gf-produit-item *ngFor="let item of produits" class="col-3" [produit]="item" (produitSelected)="recupProduitSelected($event)"></gf-produit-item>
+  <gf-produit-item *ngFor="let item of produits" class="col-3" [produit]="item"
+    (produitSelected)="produitSelected.emit($event)"></gf-produit-item>
 </div>
 
 <div class="row" *ngIf="isAdministration">
-    <gf-produit-item *ngFor="let item of produits" class="col-2" [produit]="item" (produitSelected)="recupProduitSelected($event)"></gf-produit-item>
+  <gf-produit-item *ngFor="let item of produits" class="col-2" [produit]="item"
+    (produitSelected)="produitSelected.emit($event)"></gf-produit-item>
 </div>

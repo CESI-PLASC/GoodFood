@@ -1,10 +1,13 @@
 <div class="card border-secondary mb-4" style="max-width: 30rem;">
-    <div class="card-header">Votre panier</div>
-    <div class="card-body">
-        <gf-formule-list [formules]="formules" (formuleSelected)="actualiseTotal($event)"></gf-formule-list>
-    </div>
-    <div class="card-footer d-flex justify-content-between align-items-center">
-        <div class="text-muted">Total : {{ prixTotal | currency: 'EUR':'symbol':'.2-2':'FR' }}</div>
-        <button [routerLink]="['/commande', 1, 'coordonnee']" class="btn btn-sm btn-outline-primary">Valider</button>
-    </div>
+  <div class="card-header">Votre panier</div>
+  <div class="card-body">
+    <gf-formule-list [commande]="commande" [formules]="formules"
+      (onFormuleSelectionnee)="onFormuleSelectionnee.emit($event)">
+    </gf-formule-list>
+  </div>
+  <div class="card-footer d-flex justify-content-between align-items-center">
+    <div class="text-muted">Total : {{ commande?.prix() | currency: 'EUR':'symbol':'.2-2':'FR' }}</div>
+    <button [disabled]="!commande?.id" [routerLink]="['/commande', commande?.id || 0, 'coordonnee']"
+      class="btn btn-sm btn-outline-primary">Valider</button>
+  </div>
 </div>

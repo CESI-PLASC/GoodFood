@@ -8,21 +8,22 @@ import { AdministrationPageModule } from './administration-page/administration-p
 import { AdministrationProduitsPageModule } from './administration-produits-page/administration-produits-page.module';
 import { AdministrationFormulesPageModule } from './administration-formules-page/administration-formules-page.module';
 import { PagesRoutingModule } from './pages-routing.module';
-
-
+import { CommandePageModule } from './commande-page/commande-page.module';
 
 @NgModule({
-    imports: [
-        PagesRoutingModule,
+  imports: [
+    PagesRoutingModule,
 
-        AccueilPageModule,
-        CataloguePageModule,
-        CoordonneeClientPageModule,
-        FranchisePageModule,
-        ValiderPanierPageModule,
-        AdministrationPageModule,
-        AdministrationProduitsPageModule,
-        AdministrationFormulesPageModule,
-    ]
+    AccueilPageModule,
+    CataloguePageModule,
+    CoordonneeClientPageModule,
+    FranchisePageModule,
+    ValiderPanierPageModule,
+    AdministrationPageModule,
+    AdministrationProduitsPageModule,
+    CommandePageModule,
+    AdministrationFormulesPageModule,
+  ],
+  declarations: [],
 })
-export class PagesModule { }
+export class PagesModule {}

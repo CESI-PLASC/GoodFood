@@ -3,6 +3,7 @@ package fr.goodfood.entity;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,10 +20,10 @@ public class Contenu {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = Formule.class)
     private Formule formule;
 
-    @OneToMany(mappedBy = "contenu")
+    @OneToMany(mappedBy = "contenu", cascade = CascadeType.REMOVE)
     private List<Contient> produits;
 
     @ManyToOne

@@ -1,17 +1,15 @@
 import { createServiceFactory, SpectatorService } from '@ngneat/spectator/jest';
 import { HttpClientModule } from '@angular/common/http';
-import { CommandeService } from './commande.service';
+import { ValiderPanierService } from './valider-panier.service';
 
 describe('Commande service tests', () => {
-  let spectator: SpectatorService<CommandeService>;
+  let spectator: SpectatorService<ValiderPanierService>;
   const createService = createServiceFactory({
-    service: CommandeService,
-    imports: [
-      HttpClientModule
-    ],
+    service: ValiderPanierService,
+    imports: [HttpClientModule],
   });
 
-  let service: CommandeService;
+  let service: ValiderPanierService;
 
   beforeEach(() => {
     spectator = createService();

@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-8">
+    <gf-catalogue *ngIf="commande?.franchise" [franchise]="commande.franchise"
+      (produitSelected)="ajouterProduit(formuleSelectionnee, $event)">
+    </gf-catalogue>
+  </div>
+  <div class="col-4">
+    <gf-panier-ajout-produit [commande]="commande" (onFormuleSelectionnee)="formuleSelectionnee = $event">
+    </gf-panier-ajout-produit>
+  </div>
+</div>
