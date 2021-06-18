@@ -30,7 +30,7 @@ export class CommandePageComponent implements OnInit {
         (contientCommande) => contientCommande.id?.produitId === produit.id
       );
 
-      // TODO Si le produit existe déjà, modifie sa quantité
+      // Si le produit existe déjà, modifie sa quantité
       if (contientExistant) {
         const quantite = (contientExistant.quantite || 0) + 1;
 
