@@ -2,29 +2,29 @@
     <h1>Administration</h1>
     <br>
     <div class="row">
-        <div class="col-6 align-middle" style="">
+        <div class="col-6 align-middle">
             <div class="row">
-                <div class="col-5 card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">FORMULES</h5>
-                        <hr>
-                        <fa-icon [icon]="icons.admin.formules"></fa-icon><span style="margin-left: 15px;">3 Formules</span>
-                    </div>
+                <button class="col-5 card" [routerLink]="['formules']" style="width: 18rem;">
+                  <div class="card-body" style="width: 100%;">
+                    <h5 class="card-title">FORMULES</h5>
+                    <hr>
+                    <fa-icon [icon]="icons.admin.formules"></fa-icon><span *ngIf="nbFormule == 1" class="text-muted" style="margin-left: 15px;">{{ nbFormule }} Formule</span><span *ngIf="nbFormule != 1" class="text-muted" style="margin-left: 15px;">{{ nbFormule }} Formules</span>
                 </div>
+              </button>
                 <div class="col-2"></div>
-                <div class="col-5 card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">PRODUITS</h5>
-                        <hr>
-                        <fa-icon [icon]="icons.admin.produits"></fa-icon><span style="margin-left: 15px;">55 Produits</span>
+                <button class="col-5 card" [routerLink]="['produits']" style="width: 18rem;">
+                    <div class="card-body" style="width: 100%;">
+                      <h5 class="card-title">PRODUITS</h5>
+                      <hr>
+                      <fa-icon [icon]="icons.admin.produits"></fa-icon><span *ngIf="nbProduits == 1" class="text-muted" style="margin-left: 15px;">{{ nbProduits }} Produit</span><span *ngIf="nbProduits != 1" class="text-muted" style="margin-left: 15px;">{{ nbProduits }} Produits</span>
                     </div>
-                </div>
+                  </button>
                 <div class="col-12" style="height: 25px;"></div>
                 <div class="col-5 card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">COMMANDES</h5>
                         <hr>
-                        <fa-icon [icon]="icons.admin.commandes"></fa-icon><span style="margin-left: 15px;">3 En cours</span>
+                        <fa-icon [icon]="icons.admin.commandes"></fa-icon><span style="margin-left: 15px;">En cours</span>
                     </div>
                 </div>
                 <!-- <div class="col-2"></div>
@@ -39,15 +39,12 @@
 
         </div>
         <div class="col-1" style="border-right: 6px solid green;height: 500px;width: 50px;"></div>
-        <div class="col-5" style="">
-            <h3 class="text-center">Nom du franchisé</h3>
-            <h6 class="mx-5">ADRESSE :</h6><span></span>
-            <h6 class="mx-5">COMPLÉMENT :</h6><span></span>
-            <h6 class="mx-5">CP :</h6><span></span>
-            <h6 class="mx-5">PAYS :</h6><span></span>
-            <h6 class="mx-5">TEL :</h6><span></span>
-            <h6 class="mx-5">MOBILE :</h6><span></span>
-            <h6 class="mx-5">EMAIL :</h6><span></span>
+        <div class="col-5">
+            <h3 class="text-center mb-5">{{ franchise.designation }}</h3>
+            <p><label class="mx-1 font-weight-bold">ADRESSE :</label><span class="">{{ franchise.adresse }}</span></p>
+            <p><label class="mx-1 font-weight-bold">TEL :</label><span class="">{{ franchise.telephoneFixe }}</span></p>
+            <p><label class="mx-1 font-weight-bold">MOBILE :</label><span class="">{{ franchise.telephoneMobile }}</span></p>
+            <p><label class="mx-1 font-weight-bold">EMAIL :</label><span class="">{{ franchise.email }}</span></p>
         </div>
     </div>
 

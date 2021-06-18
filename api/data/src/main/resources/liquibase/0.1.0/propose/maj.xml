@@ -21,9 +21,7 @@
                     primaryKey="true"
                     nullable="false" />
             </column>
-            <column
-                name="prix"
-                type="float" />
+            
         </createTable>
 
         <addForeignKeyConstraint
