@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FranchiseService } from 'src/app/pages/franchise-page/services/franchise.service';
 import { Franchise } from 'src/app/shared/models/franchise/franchise';
+import { Produit } from 'src/app/shared/models/produit/produit';
 
 @Component({
   selector: 'gf-administration-produits',
@@ -18,4 +19,5 @@ export class AdministrationProduitsComponent implements OnInit{
       this.franchiseService.getFranchise(params.id).subscribe(result => this.franchise = result);
     });
   }
+
 }

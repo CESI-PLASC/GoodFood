@@ -23,18 +23,23 @@ public class Produit {
     @Column(name = "prix")
     private float prix;
 
+    @Column(name = "est_supprime", nullable = false)
+    private Boolean estSupprime = false;
+
     @ManyToOne
     private Categorie categorie;
 
     // #region Générations
 
+
     public Produit() {
     }
 
-    public Produit(Long id, String designation, float prix, Categorie categorie) {
+    public Produit(Long id, String designation, float prix, Boolean estSupprime, Categorie categorie) {
         this.id = id;
         this.designation = designation;
         this.prix = prix;
+        this.estSupprime = estSupprime;
         this.categorie = categorie;
     }
 
@@ -62,6 +67,18 @@ public class Produit {
         this.prix = prix;
     }
 
+    public Boolean isEstSupprime() {
+        return this.estSupprime;
+    }
+
+    public Boolean getEstSupprime() {
+        return this.estSupprime;
+    }
+
+    public void setEstSupprime(Boolean estSupprime) {
+        this.estSupprime = estSupprime;
+    }
+
     public Categorie getCategorie() {
         return this.categorie;
     }
@@ -85,6 +102,11 @@ public class Produit {
         return this;
     }
 
+    public Produit estSupprime(Boolean estSupprime) {
+        setEstSupprime(estSupprime);
+        return this;
+    }
+
     public Produit categorie(Categorie categorie) {
         setCategorie(categorie);
         return this;
@@ -98,20 +120,25 @@ public class Produit {
             return false;
         }
         Produit produit = (Produit) o;
-        return Objects.equals(id, produit.id) && Objects.equals(designation, produit.designation)
-                && prix == produit.prix && Objects.equals(categorie, produit.categorie);
+        return Objects.equals(id, produit.id) && Objects.equals(designation, produit.designation) && prix == produit.prix && Objects.equals(estSupprime, produit.estSupprime) && Objects.equals(categorie, produit.categorie);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, designation, prix, categorie);
+        return Objects.hash(id, designation, prix, estSupprime, categorie);
     }
 
     @Override
     public String toString() {
-        return "{" + " id='" + getId() + "'" + ", designation='" + getDesignation() + "'" + ", prix='" + getPrix() + "'"
-                + ", categorie='" + getCategorie() + "'" + "}";
+        return "{" +
+            " id='" + getId() + "'" +
+            ", designation='" + getDesignation() + "'" +
+            ", prix='" + getPrix() + "'" +
+            ", estSupprime='" + isEstSupprime() + "'" +
+            ", categorie='" + getCategorie() + "'" +
+            "}";
     }
+    
 
     // #endregion
 }

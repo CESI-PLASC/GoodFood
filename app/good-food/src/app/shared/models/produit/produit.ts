@@ -6,6 +6,7 @@ export interface IProduit {
   prix?: number;
   designation?: string;
   categorie?: ICategorie;
+  est_supprime?: boolean;
 }
 
 export class Produit implements IProduit {
@@ -13,6 +14,7 @@ export class Produit implements IProduit {
   prix?: number;
   designation?: string;
   categorie?: Categorie;
+  est_supprime?: boolean;
   constructor(opt?: Partial<IProduit>) {
     Object.assign(this, _.omit(opt, ['categorie']));
 
@@ -24,12 +26,14 @@ export interface ISimpleProduit {
   id?: number;
   prix?: number;
   designation?: string;
+  est_supprime?: boolean;
 }
 
 export class SimpleProduit implements ISimpleProduit {
   id?: number;
   prix?: number;
   designation?: string;
+  est_supprime?: boolean;
   constructor(opt?: Partial<ISimpleProduit>) {
     Object.assign(this, opt);
   }

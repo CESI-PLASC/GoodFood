@@ -37,11 +37,11 @@ insert into goodfood.franchise (id, designation, email, telephone_fixe, telephon
     (2, "Le second franchisé", "franchise2@test.fr", null, null, 2)
 ;
 
-insert into goodfood.produit (id, designation, prix, categorie_id) values 
-	(1, "Hamburger maison", 19.99, 2),
-    (2, "Salade césar", 14.99, 1),
-    (3, "Salade de fruits", 4.99, 3),
-    (4, "Pizza", 11.99, 2)
+insert into goodfood.produit (id, designation, prix, categorie_id, est_supprime) values 
+	(1, "Hamburger maison", 19.99, 2, 0),
+    (2, "Salade césar", 14.99, 1, 0),
+    (3, "Salade de fruits", 4.99, 3, 0),
+    (4, "Pizza", 11.99, 2, 0)
 ;
 
 insert into goodfood.commande (id, date_creation, date_donnee, statut_id, franchise_id, utilisateur_id) values 

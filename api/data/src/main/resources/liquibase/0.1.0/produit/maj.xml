@@ -26,6 +26,10 @@
                 type="bigint">
                 <constraints nullable="false" />
             </column>
+            <column
+                name="est_supprime"
+                type="boolean"
+                defaultValue="false" />            
         </createTable>
 
         <addForeignKeyConstraint
