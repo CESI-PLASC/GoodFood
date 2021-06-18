@@ -7,20 +7,21 @@ import { ValiderPanierPageModule } from './valider-panier-page/valider-panier-pa
 import { AdministrationPageModule } from './administration-page/administration-page.module';
 import { AdministrationProduitsPageModule } from './administration-produits-page/administration-produits-page.module';
 import { PagesRoutingModule } from './pages-routing.module';
-
-
+import { CommandePageModule } from './commande-page/commande-page.module';
 
 @NgModule({
-    imports: [
-        PagesRoutingModule,
+  imports: [
+    PagesRoutingModule,
 
-        AccueilPageModule,
-        CataloguePageModule,
-        CoordonneeClientPageModule,
-        FranchisePageModule,
-        ValiderPanierPageModule,
-        AdministrationPageModule,
-        AdministrationProduitsPageModule,
-    ]
+    AccueilPageModule,
+    CataloguePageModule,
+    CoordonneeClientPageModule,
+    FranchisePageModule,
+    ValiderPanierPageModule,
+    AdministrationPageModule,
+    AdministrationProduitsPageModule,
+    CommandePageModule,
+  ],
+  declarations: [],
 })
-export class PagesModule { }
+export class PagesModule {}

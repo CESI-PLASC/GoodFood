@@ -4,6 +4,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,19 +17,24 @@ import fr.goodfood.repository.ContientRepository;
 import fr.goodfood.ressource.error.NotFoundException;
 
 @Service
+@Transactional
 public class ContientService {
     @Autowired
     private ContientRepository contientRepository;
 
+    @PersistenceContext
+    private EntityManager em;
+
     public Contient create(Contient contient) {
-        return this.contientRepository.save(contient);
+        contient = this.contientRepository.save(contient);
+        // this.em.refresh(contient);
+        return contient;
     }
 
     public Contient update(Contient contient) {
         if (contient != null && contient.getId() != null) {
-            contient = this.contientRepository.save(contient);
-        } else {
-            contient = this.create(contient);
+            contient = this.contientRepository.saveAndFlush(contient);
+            this.em.refresh(contient);
         }
 
         return contient;

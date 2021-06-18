@@ -10,32 +10,40 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Formule {
 
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(name = "designation")
     private String designation;
 
-    @Column
+    @Column(name = "prix")
     private Float prix;
 
     @OneToMany(mappedBy = "formule")
     private List<Requiert> structure;
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "formule")
+    private List<Contenu> contenu;
 
     // #region Générations
 
     public Formule() {
     }
 
-    public Formule(Long id, String designation, Float prix, List<Requiert> structure) {
+    public Formule(Long id, String designation, Float prix, List<Requiert> structure, List<Contenu> contenu) {
         this.id = id;
         this.designation = designation;
         this.prix = prix;
         this.structure = structure;
+        this.contenu = contenu;
     }
 
     public Long getId() {
@@ -70,6 +78,14 @@ public class Formule {
         this.structure = structure;
     }
 
+    public List<Contenu> getContenu() {
+        return this.contenu;
+    }
+
+    public void setContenu(List<Contenu> contenu) {
+        this.contenu = contenu;
+    }
+
     public Formule id(Long id) {
         setId(id);
         return this;
@@ -90,6 +106,11 @@ public class Formule {
         return this;
     }
 
+    public Formule contenu(List<Contenu> contenu) {
+        setContenu(contenu);
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -99,18 +120,19 @@ public class Formule {
         }
         Formule formule = (Formule) o;
         return Objects.equals(id, formule.id) && Objects.equals(designation, formule.designation)
-                && Objects.equals(prix, formule.prix) && Objects.equals(structure, formule.structure);
+                && Objects.equals(prix, formule.prix) && Objects.equals(structure, formule.structure)
+                && Objects.equals(contenu, formule.contenu);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, designation, prix, structure);
+        return Objects.hash(id, designation, prix, structure, contenu);
     }
 
     @Override
     public String toString() {
         return "{" + " id='" + getId() + "'" + ", designation='" + getDesignation() + "'" + ", prix='" + getPrix() + "'"
-                + ", structure='" + getStructure() + "'" + "}";
+                + ", structure='" + getStructure() + "'" + ", contenu='" + getContenu() + "'" + "}";
     }
 
     // #endregion

@@ -2,6 +2,10 @@ package fr.goodfood.service;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,21 +14,17 @@ import fr.goodfood.repository.ContenuRepository;
 import fr.goodfood.ressource.error.NotFoundException;
 
 @Service
+@Transactional
 public class ContenuService {
     @Autowired
     private ContenuRepository contenuRepository;
 
-    public Contenu create(Contenu contenu) {
-        return this.contenuRepository.save(contenu);
-    }
+    @PersistenceContext
+    private EntityManager em;
 
-    public Contenu update(Contenu contenu) {
-        if (contenu != null && contenu.getId() != null) {
-            contenu = this.contenuRepository.save(contenu);
-        } else {
-            contenu = this.create(contenu);
-        }
-
+    public Contenu save(Contenu contenu) {
+        contenu = this.contenuRepository.save(contenu);
+        this.em.refresh(contenu);
         return contenu;
     }
 
