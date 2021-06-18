@@ -6,6 +6,7 @@ import { FranchisePageModule } from './franchise-page/franchise-page.module';
 import { ValiderPanierPageModule } from './valider-panier-page/valider-panier-page.module';
 import { AdministrationPageModule } from './administration-page/administration-page.module';
 import { AdministrationProduitsPageModule } from './administration-produits-page/administration-produits-page.module';
+import { AdministrationFormulesPageModule } from './administration-formules-page/administration-formules-page.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { CommandePageModule } from './commande-page/commande-page.module';
 
@@ -21,6 +22,7 @@ import { CommandePageModule } from './commande-page/commande-page.module';
     AdministrationPageModule,
     AdministrationProduitsPageModule,
     CommandePageModule,
+    AdministrationFormulesPageModule,
   ],
   declarations: [],
 })

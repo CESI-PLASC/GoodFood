@@ -8,6 +8,7 @@ import { CoordonneeClientPageComponent } from './coordonnee-client-page/coordonn
 import { AdministrationPageComponent } from './administration-page/administration-page.component';
 import { AdministrationProduitsPageComponent } from './administration-produits-page/administration-produits-page.component';
 import { CommandePageComponent } from './commande-page/commande-page.component';
+import { AdministrationFormulesPageComponent } from './administration-formules-page/administration-formules-page.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,10 @@ const routes: Routes = [
       {
         path: ':id/produits',
         component: AdministrationProduitsPageComponent,
+      },
+      {
+        path: ':id/formules',
+        component: AdministrationFormulesPageComponent,
       },
     ],
     data: {

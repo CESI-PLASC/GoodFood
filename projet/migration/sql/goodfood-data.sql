@@ -79,10 +79,10 @@ insert into goodfood.localisation (utilisateur_id, adresse_id, preferee) values
     (5, 5, 0)
 ;
 
-insert into goodfood.propose (formule_id, franchise_id, prix) values
-    (1, 1, 14.99),
-    (2, 1, 24.99),
-    (1, 2, 14.99)
+insert into goodfood.propose (formule_id, franchise_id) values
+    (1, 1),
+    (2, 1),
+    (1, 2)
 ;
 
 insert into goodfood.requiert (categorie_id, formule_id, quantite) values

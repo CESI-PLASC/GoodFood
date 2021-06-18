@@ -9,6 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -33,17 +36,23 @@ public class Formule {
     @OneToMany(mappedBy = "formule")
     private List<Contenu> contenu;
 
+    @ManyToMany(targetEntity = Franchise.class)
+    @JoinTable(name = "propose", joinColumns = @JoinColumn(name = "formule_id"), inverseJoinColumns = @JoinColumn(name = "franchise_id"))
+    private List<Franchise> franchises;
+
     // #region Générations
 
     public Formule() {
     }
 
-    public Formule(Long id, String designation, Float prix, List<Requiert> structure, List<Contenu> contenu) {
+    public Formule(Long id, String designation, Float prix, List<Requiert> structure, List<Contenu> contenu,
+            List<Franchise> franchises) {
         this.id = id;
         this.designation = designation;
         this.prix = prix;
         this.structure = structure;
         this.contenu = contenu;
+        this.franchises = franchises;
     }
 
     public Long getId() {
@@ -86,6 +95,14 @@ public class Formule {
         this.contenu = contenu;
     }
 
+    public List<Franchise> getFranchises() {
+        return this.franchises;
+    }
+
+    public void setFranchises(List<Franchise> franchises) {
+        this.franchises = franchises;
+    }
+
     public Formule id(Long id) {
         setId(id);
         return this;
@@ -111,6 +128,11 @@ public class Formule {
         return this;
     }
 
+    public Formule franchises(List<Franchise> franchises) {
+        setFranchises(franchises);
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -121,18 +143,19 @@ public class Formule {
         Formule formule = (Formule) o;
         return Objects.equals(id, formule.id) && Objects.equals(designation, formule.designation)
                 && Objects.equals(prix, formule.prix) && Objects.equals(structure, formule.structure)
-                && Objects.equals(contenu, formule.contenu);
+                && Objects.equals(contenu, formule.contenu) && Objects.equals(franchises, formule.franchises);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, designation, prix, structure, contenu);
+        return Objects.hash(id, designation, prix, structure, contenu, franchises);
     }
 
     @Override
     public String toString() {
         return "{" + " id='" + getId() + "'" + ", designation='" + getDesignation() + "'" + ", prix='" + getPrix() + "'"
-                + ", structure='" + getStructure() + "'" + ", contenu='" + getContenu() + "'" + "}";
+                + ", structure='" + getStructure() + "'" + ", contenu='" + getContenu() + "'" + ", franchises='"
+                + getFranchises() + "'" + "}";
     }
 
     // #endregion

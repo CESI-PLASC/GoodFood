@@ -18,12 +18,8 @@ public class CatalogueService {
     @Inject
     CategorieMapper categorieMapper;
 
-    public List<CategorieDTO> getCatalogueByFranchiseId(Long id) {
-        // RestTemplate restTemplate = new RestTemplate();
-        // Franchise result = restTemplate.getForObject("http://localhost:5001/???",
-        // Franchise.class);
-        // return
-        // categorieMapper.toDtos(categorieRepository.findAllByFranchises(result));
+    public List<CategorieDTO> getCatalogueByFranchiseId(Long idFranchise){
         return categorieMapper.toDtos(categorieRepository.findAll());
+        //return this.categorieRepository.findAllByFranchiseById(idFranchise);
     }
 }
