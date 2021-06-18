@@ -3,7 +3,6 @@ package fr.goodfood.dto.franchise;
 import fr.goodfood.dto.adresse.SimpleAdresseDTO;
 import fr.goodfood.dto.categorie.SimpleCategorieDTO;
 import fr.goodfood.dto.commande.SimpleCommandeDTO;
-import fr.goodfood.dto.formule.SimpleFormuleDTO;
 
 import java.util.List;
 import java.util.Objects;
@@ -17,7 +16,6 @@ public class FranchiseDTO {
     private String telephoneMobile;
     private List<SimpleCommandeDTO> commandes;
     private List<SimpleCategorieDTO> categories;
-    private List<SimpleFormuleDTO> formules;
     private SimpleAdresseDTO adresse;
 
     // #region Générations

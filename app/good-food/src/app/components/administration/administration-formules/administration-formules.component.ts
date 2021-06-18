@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CatalogueService } from 'src/app/pages/catalogue-page/services/catalogue.service';
+import { ActivatedRoute } from '@angular/router';
+import { AdministrationService } from 'src/app/pages/administration-page/services/administration.service';
 import { Formule } from 'src/app/shared/models/formule/formule';
 
 @Component({
@@ -10,9 +11,14 @@ import { Formule } from 'src/app/shared/models/formule/formule';
 export class AdministrationFormulesComponent implements OnInit{
   public formules: Formule[];
 
-  constructor(private readonly catalogueService: CatalogueService) { }
+  constructor(private readonly administrationService: AdministrationService,
+    private readonly route: ActivatedRoute,) { }
 
   ngOnInit(): void {
-    this.catalogueService.getFormules().subscribe(result => this.formules = result);
+    this.route.params.subscribe(params => {
+      this.administrationService.getFormulesByIdFranchise(params.id).subscribe(result => {
+        this.formules = result;
+      });
+    });
   }
 }

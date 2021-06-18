@@ -1,7 +1,6 @@
 package fr.goodfood.repository;
 
 import fr.goodfood.entity.Categorie;
-import fr.goodfood.entity.Franchise;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.repository.query.Param;

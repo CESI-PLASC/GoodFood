@@ -1,7 +1,6 @@
 package fr.goodfood.service;
 
 import fr.goodfood.dto.categorie.CategorieDTO;
-import fr.goodfood.entity.Categorie;
 import fr.goodfood.repository.CategorieRepository;
 import fr.goodfood.service.mapper.CategorieMapper;
 import org.springframework.beans.factory.annotation.Autowired;
