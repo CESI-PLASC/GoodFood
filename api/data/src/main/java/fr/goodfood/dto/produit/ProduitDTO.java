@@ -10,14 +10,15 @@ public class ProduitDTO {
     private String designation;
     private float prix;
     private SimpleCategorieDTO categorie;
-    private boolean est_supprime;
+    private Boolean est_supprime;
 
     // #region Générations
+
 
     public ProduitDTO() {
     }
 
-    public ProduitDTO(Long id, String designation, float prix, SimpleCategorieDTO categorie, boolean est_supprime) {
+    public ProduitDTO(Long id, String designation, float prix, SimpleCategorieDTO categorie, Boolean est_supprime) {
         this.id = id;
         this.designation = designation;
         this.prix = prix;
@@ -57,15 +58,15 @@ public class ProduitDTO {
         this.categorie = categorie;
     }
 
-    public boolean isEst_supprime() {
+    public Boolean isEst_supprime() {
         return this.est_supprime;
     }
 
-    public boolean getEst_supprime() {
+    public Boolean getEst_supprime() {
         return this.est_supprime;
     }
 
-    public void setEst_supprime(boolean est_supprime) {
+    public void setEst_supprime(Boolean est_supprime) {
         this.est_supprime = est_supprime;
     }
 
@@ -89,7 +90,7 @@ public class ProduitDTO {
         return this;
     }
 
-    public ProduitDTO est_supprime(boolean est_supprime) {
+    public ProduitDTO est_supprime(Boolean est_supprime) {
         setEst_supprime(est_supprime);
         return this;
     }
@@ -102,7 +103,7 @@ public class ProduitDTO {
             return false;
         }
         ProduitDTO produitDTO = (ProduitDTO) o;
-        return Objects.equals(id, produitDTO.id) && Objects.equals(designation, produitDTO.designation) && prix == produitDTO.prix && Objects.equals(categorie, produitDTO.categorie) && est_supprime == produitDTO.est_supprime;
+        return Objects.equals(id, produitDTO.id) && Objects.equals(designation, produitDTO.designation) && prix == produitDTO.prix && Objects.equals(categorie, produitDTO.categorie) && Objects.equals(est_supprime, produitDTO.est_supprime);
     }
 
     @Override

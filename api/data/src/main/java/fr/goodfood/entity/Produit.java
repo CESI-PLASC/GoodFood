@@ -24,7 +24,7 @@ public class Produit {
     private float prix;
 
     @Column(name = "est_supprime", nullable = false)
-    private Boolean estSupprime = false;
+    private Boolean est_supprime = false;
 
     @ManyToOne
     private Categorie categorie;
@@ -35,11 +35,11 @@ public class Produit {
     public Produit() {
     }
 
-    public Produit(Long id, String designation, float prix, Boolean estSupprime, Categorie categorie) {
+    public Produit(Long id, String designation, float prix, Boolean est_supprime, Categorie categorie) {
         this.id = id;
         this.designation = designation;
         this.prix = prix;
-        this.estSupprime = estSupprime;
+        this.est_supprime = est_supprime;
         this.categorie = categorie;
     }
 
@@ -67,16 +67,16 @@ public class Produit {
         this.prix = prix;
     }
 
-    public Boolean isEstSupprime() {
-        return this.estSupprime;
+    public Boolean isEst_supprime() {
+        return this.est_supprime;
     }
 
-    public Boolean getEstSupprime() {
-        return this.estSupprime;
+    public Boolean getEst_supprime() {
+        return this.est_supprime;
     }
 
-    public void setEstSupprime(Boolean estSupprime) {
-        this.estSupprime = estSupprime;
+    public void setEst_supprime(Boolean est_supprime) {
+        this.est_supprime = est_supprime;
     }
 
     public Categorie getCategorie() {
@@ -102,8 +102,8 @@ public class Produit {
         return this;
     }
 
-    public Produit estSupprime(Boolean estSupprime) {
-        setEstSupprime(estSupprime);
+    public Produit est_supprime(Boolean est_supprime) {
+        setEst_supprime(est_supprime);
         return this;
     }
 
@@ -120,12 +120,12 @@ public class Produit {
             return false;
         }
         Produit produit = (Produit) o;
-        return Objects.equals(id, produit.id) && Objects.equals(designation, produit.designation) && prix == produit.prix && Objects.equals(estSupprime, produit.estSupprime) && Objects.equals(categorie, produit.categorie);
+        return Objects.equals(id, produit.id) && Objects.equals(designation, produit.designation) && prix == produit.prix && Objects.equals(est_supprime, produit.est_supprime) && Objects.equals(categorie, produit.categorie);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, designation, prix, estSupprime, categorie);
+        return Objects.hash(id, designation, prix, est_supprime, categorie);
     }
 
     @Override
@@ -134,11 +134,11 @@ public class Produit {
             " id='" + getId() + "'" +
             ", designation='" + getDesignation() + "'" +
             ", prix='" + getPrix() + "'" +
-            ", estSupprime='" + isEstSupprime() + "'" +
+            ", est_supprime='" + isEst_supprime() + "'" +
             ", categorie='" + getCategorie() + "'" +
             "}";
     }
-    
+
 
     // #endregion
 }

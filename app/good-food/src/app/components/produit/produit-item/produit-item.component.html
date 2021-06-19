@@ -1,4 +1,4 @@
-<div *ngIf="produit && produit.est_supprime != true" class="card">
+<div *ngIf="produit && produit.est_supprime == false" class="card">
     <img src="https://i.pinimg.com/originals/13/82/41/138241097206b1f2b35132f9a09e6d0a.jpg" class="card-img-top" alt="...">
     <div class="card-body">
         <h5 class="card-title">{{ produit.designation }}</h5>

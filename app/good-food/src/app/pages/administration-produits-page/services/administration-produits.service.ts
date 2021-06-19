@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { RESS_PRODUITS } from 'src/app/shared/constants/ressources.contants';
 import { Produit } from 'src/app/shared/models/produit/produit';
-
-const headers = new HttpHeaders().set("Content-Type", "application/json");
 
 @Injectable({
   providedIn: 'root'

@@ -63,12 +63,11 @@ public class ProduitResource {
     public CollectionModel<ProduitDTO> all() {
         List<Produit> produits = this.produitService.all();
         List<ProduitDTO> produitsDto = this.produitMapper.toDtos(produits);
-
         return CollectionModel.of(produitsDto, linkTo(methodOn(ProduitResource.class).all()).withSelfRel());
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
-        this.produitService.delete(id);
+        this.produitService.delete(id);       
     }
 }

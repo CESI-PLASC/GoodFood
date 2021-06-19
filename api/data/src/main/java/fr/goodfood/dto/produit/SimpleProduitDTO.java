@@ -7,15 +7,14 @@ public class SimpleProduitDTO {
     private Long id;
     private String designation;
     private float prix;
-    private boolean est_supprime;
+    private Boolean est_supprime;
 
     // #region Générations
-
 
     public SimpleProduitDTO() {
     }
 
-    public SimpleProduitDTO(Long id, String designation, float prix, boolean est_supprime) {
+    public SimpleProduitDTO(Long id, String designation, float prix, Boolean est_supprime) {
         this.id = id;
         this.designation = designation;
         this.prix = prix;
@@ -46,15 +45,15 @@ public class SimpleProduitDTO {
         this.prix = prix;
     }
 
-    public boolean isEst_supprime() {
+    public Boolean isEst_supprime() {
         return this.est_supprime;
     }
 
-    public boolean getEst_supprime() {
+    public Boolean getEst_supprime() {
         return this.est_supprime;
     }
 
-    public void setEst_supprime(boolean est_supprime) {
+    public void setEst_supprime(Boolean est_supprime) {
         this.est_supprime = est_supprime;
     }
 
@@ -73,7 +72,7 @@ public class SimpleProduitDTO {
         return this;
     }
 
-    public SimpleProduitDTO est_supprime(boolean est_supprime) {
+    public SimpleProduitDTO est_supprime(Boolean est_supprime) {
         setEst_supprime(est_supprime);
         return this;
     }
@@ -86,7 +85,7 @@ public class SimpleProduitDTO {
             return false;
         }
         SimpleProduitDTO simpleProduitDTO = (SimpleProduitDTO) o;
-        return Objects.equals(id, simpleProduitDTO.id) && Objects.equals(designation, simpleProduitDTO.designation) && prix == simpleProduitDTO.prix && est_supprime == simpleProduitDTO.est_supprime;
+        return Objects.equals(id, simpleProduitDTO.id) && Objects.equals(designation, simpleProduitDTO.designation) && prix == simpleProduitDTO.prix && Objects.equals(est_supprime, simpleProduitDTO.est_supprime);
     }
 
     @Override
@@ -103,7 +102,7 @@ public class SimpleProduitDTO {
             ", est_supprime='" + isEst_supprime() + "'" +
             "}";
     }
-
+   
 
     // #endregion
 }

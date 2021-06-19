@@ -39,7 +39,7 @@ public class ProduitService {
 
     public void delete(Long id) {
         Produit produit = this.produitRepository.findById(id).orElseThrow(() -> new NotFoundException(id.toString()));
-        produit.setEstSupprime(true);
+        produit.setEst_supprime(true);
         this.produitRepository.save(produit);
     }
 }
