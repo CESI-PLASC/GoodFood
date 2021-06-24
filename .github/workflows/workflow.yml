@@ -190,32 +190,32 @@ jobs:
       - name: Cache SonarQube packages
         uses: actions/cache@v1
         with:
-          path: ~\sonar\cache
+          path: ~api\auth\sonar\cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
       - name: Cache SonarQube scanner
         id: cache-sonar-scanner
         uses: actions/cache@v1
         with:
-          path: .\.sonar\scanner
+          path: .\api\auth\.sonar\scanner
           key: ${{ runner.os }}-sonar-scanner
           restore-keys: ${{ runner.os }}-sonar-scanner
       - name: Install SonarQube scanner
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
         shell: powershell
         run: |
-          New-Item -Path .\.sonar\scanner -ItemType Directory
-          dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
+          New-Item -Path .\api\auth\.sonar\scanner -ItemType Directory
+          dotnet tool update dotnet-sonarscanner --tool-path .\api\auth\.sonar\scanner
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_CSHARP_TOKEN: ${{ secrets.SONAR_CSHARP_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"goodfood-csharp" /o:"cesi-plasc" /d:sonar.login="${{ secrets.SONAR_CSHARP_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+          .\api\auth\.sonar\scanner\dotnet-sonarscanner begin /k:"goodfood-csharp" /o:"cesi-plasc" /d:sonar.login="${{ secrets.SONAR_CSHARP_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
           cd .\api\auth
           dotnet build
-          ..\..\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_CSHARP_TOKEN }}"
+          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_CSHARP_TOKEN }}"
 
   test_angular:
     runs-on: ubuntu-18.04
