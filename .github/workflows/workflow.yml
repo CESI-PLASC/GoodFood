@@ -185,7 +185,7 @@ jobs:
         run: |
           cd api/auth
           dotnet build
-          dotnet test
+          dotnet test ./tests/auth.UnitTests/auth.UnitTests.csproj
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
         with:
