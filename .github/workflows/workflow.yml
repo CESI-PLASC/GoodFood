@@ -172,7 +172,6 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_JAVA_TOKEN }}
         run : cd ./api/data && mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
 
-
   test_dotnet:
     runs-on: windows-latest
     name: Tests C#
