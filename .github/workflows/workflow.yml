@@ -205,10 +205,9 @@ jobs:
         shell: powershell
         run: |
           New-Item -Path .\api\auth\.sonar\scanner -ItemType Directory
-          mkdir .\api\auth\.sonarqube
           dotnet tool update dotnet-sonarscanner --tool-path .\api\auth\.sonar\scanner
-          dir
           dir .\api\auth
+          dir .\api\.sonar\scanner
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
