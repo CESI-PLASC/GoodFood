@@ -181,6 +181,11 @@ jobs:
         with:
           # Disabling shallow clone is recommended for improving relevancy of reporting
           fetch-depth: 0
+      - name: Build with dotnet
+        run: |
+          cd api/auth
+          dotnet build
+          dotnet test
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
         with:
