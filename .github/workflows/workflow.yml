@@ -188,6 +188,7 @@ jobs:
           args: >
             -Dsonar.organization=cesi-plasc
             -Dsonar.projectKey=goodfood-csharp
+            -Dsonar.tests=tests/
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_CSHARP_TOKEN }}
