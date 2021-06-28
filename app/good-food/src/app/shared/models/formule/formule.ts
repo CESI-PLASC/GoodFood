@@ -12,6 +12,7 @@ export interface IFormule {
   designation?: string;
   prix?: number;
   id?: number;
+  est_supprime?: boolean;
   structure?: Requiert[];
 }
 
@@ -19,6 +20,7 @@ export class Formule implements IFormule {
   id?: number;
   prix?: number;
   designation?: string;
+  est_supprime?: boolean;
   structure?: Requiert[];
   constructor(opt?: FormuleArgs) {
     Object.assign(this, _.omit(opt, ['structure']));

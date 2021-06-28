@@ -5,7 +5,7 @@ import { PanierService } from 'src/app/pages/catalogue-page/services/panier.serv
 import { AdministrationProduitsService } from 'src/app/pages/administration-produits-page/services/administration-produits.service';
 import { Icons } from '../../../shared/constants/icons.constant';
 import { IProduit } from '../../../shared/models/produit/produit';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 registerLocaleData(localeFr);
 
@@ -19,7 +19,11 @@ export class ProduitItemComponent implements OnInit{
   @Input() public produit: IProduit;
   public isAdministration = false;
 
-  constructor(public panierService: PanierService, private readonly activatedRoute: ActivatedRoute, public adminProduitService: AdministrationProduitsService) {}
+  constructor(public panierService: PanierService,
+    private readonly activatedRoute: ActivatedRoute,
+    public adminProduitService: AdministrationProduitsService,
+    public router: Router) {}
+
   ngOnInit(): void {
     this.isAdministration = this.activatedRoute.snapshot?.data?.isAdministration;
   }
@@ -28,9 +32,14 @@ export class ProduitItemComponent implements OnInit{
     this.panierService.addProduit(item);
   }
 
-  public supprimerProduit(produit: IProduit): void {
-    if (confirm('Voulez-vous retirer ce produit de votre catalogue ?')) {
+  public changerStatut(produit: IProduit): void {
+    if (confirm('Voulez-vous changer le statut de ce produit ?')) {
       this.adminProduitService.deleteProduit(produit.id);
+      let currentUrl = this.router.url;
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+          this.router.navigate([currentUrl]);
+          console.log(currentUrl);
+      });
     }
   }
 

@@ -26,6 +26,9 @@ public class Formule {
     @Column
     private Float prix;
 
+    @Column(name = "est_supprime", nullable = false)
+    private Boolean est_supprime = false;
+
     @OneToMany(mappedBy = "formule")
     private List<Requiert> structure;
 
@@ -43,10 +46,11 @@ public class Formule {
     public Formule() {
     }
 
-    public Formule(Long id, String designation, Float prix, List<Requiert> structure, List<Franchise> franchises) {
+    public Formule(Long id, String designation, Float prix, Boolean est_supprime, List<Requiert> structure, List<Franchise> franchises) {
         this.id = id;
         this.designation = designation;
         this.prix = prix;
+        this.est_supprime = est_supprime;
         this.structure = structure;
         this.franchises = franchises;
     }
@@ -73,6 +77,18 @@ public class Formule {
 
     public void setPrix(Float prix) {
         this.prix = prix;
+    }
+
+    public Boolean isEst_supprime() {
+        return this.est_supprime;
+    }
+
+    public Boolean getEst_supprime() {
+        return this.est_supprime;
+    }
+
+    public void setEst_supprime(Boolean est_supprime) {
+        this.est_supprime = est_supprime;
     }
 
     public List<Requiert> getStructure() {
@@ -106,6 +122,11 @@ public class Formule {
         return this;
     }
 
+    public Formule est_supprime(Boolean est_supprime) {
+        setEst_supprime(est_supprime);
+        return this;
+    }
+
     public Formule structure(List<Requiert> structure) {
         setStructure(structure);
         return this;
@@ -124,12 +145,12 @@ public class Formule {
             return false;
         }
         Formule formule = (Formule) o;
-        return Objects.equals(id, formule.id) && Objects.equals(designation, formule.designation) && Objects.equals(prix, formule.prix) && Objects.equals(structure, formule.structure) && Objects.equals(franchises, formule.franchises);
+        return Objects.equals(id, formule.id) && Objects.equals(designation, formule.designation) && Objects.equals(prix, formule.prix) && Objects.equals(est_supprime, formule.est_supprime) && Objects.equals(structure, formule.structure) && Objects.equals(franchises, formule.franchises);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, designation, prix, structure, franchises);
+        return Objects.hash(id, designation, prix, est_supprime, structure, franchises);
     }
 
     @Override
@@ -138,12 +159,11 @@ public class Formule {
             " id='" + getId() + "'" +
             ", designation='" + getDesignation() + "'" +
             ", prix='" + getPrix() + "'" +
+            ", est_supprime='" + isEst_supprime() + "'" +
             ", structure='" + getStructure() + "'" +
             ", franchises='" + getFranchises() + "'" +
             "}";
     }
-   
-
 
     // #endregion
 }

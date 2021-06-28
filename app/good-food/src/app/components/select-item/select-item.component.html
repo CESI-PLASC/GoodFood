@@ -3,6 +3,8 @@
         {{ selectLabel }}
     </button>
     <div ngbDropdownMenu aria-labelledby="dropdownManual">
-        <button ngbDropdownItem *ngFor="let formule of formules" (click)="getItem(formule)">{{ formule.designation }} - {{ formule.prix | currency: 'EUR':'symbol':'.2-2':'FR' }}</button>
+        <ng-container *ngFor="let formule of formules">
+            <button *ngIf="!formule.est_supprime" ngbDropdownItem (click)="getItem(formule)">{{ formule.designation }} - {{ formule.prix | currency: 'EUR':'symbol':'.2-2':'FR' }}</button>
+        </ng-container>
     </div>
 </div>

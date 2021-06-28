@@ -11,9 +11,9 @@ insert into goodfood.statut (id, designation) values
     (4, "Délivré")
 ;
 
-insert into goodfood.formule (id, designation, prix) values
-	(1, "Petit creux", 14.99),
-    (2, "Gourmande", 24.99)
+insert into goodfood.formule (id, designation, prix, est_supprime) values
+	(1, "Petit creux", 14.99, 0),
+    (2, "Gourmande", 24.99, 0)
 ;
 
 insert into goodfood.adresse (id, pays, code_postal, rue, ville) values

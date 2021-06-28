@@ -11,17 +11,20 @@ public class FormuleDTO {
     private String designation;
     private Float prix;
     private List<RequiertDTO> structure;
+    private Boolean est_supprime;
 
     // #region Générations
+
 
     public FormuleDTO() {
     }
 
-    public FormuleDTO(Long id, String designation, Float prix, List<RequiertDTO> structure) {
+    public FormuleDTO(Long id, String designation, Float prix, List<RequiertDTO> structure, Boolean est_supprime) {
         this.id = id;
         this.designation = designation;
         this.prix = prix;
         this.structure = structure;
+        this.est_supprime = est_supprime;
     }
 
     public Long getId() {
@@ -56,6 +59,18 @@ public class FormuleDTO {
         this.structure = structure;
     }
 
+    public Boolean isEst_supprime() {
+        return this.est_supprime;
+    }
+
+    public Boolean getEst_supprime() {
+        return this.est_supprime;
+    }
+
+    public void setEst_supprime(Boolean est_supprime) {
+        this.est_supprime = est_supprime;
+    }
+
     public FormuleDTO id(Long id) {
         setId(id);
         return this;
@@ -76,6 +91,11 @@ public class FormuleDTO {
         return this;
     }
 
+    public FormuleDTO est_supprime(Boolean est_supprime) {
+        setEst_supprime(est_supprime);
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -84,20 +104,24 @@ public class FormuleDTO {
             return false;
         }
         FormuleDTO formuleDTO = (FormuleDTO) o;
-        return Objects.equals(id, formuleDTO.id) && Objects.equals(designation, formuleDTO.designation)
-                && Objects.equals(prix, formuleDTO.prix) && Objects.equals(structure, formuleDTO.structure);
+        return Objects.equals(id, formuleDTO.id) && Objects.equals(designation, formuleDTO.designation) && Objects.equals(prix, formuleDTO.prix) && Objects.equals(structure, formuleDTO.structure) && Objects.equals(est_supprime, formuleDTO.est_supprime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, designation, prix, structure);
+        return Objects.hash(id, designation, prix, structure, est_supprime);
     }
 
     @Override
     public String toString() {
-        return "{" + " id='" + getId() + "'" + ", designation='" + getDesignation() + "'" + ", prix='" + getPrix() + "'"
-                + ", structure='" + getStructure() + "'" + "}";
+        return "{" +
+            " id='" + getId() + "'" +
+            ", designation='" + getDesignation() + "'" +
+            ", prix='" + getPrix() + "'" +
+            ", structure='" + getStructure() + "'" +
+            ", est_supprime='" + isEst_supprime() + "'" +
+            "}";
     }
-
+    
     // #endregion
 }

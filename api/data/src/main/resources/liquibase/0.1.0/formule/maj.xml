@@ -10,6 +10,10 @@
             </column>
             <column name="designation" type="varchar(45)" />
             <column name="prix" type="decimal(10, 2)" />
+            <column
+                name="est_supprime"
+                type="boolean"
+                defaultValue="false" /> 
         </createTable>
     </changeSet>
 

@@ -2,10 +2,20 @@
 <br>
 
 <div *ngFor="let item of formules" class="col-3">
-    <div class="card mb-4">
+    <div class="card mb-4" [ngClass]="{'estSuppr': item.est_supprime}">
         <div class="card-body">
             <h5 class="card-title">{{ item.designation }}</h5>
             <p class="card-subtitle text-right">{{ item.prix | currency: 'EUR':'symbol':'.2-2':'FR' }}</p>
+            <div class="btn-group float-right mt-3" *ngIf="!item.est_supprime">
+                <button class="btn btn-sm btn-danger" (click)="changerStatut(item.id)">
+              Supprimer
+            </button>
+            </div>
+            <div class="btn-group float-right mt-3" *ngIf="item.est_supprime">
+                <button class="btn btn-sm btn-primary" (click)="changerStatut(item.id)">
+              Ajouter
+            </button>
+            </div>
         </div>
     </div>
 </div>

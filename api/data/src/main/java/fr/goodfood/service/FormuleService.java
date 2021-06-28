@@ -36,8 +36,10 @@ public class FormuleService {
         return this.formuleRepository.findAll();
     }
 
-    public void delete(Long id){
-        this.formuleRepository.deleteById(id);
+    public void delete(Long id) {
+        Formule formule = this.formuleRepository.findById(id).orElseThrow(() -> new NotFoundException(id.toString()));
+        formule.setEst_supprime(!formule.getEst_supprime());
+        this.formuleRepository.save(formule);
     }
 
     public List<Formule> getAllByFranchise(Long idFranchise){
