@@ -2,6 +2,10 @@ package fr.goodfood.service;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
 import fr.goodfood.repository.CommandeRepository;
 import fr.goodfood.ressource.error.NotFoundException;
 
@@ -11,13 +15,19 @@ import org.springframework.stereotype.Service;
 import fr.goodfood.entity.Commande;
 
 @Service
+@Transactional
 public class CommandeService {
 
     @Autowired
     private CommandeRepository commandeRepository;
 
-    public Commande create(Commande newCommande) {
-        return this.commandeRepository.save(newCommande);
+    @PersistenceContext
+    private EntityManager em;
+
+    public Commande create(Commande commande) {
+        commande = this.commandeRepository.save(commande);
+        this.em.refresh(commande);
+        return commande;
     }
 
     public Commande update(Commande commande) {

@@ -1,29 +1,31 @@
-import { Component, OnInit } from '@angular/core';
-import { CatalogueService } from 'src/app/pages/catalogue-page/services/catalogue.service';
-import { IFormule, IFormuleWithProducts } from 'src/app/shared/models/formule/formule';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Commande } from 'src/app/shared/models/commande/commande';
+import { Contenu } from 'src/app/shared/models/contenu/contenu';
+import { Formule } from 'src/app/shared/models/formule/formule';
+import { Produit } from 'src/app/shared/models/produit/produit';
+import { FormuleService } from 'src/app/shared/services/formule/formule.service';
 
 @Component({
   selector: 'gf-panier-ajout-produit',
   templateUrl: './panier-ajout-produit.component.html',
-  styleUrls: ['./panier-ajout-produit.component.scss']
+  styleUrls: ['./panier-ajout-produit.component.scss'],
 })
 export class PanierAjoutProduitComponent implements OnInit {
+  // Contient la commande actuelle
+  @Input() commande?: Commande;
 
-  public formules: IFormule[] = [];
-  prixTotal = 0.00;
+  // Contient toutes les formules du franchisés
+  public formules: Formule[] = [];
 
-  constructor(private readonly catalogueService: CatalogueService) { }
+  // Gestion de la formule sélectionné pour l'ajout de produit
+  @Output() onFormuleSelectionnee = new EventEmitter<Contenu>();
+
+  constructor(private readonly _formuleService: FormuleService) {}
 
   ngOnInit(): void {
-    this.catalogueService.getFormules().subscribe(res => {
-      this.formules = res;
-    });
-  }
-
-  actualiseTotal(formule: IFormuleWithProducts[]): void{
-    this.prixTotal = 0.00;
-    formule.forEach(element => {
-      this.prixTotal += element.prix;
+    // TODO Doit récupérer seulement les formules du franchisé de la commande
+    this._formuleService.formules().subscribe((formules) => {
+      this.formules = formules;
     });
   }
 }

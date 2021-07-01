@@ -5,10 +5,11 @@ insert into goodfood.categorie (id, designation) values
 ;
 
 insert into goodfood.statut (id, designation) values
-	(1, "En attente"),
-    (2, "En cours"),
-    (3, "En livraison"),
-    (4, "Délivré")
+    (1, "En création"),
+	(2, "En attente"),
+    (3, "En cours"),
+    (4, "En livraison"),
+    (5, "Délivré")
 ;
 
 insert into goodfood.formule (id, designation, prix, est_supprime) values

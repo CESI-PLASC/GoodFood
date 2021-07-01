@@ -6,8 +6,9 @@ import { Commande } from 'src/app/shared/models/commande/commande';
 import MethodePaiement, {
   MethodePaiementCreerSansUtilisateur,
 } from 'src/app/shared/models/methode-paiement/methode-paiement';
+import { CommandeService } from 'src/app/shared/services/commande/commande.service';
 import { environment } from 'src/environments/environment';
-import { CommandeService } from './services/commande.service';
+import { ValiderPanierService } from './services/valider-panier.service';
 
 @Component({
   selector: 'gf-valider-panier-page',
@@ -57,7 +58,7 @@ export class ValiderPanierPageComponent implements OnInit {
 
     // Création d'une nouvelle méthode de paiement
     else {
-      this.commandeService
+      this.validerPanierService
         .creerMethodePaiementUtilisateur({
           ...methode,
           utilisateurId: this.commande.utilisateur.id,
@@ -92,7 +93,8 @@ export class ValiderPanierPageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private readonly commandeService: CommandeService,
+    private validerPanierService: ValiderPanierService,
+    private commandeService: CommandeService,
     private router: Router
   ) {
     this.methodePaiement = undefined;
@@ -108,7 +110,7 @@ export class ValiderPanierPageComponent implements OnInit {
       this.commandeService.getOne(params.idCommande).subscribe((commande) => {
         this.commande = commande;
 
-        this.commandeService
+        this.validerPanierService
           .methodesPaiementUtilisateur(this.commande.utilisateur.id)
           .subscribe((methodes) => {
             this.methodesPaiement = methodes;
@@ -120,7 +122,7 @@ export class ValiderPanierPageComponent implements OnInit {
   public validerCommande(): void {
     if (_.isEmpty(this.erreurs)) {
       this.chargement = 'paiement';
-      this.commandeService
+      this.validerPanierService
         .payerCommande({
           idCommande: this.commande.id,
           idPaiementMethode: this.methodePaiement.id,

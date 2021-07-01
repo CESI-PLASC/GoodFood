@@ -13,17 +13,20 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Formule {
 
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(name = "designation")
     private String designation;
 
-    @Column
+    @Column(name = "prix")
     private Float prix;
 
     @Column(name = "est_supprime", nullable = false)
@@ -32,26 +35,27 @@ public class Formule {
     @OneToMany(mappedBy = "formule")
     private List<Requiert> structure;
 
+    @JsonBackReference
+    @OneToMany(mappedBy = "formule")
+    private List<Contenu> contenu;
+
     @ManyToMany(targetEntity = Franchise.class)
-    @JoinTable(
-            name = "propose",
-            joinColumns = @JoinColumn(name = "formule_id"),
-            inverseJoinColumns = @JoinColumn(name = "franchise_id")
-    )
+    @JoinTable(name = "propose", joinColumns = @JoinColumn(name = "formule_id"), inverseJoinColumns = @JoinColumn(name = "franchise_id"))
     private List<Franchise> franchises;
 
-    //#region Générations
-
+    // #region Générations
 
     public Formule() {
     }
 
-    public Formule(Long id, String designation, Float prix, Boolean est_supprime, List<Requiert> structure, List<Franchise> franchises) {
+    public Formule(Long id, String designation, Float prix, Boolean est_supprime, List<Requiert> structure,
+            List<Contenu> contenu, List<Franchise> franchises) {
         this.id = id;
         this.designation = designation;
         this.prix = prix;
         this.est_supprime = est_supprime;
         this.structure = structure;
+        this.contenu = contenu;
         this.franchises = franchises;
     }
 
@@ -99,6 +103,14 @@ public class Formule {
         this.structure = structure;
     }
 
+    public List<Contenu> getContenu() {
+        return this.contenu;
+    }
+
+    public void setContenu(List<Contenu> contenu) {
+        this.contenu = contenu;
+    }
+
     public List<Franchise> getFranchises() {
         return this.franchises;
     }
@@ -132,6 +144,11 @@ public class Formule {
         return this;
     }
 
+    public Formule contenu(List<Contenu> contenu) {
+        setContenu(contenu);
+        return this;
+    }
+
     public Formule franchises(List<Franchise> franchises) {
         setFranchises(franchises);
         return this;
@@ -145,24 +162,22 @@ public class Formule {
             return false;
         }
         Formule formule = (Formule) o;
-        return Objects.equals(id, formule.id) && Objects.equals(designation, formule.designation) && Objects.equals(prix, formule.prix) && Objects.equals(est_supprime, formule.est_supprime) && Objects.equals(structure, formule.structure) && Objects.equals(franchises, formule.franchises);
+        return Objects.equals(id, formule.id) && Objects.equals(designation, formule.designation)
+                && Objects.equals(prix, formule.prix) && Objects.equals(est_supprime, formule.est_supprime)
+                && Objects.equals(structure, formule.structure) && Objects.equals(contenu, formule.contenu)
+                && Objects.equals(franchises, formule.franchises);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, designation, prix, est_supprime, structure, franchises);
+        return Objects.hash(id, designation, prix, est_supprime, structure, contenu, franchises);
     }
 
     @Override
     public String toString() {
-        return "{" +
-            " id='" + getId() + "'" +
-            ", designation='" + getDesignation() + "'" +
-            ", prix='" + getPrix() + "'" +
-            ", est_supprime='" + isEst_supprime() + "'" +
-            ", structure='" + getStructure() + "'" +
-            ", franchises='" + getFranchises() + "'" +
-            "}";
+        return "{" + " id='" + getId() + "'" + ", designation='" + getDesignation() + "'" + ", prix='" + getPrix() + "'"
+                + ", est_supprime='" + isEst_supprime() + "'" + ", structure='" + getStructure() + "'" + ", contenu='"
+                + getContenu() + "'" + ", franchises='" + getFranchises() + "'" + "}";
     }
 
     // #endregion

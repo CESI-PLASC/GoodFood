@@ -13,8 +13,8 @@
           {{franchise.email}}
         </p>
         <div *ngIf="actions !== false">
-          <button class="btn btn-secondary" [routerLink]="[franchise.id, 'catalogue']" >Livraison</button>
-          <button class="btn btn-secondary" [routerLink]="[franchise.id, 'catalogue']" >À emporter</button>
+          <button class="btn btn-secondary" (click)="creerCommande('livraison')">Livraison</button>
+          <button class=" btn btn-secondary" (click)="creerCommande('emporter')">À emporter</button>
         </div>
       </div>
     </div>

@@ -1,30 +1,36 @@
-<div *ngIf="produit && !isAdministration && !produit.est_supprime" class="card">
-    <img src="https://i.pinimg.com/originals/13/82/41/138241097206b1f2b35132f9a09e6d0a.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">{{ produit.designation }}</h5>
-        <p class="card-subtitle text-right">{{ produit.prix | currency: 'EUR':'symbol':'.2-2':'FR' }}</p>
-        <div class="btn-group float-right mt-3">
-            <button class="btn btn-sm btn-success" (click)="ajouterProduitPanier(produit)">
-                <fa-icon [icon]="icons.add"></fa-icon>
-            </button>
-        </div>
-    </div>
-</div>
-
 <div *ngIf="produit && isAdministration" class="card" [ngClass]="{'estSuppr': produit.est_supprime}">
-    <img src="https://i.pinimg.com/originals/13/82/41/138241097206b1f2b35132f9a09e6d0a.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">{{ produit.designation }}</h5>
-        <p class="card-subtitle text-right">{{ produit.prix | currency: 'EUR':'symbol':'.2-2':'FR' }}</p>
-        <div class="btn-group float-right mt-3" *ngIf="!produit.est_supprime">
-            <button class="btn btn-sm btn-danger" (click)="changerStatut(produit)">
-            Supprimer
-          </button>
-        </div>
-        <div class="btn-group float-right mt-3" *ngIf="produit.est_supprime">
-            <button class="btn btn-sm btn-primary" (click)="changerStatut(produit)">
-            Ajouter
-          </button>
-        </div>
+  <img src="https://i.pinimg.com/originals/13/82/41/138241097206b1f2b35132f9a09e6d0a.jpg" class="card-img-top"
+    alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ produit.designation }}</h5>
+    <p class="card-subtitle text-right">{{ produit.prix | currency: 'EUR':'symbol':'.2-2':'FR' }}</p>
+    <div class="btn-group float-right mt-3" *ngIf="!produit.est_supprime">
+      <button class="btn btn-sm btn-danger" (click)="changerStatut(produit)">
+        Supprimer
+      </button>
     </div>
+    <div class="btn-group float-right mt-3" *ngIf="produit.est_supprime">
+      <button class="btn btn-sm btn-primary" (click)="changerStatut(produit)">
+        Ajouter
+      </button>
+    </div>
+  </div>
+</div>
+<div *ngIf="produit && !isAdministration && !produit.est_supprime" class="card">
+  <img src="https://i.pinimg.com/originals/13/82/41/138241097206b1f2b35132f9a09e6d0a.jpg" class="card-img-top"
+    alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ produit.designation }}</h5>
+    <p class="card-subtitle text-right">{{ produit.prix | currency: 'EUR':'symbol':'.2-2':'FR' }}</p>
+    <div class="btn-group float-right mt-3" *ngIf="!isAdministration">
+      <button class="btn btn-sm btn-success" (click)="produitSelected.emit(produit)">
+        <fa-icon [icon]="icons.add"></fa-icon>
+      </button>
+    </div>
+    <div class="btn-group float-right mt-3" *ngIf="false">
+      <button class="btn btn-sm btn-success">
+        Modifier
+      </button>
+    </div>
+  </div>
 </div>

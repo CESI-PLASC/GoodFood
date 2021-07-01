@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace auth.Migrations
+namespace GoodFood.Auth.Migrations
 {
     public partial class Initial : Migration
     {

@@ -8,6 +8,13 @@ import Statut, { IStatut } from '../statut/statut';
 import Utilisateur, { IUtilisateur } from '../utilisateur/utilisateur';
 import { Adresse, IAdresse } from '../adresse/adresse';
 
+export type CommandeCreer = {
+  franchiseId: number;
+  utilisateurId: number;
+  statutId: number;
+  dateCreation: string;
+};
+
 export type CommandeArgs = Pick<
   ICommande,
   'id' | 'formules' | 'statut' | 'franchise' | 'utilisateur'

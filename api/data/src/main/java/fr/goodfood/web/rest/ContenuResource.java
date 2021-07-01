@@ -52,7 +52,7 @@ public class ContenuResource {
 
     @PostMapping
     public EntityModel<ContenuDTO> create(@RequestBody Contenu contenuJson) {
-        Contenu contenu = this.contenuService.create(contenuJson);
+        Contenu contenu = this.contenuService.save(contenuJson);
         ContenuDTO contenuDto = this.contenuMapper.toDto(contenu);
 
         return EntityModel.of(contenuDto, linkTo(methodOn(ContenuResource.class).create(contenuJson)).withSelfRel());
@@ -60,7 +60,7 @@ public class ContenuResource {
 
     @PutMapping("/{id}")
     public EntityModel<ContenuDTO> update(@PathVariable Long id, @RequestBody Contenu contenuJson) {
-        Contenu contenu = this.contenuService.update(contenuJson);
+        Contenu contenu = this.contenuService.save(contenuJson);
         ContenuDTO contenuDto = this.contenuMapper.toDto(contenu);
 
         return EntityModel.of(contenuDto,

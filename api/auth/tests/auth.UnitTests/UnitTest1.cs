@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace auth.UnitTests
+namespace GoodFood.Auth.UnitTests
 {
     public class UnitTest1
     {
