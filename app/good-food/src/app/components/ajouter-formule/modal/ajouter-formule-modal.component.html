@@ -1,0 +1,13 @@
+<div class="modal-header">
+    <div class="w-100 d-flex gf-justify-evenly align-items-center">
+        <h3 class="modal-title">Créez une nouvelle formule</h3>
+    </div>
+    <button type="button" class="close" (click)="close()">
+        <fa-icon [icon]="icons.cancel"></fa-icon>
+    </button>
+</div>
+<div class="modal-body row pb-5">
+    <div class="col-lg-5">
+        <gf-formule-form (submitFormule)="close($event)"></gf-formule-form>
+    </div>
+</div>
