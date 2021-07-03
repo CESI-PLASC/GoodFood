@@ -13,6 +13,9 @@
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" style="transition: .25s" [routerLink]="['/franchise']" (click)="isMenuCollapsed = true">Les franchisés</a>
       </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" style="transition: .25s" [routerLink]="['/administration/1']" (click)="isMenuCollapsed = true">Administration</a>
+      </li>
     </ul>
   </div>
   <div *ngIf="user" class="float-right">
