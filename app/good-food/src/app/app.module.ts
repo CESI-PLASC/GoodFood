@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PagesModule } from './pages/pages.module';
 import { NavbarModule } from './components/navbar/navbar.module';
+import { FooterModule } from './components/footer/footer.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SecurityModule } from './security/security.module';
 import { authInterceptorProviders } from './security/interceptors/auth.interceptor';
@@ -24,6 +25,7 @@ import { authInterceptorProviders } from './security/interceptors/auth.intercept
         SecurityModule,
         PagesModule,
         NavbarModule,
+        FooterModule,
     ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

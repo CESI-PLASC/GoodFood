@@ -9,6 +9,8 @@ import { AdministrationPageComponent } from './administration-page/administratio
 import { AdministrationProduitsPageComponent } from './administration-produits-page/administration-produits-page.component';
 import { CommandePageComponent } from './commande-page/commande-page.component';
 import { AdministrationFormulesPageComponent } from './administration-formules-page/administration-formules-page.component';
+import { PolitiqueComponent } from './layouts/politique/politique.component';
+import { ConditionsComponent } from './layouts/conditions/conditions.component';
 
 const routes: Routes = [
   {
@@ -60,6 +62,14 @@ const routes: Routes = [
     data: {
       isAdministration: true,
     },
+  },
+  {
+    path: 'politique',
+    component: PolitiqueComponent,
+  },
+  {
+    path: 'conditions',
+    component: ConditionsComponent,
   },
   {
     path: 'accueil',
