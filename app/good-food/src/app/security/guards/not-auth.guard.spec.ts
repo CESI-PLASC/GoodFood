@@ -1,16 +1,19 @@
-import { TestBed } from '@angular/core/testing';
-
 import { NotAuthGuard } from './not-auth.guard';
+import { createServiceFactory, SpectatorService } from '@ngneat/spectator/jest';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-describe('NotAuthGuard', () => {
-  let guard: NotAuthGuard;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    guard = TestBed.inject(NotAuthGuard);
+describe('NotAuthGuard tests', () => {
+  let spectator: SpectatorService<NotAuthGuard>;
+  const createGuardService = createServiceFactory({
+    service: NotAuthGuard,
+    imports: [
+        RouterTestingModule,
+        HttpClientTestingModule,
+    ]
   });
 
-  it('should be created', () => {
-    expect(guard).toBeTruthy();
-  });
+  beforeEach(() => spectator = createGuardService());
+
+  it('Should create guard', () => expect(spectator.service).toBeDefined());
 });

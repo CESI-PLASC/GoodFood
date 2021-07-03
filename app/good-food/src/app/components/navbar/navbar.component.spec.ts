@@ -4,6 +4,7 @@ import { NavbarComponent } from './navbar.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('Navbar component tests', () => {
   let spectator: Spectator<NavbarComponent>;
@@ -12,8 +13,9 @@ describe('Navbar component tests', () => {
     component: NavbarComponent,
     imports: [
       RouterTestingModule,
-        FontAwesomeTestingModule,
-        NgbCollapseModule,
+      FontAwesomeTestingModule,
+      NgbCollapseModule,
+      HttpClientTestingModule,
     ]
   });
 

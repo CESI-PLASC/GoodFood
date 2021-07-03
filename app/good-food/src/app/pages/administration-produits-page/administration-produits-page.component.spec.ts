@@ -5,6 +5,7 @@ import { AdministrationProduitsComponent } from 'src/app/components/administrati
 import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { CatalogueModule } from '../../components/catalogue/catalogue.module';
 
 describe('Administration produits page tests', () => {
   let spectator: Spectator<AdministrationProduitsPageComponent>;
@@ -14,7 +15,8 @@ describe('Administration produits page tests', () => {
     imports: [
         FontAwesomeTestingModule,
         RouterTestingModule,
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        CatalogueModule,
     ],
     entryComponents: [
       AdministrationProduitsComponent
