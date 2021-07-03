@@ -21,6 +21,6 @@
   </div>
   <div *ngIf="user" class="float-right">
     <span class="text-muted mr-3">Connecté en tant que {{ user.prenom | titlecase }} {{ user.nom | uppercase }}</span>
-    <button class="btn btn-danger" (click)="signout()">Déconnection</button>
+    <button class="btn btn-danger" (click)="signout()">Déconnexion</button>
   </div>
 </nav>
