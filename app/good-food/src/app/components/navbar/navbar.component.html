@@ -19,8 +19,11 @@
       </li>
     </ul>
   </div>
-  <div *ngIf="user" class="float-right">
+  <div *ngIf="user" class="float-right mr-3">
     <span class="text-muted mr-3">Connecté en tant que {{ user.prenom | titlecase }} {{ user.nom | uppercase }}</span>
     <button class="btn btn-danger" (click)="signout()">Déconnexion</button>
+  </div>
+  <div *ngIf="!user" class="float-right mr-3">
+    <button class="btn btn-outline-secondary" [routerLink]="['/signin']">Connexion</button>
   </div>
 </nav>

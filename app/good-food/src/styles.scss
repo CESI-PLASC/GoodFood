@@ -4,3 +4,7 @@
 @import './assets/theme/variables';
 @import '~bootstrap/scss/bootstrap';
 @import './assets/theme/bootswatch';
+
+body {
+  overflow-x: hidden;
+}
