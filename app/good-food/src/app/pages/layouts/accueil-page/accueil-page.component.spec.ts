@@ -3,7 +3,7 @@ import { Spectator } from '@ngneat/spectator';
 import { createComponentFactory } from '@ngneat/spectator/jest';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 
-describe('Accueil component tests', () => {
+describe('Accueil page tests', () => {
   let spectator: Spectator<AccueilPageComponent>;
   let comp: AccueilPageComponent;
   const createComponent = createComponentFactory({

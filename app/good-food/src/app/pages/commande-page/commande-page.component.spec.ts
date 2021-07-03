@@ -1,25 +1,31 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CommandePageComponent } from './commande-page.component';
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
+import { CatalogueModule } from '../../components/catalogue/catalogue.module';
+import { PanierModule } from '../../components/panier/panier.module';
+import { ActivatedRoute } from '@angular/router';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { of } from 'rxjs';
 
-describe('CommandePageComponent', () => {
-  let component: CommandePageComponent;
-  let fixture: ComponentFixture<CommandePageComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ CommandePageComponent ]
-    })
-    .compileComponents();
+describe('Commande page tests', () => {
+  let spectator: Spectator<CommandePageComponent>;
+  const createComponent = createComponentFactory({
+    component: CommandePageComponent,
+    imports: [
+        CatalogueModule,
+        PanierModule,
+        HttpClientTestingModule,
+        RouterTestingModule,
+    ],
+    providers: [{
+      provide: ActivatedRoute,
+      useValue: {
+        params: of({idCommande: null})
+      }
+    }],
   });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CommandePageComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  beforeEach(() => spectator = createComponent());
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  it('Should create component', () => expect(spectator.component).toBeDefined());
 });

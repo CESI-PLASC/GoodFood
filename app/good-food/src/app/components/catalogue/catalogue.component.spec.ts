@@ -9,35 +9,42 @@ import { ProduitListComponent } from '../produit/produit-list/produit-list.compo
 import { ProduitItemComponent } from '../produit/produit-item/produit-item.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { Franchise } from '../../shared/models/franchise/franchise';
+import { ActivatedRoute } from '@angular/router';
 
 describe('Catalogue component tests', () => {
-  let spectator: Spectator<CatalogueComponent>;
-  let comp: CatalogueComponent;
-  const createComponent = createComponentFactory({
-    component: CatalogueComponent,
-    imports: [
-        FontAwesomeTestingModule,
-        NgbCollapseModule,
-        HttpClientTestingModule
-    ],
-    entryComponents: [
-        CatalogueFiltreComponent,
-        SelectBoxComponent,
-        ProduitListComponent,
-        ProduitItemComponent
-    ]
-  });
-
-  beforeEach(() => {
-    spectator = createComponent({
-        props: {
-            franchise: new Franchise({id: 777})
-        }
+    let spectator: Spectator<CatalogueComponent>;
+    let comp: CatalogueComponent;
+    const createComponent = createComponentFactory({
+        component: CatalogueComponent,
+        imports: [
+            FontAwesomeTestingModule,
+            NgbCollapseModule,
+            HttpClientTestingModule
+        ],
+        entryComponents: [
+            CatalogueFiltreComponent,
+            SelectBoxComponent,
+            ProduitListComponent,
+            ProduitItemComponent
+        ],
+        providers: [{
+            provide: ActivatedRoute,
+            useValue: {
+                snapshot: {data: {isAdministration: false}}
+            }
+        }],
     });
-    comp = spectator.component;
-  });
 
-  it('Should create component', () => {
-    expect(comp).toBeDefined();
-  });
+    beforeEach(() => {
+        spectator = createComponent({
+            props: {
+                franchise: new Franchise({id: 777})
+            }
+        });
+        comp = spectator.component;
+    });
+
+    it('Should create component', () => {
+        expect(comp).toBeDefined();
+    });
 });

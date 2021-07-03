@@ -1,16 +1,19 @@
-import { TestBed } from '@angular/core/testing';
-
+import { createServiceFactory, SpectatorService } from '@ngneat/spectator/jest';
 import { ContenuService } from './contenu.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-describe('ContenuService', () => {
-  let service: ContenuService;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(ContenuService);
+describe('ContenuService tests', () => {
+  let spectator: SpectatorService<ContenuService>;
+  const createService = createServiceFactory({
+    service: ContenuService,
+    imports: [
+        HttpClientTestingModule,
+    ]
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  beforeEach(() => spectator = createService());
+
+  it('Should be created', () => {
+    expect(spectator.service).toBeDefined();
   });
 });

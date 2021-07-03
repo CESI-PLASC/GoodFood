@@ -2,6 +2,7 @@ import { Spectator } from '@ngneat/spectator';
 import { createComponentFactory } from '@ngneat/spectator/jest';
 import { InfoFranchiseComponent } from './info-franchise.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('Info franchise component tests', () => {
   let spectator: Spectator<InfoFranchiseComponent>;
@@ -9,7 +10,8 @@ describe('Info franchise component tests', () => {
   const createComponent = createComponentFactory({
     component: InfoFranchiseComponent,
     imports: [
-      RouterTestingModule
+      RouterTestingModule,
+      HttpClientTestingModule,
     ]
   });
 

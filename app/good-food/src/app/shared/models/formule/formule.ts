@@ -22,7 +22,7 @@ export class Formule implements IFormule {
   designation?: string;
   est_supprime?: boolean;
   structure?: Requiert[];
-  constructor(opt?: FormuleArgs) {
+    constructor(opt?: FormuleArgs) {
     Object.assign(this, _.omit(opt, ['structure']));
 
     this.structure =

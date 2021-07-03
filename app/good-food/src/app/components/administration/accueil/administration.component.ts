@@ -17,14 +17,14 @@ export class AdministrationComponent implements OnInit{
   public icons = Icons;
   public franchise: Franchise;
   public categories: ICategorie[] = [];
-  public nbProduits: number = 0;
-  public nbFormule: number = 0;
+  public nbProduits = 0;
+  public nbFormule = 0;
   public formules: IFormule[] = [];
 
   constructor(private readonly franchiseService: FranchiseService,
-    private readonly route: ActivatedRoute,
-    private readonly catalogueService: CatalogueService,
-    private readonly administrationService: AdministrationService) { }
+              private readonly route: ActivatedRoute,
+              private readonly catalogueService: CatalogueService,
+              private readonly administrationService: AdministrationService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {

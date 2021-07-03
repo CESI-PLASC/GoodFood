@@ -7,6 +7,7 @@
     "build": "ng build",
     "test": "ng test",
     "test:ci": "ng test --ci --coverage --detectOpenHandles",
+    "test:watch": "ng test --detectOpenHandles --watch",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },

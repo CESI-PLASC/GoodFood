@@ -39,7 +39,7 @@
 
         </div>
         <div class="col-1" style="border-right: 6px solid green;height: 500px;width: 50px;"></div>
-        <div class="col-5">
+        <div class="col-5" *ngIf="franchise">
             <h3 class="text-center mb-5">{{ franchise.designation }}</h3>
             <p><label class="mx-1 font-weight-bold">ADRESSE :</label><span class="">{{ franchise.adresse }}</span></p>
             <p><label class="mx-1 font-weight-bold">TEL :</label><span class="">{{ franchise.telephoneFixe }}</span></p>

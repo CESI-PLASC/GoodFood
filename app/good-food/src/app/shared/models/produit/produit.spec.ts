@@ -1,7 +1,10 @@
 import { Produit } from './produit';
+import { Categorie } from '../categorie/categorie';
 
 describe('Produit', () => {
-  it('should create an instance', () => {
-    expect(new Produit()).toBeDefined();
+  it('Should create an instance', () => {
+    expect(new Produit({
+      categorie: new Categorie()
+    })).toBeDefined();
   });
 });

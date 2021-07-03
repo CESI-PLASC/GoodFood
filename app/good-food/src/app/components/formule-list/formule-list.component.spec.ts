@@ -4,8 +4,9 @@ import { FormuleListComponent } from './formule-list.component';
 import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 import { SelectItemComponent } from '../select-item/select-item.component';
 import { NgbCollapseModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-describe('Accueil component tests', () => {
+describe('FormuleList component tests', () => {
   let spectator: Spectator<FormuleListComponent>;
   let comp: FormuleListComponent;
   const createComponent = createComponentFactory({
@@ -13,7 +14,8 @@ describe('Accueil component tests', () => {
     imports: [
         FontAwesomeTestingModule,
         NgbDropdownModule,
-        NgbCollapseModule
+        NgbCollapseModule,
+        HttpClientTestingModule,
     ],
     entryComponents: [
         SelectItemComponent
