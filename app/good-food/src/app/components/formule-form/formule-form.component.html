@@ -10,6 +10,6 @@
     <small class="col-12 form-text text-muted">*Champs obligatoires</small>
     <div class="col text-right">
         <button type="button" class="btn btn-secondary mr-2" (click)="cancel()">Annuler</button>
-        <button type="submit" class="btn btn-primary" [disabled]="this.formuleForm.invalid">Valider</button>
+        <button type="submit" class="btn btn-primary" [disabled]="this.formuleForm.invalid" (click)="ajouterFormule()">Valider</button>
     </div>
 </form>

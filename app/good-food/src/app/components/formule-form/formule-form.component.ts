@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Formule, IFormule } from 'src/app/shared/models/formule/formule';
+import { AdministrationFormulesService } from 'src/app/pages/administration-formules-page/services/administration-formules.service';
 
 @Component({
   selector: 'gf-formule-form',
@@ -15,7 +16,7 @@ export class FormuleFormComponent implements OnInit {
   @Output()
   public submitFormule: EventEmitter<IFormule> = new EventEmitter<IFormule>();
 
-  constructor(private readonly fb: FormBuilder) { }
+  constructor(private readonly fb: FormBuilder, private readonly formuleService: AdministrationFormulesService) { }
 
   public formuleForm: FormGroup = this.fb.group({
     designation: this.fb.control('', [Validators.required]),
@@ -40,5 +41,9 @@ export class FormuleFormComponent implements OnInit {
 
   public cancel(): void {
     this.submitFormule.emit();
+  }
+
+  public ajouterFormule():void {
+    this.formuleService.createFormule(this.createFromForm());
   }
 }
