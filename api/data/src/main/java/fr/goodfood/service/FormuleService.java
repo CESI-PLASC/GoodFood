@@ -15,7 +15,6 @@ public class FormuleService {
     private FormuleRepository formuleRepository;
 
     public Formule create(Formule formule){
-        System.out.println(formule.getFranchises());
         return this.formuleRepository.save(formule);
     }
 
