@@ -1,0 +1,15 @@
+<form class="row" (submit)="save()" [formGroup]="formuleForm">
+    <div class="col-sm-12 form-group">
+        <label for="designation">Désignation*</label>
+        <input class="form-control" id="designation" type="text" formControlName="designation" required>
+    </div>
+    <div class="col-sm-4 form-group">
+        <label for="prix">Prix*</label>
+        <input class="form-control" id="prix" type="text" formControlName="prix" required>
+    </div>
+    <small class="col-12 form-text text-muted">*Champs obligatoires</small>
+    <div class="col text-right">
+        <button type="button" class="btn btn-secondary mr-2" (click)="cancel()">Annuler</button>
+        <button type="submit" class="btn btn-primary" [disabled]="this.formuleForm.invalid" (click)="ajouterFormule()">Valider</button>
+    </div>
+</form>

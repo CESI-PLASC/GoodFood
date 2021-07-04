@@ -2,6 +2,7 @@ package fr.goodfood.service.mapper;
 
 import java.util.List;
 
+
 public interface EntityMapper <D, S, E> {
 
     E toEntity(D dto);

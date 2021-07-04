@@ -8,6 +8,7 @@ import { ICategorie } from 'src/app/shared/models/categorie/categorie';
 import { IFormule } from 'src/app/shared/models/formule/formule';
 import { Franchise } from 'src/app/shared/models/franchise/franchise';
 
+
 @Component({
   selector: 'gf-administration',
   templateUrl: './administration.component.html',

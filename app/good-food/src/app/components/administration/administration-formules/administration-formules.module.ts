@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdministrationFormulesComponent } from './administration-formules.component';
 import { CatalogueModule } from '../../catalogue/catalogue.module';
+import { AjouterFormuleModule } from '../../ajouter-formule/ajouter-formule.module';
 
 
 
@@ -9,7 +10,8 @@ import { CatalogueModule } from '../../catalogue/catalogue.module';
   declarations: [AdministrationFormulesComponent],
     imports: [
         CommonModule,
-        CatalogueModule
+        CatalogueModule,
+        AjouterFormuleModule
     ],
   exports: [AdministrationFormulesComponent]
 })
