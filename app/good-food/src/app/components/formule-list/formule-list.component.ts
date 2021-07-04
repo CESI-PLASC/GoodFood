@@ -6,6 +6,7 @@ import { Commande } from 'src/app/shared/models/commande/commande';
 import { Contenu } from 'src/app/shared/models/contenu/contenu';
 import { Contient } from 'src/app/shared/models/contient/contient';
 import { Formule, IFormule } from 'src/app/shared/models/formule/formule';
+import { Franchise } from 'src/app/shared/models/franchise/franchise';
 import { ContenuService } from 'src/app/shared/services/contenu/contenu.service';
 import { ContientService } from 'src/app/shared/services/contient/contient.service';
 
@@ -20,6 +21,9 @@ export class FormuleListComponent {
 
   // Gestion des formules dépliées
   public formulesAffichees: Record<number, boolean> = {};
+
+  //Infos franchisé
+  @Input() public franchise: Franchise;
 
   //#region Gestion de la formule selectionnée pour l'ajout de produit
 

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Commande } from 'src/app/shared/models/commande/commande';
 import { Contenu } from 'src/app/shared/models/contenu/contenu';
 import { Formule } from 'src/app/shared/models/formule/formule';
+import { Franchise } from 'src/app/shared/models/franchise/franchise';
 import { Produit } from 'src/app/shared/models/produit/produit';
 import { FormuleService } from 'src/app/shared/services/formule/formule.service';
 
@@ -13,6 +14,9 @@ import { FormuleService } from 'src/app/shared/services/formule/formule.service'
 export class PanierAjoutProduitComponent implements OnInit {
   // Contient la commande actuelle
   @Input() commande?: Commande;
+
+  // Infos du franchisé
+  @Input() public franchise: Franchise;
 
   // Contient toutes les formules du franchisés
   public formules: Formule[] = [];

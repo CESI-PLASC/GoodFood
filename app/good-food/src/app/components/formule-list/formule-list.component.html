@@ -2,7 +2,7 @@
   <div class="input-group-prepend">
     <span class="input-group-text bg-primary text-light">Formules</span>
   </div>
-  <gf-select-item (itemSelected)="formuleSelectionnee = $event" [formules]="formules"></gf-select-item>
+  <gf-select-item (itemSelected)="formuleSelectionnee = $event" [franchise]="franchise"></gf-select-item>
   <div class="mb-0">
     <button [disabled]="!formuleSelectionnee" class="btn btn-sm btn-success" (click)="ajouterFormule()">
       <fa-icon [icon]="icons.produits.add"></fa-icon>
