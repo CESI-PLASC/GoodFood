@@ -5,8 +5,9 @@ import { AdministrationFormulesComponent } from 'src/app/components/administrati
 import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { AjouterFormuleModule } from '../../components/ajouter-formule/ajouter-formule.module';
 
-describe('Administration produits page tests', () => {
+describe('Administration formules page tests', () => {
   let spectator: Spectator<AdministrationFormulesPageComponent>;
   let comp: AdministrationFormulesPageComponent;
   const createComponent = createComponentFactory({
@@ -14,7 +15,8 @@ describe('Administration produits page tests', () => {
     imports: [
         FontAwesomeTestingModule,
         RouterTestingModule,
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        AjouterFormuleModule,
     ],
     entryComponents: [
       AdministrationFormulesComponent

@@ -5,8 +5,10 @@ import { NgbActiveModal, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormuleFormComponent } from '../formule-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
-describe('Adresse modal tests', () => {
+describe('Formule modal tests', () => {
   let spectator: Spectator<FormuleModalComponent>;
   let comp: FormuleModalComponent;
   const createComponent = createComponentFactory({
@@ -15,7 +17,9 @@ describe('Adresse modal tests', () => {
         NgbModalModule,
         FormsModule,
         ReactiveFormsModule,
-        FontAwesomeTestingModule
+        FontAwesomeTestingModule,
+        HttpClientTestingModule,
+        RouterTestingModule,
     ],
     providers: [
         NgbActiveModal,

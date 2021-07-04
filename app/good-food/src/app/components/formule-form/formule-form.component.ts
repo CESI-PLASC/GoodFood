@@ -38,7 +38,9 @@ export class FormuleFormComponent implements OnInit {
     if (this.formule) {
       this.formuleForm.patchValue(this.formule);
     }
-    this.franchiseService.getFranchise(this.userService.currentUser.franchiseId).subscribe(result => this.franchise = result);    
+    if (this.userService.currentUser) {
+      this.franchiseService.getFranchise(this.userService.currentUser.franchiseId).subscribe(result => this.franchise = result);
+    }
   }
 
   public createFromForm(): FormuleWithFranchises {

@@ -18,11 +18,7 @@ describe('Ajouter formule component tests', () => {
   });
 
   beforeEach(() => {
-    spectator = createComponent({
-      props: {
-        localisations: []
-      }
-    });
+    spectator = createComponent();
     comp = spectator.component;
   });
 

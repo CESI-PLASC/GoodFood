@@ -4,16 +4,21 @@ import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testi
 import { AjouterFormuleModalComponent } from './ajouter-formule-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormuleFormModule } from '../../formule-form/formule-form.module';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('Ajouter formule modal component tests', () => {
   let spectator: Spectator<AjouterFormuleModalComponent>;
-  let comp: AjouterFormuleModalComponent;
   const createComponent = createComponentFactory({
     component: AjouterFormuleModalComponent,
     imports: [
       FontAwesomeTestingModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        FormuleFormModule,
+        HttpClientTestingModule,
+        RouterTestingModule,
     ],
     providers: [
       NgbActiveModal
@@ -22,7 +27,9 @@ describe('Ajouter formule modal component tests', () => {
     ]
   });
 
+  beforeEach(() => spectator = createComponent());
+
   it('Should create component', () => {
-    expect(comp).toBeDefined();
+    expect(spectator.component).toBeDefined();
   });
 });

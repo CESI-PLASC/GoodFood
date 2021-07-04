@@ -6,6 +6,7 @@ import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testi
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CatalogueModule } from '../../components/catalogue/catalogue.module';
+import { AjouterFormuleModule } from '../../components/ajouter-formule/ajouter-formule.module';
 
 describe('Administration produits page tests', () => {
   let spectator: Spectator<AdministrationProduitsPageComponent>;
@@ -17,6 +18,7 @@ describe('Administration produits page tests', () => {
         RouterTestingModule,
         HttpClientTestingModule,
         CatalogueModule,
+        AjouterFormuleModule,
     ],
     entryComponents: [
       AdministrationProduitsComponent
