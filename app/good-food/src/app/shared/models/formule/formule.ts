@@ -1,4 +1,5 @@
 import * as _ from 'lodash';
+import { IFranchise } from '../franchise/franchise';
 import { IProduit } from '../produit/produit';
 import Requiert, { RequiertArgs } from '../requiert/requiert';
 
@@ -32,4 +33,8 @@ export class Formule implements IFormule {
 
 export interface IFormuleWithProducts extends IFormule {
   produits: IProduit[];
+}
+
+export class FormuleWithFranchises extends Formule {
+  franchises: IFranchise[];
 }

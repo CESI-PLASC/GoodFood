@@ -52,6 +52,7 @@ public class FormuleRessource {
 
     @PostMapping
     public EntityModel<FormuleDTO> create(@RequestBody Formule formuleJson) {
+        System.out.println(formuleJson);
         Formule formule = this.formuleService.create(formuleJson);
         FormuleDTO formuleDto = this.formuleMapper.toDto(formule);
 

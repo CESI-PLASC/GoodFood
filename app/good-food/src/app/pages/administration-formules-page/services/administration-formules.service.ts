@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { RESS_FORMULES } from 'src/app/shared/constants/ressources.contants';
-import { Formule, IFormule } from 'src/app/shared/models/formule/formule';
+import { Formule, FormuleWithFranchises, IFormule } from 'src/app/shared/models/formule/formule';
 
 @Injectable({
   providedIn: 'root'
@@ -27,9 +27,9 @@ export class AdministrationFormulesService {
     );
   }
 
-  public createFormule(formule: IFormule): void{
+  public createFormule(formule: FormuleWithFranchises): void{
     console.log(formule);
-    this.http.post<Formule>(`${RESS_FORMULES}`,formule)
+    this.http.post<FormuleWithFranchises>(`${RESS_FORMULES}`,formule)
     .subscribe(
       val => {
           console.log("PUT call successful value returned in body",
