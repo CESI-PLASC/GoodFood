@@ -1,7 +1,7 @@
 <div class="card border-secondary mb-4" style="max-width: 30rem;">
   <div class="card-header">Votre panier</div>
   <div class="card-body">
-    <gf-formule-list [commande]="commande" [formules]="formules"
+    <gf-formule-list [commande]="commande" [formules]="formules" [franchise]="franchise"
       (onFormuleSelectionnee)="onFormuleSelectionnee.emit($event)">
     </gf-formule-list>
   </div>

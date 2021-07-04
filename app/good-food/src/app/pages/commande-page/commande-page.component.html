@@ -5,7 +5,7 @@
     </gf-catalogue>
   </div>
   <div class="col-4">
-    <gf-panier-ajout-produit [commande]="commande" (onFormuleSelectionnee)="formuleSelectionnee = $event">
+    <gf-panier-ajout-produit [commande]="commande" [franchise]="commande.franchise" (onFormuleSelectionnee)="formuleSelectionnee = $event">
     </gf-panier-ajout-produit>
   </div>
 </div>

@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
-import { Formule } from '../../shared/models/formule/formule';
+import { AdministrationService } from 'src/app/pages/administration-page/services/administration.service';
+import { IFormule } from 'src/app/shared/models/formule/formule';
+import { Franchise } from 'src/app/shared/models/franchise/franchise';
 
 @Component({
   selector: 'gf-select-item',
@@ -8,12 +10,16 @@ import { Formule } from '../../shared/models/formule/formule';
 })
 export class SelectItemComponent implements OnInit {
 
-  @Input() public formules: Formule[];
+  @Input() public franchise: Franchise;
+  public formules: IFormule[] = [];
   @Input() public selectLabel = 'Choisir une formule...';
   @Output() public itemSelected: EventEmitter<any> = new EventEmitter<any>();
 
+  constructor(
+    private readonly administrationService: AdministrationService) { }
+
   ngOnInit(): void {
-    console.log(this.formules);
+    this.administrationService.getFormulesByIdFranchise(this.franchise?.id).subscribe(result => this.formules = result);  
   }
 
   getItem(item: any): void {
